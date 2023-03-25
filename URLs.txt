@@ -1,0 +1,5 @@
+Trello for GameDev:
+	https://www.youtube.com/watch?v=3EcPJvONjLM
+LibGDX - Tile/Grid-based movement
+	https://youtu.be/WmGiQV2tHIg?t=340
+
