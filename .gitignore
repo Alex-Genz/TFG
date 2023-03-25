@@ -1,0 +1,7 @@
+**/bin
+**/.settings
+/.metadata
+/.recommenders
+*.lnk
+push.bat
+pull.bat
