@@ -2,4 +2,9 @@ Trello for GameDev:
 	https://www.youtube.com/watch?v=3EcPJvONjLM
 LibGDX - Tile/Grid-based movement
 	https://youtu.be/WmGiQV2tHIg?t=340
+LibGDX - Add dialog box
+	https://www.youtube.com/watch?v=fxkuHa9FmGw
+LibGDX Wiki - Save game
+	https://libgdx.com/wiki/preferences
+	https://www.youtube.com/watch?v=whipKEqI-MQ
 
