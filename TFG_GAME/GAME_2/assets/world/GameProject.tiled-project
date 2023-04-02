@@ -1,0 +1,11 @@
+{
+    "automappingRulesFile": "rules.txt",
+    "commands": [
+    ],
+    "extensionsPath": "tiled_extensions",
+    "folders": [
+        "."
+    ],
+    "propertyTypes": [
+    ]
+}
