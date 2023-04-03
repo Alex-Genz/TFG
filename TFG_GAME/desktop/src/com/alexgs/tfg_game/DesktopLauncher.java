@@ -13,8 +13,8 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(60);
         config.setTitle("Project Wasteland");
-        config.setWindowedMode(GameParams.SCR_WIDTH, (int) (GameParams.SCR_WIDTH * GameParams.SCR_RATIO[chosenRatio]));
-        System.out.println(GameParams.SCR_WIDTH + "x" + (int) (GameParams.SCR_WIDTH * GameParams.SCR_RATIO[chosenRatio]));
+        config.setWindowedMode(GameParams.SCR_WIDTH, GameParams.SCR_HEIGHT);
+        System.out.println(GameParams.SCR_WIDTH + "x" + GameParams.SCR_HEIGHT);
 
         new Lwjgl3Application(new MyGdxGame(), config);
 
