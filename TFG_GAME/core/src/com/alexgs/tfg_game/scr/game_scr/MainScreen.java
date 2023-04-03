@@ -106,6 +106,12 @@ public class MainScreen extends BScreen {
         else if (Gdx.input.isKeyPressed(Input.Keys.S))
             cam.position.y--;
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            cam.position.x = tileWidth * 2 + (tileWidth / 2);
+            cam.position.y = tileHeight * 2 + (tileHeight / 2);
+
+        }
+
     }
 
 }
