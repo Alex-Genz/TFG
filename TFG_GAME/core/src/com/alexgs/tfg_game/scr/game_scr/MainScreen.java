@@ -1,6 +1,7 @@
 package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
+import com.alexgs.tfg_game.elements.characters.Player;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
@@ -11,6 +12,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -34,6 +36,9 @@ public class MainScreen extends BScreen {
     private float mouseX;
     private float mouseY;
     Vector3 mouse3d;
+
+//    Entities
+    Player player;
 
     public MainScreen(MyGdxGame game) {
         super(game);
@@ -70,9 +75,11 @@ public class MainScreen extends BScreen {
 
 
 //        extras
-        cam.position.x = tileWidth * 2 + (tileWidth / 2);
-        cam.position.y = tileHeight * 2 + (tileHeight / 2);
+//        cam.position.x = tileWidth * 2 + (tileWidth / 2);
+//        cam.position.y = tileHeight * 2 + (tileHeight / 2);
 
+//        entities
+        player = new Player(tileWidth * 2, tileHeight * 2, mainStage, this);
 
     }
 
@@ -80,16 +87,29 @@ public class MainScreen extends BScreen {
         super.render(delta);
         mainStage.act();
 
-
+        centerCam();
 
         ren.setView(cam);
         ren.render();
 
-        moveCam();
+//        moveCam();
 
         mainStage.draw();
 
         uiStage.draw();
+
+    }
+
+    private void centerCam() {
+        this.cam.position.x = this.player.getCenteredX();
+        this.cam.position.y = this.player.getCenteredY();
+
+        this.cam.position.x = MathUtils.clamp(this.cam.position.x, this.cam.viewportWidth / 2,
+                this.mapWidthRaw - this.cam.viewportWidth / 2);
+        this.cam.position.y = MathUtils.clamp(this.cam.position.y, this.cam.viewportHeight / 2,
+                this.mapHeightRaw - this.cam.viewportHeight / 2);
+
+        this.cam.update();
 
     }
 
@@ -100,7 +120,7 @@ public class MainScreen extends BScreen {
         else if (Gdx.input.isKeyPressed(Input.Keys.A))
             cam.position.x--;
 
-        if (Gdx.input.isKeyPressed(Input.Keys.W))
+        else if (Gdx.input.isKeyPressed(Input.Keys.W))
             cam.position.y++;
 
         else if (Gdx.input.isKeyPressed(Input.Keys.S))
@@ -111,6 +131,16 @@ public class MainScreen extends BScreen {
             cam.position.y = tileHeight * 2 + (tileHeight / 2);
 
         }
+
+    }
+
+    public int getTileWidth() {
+        return this.tileWidth;
+
+    }
+
+    public int getTileHeight() {
+        return this.tileHeight;
 
     }
 
