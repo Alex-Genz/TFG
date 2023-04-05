@@ -32,7 +32,7 @@ public class TitleScreen extends BScreen {
 
         BitmapFont font = new BitmapFont();
         font.getData().setScale(5);
-        lblInfo = new Label("PIXEL STRIKE", new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        lblInfo = new Label("Project Wasteland V.1_05", new Label.LabelStyle(font, Color.LIGHT_GRAY));
         lblInfo.setPosition(GameParams.SCR_WIDTH / 2 - lblInfo.getWidth() / 2, GameParams.SCR_HEIGHT / 2 + lblInfo.getHeight());
         uiStage.addActor(lblInfo);
 

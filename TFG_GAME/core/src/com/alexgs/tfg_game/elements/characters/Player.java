@@ -30,9 +30,10 @@ public class Player extends Characters {
         super(x, y, s, lvl);
 
         setAnimations();
-        this.setAnimation(idleDown);
+        this.setAnimation(walkUp);
 
-        setRectangle(32, 32, 0, 0);
+        setPolygon(8, this.getWidth() / 2, this.getHeight() / 6, 8, 0);
+//        setRectangle();
 
         moveVec = new Vector2();
         moveVec.x = this.getX();
@@ -41,18 +42,90 @@ public class Player extends Characters {
     }
 
     public void act(float delta) {
-        movement();
-
         super.act(delta);
+        movement();
+        animate();
+
+        checkMoving();
+
+//        System.out.println(delta + " | " + animationTime);
+
         this.applyPhysics(delta);
 //        System.out.println(this.getX() + " | " + this.getY() + " ||| target: " + moveVec.x + " | " + moveVec.y + " | " + moving);
 //        System.out.println((int) (this.getX() - moveVec.x) + " | " + (int) (this.getY() - moveVec.y) + " ||| " + (this.getX() - moveVec.x) + " | " + (this.getY() - moveVec.y) + " ||| " + this.velocity.x + " | " + this.velocity.y);
-        System.out.println(this.getX() + " | " + this.getY());
+//        System.out.println(this.getX() + " | " + this.getY());
 
 
     }
 
-    private void movement() {
+    private void checkMoving() {
+        moving = (Math.abs(this.velocity.x) > 0 || Math.abs(this.velocity.y) > 0) ? true : false;
+
+    }
+
+    private void animate() {
+        if (moving) {
+            if (this.velocity.x > 0) {
+                this.setAnimation(walkRight);
+
+            } else if (this.velocity.x < 0) {
+                this.setAnimation(walkLeft);
+
+            } else if (this.velocity.y > 0) {
+                this.setAnimation(walkUp);
+
+            } else if (this.velocity.y < 0) {
+                this.setAnimation(walkDown);
+
+            }
+
+        } else {
+            if (Math.abs((this.lvl.mouseX - this.getX())) > Math.abs((this.lvl.mouseY - this.getY()))) {
+                if ((this.lvl.mouseX - this.getX()) > 0) {
+                    this.setAnimation(idleRight);
+
+                } else if ((this.lvl.mouseX - this.getX()) < 0) {
+                    this.setAnimation(idleLeft);
+
+                }
+
+            } else if (Math.abs((this.lvl.mouseX - this.getX())) < Math.abs((this.lvl.mouseY - this.getY()))) {
+                if ((this.lvl.mouseY - this.getY()) > 0) {
+                    this.setAnimation(idleUp);
+
+                } else if ((this.lvl.mouseY - this.getY()) < 0) {
+                    this.setAnimation(idleDown);
+
+                }
+
+            }
+
+        }
+
+
+//        if (Math.abs((this.lvl.mouseX - this.getCenteredX())) > Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
+//            if ((this.lvl.mouseX - this.getCenteredX()) > 0) {
+//                this.setAnimation(super.useCorrectAnimation(idleRight, walkRight, walkRightInv, this.velocity.x * -1, this.velocity.y));
+//
+//            } else if ((this.lvl.mouseX - this.getCenteredX()) < 0) {
+//                this.setAnimation(super.useCorrectAnimation(idleLeft, walkLeft, walkLeftInv, this.velocity.x, this.velocity.y));
+//
+//            }
+//
+//        } else if (Math.abs((this.lvl.mouseX - this.getCenteredX())) < Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
+//            if ((this.lvl.mouseY - this.getCenteredY()) > 0) {
+//                this.setAnimation(super.useCorrectAnimation(idleUp, walkUp));
+//
+//            } else if ((this.lvl.mouseY - this.getCenteredY()) < 0) {
+//                this.setAnimation(super.useCorrectAnimation(idleDown, walkDown, walkFwdInv, this.velocity.y, this.velocity.x));
+//
+//            }
+//
+//        }
+
+    }
+
+    private void movement2() {
         if (!moving) {
             if (Gdx.input.isKeyPressed(Input.Keys.W))
                 moveMe(0, lvl.getTileHeight(), 1);
@@ -66,6 +139,9 @@ public class Player extends Characters {
             else if (Gdx.input.isKeyPressed(Input.Keys.A))
                 moveMe(lvl.getTileWidth(), 0, -1);
 
+//            else
+//                moving = false;
+
         } else {
             if ((int) (this.getX() - moveVec.x) == 0 && (int) (this.getY() - moveVec.y) == 0) {
                 stopMov();
@@ -78,6 +154,32 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
+
+    }
+
+    private void movement() {
+        int speed = (running) ? SPEED * 2 : SPEED;
+
+        if (Gdx.input.isKeyPressed(Input.Keys.D))
+            this.velocity.x = speed * 1;
+
+        else if (Gdx.input.isKeyPressed(Input.Keys.A))
+            this.velocity.x = speed * -1;
+
+        else
+            this.velocity.x = 0;
+
+        if (Gdx.input.isKeyPressed(Input.Keys.W))
+            this.velocity.y = speed * 1;
+
+        else if (Gdx.input.isKeyPressed(Input.Keys.S))
+            this.velocity.y = speed * -1;
+
+        else
+            this.velocity.y = 0;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
+            running = !running;
 
     }
 
@@ -108,10 +210,10 @@ public class Player extends Characters {
         idleLeft = loadFullAnimation("sprites/player/left/hgun_idle_left.png", 1, 1, 0, true);
         idleRight = loadFullAnimation("sprites/player/right/hgun_idle_right.png", 1, 1, 0, true);
 
-        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png", 1, 6, 150, true);
-        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png", 1, 6, 150, true);
-        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png", 1, 6, 150, true);
-        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png", 1, 6, 150, true);
+        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png", 1, 6, 0.15f, true);
+        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png", 1, 6, 0.15f, true);
+        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png", 1, 6, 0.15f, true);
+        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png", 1, 6, 0.15f, true);
 
 
     }

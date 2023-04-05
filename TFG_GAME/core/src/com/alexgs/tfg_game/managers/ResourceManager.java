@@ -69,6 +69,8 @@ public final class ResourceManager {
 
         }
 
+        assets.load("sprites/player/up/walk_up.png", Texture.class);
+
 
         /*
          * ost = assets.load(<audio file path>, Music.class);

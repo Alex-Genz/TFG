@@ -5,17 +5,17 @@
     },
     "activeFile": "maps/devmap_1.tmx",
     "expandedProjectPaths": [
+        "tilesets",
         "maps",
-        ".",
-        "tilesets"
+        "."
     ],
     "fileStates": {
         "maps/devmap_1.tmx": {
             "scale": 3,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 194,
-                "y": 655.6666666666666
+                "x": 173,
+                "y": 622
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -41,6 +41,10 @@
         "tilesets/Refmap-TileE.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tilesets/spawn_tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         }
     },
     "last.imagePath": "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/tilesets",
@@ -54,17 +58,18 @@
         "tilesets/Refmap-TileC.tsx",
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileE.tsx",
-        "maps/spawn_tiles.tsx"
+        "tilesets/spawn_tiles.tsx"
     ],
     "project": "project_wasteland.tiled-project",
     "recentFiles": [
-        "maps/spawn_tiles.tsx",
+        "tilesets/spawn_tiles.tsx",
         "tilesets/Refmap-TileE.tsx",
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileC.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileA5.tsx",
-        "maps/devmap_1.tmx"
+        "maps/devmap_1.tmx",
+        "maps/spawn_tiles.tsx"
     ],
     "tileset.lastUsedFormat": "tsx"
 }

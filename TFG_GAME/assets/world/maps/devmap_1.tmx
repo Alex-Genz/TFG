@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="8">
  <tileset firstgid="1" source="../tilesets/Refmap-TileA5.tsx"/>
+ <tileset firstgid="129" source="../tilesets/spawn_tiles.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="24">
   <data encoding="csv">
 17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,
@@ -29,4 +30,17 @@
 21,17,21,17,21,17,21,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17
 </data>
  </layer>
+ <objectgroup id="2" name="Objects">
+  <object id="1" x="0" y="608" width="32" height="128">
+   <properties>
+    <property name="type" value="rec_high_solid"/>
+   </properties>
+  </object>
+  <object id="5" x="32" y="512" width="192" height="32">
+   <properties>
+    <property name="type" value="rec_low_solid"/>
+   </properties>
+  </object>
+  <object id="7" gid="129" x="64" y="672" width="32" height="32"/>
+ </objectgroup>
 </map>

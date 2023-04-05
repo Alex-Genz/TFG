@@ -6,15 +6,29 @@ import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
 import com.alexgs.tfg_game.scr.util.ActorComparator;
+import com.alexgs.tfg_game.solids.HighSolid;
+import com.alexgs.tfg_game.solids.LowSolid;
+import com.alexgs.tfg_game.solids.Solid;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MainScreen extends BScreen {
 //    gui
@@ -28,13 +42,15 @@ public class MainScreen extends BScreen {
     private OrthogonalTiledMapRenderer ren;
     private int tileWidth, tileHeight, mapWidthRaw, mapHeightRaw, mapWidthTiles, mapHeightTiles;
 
+    public Array<Solid> solids;
+
 //    cam
     OrthographicCamera cam;
     private static final float CORRECTION_FACTOR = 10;
 
 //    mouse
-    private float mouseX;
-    private float mouseY;
+    public float mouseX;
+    public float mouseY;
     Vector3 mouse3d;
 
 //    Entities
@@ -63,6 +79,31 @@ public class MainScreen extends BScreen {
         mapWidthRaw = tileWidth * mapWidthTiles;
         mapHeightRaw = tileHeight * mapHeightTiles;
 
+        solids = new Array<>();
+
+        instantiateObjects(props);
+        for (MapObject characters :
+                getElementList()) {
+            props = characters.getProperties();
+
+            switch (props.get("spawn").toString()) {
+                case "player":
+                    System.out.println("char spawn detected");
+                    player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
+
+                    break;
+
+                case "obj_spawn":
+
+
+                    break;
+
+            }
+
+        }
+
+        instantiateSolids(props);
+
 //        cam
         cam = (OrthographicCamera) mainStage.getCamera();
         cam.setToOrtho(false, GameParams.SCR_WIDTH * GameParams.ZOOM, GameParams.SCR_HEIGHT * GameParams.ZOOM);
@@ -79,7 +120,7 @@ public class MainScreen extends BScreen {
 //        cam.position.y = tileHeight * 2 + (tileHeight / 2);
 
 //        entities
-        player = new Player(tileWidth * 2, tileHeight * 2, mainStage, this);
+//        player = new Player(tileWidth * 2, tileHeight * 2, mainStage, this);
 
     }
 
@@ -89,10 +130,16 @@ public class MainScreen extends BScreen {
 
         centerCam();
 
+        mouse3d.x = Gdx.input.getX();
+        mouse3d.y = Gdx.input.getY();
+        mouse3d.z = 0;
+
+        cam.unproject(mouse3d);
+        mouseX = mouse3d.x;
+        mouseY = mouse3d.y;
+
         ren.setView(cam);
         ren.render();
-
-//        moveCam();
 
         mainStage.draw();
 
@@ -103,6 +150,8 @@ public class MainScreen extends BScreen {
     private void centerCam() {
         this.cam.position.x = this.player.getCenteredX();
         this.cam.position.y = this.player.getCenteredY();
+//        this.cam.position.x = this.player.getX();
+//        this.cam.position.y = this.player.getY();
 
         this.cam.position.x = MathUtils.clamp(this.cam.position.x, this.cam.viewportWidth / 2,
                 this.mapWidthRaw - this.cam.viewportWidth / 2);
@@ -110,27 +159,6 @@ public class MainScreen extends BScreen {
                 this.mapHeightRaw - this.cam.viewportHeight / 2);
 
         this.cam.update();
-
-    }
-
-    private void moveCam() {
-        if (Gdx.input.isKeyPressed(Input.Keys.D))
-            cam.position.x++;
-
-        else if (Gdx.input.isKeyPressed(Input.Keys.A))
-            cam.position.x--;
-
-        else if (Gdx.input.isKeyPressed(Input.Keys.W))
-            cam.position.y++;
-
-        else if (Gdx.input.isKeyPressed(Input.Keys.S))
-            cam.position.y--;
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            cam.position.x = tileWidth * 2 + (tileWidth / 2);
-            cam.position.y = tileHeight * 2 + (tileHeight / 2);
-
-        }
 
     }
 
@@ -142,6 +170,133 @@ public class MainScreen extends BScreen {
     public int getTileHeight() {
         return this.tileHeight;
 
+    }
+
+    private void instantiateObjects(MapProperties props) {
+/*        for (MapObject objects :
+                getElementList()) {
+            props = objects.getProperties();
+
+            switch (props.get("type").toString()) {
+                case "character_spawn":
+                    System.out.println("char spawn detected");
+                    player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
+
+                    break;
+
+                case "obj_spawn":
+
+
+                    break;
+
+            }
+
+        }*/
+
+    }
+
+    private void instantiateSolids(MapProperties props) {
+        Solid solid;
+        for (MapObject solidObj :
+                getRectangleList("rec_high_solid", "type")) {
+            props = solidObj.getProperties();
+            solid = new HighSolid((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height"));
+
+            solids.add(solid);
+
+        }
+
+
+        for (MapObject solidObj :
+                getRectangleList("rec_low_solid", "type")) {
+            props = solidObj.getProperties();
+            solid = new LowSolid((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height"));
+
+            solids.add(solid);
+
+        }
+
+    }
+
+    public ArrayList<MapObject> getRectangleList(String propertyAttrib, String property) {
+        ArrayList<MapObject> list = new ArrayList<MapObject>();
+        for (MapLayer layer : map.getLayers()) {
+            for (MapObject obj : layer.getObjects()) {
+                if (!(obj instanceof RectangleMapObject))
+                    continue;
+                MapProperties props = obj.getProperties();
+                if (props.containsKey(property) && props.get(property).equals(propertyAttrib)) {
+                    list.add(obj);
+                }
+
+            }
+
+        }
+
+        return list;
+    }
+
+    public ArrayList<Polygon> getPolygonList(String propertyAttrib, String property) {
+
+        Polygon poly;
+        ArrayList<Polygon> list = new ArrayList<Polygon>();
+        for (MapLayer layer : map.getLayers()) {
+            for (MapObject obj : layer.getObjects()) {
+
+
+                if (!(obj instanceof PolygonMapObject))
+                    continue;
+                MapProperties props = obj.getProperties();
+                if (props.containsKey(property) && props.get(property).equals(propertyAttrib)) {
+
+                    poly = ((PolygonMapObject) obj).getPolygon();
+                    list.add(poly);
+                }
+
+            }
+
+        }
+
+        return list;
+    }
+
+
+    public ArrayList<MapObject> getElementList() {
+        ArrayList<MapObject> list = new ArrayList<MapObject>();
+        for (MapLayer layer : map.getLayers()) {
+            for (MapObject obj : layer.getObjects()) {
+                if (!(obj instanceof TiledMapTileMapObject))
+                    continue;
+                MapProperties props = obj.getProperties();
+
+                TiledMapTileMapObject tmtmo = (TiledMapTileMapObject) obj;
+                TiledMapTile t = tmtmo.getTile();
+                MapProperties defaultProps = t.getProperties();
+                if (defaultProps.containsKey("spawn")) {
+                    list.add(obj);
+
+                }
+
+                Iterator<String> propertyKeys = defaultProps.getKeys();
+                while (propertyKeys.hasNext()) {
+                    String key = propertyKeys.next();
+
+                    if (props.containsKey(key))
+                        continue;
+                    else {
+                        Object value = defaultProps.get(key);
+                        props.put(key, value);
+                    }
+
+                }
+
+            }
+
+        }
+
+        return list;
     }
 
 }
