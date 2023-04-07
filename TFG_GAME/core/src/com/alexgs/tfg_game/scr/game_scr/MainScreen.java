@@ -2,6 +2,7 @@ package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
 import com.alexgs.tfg_game.elements.characters.Player;
+import com.alexgs.tfg_game.managers.ResourceManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
@@ -46,7 +47,7 @@ public class MainScreen extends BScreen {
 
 //    cam
     OrthographicCamera cam;
-    private static final float CORRECTION_FACTOR = 10;
+
 
 //    mouse
     public float mouseX;
@@ -106,7 +107,8 @@ public class MainScreen extends BScreen {
 
 //        cam
         cam = (OrthographicCamera) mainStage.getCamera();
-        cam.setToOrtho(false, GameParams.SCR_WIDTH * GameParams.ZOOM, GameParams.SCR_HEIGHT * GameParams.ZOOM);
+//        cam.setToOrtho(false, GameParams.SCR_WIDTH * GameParams.ZOOM, GameParams.SCR_HEIGHT * GameParams.ZOOM);
+        cam.setToOrtho(false, GameParams.scrWidth * GameParams.ZOOM, GameParams.scrHeight * GameParams.ZOOM);
         ren.setView(cam);
 
 //        mouse
@@ -130,6 +132,8 @@ public class MainScreen extends BScreen {
 
         centerCam();
 
+        checkCollisions();
+
         mouse3d.x = Gdx.input.getX();
         mouse3d.y = Gdx.input.getY();
         mouse3d.z = 0;
@@ -143,13 +147,28 @@ public class MainScreen extends BScreen {
 
         mainStage.draw();
 
+        ren.render(new int[]{1});
+
         uiStage.draw();
 
     }
 
+    private void checkCollisions() {
+        for (Solid solidObj :
+                solids) {
+            if (solidObj.getEnabled() && solidObj instanceof HighSolid && solidObj.overlaps(player)) {
+                player.preventOverlap(solidObj);
+                player.stopMoving();
+
+            }
+
+
+    }
+    }
+
     private void centerCam() {
-        this.cam.position.x = this.player.getCenteredX();
-        this.cam.position.y = this.player.getCenteredY();
+        this.cam.position.x = camCollimator(this.player.getCenteredX());
+        this.cam.position.y = camCollimator(this.player.getCenteredY());
 //        this.cam.position.x = this.player.getX();
 //        this.cam.position.y = this.player.getY();
 
@@ -159,6 +178,12 @@ public class MainScreen extends BScreen {
                 this.mapHeightRaw - this.cam.viewportHeight / 2);
 
         this.cam.update();
+
+    }
+
+    private float camCollimator(float pos) {
+//        simplifies player pos to avoid floating-point errors
+        return Math.round(pos * GameParams.CORRECTION_FACTOR) / GameParams.CORRECTION_FACTOR;
 
     }
 
@@ -192,6 +217,14 @@ public class MainScreen extends BScreen {
             }
 
         }*/
+
+    }
+
+    public void setMap(String map)
+    {
+        this.map.dispose(); // Dispose your map first
+        this.map = ResourceManager.getMap(map);
+        this.ren = new OrthogonalTiledMapRenderer(this.map, mainStage.getBatch());
 
     }
 

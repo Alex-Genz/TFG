@@ -4,6 +4,8 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class LowSolid extends Solid {
+//    For solid objects intended as ground obstacles (rivers, lakes, etc)
+
     public LowSolid(float xPos, float yPos, Stage stage, float width, float height) {
         super(xPos, yPos, stage, width, height);
 

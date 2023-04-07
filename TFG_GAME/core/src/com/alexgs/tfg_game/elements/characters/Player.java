@@ -25,6 +25,7 @@ public class Player extends Characters {
     boolean running = false;
 
     Vector2 moveVec;
+    Vector2 lastPosVec;
 
     public Player(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);
@@ -32,12 +33,14 @@ public class Player extends Characters {
         setAnimations();
         this.setAnimation(walkUp);
 
-        setPolygon(8, this.getWidth() / 2, this.getHeight() / 6, 8, 0);
+        setPolygon(8, this.getWidth() / 2, this.getHeight() / 4, 8, 0);
 //        setRectangle();
 
         moveVec = new Vector2();
         moveVec.x = this.getX();
         moveVec.y = this.getY();
+
+        lastPosVec = new Vector2();
 
     }
 
@@ -53,8 +56,18 @@ public class Player extends Characters {
         this.applyPhysics(delta);
 //        System.out.println(this.getX() + " | " + this.getY() + " ||| target: " + moveVec.x + " | " + moveVec.y + " | " + moving);
 //        System.out.println((int) (this.getX() - moveVec.x) + " | " + (int) (this.getY() - moveVec.y) + " ||| " + (this.getX() - moveVec.x) + " | " + (this.getY() - moveVec.y) + " ||| " + this.velocity.x + " | " + this.velocity.y);
-//        System.out.println(this.getX() + " | " + this.getY());
+        System.out.println(this.getX() + " | " + this.getY() + " ||| " + lastPosVec.x + " | " + lastPosVec.y + " ||| " + moveVec.x + " | " + moveVec.y);
 
+
+    }
+
+    public void stopMoving() {
+        System.out.println("called");
+        this.moveVec.x = lastPosVec.x;
+        this.moveVec.y = lastPosVec.y;
+
+//        this.setX(lastPosVec.x);
+//        this.setY(lastPosVec.y);
 
     }
 
@@ -80,20 +93,20 @@ public class Player extends Characters {
             }
 
         } else {
-            if (Math.abs((this.lvl.mouseX - this.getX())) > Math.abs((this.lvl.mouseY - this.getY()))) {
-                if ((this.lvl.mouseX - this.getX()) > 0) {
+            if (Math.abs((this.lvl.mouseX - this.getCenteredX())) > Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
+                if ((this.lvl.mouseX - this.getCenteredX()) > 0) {
                     this.setAnimation(idleRight);
 
-                } else if ((this.lvl.mouseX - this.getX()) < 0) {
+                } else if ((this.lvl.mouseX - this.getCenteredX()) < 0) {
                     this.setAnimation(idleLeft);
 
                 }
 
-            } else if (Math.abs((this.lvl.mouseX - this.getX())) < Math.abs((this.lvl.mouseY - this.getY()))) {
-                if ((this.lvl.mouseY - this.getY()) > 0) {
+            } else if (Math.abs((this.lvl.mouseX - this.getCenteredX())) < Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
+                if ((this.lvl.mouseY - this.getCenteredY()) > 0) {
                     this.setAnimation(idleUp);
 
-                } else if ((this.lvl.mouseY - this.getY()) < 0) {
+                } else if ((this.lvl.mouseY - this.getCenteredY()) < 0) {
                     this.setAnimation(idleDown);
 
                 }
@@ -192,6 +205,9 @@ public class Player extends Characters {
     }
 
     private void moveMe(float tgtX, float tgtY, int dir) {
+        lastPosVec.x = this.getX();
+        lastPosVec.y = this.getY();
+
         moving = true;
 
         this.moveVec.x = this.getX() + (tgtX * dir);

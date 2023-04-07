@@ -97,7 +97,8 @@ public class Element extends Actor {
                         animation.getKeyFrame(animationTime).getRegionHeight(), getScaleX(), getScaleY(),
                         getRotation());
             }
-            if (GameParams.DEBUG) {
+//            if (GameParams.DEBUG) {
+            if (GameParams.debug) {
                 pintarCaja(batch);
             }
             super.draw(batch, parentAlpha);
@@ -148,6 +149,7 @@ public class Element extends Actor {
     public void act(float delta) {
         // TODO Auto-generated method stub
         if (this.getEnabled()) {
+            super.act(delta);
             super.act(delta);
             animationTime += delta;
         }
