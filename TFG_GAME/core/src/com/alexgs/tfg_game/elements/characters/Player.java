@@ -56,7 +56,7 @@ public class Player extends Characters {
         this.applyPhysics(delta);
 //        System.out.println(this.getX() + " | " + this.getY() + " ||| target: " + moveVec.x + " | " + moveVec.y + " | " + moving);
 //        System.out.println((int) (this.getX() - moveVec.x) + " | " + (int) (this.getY() - moveVec.y) + " ||| " + (this.getX() - moveVec.x) + " | " + (this.getY() - moveVec.y) + " ||| " + this.velocity.x + " | " + this.velocity.y);
-        System.out.println(this.getX() + " | " + this.getY() + " ||| " + lastPosVec.x + " | " + lastPosVec.y + " ||| " + moveVec.x + " | " + moveVec.y);
+//        System.out.println(this.getX() + " | " + this.getY() + " ||| " + lastPosVec.x + " | " + lastPosVec.y + " ||| " + moveVec.x + " | " + moveVec.y);
 
 
     }

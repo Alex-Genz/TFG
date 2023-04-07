@@ -89,8 +89,12 @@ public class MainScreen extends BScreen {
 
             switch (props.get("spawn").toString()) {
                 case "player":
-                    System.out.println("char spawn detected");
                     player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
+
+                    break;
+
+                case "character":
+                    instantiateCharacters(props);
 
                     break;
 
@@ -123,6 +127,27 @@ public class MainScreen extends BScreen {
 
 //        entities
 //        player = new Player(tileWidth * 2, tileHeight * 2, mainStage, this);
+
+    }
+
+    private void instantiateCharacters(MapProperties props) {
+        switch (props.get("character_type").toString()) {
+            case "alpha":
+                System.out.println("alpha detected");
+
+                break;
+
+            case "bravo":
+                System.out.println("bravo detected");
+
+                break;
+
+            case "charlie":
+                System.out.println("charlie detected");
+
+                break;
+
+        }
 
     }
 

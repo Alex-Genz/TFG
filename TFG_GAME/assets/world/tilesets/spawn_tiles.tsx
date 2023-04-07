@@ -6,4 +6,10 @@
    <property name="spawn" value="player"/>
   </properties>
  </tile>
+ <tile id="4">
+  <properties>
+   <property name="character_type" value=""/>
+   <property name="spawn" value="character"/>
+  </properties>
+ </tile>
 </tileset>

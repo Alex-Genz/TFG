@@ -2,8 +2,6 @@ package com.alexgs.tfg_game;
 
 import com.alexgs.tfg_game.params.GameParams;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;

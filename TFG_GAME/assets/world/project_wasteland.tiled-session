@@ -18,27 +18,27 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.5,
-            "selectedLayer": 0,
+            "scale": 2,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 1042,
-                "y": 258
+                "x": 446.5,
+                "y": 552
             }
         },
         "maps/devmap_2.tmx": {
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 272,
-                "y": 256
+                "x": 270,
+                "y": 254
             }
         },
         "maps/devmap_3.tmx": {
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -201,
-                "y": 1103
+                "x": -202,
+                "y": 1102
             }
         },
         "maps/spawn_tiles.tsx": {
