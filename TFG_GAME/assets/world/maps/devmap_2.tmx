@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="1">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="11">
  <tileset firstgid="1" source="../tilesets/Refmap-TileA5.tsx"/>
+ <tileset firstgid="129" source="../tilesets/spawn_tiles.tsx"/>
  <layer id="1" name="Tile Layer 1" width="24" height="24">
   <data encoding="csv">
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
@@ -17,11 +18,11 @@
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
-18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
-18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
-18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
-18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
-18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
+18,18,18,2,2,2,2,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
+18,18,18,2,2,2,2,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
+18,18,18,2,2,2,2,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
+18,18,18,2,2,2,2,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
+18,18,18,2,2,2,2,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
@@ -29,5 +30,57 @@
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18
 </data>
  </layer>
- <objectgroup id="2" name="Object Layer 1"/>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="1" gid="129" x="320" y="320" width="32" height="32"/>
+  <object id="2" gid="130" x="224" y="160" width="32" height="32">
+   <properties>
+    <property name="enemy_type" value="sharpshooter"/>
+    <property name="skin" type="int" value="1"/>
+   </properties>
+  </object>
+  <object id="3" gid="130" x="544" y="224" width="32" height="32">
+   <properties>
+    <property name="enemy_type" value="biter"/>
+    <property name="skin" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="4" gid="130" x="480" y="320" width="32" height="32">
+   <properties>
+    <property name="enemy_type" value="biter"/>
+    <property name="skin" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="5" gid="130" x="320" y="128" width="32" height="32">
+   <properties>
+    <property name="enemy_type" value="sharpshooter"/>
+    <property name="skin" type="int" value="10"/>
+   </properties>
+  </object>
+  <object id="6" gid="130" x="224" y="256" width="32" height="32">
+   <properties>
+    <property name="enemy_type" value="biter"/>
+    <property name="skin" type="int" value="4"/>
+   </properties>
+  </object>
+  <object id="7" x="64" y="448" width="32" height="160">
+   <properties>
+    <property name="type" value="rec_high_solid"/>
+   </properties>
+  </object>
+  <object id="8" x="96" y="512" width="96" height="32">
+   <properties>
+    <property name="type" value=""/>
+   </properties>
+  </object>
+  <object id="9" x="128" y="576" width="32" height="32">
+   <properties>
+    <property name="type" value="rec_high_solid"/>
+   </properties>
+  </object>
+  <object id="10" x="160" y="448" width="64" height="32">
+   <properties>
+    <property name="type" value="rec_high_solid"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

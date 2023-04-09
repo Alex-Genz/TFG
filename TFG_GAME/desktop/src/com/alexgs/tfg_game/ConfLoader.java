@@ -12,8 +12,7 @@ public class ConfLoader {
         Properties conf = new Properties();
 
         try {
-            InputStream inStr = ConfLoader.class.getResourceAsStream("/parameters.properties");
-            conf.load(inStr);
+            conf.load(ConfLoader.class.getResourceAsStream("/parameters.properties"));
 
             GameParams.scrWidth = Integer.parseInt(conf.getProperty("scr_width"));
             GameParams.scrHeight = (int) (GameParams.scrWidth * GameParams.SCR_RATIO[Integer.valueOf(conf.getProperty("aspect_ratio"))]);

@@ -56,6 +56,7 @@ public class MainScreen extends BScreen {
 
 //    Entities
     Player player;
+    private boolean playerHasSpawn = false;
 
     public MainScreen(MyGdxGame game) {
         super(game);
@@ -67,7 +68,7 @@ public class MainScreen extends BScreen {
         compar = new ActorComparator();
 
 //        map
-        map = resourceManager.getMap("world/maps/devmap_1.tmx");
+        map = resourceManager.getMap("world/maps/devmap_2.tmx");
         ren = new OrthogonalTiledMapRenderer(map, mainStage.getBatch());
 
         MapProperties props = map.getProperties();
@@ -82,7 +83,6 @@ public class MainScreen extends BScreen {
 
         solids = new Array<>();
 
-        instantiateObjects(props);
         for (MapObject characters :
                 getElementList()) {
             props = characters.getProperties();
@@ -90,11 +90,17 @@ public class MainScreen extends BScreen {
             switch (props.get("spawn").toString()) {
                 case "player":
                     player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
+                    this.playerHasSpawn = true;
 
                     break;
 
                 case "character":
                     instantiateCharacters(props);
+
+                    break;
+
+                case "enemy":
+                    instantiateEnemies(props);
 
                     break;
 
@@ -108,6 +114,11 @@ public class MainScreen extends BScreen {
         }
 
         instantiateSolids(props);
+
+        if (!playerHasSpawn) {
+            player = new Player(64, 64, mainStage, this);
+
+        }
 
 //        cam
         cam = (OrthographicCamera) mainStage.getCamera();
@@ -133,7 +144,7 @@ public class MainScreen extends BScreen {
     private void instantiateCharacters(MapProperties props) {
         switch (props.get("character_type").toString()) {
             case "alpha":
-                System.out.println("alpha detected");
+                System.out.println("alpha detected: " + props.get("message").toString());
 
                 break;
 
@@ -144,6 +155,22 @@ public class MainScreen extends BScreen {
 
             case "charlie":
                 System.out.println("charlie detected");
+
+                break;
+
+        }
+
+    }
+
+    private void instantiateEnemies(MapProperties props) {
+        switch (props.get("enemy_type").toString()) {
+            case "sharpshooter":
+                System.out.println("sharpshooter with skinset number " + props.get("skin").toString());
+
+                break;
+
+            case "biter":
+                System.out.println("biter with skinset number " + props.get("skin").toString());
 
                 break;
 
@@ -219,29 +246,6 @@ public class MainScreen extends BScreen {
 
     public int getTileHeight() {
         return this.tileHeight;
-
-    }
-
-    private void instantiateObjects(MapProperties props) {
-/*        for (MapObject objects :
-                getElementList()) {
-            props = objects.getProperties();
-
-            switch (props.get("type").toString()) {
-                case "character_spawn":
-                    System.out.println("char spawn detected");
-                    player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
-
-                    break;
-
-                case "obj_spawn":
-
-
-                    break;
-
-            }
-
-        }*/
 
     }
 

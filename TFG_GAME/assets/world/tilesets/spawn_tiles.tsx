@@ -6,9 +6,17 @@
    <property name="spawn" value="player"/>
   </properties>
  </tile>
+ <tile id="1">
+  <properties>
+   <property name="enemy_type" value=""/>
+   <property name="skin" type="int" value="0"/>
+   <property name="spawn" value="enemy"/>
+  </properties>
+ </tile>
  <tile id="4">
   <properties>
    <property name="character_type" value=""/>
+   <property name="message" value=""/>
    <property name="spawn" value="character"/>
   </properties>
  </tile>
