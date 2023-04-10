@@ -150,9 +150,10 @@ public class Element extends Actor {
         // TODO Auto-generated method stub
         if (this.getEnabled()) {
             super.act(delta);
-            super.act(delta);
             animationTime += delta;
+
         }
+
     }
 
     public void setAnimation(Animation<TextureRegion> anim) {

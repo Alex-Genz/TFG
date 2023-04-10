@@ -68,7 +68,7 @@ public class MainScreen extends BScreen {
         compar = new ActorComparator();
 
 //        map
-        map = resourceManager.getMap("world/maps/devmap_2.tmx");
+        map = resourceManager.getMap("world/maps/devmap_1.tmx");
         ren = new OrthogonalTiledMapRenderer(map, mainStage.getBatch());
 
         MapProperties props = map.getProperties();
@@ -208,7 +208,7 @@ public class MainScreen extends BScreen {
     private void checkCollisions() {
         for (Solid solidObj :
                 solids) {
-            if (solidObj.getEnabled() && solidObj instanceof HighSolid && solidObj.overlaps(player)) {
+            if (solidObj.getEnabled() && solidObj.overlaps(player)) {
                 player.preventOverlap(solidObj);
                 player.stopMoving();
 
@@ -221,8 +221,8 @@ public class MainScreen extends BScreen {
     private void centerCam() {
         this.cam.position.x = camCollimator(this.player.getCenteredX());
         this.cam.position.y = camCollimator(this.player.getCenteredY());
-//        this.cam.position.x = this.player.getX();
-//        this.cam.position.y = this.player.getY();
+//        this.cam.position.x = this.player.getCenteredX();
+//        this.cam.position.y = this.player.getCenteredY();
 
         this.cam.position.x = MathUtils.clamp(this.cam.position.x, this.cam.viewportWidth / 2,
                 this.mapWidthRaw - this.cam.viewportWidth / 2);
