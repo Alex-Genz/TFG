@@ -1,0 +1,6 @@
+URL: https://www.behance.net/gallery/93768545/Major-Pixel-Art-Commission-Corpse-Mansion
+
+TASKS:
+- resize to 50%
+- extract animation strips
+- (possible) standarize frame size to avoid problems
