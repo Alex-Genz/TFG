@@ -3,12 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tilesets/spawn_tiles.tsx",
+    "activeFile": "maps/devmap_1.tmx",
     "expandedProjectPaths": [
-        "maps",
-        ".",
         "worlds",
-        "tilesets"
+        "maps",
+        "tilesets",
+        "."
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -19,22 +19,22 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
-            "selectedLayer": 2,
+            "scale": 0.75,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 994,
-                "y": 488.75
+                "x": 888,
+                "y": 584
             }
         },
         "maps/devmap_2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
+            "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 472,
-                "y": 693.5
+                "x": -76,
+                "y": 259.99999999999994
             }
         },
         "maps/devmap_3.tmx": {
@@ -105,19 +105,20 @@
     "project": "project_wasteland.tiled-project",
     "property.type": "string",
     "recentFiles": [
-        "maps/devmap_1.tmx",
-        "maps/devmap_2.tmx",
-        "tilesets/Refmap-TileA5.tsx",
-        "tilesets/Refmap-TileB.tsx",
-        "tilesets/Refmap-TileC.tsx",
-        "tilesets/Refmap-TileD.tsx",
-        "tilesets/Refmap-TileE.tsx",
         "tilesets/spawn_tiles.tsx",
+        "tilesets/Refmap-TileE.tsx",
+        "tilesets/Refmap-TileD.tsx",
+        "tilesets/Refmap-TileC.tsx",
+        "tilesets/Refmap-TileB.tsx",
+        "tilesets/Refmap-TileA5.tsx",
+        "maps/devmap_2.tmx",
+        "maps/devmap_1.tmx",
         "tilesets/Refmap-A2-0-2.tsx",
         "tilesets/Sprite-0001.tsx",
         "maps/devmap_3.tmx",
         ":/automap-tiles.tsx"
     ],
+    "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 32,

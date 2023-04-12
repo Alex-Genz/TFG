@@ -194,6 +194,15 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+            if (this.velocity.x == 0 && this.velocity.y == 0)
+                System.out.println("BANG BANG!!");
+
+            else
+                System.out.println("no bang bang :(");
+
+        }
+
     }
 
     private void stopMov() {
