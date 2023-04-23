@@ -5,10 +5,10 @@
     },
     "activeFile": "maps/devmap_1.tmx",
     "expandedProjectPaths": [
+        ".",
         "worlds",
         "maps",
-        "tilesets",
-        "."
+        "tilesets"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -19,11 +19,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.75,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 885.3333333333333,
-                "y": 579.3333333333334
+                "x": 464.6666666666667,
+                "y": 691.3333333333333
             }
         },
         "maps/devmap_2.tmx": {

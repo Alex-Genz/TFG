@@ -7,4 +7,8 @@ LibGDX - Add dialog box
 LibGDX Wiki - Save game
 	https://libgdx.com/wiki/preferences
 	https://www.youtube.com/watch?v=whipKEqI-MQ
+Top-down SpriteSheet Generator
+	https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/
+RPGMaker VX 32x48px sprites
+	https://vxresource.wordpress.com/page/2/
 
