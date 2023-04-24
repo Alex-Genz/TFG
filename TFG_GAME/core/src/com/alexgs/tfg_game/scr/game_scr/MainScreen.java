@@ -11,7 +11,6 @@ import com.alexgs.tfg_game.solids.HighSolid;
 import com.alexgs.tfg_game.solids.LowSolid;
 import com.alexgs.tfg_game.solids.Solid;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
@@ -128,16 +127,6 @@ public class MainScreen extends BScreen {
 
 //        mouse
         mouse3d = new Vector3();
-
-
-
-
-//        extras
-//        cam.position.x = tileWidth * 2 + (tileWidth / 2);
-//        cam.position.y = tileHeight * 2 + (tileHeight / 2);
-
-//        entities
-//        player = new Player(tileWidth * 2, tileHeight * 2, mainStage, this);
 
     }
 

@@ -17,6 +17,7 @@ public class ConfLoader {
             GameParams.scrWidth = Integer.parseInt(conf.getProperty("scr_width"));
             GameParams.scrHeight = (int) (GameParams.scrWidth * GameParams.SCR_RATIO[Integer.valueOf(conf.getProperty("aspect_ratio"))]);
             GameParams.debug = Boolean.parseBoolean(conf.getProperty("debug"));
+            GameParams.framerate = Integer.parseInt(conf.getProperty("fps"));
 
         } catch (IOException e) {
             e.printStackTrace();

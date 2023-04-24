@@ -11,7 +11,7 @@ public class DesktopLauncher {
         ConfLoader.loadConfData();
 
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
-        config.setForegroundFPS(60);
+        config.setForegroundFPS(GameParams.framerate);
         config.setTitle("Project Wasteland");
 //        config.setWindowedMode(GameParams.SCR_WIDTH, GameParams.SCR_HEIGHT);
 //        System.out.println(GameParams.SCR_WIDTH + "x" + GameParams.SCR_HEIGHT);

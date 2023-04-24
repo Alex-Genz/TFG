@@ -23,5 +23,6 @@ public class GameParams {
     public static int scrWidth;
     public static int scrHeight;
     public static boolean debug;
+    public static int framerate;
 
 }
