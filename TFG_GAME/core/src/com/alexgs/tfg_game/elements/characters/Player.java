@@ -66,9 +66,6 @@ public class Player extends Characters {
         this.moveVec.x = lastPosVec.x;
         this.moveVec.y = lastPosVec.y;
 
-//        this.setX(lastPosVec.x);
-//        this.setY(lastPosVec.y);
-
     }
 
     private void checkMoving() {
@@ -115,29 +112,9 @@ public class Player extends Characters {
 
         }
 
-
-//        if (Math.abs((this.lvl.mouseX - this.getCenteredX())) > Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
-//            if ((this.lvl.mouseX - this.getCenteredX()) > 0) {
-//                this.setAnimation(super.useCorrectAnimation(idleRight, walkRight, walkRightInv, this.velocity.x * -1, this.velocity.y));
-//
-//            } else if ((this.lvl.mouseX - this.getCenteredX()) < 0) {
-//                this.setAnimation(super.useCorrectAnimation(idleLeft, walkLeft, walkLeftInv, this.velocity.x, this.velocity.y));
-//
-//            }
-//
-//        } else if (Math.abs((this.lvl.mouseX - this.getCenteredX())) < Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
-//            if ((this.lvl.mouseY - this.getCenteredY()) > 0) {
-//                this.setAnimation(super.useCorrectAnimation(idleUp, walkUp));
-//
-//            } else if ((this.lvl.mouseY - this.getCenteredY()) < 0) {
-//                this.setAnimation(super.useCorrectAnimation(idleDown, walkDown, walkFwdInv, this.velocity.y, this.velocity.x));
-//
-//            }
-//
-//        }
-
     }
 
+//    DEPRECATED | -> legacy tile/grid-based movement <- | DEPRECATED
     private void movement2() {
         if (!moving) {
             if (Gdx.input.isKeyPressed(Input.Keys.W))

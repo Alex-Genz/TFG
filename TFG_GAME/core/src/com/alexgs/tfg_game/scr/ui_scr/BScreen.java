@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 
 public class BScreen implements Screen, InputProcessor {
-    final MyGdxGame game;
+    public final MyGdxGame game;
     public ResourceManager resourceManager;
     public Stage actualStage;
     public LabelStyle uiStyle;

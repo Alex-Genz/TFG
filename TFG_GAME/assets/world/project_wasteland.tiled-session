@@ -22,19 +22,19 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 464.6666666666667,
-                "y": 691.3333333333333
+                "x": 1049.3333333333333,
+                "y": 856
             }
         },
         "maps/devmap_2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.75,
+            "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": -78.66666666666666,
-                "y": 259.3333333333333
+                "x": 278,
+                "y": 456.66666666666663
             }
         },
         "maps/devmap_3.tmx": {
@@ -103,7 +103,7 @@
         "tilesets/spawn_tiles.tsx"
     ],
     "project": "project_wasteland.tiled-project",
-    "property.type": "string",
+    "property.type": "float",
     "recentFiles": [
         "tilesets/spawn_tiles.tsx",
         "tilesets/Refmap-TileE.tsx",

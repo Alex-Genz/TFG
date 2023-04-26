@@ -10,6 +10,7 @@ import com.alexgs.tfg_game.scr.util.ActorComparator;
 import com.alexgs.tfg_game.solids.HighSolid;
 import com.alexgs.tfg_game.solids.LowSolid;
 import com.alexgs.tfg_game.solids.Solid;
+import com.alexgs.tfg_game.solids.Teleporter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
@@ -43,6 +44,7 @@ public class MainScreen extends BScreen {
     private int tileWidth, tileHeight, mapWidthRaw, mapHeightRaw, mapWidthTiles, mapHeightTiles;
 
     public Array<Solid> solids;
+    public Array<Teleporter> teleporters;
 
 //    cam
     OrthographicCamera cam;
@@ -56,6 +58,7 @@ public class MainScreen extends BScreen {
 //    Entities
     Player player;
     private boolean playerHasSpawn = false;
+    private boolean playerHasTeleported = false;
 
     public MainScreen(MyGdxGame game) {
         super(game);
@@ -67,7 +70,16 @@ public class MainScreen extends BScreen {
         compar = new ActorComparator();
 
 //        map
-        map = resourceManager.getMap("world/maps/devmap_1.tmx");
+        if (GameParams.touchedTeleporter == null) {
+            map = resourceManager.getMap("world/maps/devmap_1.tmx");
+            this.playerHasTeleported = false;
+
+        } else {
+            map = resourceManager.getMap(GameParams.touchedTeleporter.tgtMapPath);
+            this.playerHasTeleported = true;
+
+        }
+
         ren = new OrthogonalTiledMapRenderer(map, mainStage.getBatch());
 
         MapProperties props = map.getProperties();
@@ -81,6 +93,7 @@ public class MainScreen extends BScreen {
         mapHeightRaw = tileHeight * mapHeightTiles;
 
         solids = new Array<>();
+        teleporters = new Array<>();
 
         for (MapObject characters :
                 getElementList()) {
@@ -88,8 +101,11 @@ public class MainScreen extends BScreen {
 
             switch (props.get("spawn").toString()) {
                 case "player":
-                    player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
-                    this.playerHasSpawn = true;
+                    if (!playerHasTeleported) {
+                        player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
+                        this.playerHasSpawn = true;
+
+                    }
 
                     break;
 
@@ -114,10 +130,19 @@ public class MainScreen extends BScreen {
 
         instantiateSolids(props);
 
+        if (playerHasTeleported) {
+            player = new Player(GameParams.touchedTeleporter.tpTgtOffsetX,
+                    GameParams.touchedTeleporter.tpTgtOffsetY, mainStage, this);
+
+            this.playerHasSpawn = true;
+
+        }
+
         if (!playerHasSpawn) {
             player = new Player(64, 64, mainStage, this);
 
         }
+
 
 //        cam
         cam = (OrthographicCamera) mainStage.getCamera();
@@ -127,6 +152,9 @@ public class MainScreen extends BScreen {
 
 //        mouse
         mouse3d = new Vector3();
+
+//        tp target reserve purge
+        GameParams.touchedTeleporter = null;
 
     }
 
@@ -203,8 +231,24 @@ public class MainScreen extends BScreen {
 
             }
 
+        }
 
-    }
+        for (Teleporter tpObj :
+                teleporters) {
+            if (tpObj.getEnabled() && tpObj.overlaps(player)) {
+//                System.out.println("teleported touched");
+                GameParams.touchedTeleporter = tpObj;
+
+                game.setScreen(new MainScreen(game));
+
+/*                System.out.println(GameParams.touchedTeleporter.tpTgtOffsetX +
+                        " | " + GameParams.touchedTeleporter.tpTgtOffsetY +
+                        " | " + GameParams.touchedTeleporter.tgtMapPath);*/
+
+            }
+
+        }
+
     }
 
     private void centerCam() {
@@ -266,6 +310,20 @@ public class MainScreen extends BScreen {
                     mainStage, (float) props.get("width"), (float) props.get("height"));
 
             solids.add(solid);
+
+        }
+
+        for (MapObject solidObj :
+                getRectangleList("teleporter", "tile_type")) {
+            props = solidObj.getProperties();
+            Teleporter teleporter = new Teleporter((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height"),
+                    Float.parseFloat(props.get("offset_x").toString()),
+                    Float.parseFloat(props.get("offset_y").toString()), props.get("target_map").toString());
+
+            System.out.println("teleported found and loaded");
+
+            teleporters.add(teleporter);
 
         }
 

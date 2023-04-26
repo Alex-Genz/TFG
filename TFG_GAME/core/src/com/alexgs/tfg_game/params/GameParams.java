@@ -1,5 +1,7 @@
 package com.alexgs.tfg_game.params;
 
+import com.alexgs.tfg_game.solids.Teleporter;
+
 public class GameParams {
     //    debug
     public static final boolean DEBUG = true;
@@ -18,6 +20,8 @@ public class GameParams {
     //    camera
     public static final float CORRECTION_FACTOR = 10;
 
+//    map
+    public static Teleporter touchedTeleporter = null;
 
     //    test
     public static int scrWidth;
