@@ -36,7 +36,32 @@ public final class ResourceManager {
     private static final String[] status = {"idle_", "walk_"};
     private static final String[] dir = {"down", "left", "right", "up"};
 
+//    public static String[][] characterPaths =
+//            {
+//                    {
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_idown.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_ileft.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iright.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iup.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wdown.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wleft.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wright.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wup.png"
+//                    },
+//                    {
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_idown.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_ileft.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iright.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iup.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wdown.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wleft.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wright.png",
+//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wup.png"
+//                    }
+//            };
+
     public static void loadAllResources() {
+
 //        Texture filtering & MipMaps
         Parameters params = new Parameters();
         params.textureMinFilter = TextureFilter.Nearest;
@@ -66,13 +91,32 @@ public final class ResourceManager {
             for (String statusStr :
                     status) {
                 assets.load("sprites/player/" + dirStr + "/" + hgun + statusStr + dirStr + ".png", Texture.class);
-                System.out.println("sprites/player/" + dirStr + "/" + hgun + statusStr + dirStr + ".png loaded!");
+//                System.out.println("sprites/player/" + dirStr + "/" + hgun + statusStr + dirStr + ".png loaded!");
 
             }
 
         }
 
         assets.load("sprites/player/up/walk_up.png", Texture.class);
+
+//        placeholder npc sprites
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_idown.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_ileft.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iright.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iup.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wdown.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wleft.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wright.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wup.png", Texture.class);
+
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_idown.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_ileft.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iright.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iup.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wdown.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wleft.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wright.png", Texture.class);
+        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wup.png", Texture.class);
 
 
         /*

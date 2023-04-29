@@ -15,7 +15,7 @@
  </tile>
  <tile id="4">
   <properties>
-   <property name="character_type" value=""/>
+   <property name="char_type" type="int" value="0"/>
    <property name="message" value=""/>
    <property name="spawn" value="character"/>
   </properties>

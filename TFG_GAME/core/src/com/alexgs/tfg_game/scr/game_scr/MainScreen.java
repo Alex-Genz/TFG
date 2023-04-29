@@ -2,6 +2,8 @@ package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
 import com.alexgs.tfg_game.elements.characters.Player;
+import com.alexgs.tfg_game.elements.characters.neutrals.NeutralOne;
+import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
 import com.alexgs.tfg_game.managers.ResourceManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
@@ -45,6 +47,8 @@ public class MainScreen extends BScreen {
 
     public Array<Solid> solids;
     public Array<Teleporter> teleporters;
+
+    public Array<Neutrals> neutralNPCs;
 
 //    cam
     OrthographicCamera cam;
@@ -95,6 +99,8 @@ public class MainScreen extends BScreen {
         solids = new Array<>();
         teleporters = new Array<>();
 
+        neutralNPCs = new Array<>();
+
         for (MapObject characters :
                 getElementList()) {
             props = characters.getProperties();
@@ -110,7 +116,7 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "character":
-                    instantiateCharacters(props);
+                        this.neutralNPCs.add(new NeutralOne((float) props.get("x") - this.tileWidth, (float) props.get("y"), mainStage, this, (int) props.get("char_type")));
 
                     break;
 
@@ -161,17 +167,17 @@ public class MainScreen extends BScreen {
     private void instantiateCharacters(MapProperties props) {
         switch (props.get("character_type").toString()) {
             case "alpha":
-                System.out.println("alpha detected: " + props.get("message").toString());
+//                System.out.println("alpha detected: " + props.get("message").toString());
 
                 break;
 
             case "bravo":
-                System.out.println("bravo detected");
+//                System.out.println("bravo detected");
 
                 break;
 
             case "charlie":
-                System.out.println("charlie detected");
+//                System.out.println("charlie detected");
 
                 break;
 
@@ -182,12 +188,12 @@ public class MainScreen extends BScreen {
     private void instantiateEnemies(MapProperties props) {
         switch (props.get("enemy_type").toString()) {
             case "sharpshooter":
-                System.out.println("sharpshooter with skinset number " + props.get("skin").toString());
+//                System.out.println("sharpshooter with skinset number " + props.get("skin").toString());
 
                 break;
 
             case "biter":
-                System.out.println("biter with skinset number " + props.get("skin").toString());
+//                System.out.println("biter with skinset number " + props.get("skin").toString());
 
                 break;
 
@@ -214,6 +220,8 @@ public class MainScreen extends BScreen {
         ren.setView(cam);
         ren.render();
 
+        mainStage.getActors().sort(compar);
+
         mainStage.draw();
 
         ren.render(new int[]{1});
@@ -227,7 +235,6 @@ public class MainScreen extends BScreen {
                 solids) {
             if (solidObj.getEnabled() && solidObj.overlaps(player)) {
                 player.preventOverlap(solidObj);
-                player.stopMoving();
 
             }
 
@@ -244,6 +251,15 @@ public class MainScreen extends BScreen {
 /*                System.out.println(GameParams.touchedTeleporter.tpTgtOffsetX +
                         " | " + GameParams.touchedTeleporter.tpTgtOffsetY +
                         " | " + GameParams.touchedTeleporter.tgtMapPath);*/
+
+            }
+
+        }
+
+        for (Neutrals neutral :
+                neutralNPCs) {
+            if (neutral.getEnabled() && neutral.overlaps(player)) {
+                player.preventOverlap(neutral);
 
             }
 
@@ -321,7 +337,7 @@ public class MainScreen extends BScreen {
                     Float.parseFloat(props.get("offset_x").toString()),
                     Float.parseFloat(props.get("offset_y").toString()), props.get("target_map").toString());
 
-            System.out.println("teleported found and loaded");
+//            System.out.println("teleported found and loaded");
 
             teleporters.add(teleporter);
 
