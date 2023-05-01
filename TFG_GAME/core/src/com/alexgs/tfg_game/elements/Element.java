@@ -106,6 +106,7 @@ public class Element extends Actor {
 
     }
 
+//    custom methods
     public float getCenteredX() {
         return this.getX() + (this.getWidth() / 2);
 
@@ -115,6 +116,14 @@ public class Element extends Actor {
         return this.getY() + (this.getHeight() / 2);
 
     }
+
+    protected float distanceToTarget(float tgtX, float tgtY) {
+        return (float) Math.sqrt(Math.pow((tgtX - this.getCenteredX()), 2) +
+                Math.pow((tgtY - this.getCenteredY()), 2));
+
+
+    }
+//    custom methods
 
     public Polygon getBoundaryPolygon() {
         colision.setPosition(getX() + this.padX, getY() + this.padY);

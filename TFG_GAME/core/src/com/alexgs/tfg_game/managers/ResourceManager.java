@@ -100,23 +100,23 @@ public final class ResourceManager {
         assets.load("sprites/player/up/walk_up.png", Texture.class);
 
 //        placeholder npc sprites
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_idown.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_ileft.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iright.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iup.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wdown.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wleft.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wright.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wup.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_idown.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_ileft.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_iright.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_iup.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wdown.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wleft.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wright.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wup.png", Texture.class);
 
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_idown.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_ileft.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iright.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iup.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wdown.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wleft.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wright.png", Texture.class);
-        assets.load("temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wup.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_idown.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_ileft.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_iright.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_iup.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wdown.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wleft.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wright.png", Texture.class);
+        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wup.png", Texture.class);
 
 
         /*

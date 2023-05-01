@@ -1,7 +1,7 @@
 package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
-import com.alexgs.tfg_game.elements.characters.Player;
+import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.NeutralOne;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
 import com.alexgs.tfg_game.managers.ResourceManager;
@@ -116,7 +116,9 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "character":
-                        this.neutralNPCs.add(new NeutralOne((float) props.get("x") - this.tileWidth, (float) props.get("y"), mainStage, this, (int) props.get("char_type")));
+                        this.neutralNPCs.add(new NeutralOne((float) props.get("x") - this.tileWidth,
+                                (float) props.get("y"), mainStage, this, (int) props.get("char_type"),
+                                props.get("message").toString()));
 
                     break;
 

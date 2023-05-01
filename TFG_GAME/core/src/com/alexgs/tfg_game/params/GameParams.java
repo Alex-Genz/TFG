@@ -20,7 +20,7 @@ public class GameParams {
     //    camera
     public static final float CORRECTION_FACTOR = 10;
 
-//    map
+    //    map
     public static Teleporter touchedTeleporter = null;
 
     //    test
@@ -28,5 +28,7 @@ public class GameParams {
     public static int scrHeight;
     public static boolean debug;
     public static int framerate;
+
+    public static final boolean TOGGLE_RUN = false;
 
 }

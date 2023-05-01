@@ -1,5 +1,8 @@
-package com.alexgs.tfg_game.elements.characters;
+package com.alexgs.tfg_game.elements.characters.neutrals.player;
 
+import com.alexgs.tfg_game.elements.characters.Characters;
+import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
+import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -49,6 +52,8 @@ public class Player extends Characters {
         movement();
         animate();
 
+        interact();
+
         checkMoving();
 
 //        System.out.println(delta + " | " + animationTime);
@@ -61,10 +66,15 @@ public class Player extends Characters {
 
     }
 
-    public void stopMoving() {
-        System.out.println("called");
-        this.moveVec.x = lastPosVec.x;
-        this.moveVec.y = lastPosVec.y;
+    private void interact() {
+        for (Neutrals npc :
+                lvl.neutralNPCs) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+                System.out.println((super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 40) ? npc.message : "not close enough" + super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()));
+
+            }
+
+        }
 
     }
 
@@ -179,6 +189,13 @@ public class Player extends Characters {
                 System.out.println("no bang bang :(");
 
         }
+
+        if (GameParams.TOGGLE_RUN) {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
+                running = !running;
+
+        } else
+            running = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) ? true : false;
 
     }
 

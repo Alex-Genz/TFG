@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class NeutralOne extends Neutrals {
 
-    public NeutralOne(float x, float y, Stage s, MainScreen lvl, int charNum) {
-        super(x, y, s, lvl, charNum);
+    public NeutralOne(float x, float y, Stage s, MainScreen lvl, int charNum, String message) {
+        super(x, y, s, lvl, charNum, message);
 
         this.setAnimation(super.idleDown);
 
