@@ -14,6 +14,16 @@ public class Neutrals extends Characters {
     public final String[][] CHARACTER_SPRITES =
             {
                     {
+                            "chara01_b/vx_chara01_b_char8_idown",
+                            "chara01_b/vx_chara01_b_char8_ileft",
+                            "chara01_b/vx_chara01_b_char8_iright",
+                            "chara01_b/vx_chara01_b_char8_iup",
+                            "chara01_b/vx_chara01_b_char8_wdown",
+                            "chara01_b/vx_chara01_b_char8_wleft",
+                            "chara01_b/vx_chara01_b_char8_wright",
+                            "chara01_b/vx_chara01_b_char8_wup"
+                    },
+                    {
                             "chara02_c/vx_chara02_c_char7_idown",
                             "chara02_c/vx_chara02_c_char7_ileft",
                             "chara02_c/vx_chara02_c_char7_iright",
@@ -59,23 +69,52 @@ public class Neutrals extends Characters {
     public void act(float delta) {
         super.act(delta);
 
-    }
-
-    protected void assignCharacter(int charNum) {
-        idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]), 1, 1, 0, true);
-        idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]), 1, 1, 0, true);
-        idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]), 1, 1, 0, true);
-        idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]), 1, 1, 0, true);
-
-        walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]), 1, 4, 0.15f, true);
-        walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]), 1, 4, 0.15f, true);
-        walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]), 1, 4, 0.15f, true);
-        walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]), 1, 4, 0.15f, true);
+        if (distanceToTarget(super.lvl.player.getCenteredX(), super.lvl.player.getCenteredY()) < 60)
+            this.animations(super.lvl.player.getCenteredX(), super.lvl.player.getCenteredY());
 
     }
 
     private String pathFiller(String sprite) {
         return PATHS + sprite + EXTENSION;
+
+    }
+
+    protected void animations(float targetX, float targetY) {
+        if (Math.abs((targetX - this.getCenteredX())) > Math.abs((targetY - this.getCenteredY())))
+            if ((targetX - this.getCenteredX()) > 0)
+                this.setAnimation(idleRight);
+
+            else
+                this.setAnimation(idleLeft);
+
+
+        else if (Math.abs((targetX - this.getCenteredX())) < Math.abs((targetY - this.getCenteredY())))
+            if ((targetY - this.getCenteredY()) > 0)
+                this.setAnimation(idleUp);
+
+            else
+                this.setAnimation(idleDown);
+
+    }
+
+    protected void assignCharacter(int charNum) {
+        idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),
+                1, 1, 0, true);
+        idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]),
+                1, 1, 0, true);
+        idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]),
+                1, 1, 0, true);
+        idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]),
+                1, 1, 0, true);
+
+        walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]),
+                1, 4, 0.15f, true);
+        walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]),
+                1, 4, 0.15f, true);
+        walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]),
+                1, 4, 0.15f, true);
+        walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
+                1, 4, 0.15f, true);
 
     }
 

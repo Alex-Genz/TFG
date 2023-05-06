@@ -30,7 +30,8 @@ public final class ResourceManager {
 
     private static final String SPRITES_PATH = "sprites/citizens/";
     private static final String[] CITIZENS_PATH = {"cit1/", "cit2/", "cit3/", "cit4/"/*, "cit5/"*/};
-    private static final String[] CITIZEN_SPRITES = {"walk_down.png", "walk_left.png", "walk_right.png", "walk_up.png", "idle_down.png", "idle_left.png", "idle_right.png", "idle_up.png"};
+    private static final String[] CITIZEN_SPRITES = {"walk_down.png", "walk_left.png", "walk_right.png",
+            "walk_up.png", "idle_down.png", "idle_left.png", "idle_right.png", "idle_up.png"};
 
     private static final String hgun = "hgun_";
     private static final String[] status = {"idle_", "walk_"};
@@ -90,7 +91,8 @@ public final class ResourceManager {
                 dir) {
             for (String statusStr :
                     status) {
-                assets.load("sprites/player/" + dirStr + "/" + hgun + statusStr + dirStr + ".png", Texture.class);
+                assets.load("sprites/player/" + dirStr + "/" + hgun + statusStr + dirStr + ".png",
+                        Texture.class);
 //                System.out.println("sprites/player/" + dirStr + "/" + hgun + statusStr + dirStr + ".png loaded!");
 
             }
@@ -100,6 +102,15 @@ public final class ResourceManager {
         assets.load("sprites/player/up/walk_up.png", Texture.class);
 
 //        placeholder npc sprites
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_idown.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_ileft.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_iright.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_iup.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wdown.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wleft.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wright.png", Texture.class);
+        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wup.png", Texture.class);
+
         assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_idown.png", Texture.class);
         assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_ileft.png", Texture.class);
         assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_iright.png", Texture.class);

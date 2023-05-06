@@ -1,5 +1,6 @@
 package com.alexgs.tfg_game.elements.characters.neutrals.player;
 
+import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
 import com.alexgs.tfg_game.params.GameParams;
@@ -30,6 +31,10 @@ public class Player extends Characters {
     Vector2 moveVec;
     Vector2 lastPosVec;
 
+    private float lClickActivationTime = 0.30f;
+
+    Element hitbox;
+
     public Player(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);
 
@@ -38,6 +43,7 @@ public class Player extends Characters {
 
         setPolygon(8, this.getWidth() / 2, this.getHeight() / 4, 8, 0);
 //        setRectangle();
+        setHitbox(s);
 
         moveVec = new Vector2();
         moveVec.x = this.getX();
@@ -47,14 +53,26 @@ public class Player extends Characters {
 
     }
 
+    private void setHitbox(Stage s) {
+        this.hitbox = new Element(this.getX() + 6, this.getY(), s, this.getWidth() / 1.5f, this.getHeight());
+        this.hitbox.setPolygon(8);
+
+    }
+
     public void act(float delta) {
         super.act(delta);
+        updateHitbox();
         movement();
         animate();
 
         interact();
 
         checkMoving();
+
+        if (lClickActivationTime >= 0) {
+            lClickActivationTime-=delta;
+
+        }
 
 //        System.out.println(delta + " | " + animationTime);
 
@@ -66,11 +84,18 @@ public class Player extends Characters {
 
     }
 
+    private void updateHitbox() {
+        this.hitbox.setPosition(this.getX() + 6, this.getY());
+
+    }
+
     private void interact() {
         for (Neutrals npc :
                 lvl.neutralNPCs) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-                System.out.println((super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 40) ? npc.message : "not close enough" + super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()));
+                System.out.println((super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 40) ?
+                        npc.message :
+                        "not close enough" + super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()));
 
             }
 
@@ -100,7 +125,8 @@ public class Player extends Characters {
             }
 
         } else {
-            if (Math.abs((this.lvl.mouseX - this.getCenteredX())) > Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
+            if (Math.abs((this.lvl.mouseX - this.getCenteredX())) >
+                    Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
                 if ((this.lvl.mouseX - this.getCenteredX()) > 0) {
                     this.setAnimation(idleRight);
 
@@ -109,7 +135,8 @@ public class Player extends Characters {
 
                 }
 
-            } else if (Math.abs((this.lvl.mouseX - this.getCenteredX())) < Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
+            } else if (Math.abs((this.lvl.mouseX - this.getCenteredX())) <
+                    Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
                 if ((this.lvl.mouseY - this.getCenteredY()) > 0) {
                     this.setAnimation(idleUp);
 
@@ -124,7 +151,7 @@ public class Player extends Characters {
 
     }
 
-//    DEPRECATED | -> legacy tile/grid-based movement <- | DEPRECATED
+    //    DEPRECATED | -> legacy tile/grid-based movement <- | DEPRECATED
     private void movement2() {
         if (!moving) {
             if (Gdx.input.isKeyPressed(Input.Keys.W))
@@ -181,7 +208,7 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
-        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
+        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && lClickActivationTime < 0) {
             if (this.velocity.x == 0 && this.velocity.y == 0)
                 System.out.println("BANG BANG!!");
 
@@ -224,15 +251,23 @@ public class Player extends Characters {
     }
 
     private void setAnimations() {
-        idleUp = loadFullAnimation("sprites/player/up/hgun_idle_up.png", 1, 1, 0, true);
-        idleDown = loadFullAnimation("sprites/player/down/hgun_idle_down.png", 1, 1, 0, true);
-        idleLeft = loadFullAnimation("sprites/player/left/hgun_idle_left.png", 1, 1, 0, true);
-        idleRight = loadFullAnimation("sprites/player/right/hgun_idle_right.png", 1, 1, 0, true);
+        idleUp = loadFullAnimation("sprites/player/up/hgun_idle_up.png",
+                1, 1, 0, true);
+        idleDown = loadFullAnimation("sprites/player/down/hgun_idle_down.png",
+                1, 1, 0, true);
+        idleLeft = loadFullAnimation("sprites/player/left/hgun_idle_left.png",
+                1, 1, 0, true);
+        idleRight = loadFullAnimation("sprites/player/right/hgun_idle_right.png",
+                1, 1, 0, true);
 
-        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png", 1, 6, 0.15f, true);
-        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png", 1, 6, 0.15f, true);
-        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png", 1, 6, 0.15f, true);
-        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png", 1, 6, 0.15f, true);
+        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
+                1, 6, 0.15f, true);
+        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
+                1, 6, 0.15f, true);
+        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
+                1, 6, 0.15f, true);
+        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
+                1, 6, 0.15f, true);
 
 
     }
