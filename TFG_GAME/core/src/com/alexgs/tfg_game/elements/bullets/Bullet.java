@@ -19,7 +19,7 @@ public class Bullet extends Element {
     protected Animation<TextureRegion> projectileTexture;
 
     public Bullet(float x, float y, Stage s, MainScreen lvl, 
-    int dmg, int bulletSpeed, float timeBeforeCulling, float timeExisting) {
+    int dmg, int bulletSpeed, float timeBeforeCulling) {
         super(x, y, s);
 
         this.lvl = lvl;
@@ -35,6 +35,34 @@ public class Bullet extends Element {
     public void act(float delta) {
         if (this.getEnabled()) {
             this.applyPhysics(delta);
+
+            collide();
+
+        }
+
+    }
+
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+    public void fire(float startX, float startY, float speedX, float speedY) {
+        this.setEnabled(true);
+
+        this.activTime = 0;
+
+        this.setPosition(startX, startY);
+
+        this.velocity.x = speedX;
+        this.velocity.y = speedY;
+
+    }
+
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+    private void collide() {
+        for (Solid solid : 
+                this.lvl.solids) {
+            if (this.getEnabled() && this.overlaps(solid)) {
+                this.setEnabled(false);
+
+            }
 
         }
 
