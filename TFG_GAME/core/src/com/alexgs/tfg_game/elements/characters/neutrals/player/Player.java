@@ -54,7 +54,7 @@ public class Player extends Characters {
     }
 
     private void setHitbox(Stage s) {
-        this.hitbox = new Element(this.getX() + 6, this.getY(), s, this.getWidth() / 1.5f, this.getHeight());
+        this.hitbox = new Element(this.getX() + 8, this.getY(), s, this.getWidth() / 2f, this.getHeight() - 2);
         this.hitbox.setPolygon(8);
 
     }
@@ -85,7 +85,7 @@ public class Player extends Characters {
     }
 
     private void updateHitbox() {
-        this.hitbox.setPosition(this.getX() + 6, this.getY());
+        this.hitbox.setPosition(this.getX() + 8, this.getY());
 
     }
 
