@@ -1,15 +1,24 @@
 package com.alexgs.tfg_game.elements.tools;
 
+import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.bullets.Bullet;
+import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
+import com.alexgs.tfg_game.scr.game_scr.MainScreen;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
 
-public class ToolsOrWeapons {
+public class ToolsOrWeapons extends Element {
+    protected MainScreen lvl;
+
     public Array<Bullet> persistenceMag;
 
     public boolean hasFullAuto;
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-    private boolean currPersistenceBullet;
+    private int currPersistenceBullet;
 
     private Vector2 shootDir;
 
@@ -22,35 +31,42 @@ public class ToolsOrWeapons {
 
     public Animation<TextureRegion> bulletSprite;
 
-    public ToolsOrWeapons() {
-// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+    public ToolsOrWeapons(float x, float y, Stage s, MainScreen lvl) {
+        super(x, y, s);
 
+        this.lvl = lvl;
+
+        loadPersistenceMag(s);
+
+    }
+
+    protected void loadPersistenceMag(Stage s) {
         this.persistenceMag = new Array<>();
         for (int i = 0; i < PERSISTENCE_MAG_SIZE; i++) {
-            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl, BULLET_DMG, BULLET_SPEED,3f))
+            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl, BULLET_DMG, BULLET_SPEED,3f));
             this.persistenceMag.get(i).setEnabled(false);
-            
+
         }
 
         this.currPersistenceBullet = 0;
-        this.shootDir = new Vector2;
+        this.shootDir = new Vector2();
 
     }
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     public void shoot(float delta) {
-        final int PROJECTILE_OFFSET = (int) mag.get(0).getWidth() / 2;
+        final int PROJECTILE_OFFSET = (int) persistenceMag.get(0).getWidth() / 2;
 
         this.shootDir.x = lvl.mouseX - lvl.player.getCenteredX();
         this.shootDir.y = lvl.mouseY - lvl.player.getCenteredY();
 
         shootDir = shootDir.nor();
 
-        this.mag.get(currBullet).fire(lvl.player.getCenteredX() - PROJECTILE_OFFSET, 
-                lvl.player.getCenteredY - PROJECTILE_OFFSET, 
+        this.persistenceMag.get(currPersistenceBullet).fire(lvl.player.getCenteredX() - PROJECTILE_OFFSET,
+                lvl.player.getCenteredY() - PROJECTILE_OFFSET,
                 this.shootDir.x * BULLET_SPEED, this.shootDir.y * BULLET_SPEED);
 
-        this.currBullet = (this.currBullet + 1) % bulletCount;
+        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
 
     }
 

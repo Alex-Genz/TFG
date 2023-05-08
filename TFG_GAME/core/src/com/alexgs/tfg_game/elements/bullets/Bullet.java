@@ -2,6 +2,7 @@ package com.alexgs.tfg_game.elements.bullets;
 
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
+import com.alexgs.tfg_game.solids.Solid;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -46,7 +47,7 @@ public class Bullet extends Element {
     public void fire(float startX, float startY, float speedX, float speedY) {
         this.setEnabled(true);
 
-        this.activTime = 0;
+        this.timeExisting = 0;
 
         this.setPosition(startX, startY);
 
@@ -57,7 +58,7 @@ public class Bullet extends Element {
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     private void collide() {
-        for (Solid solid : 
+        for (Solid solid :
                 this.lvl.solids) {
             if (this.getEnabled() && this.overlaps(solid)) {
                 this.setEnabled(false);
