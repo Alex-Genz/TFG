@@ -12,14 +12,23 @@ public class Bullet extends Element {
     private float timeBeforeCulling;
     private float timeExisting;
 
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     protected int dmg;
+    protected int bulletSpeed;
 
     protected Animation<TextureRegion> projectileTexture;
 
-    public Bullet(float x, float y, Stage s, MainScreen lvl) {
+    public Bullet(float x, float y, Stage s, MainScreen lvl, 
+    int dmg, int bulletSpeed, float timeBeforeCulling, float timeExisting) {
         super(x, y, s);
 
         this.lvl = lvl;
+
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+        this.dmg = dmg;
+        this.bulletSpeed = bulletSpeed;
+        this.timeBeforeCulling = timeBeforeCulling;
+        this.timeExisting = timeExisting;
 
     }
 
