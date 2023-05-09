@@ -23,17 +23,61 @@ public class Player extends Characters {
     protected Animation<TextureRegion> walkLeft;
     protected Animation<TextureRegion> walkRight;
 
+// INFO: preparation for extra animations
+// TODO: extract animation sprite strips
+    protected Animation<TextureRegion> runUp;
+    protected Animation<TextureRegion> runDown;
+    protected Animation<TextureRegion> runLeft;
+    protected Animation<TextureRegion> runRight;
+
+
+    protected Animation<TextureRegion> idleUpKnife;
+    protected Animation<TextureRegion> idleDownKnife;
+    protected Animation<TextureRegion> idleLeftKnife;
+    protected Animation<TextureRegion> idleRightKnife;
+
+    protected Animation<TextureRegion> walkUpKnife;
+    protected Animation<TextureRegion> walkDownKnife;
+    protected Animation<TextureRegion> walkLeftKnife;
+    protected Animation<TextureRegion> walkRightKnife;
+
+
+    protected Animation<TextureRegion> idleUpGun;
+    protected Animation<TextureRegion> idleDownGun;
+    protected Animation<TextureRegion> idleLeftGun;
+    protected Animation<TextureRegion> idleRightGun;
+
+    protected Animation<TextureRegion> walkUpGun;
+    protected Animation<TextureRegion> walkDownGun;
+    protected Animation<TextureRegion> walkLeftGun;
+    protected Animation<TextureRegion> walkRightGun;
+    
+
     boolean moving = false;
     final int SPEED = 80;
 
     boolean running = false;
 
+// DEPRECATED - 2 lines
     Vector2 moveVec;
     Vector2 lastPosVec;
 
     private float lClickActivationTime = 0.30f;
 
     Element hitbox;
+
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+    private Array<Bullet> persistenceMag;
+    private final int PERSISTENCE_MAG_SIZE = 24;
+    private int currPersistenceBullet;
+    private Vector2 shootDir;
+
+    private boolean isInFullAuto = false;
+    private final boolean CAN_SWITCH_FIRE_MODE = true;
+
+// WARNING! even more experimental code
+    private final float ROUNDS_PER_MINUTE = 150;
+    private float timeBeforeNextShot = 60 / ROUNDS_PER_MINUTE;
 
     public Player(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);
@@ -53,8 +97,24 @@ public class Player extends Characters {
 
     }
 
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+    private void loadPersistenceMag(Stage s) {
+        this.persistenceMag = new Array<>();
+        for (int i = 0; i < PERSISTENCE_MAG_SIZE; i++) {
+            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl, 
+                    BULLET_DMG, BULLET_SPEED,3f));
+            this.persistenceMag.get(i).setEnabled(false);
+
+        }
+
+        this.currPersistenceBullet = 0;
+        this.shootDir = new Vector2();
+
+    }
+
     private void setHitbox(Stage s) {
-        this.hitbox = new Element(this.getX() + 8, this.getY(), s, this.getWidth() / 2f, this.getHeight() - 2);
+        this.hitbox = new Element(this.getX() + 8, this.getY(), s, 
+                this.getWidth() / 2f, this.getHeight() - 2);
         this.hitbox.setPolygon(8);
 
     }
@@ -77,10 +137,6 @@ public class Player extends Characters {
 //        System.out.println(delta + " | " + animationTime);
 
         this.applyPhysics(delta);
-//        System.out.println(this.getX() + " | " + this.getY() + " ||| target: " + moveVec.x + " | " + moveVec.y + " | " + moving);
-//        System.out.println((int) (this.getX() - moveVec.x) + " | " + (int) (this.getY() - moveVec.y) + " ||| " + (this.getX() - moveVec.x) + " | " + (this.getY() - moveVec.y) + " ||| " + this.velocity.x + " | " + this.velocity.y);
-//        System.out.println(this.getX() + " | " + this.getY() + " ||| " + lastPosVec.x + " | " + lastPosVec.y + " ||| " + moveVec.x + " | " + moveVec.y);
-
 
     }
 
@@ -93,9 +149,10 @@ public class Player extends Characters {
         for (Neutrals npc :
                 lvl.neutralNPCs) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-                System.out.println((super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 40) ?
-                        npc.message :
-                        "not close enough" + super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()));
+                System.out.println((super.distanceToTarget(npc.getCenteredX(), 
+                        npc.getCenteredY()) < 40) ? npc.message :
+                        "not close enough" + super.distanceToTarget(npc.getCenteredX(), 
+                        npc.getCenteredY()));
 
             }
 
@@ -104,7 +161,8 @@ public class Player extends Characters {
     }
 
     private void checkMoving() {
-        moving = (Math.abs(this.velocity.x) > 0 || Math.abs(this.velocity.y) > 0) ? true : false;
+        moving = (Math.abs(this.velocity.x) > 0 || 
+                Math.abs(this.velocity.y) > 0) ? true : false;
 
     }
 
@@ -184,6 +242,23 @@ public class Player extends Characters {
 
     }
 
+// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
+    private void shoot() {
+        final int PROJECTILE_OFFSET = (int) persistenceMag.get(0).getWidth() / 2;
+        
+        this.shootDir.x = lvl.mouseX - this.getCenteredX();
+        this.shootDir.y = lvl.mouseY - this.getCenteredY();
+
+        shootDir = shootDir.nor();
+
+        this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX - 
+                PROJECTILE_OFFSET, this.getCenteredY - PROJECTILE_OFFSET,
+                this.shootDir.x * 80, this.shootDir.y * 80);
+
+        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
+        
+    }
+
     private void movement() {
         int speed = (running) ? SPEED * 2 : SPEED;
 
@@ -208,9 +283,16 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X) && CAN_SWITCH_FIRE_MODE)
+            isInFullAuto = !isInFullAuto;
+            
+        else
+            System.out.println("weapon cannot switch fire modes");
+
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && lClickActivationTime < 0) {
             if (this.velocity.x == 0 && this.velocity.y == 0)
                 System.out.println("BANG BANG!!");
+                // TODO: shoot();
 
             else
                 System.out.println("no bang bang :(");
