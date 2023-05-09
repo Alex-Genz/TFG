@@ -43,7 +43,7 @@ public class ToolsOrWeapons extends Element {
     protected void loadPersistenceMag(Stage s) {
         this.persistenceMag = new Array<>();
         for (int i = 0; i < PERSISTENCE_MAG_SIZE; i++) {
-            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl, BULLET_DMG, BULLET_SPEED,3f));
+            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl, BULLET_DMG, /*BULLET_SPEED, */3f));
             this.persistenceMag.get(i).setEnabled(false);
 
         }

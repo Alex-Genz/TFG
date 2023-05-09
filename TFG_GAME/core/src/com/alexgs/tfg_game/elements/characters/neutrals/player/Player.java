@@ -1,6 +1,8 @@
 package com.alexgs.tfg_game.elements.characters.neutrals.player;
 
 import com.alexgs.tfg_game.elements.Element;
+import com.alexgs.tfg_game.elements.bullets.Bullet;
+import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
 import com.alexgs.tfg_game.params.GameParams;
@@ -11,6 +13,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 
 public class Player extends Characters {
     protected Animation<TextureRegion> idleUp;
@@ -68,16 +71,16 @@ public class Player extends Characters {
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     private Array<Bullet> persistenceMag;
-    private final int PERSISTENCE_MAG_SIZE = 24;
+    private final int PERSISTENCE_MAG_SIZE = 1;
     private int currPersistenceBullet;
     private Vector2 shootDir;
 
     private boolean isInFullAuto = false;
-    private final boolean CAN_SWITCH_FIRE_MODE = true;
+    private final boolean CAN_SWITCH_FIRE_MODE = false;
 
 // WARNING! even more experimental code
-    private final float ROUNDS_PER_MINUTE = 150;
-    private float timeBeforeNextShot = 60 / ROUNDS_PER_MINUTE;
+    private final float ROUNDS_PER_MINUTE = 600;
+    private float timeBeforeNextShot = 0;
 
     public Player(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);
@@ -89,11 +92,15 @@ public class Player extends Characters {
 //        setRectangle();
         setHitbox(s);
 
+        loadPersistenceMag(s);
+
         moveVec = new Vector2();
         moveVec.x = this.getX();
         moveVec.y = this.getY();
 
         lastPosVec = new Vector2();
+
+        this.shootDir = new Vector2();
 
     }
 
@@ -101,8 +108,8 @@ public class Player extends Characters {
     private void loadPersistenceMag(Stage s) {
         this.persistenceMag = new Array<>();
         for (int i = 0; i < PERSISTENCE_MAG_SIZE; i++) {
-            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl, 
-                    BULLET_DMG, BULLET_SPEED,3f));
+            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl,
+                    10, 0.2f));
             this.persistenceMag.get(i).setEnabled(false);
 
         }
@@ -131,6 +138,12 @@ public class Player extends Characters {
 
         if (lClickActivationTime >= 0) {
             lClickActivationTime-=delta;
+
+        }
+
+        if (timeBeforeNextShot > 0) {
+            timeBeforeNextShot-=delta;
+//            System.out.println(timeBeforeNextShot);
 
         }
 
@@ -249,11 +262,13 @@ public class Player extends Characters {
         this.shootDir.x = lvl.mouseX - this.getCenteredX();
         this.shootDir.y = lvl.mouseY - this.getCenteredY();
 
+        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
+
         shootDir = shootDir.nor();
 
-        this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX - 
-                PROJECTILE_OFFSET, this.getCenteredY - PROJECTILE_OFFSET,
-                this.shootDir.x * 80, this.shootDir.y * 80);
+        this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX() -
+                PROJECTILE_OFFSET, this.getCenteredY() - PROJECTILE_OFFSET,
+                this.shootDir.x * 160, this.shootDir.y * 160);
 
         this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
         
@@ -283,19 +298,39 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X) && CAN_SWITCH_FIRE_MODE)
-            isInFullAuto = !isInFullAuto;
-            
-        else
-            System.out.println("weapon cannot switch fire modes");
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X))
+            if (CAN_SWITCH_FIRE_MODE) {
+                isInFullAuto = !isInFullAuto;
+                System.out.println(isInFullAuto);
 
-        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && lClickActivationTime < 0) {
+            } else
+                System.out.println("weapon cannot switch fire modes");
+
+
+
+/*        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && lClickActivationTime < 0) {
             if (this.velocity.x == 0 && this.velocity.y == 0)
                 System.out.println("BANG BANG!!");
                 // TODO: shoot();
 
             else
                 System.out.println("no bang bang :(");
+
+        }*/
+
+        if (this.velocity.x == 0 && this.velocity.y == 0) {
+            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && !isInFullAuto) {
+                shoot();
+
+            }
+            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && isInFullAuto) {
+                if (timeBeforeNextShot <= 0) {
+                    shoot();
+                    timeBeforeNextShot = 60 / ROUNDS_PER_MINUTE;
+
+                }
+
+            }
 
         }
 

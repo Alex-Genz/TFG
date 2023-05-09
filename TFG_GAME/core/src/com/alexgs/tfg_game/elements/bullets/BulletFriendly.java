@@ -6,9 +6,9 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class BulletFriendly extends Bullet {
 
     public BulletFriendly(float x, float y, Stage s, MainScreen lvl, 
-    int dmg, int bulletSpeed, float timeBeforeCulling) {
+    int dmg, /*int bulletSpeed, */float timeBeforeCulling) {
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-        super(x, y, s, lvl, dmg, bulletSpeed, timeBeforeCulling);
+        super(x, y, s, lvl, dmg, /*bulletSpeed, */timeBeforeCulling);
 
     }
 

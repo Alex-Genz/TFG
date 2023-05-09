@@ -130,6 +130,9 @@ public final class ResourceManager {
         assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wup.png", Texture.class);
 
 
+        assets.load("sprites/other/bullet.png", Texture.class);
+
+
         /*
          * ost = assets.load(<audio file path>, Music.class);
          */

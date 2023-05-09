@@ -11,7 +11,7 @@ public class Bullet extends Element {
     MainScreen lvl;
 
     private float timeBeforeCulling;
-    private float timeExisting;
+    private float timeExisting = 0;
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     protected int dmg;
@@ -20,16 +20,18 @@ public class Bullet extends Element {
     protected Animation<TextureRegion> projectileTexture;
 
     public Bullet(float x, float y, Stage s, MainScreen lvl, 
-    int dmg, int bulletSpeed, float timeBeforeCulling) {
+    int dmg, /*int bulletSpeed, */float timeBeforeCulling) {
         super(x, y, s);
 
         this.lvl = lvl;
 
+        projectileTexture = loadFullAnimation("sprites/other/bullet.png", 1, 1, 0, false);
+        this.setPolygon(8);
+
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
         this.dmg = dmg;
-        this.bulletSpeed = bulletSpeed;
+//        this.bulletSpeed = bulletSpeed;
         this.timeBeforeCulling = timeBeforeCulling;
-        this.timeExisting = timeExisting;
 
     }
 
@@ -38,6 +40,12 @@ public class Bullet extends Element {
             this.applyPhysics(delta);
 
             collide();
+
+            if (timeExisting > timeBeforeCulling)
+                this.setEnabled(false);
+
+            else
+                this.timeExisting+=delta;
 
         }
 
