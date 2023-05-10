@@ -5,6 +5,7 @@ import com.alexgs.tfg_game.elements.bullets.Bullet;
 import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
+import com.alexgs.tfg_game.elements.tools.WeaponsParams;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.Gdx;
@@ -55,6 +56,7 @@ public class Player extends Characters {
     protected Animation<TextureRegion> walkLeftGun;
     protected Animation<TextureRegion> walkRightGun;
     
+    private Stage s;
 
     boolean moving = false;
     final int SPEED = 80;
@@ -67,8 +69,6 @@ public class Player extends Characters {
 
     private float lClickActivationTime = 0.30f;
 
-    Element hitbox;
-
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     private Array<Bullet> persistenceMag;
     private final int PERSISTENCE_MAG_SIZE = 1;
@@ -79,20 +79,23 @@ public class Player extends Characters {
     private final boolean CAN_SWITCH_FIRE_MODE = false;
 
 // WARNING! even more experimental code
-    private final float ROUNDS_PER_MINUTE = 600;
+    private final float ROUNDS_PER_MINUTE = 300;
     private float timeBeforeNextShot = 0;
 
     public Player(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);
 
+        this.s = s;
+
         setAnimations();
         this.setAnimation(walkUp);
 
-        setPolygon(8, this.getWidth() / 2, this.getHeight() / 4, 8, 0);
+        setPolygon(8, this.getWidth() / 2, this.getHeight() / 4,
+                8, 0);
 //        setRectangle();
-        setHitbox(s);
+        setHitbox(this.s);
 
-        loadPersistenceMag(s);
+        loadPersistenceMag(this.s, false);
 
         moveVec = new Vector2();
         moveVec.x = this.getX();
@@ -105,11 +108,21 @@ public class Player extends Characters {
     }
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-    private void loadPersistenceMag(Stage s) {
+    private void loadPersistenceMag(Stage s, boolean changeWeapon) {
+        if (changeWeapon) {
+            for (Bullet bullet :
+                    persistenceMag) {
+                bullet.setEnabled(false);
+
+            }
+
+        }
+
         this.persistenceMag = new Array<>();
-        for (int i = 0; i < PERSISTENCE_MAG_SIZE; i++) {
+        for (int i = 0; i < PlayerParams.currTool.getPersistenceMagSize(); i++) {
             this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl,
-                    10, 0.2f));
+                    PlayerParams.currTool.getDmg(),
+                    PlayerParams.currTool.getTimeAllowedToExist()));
             this.persistenceMag.get(i).setEnabled(false);
 
         }
@@ -120,9 +133,9 @@ public class Player extends Characters {
     }
 
     private void setHitbox(Stage s) {
-        this.hitbox = new Element(this.getX() + 8, this.getY(), s, 
+        super.hitbox = new Element(this.getX() + 8, this.getY(), s, 
                 this.getWidth() / 2f, this.getHeight() - 2);
-        this.hitbox.setPolygon(8);
+        super.hitbox.setPolygon(8);
 
     }
 
@@ -143,7 +156,6 @@ public class Player extends Characters {
 
         if (timeBeforeNextShot > 0) {
             timeBeforeNextShot-=delta;
-//            System.out.println(timeBeforeNextShot);
 
         }
 
@@ -154,7 +166,7 @@ public class Player extends Characters {
     }
 
     private void updateHitbox() {
-        this.hitbox.setPosition(this.getX() + 8, this.getY());
+        super.hitbox.setPosition(this.getX() + 8, this.getY());
 
     }
 
@@ -262,16 +274,19 @@ public class Player extends Characters {
         this.shootDir.x = lvl.mouseX - this.getCenteredX();
         this.shootDir.y = lvl.mouseY - this.getCenteredY();
 
-        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
+//        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
 
         shootDir = shootDir.nor();
 
         this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX() -
                 PROJECTILE_OFFSET, this.getCenteredY() - PROJECTILE_OFFSET,
-                this.shootDir.x * 160, this.shootDir.y * 160);
+                this.shootDir.x * PlayerParams.currTool.getBulletSpeed(),
+                this.shootDir.y * PlayerParams.currTool.getBulletSpeed());
 
-        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
-        
+//        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
+        this.currPersistenceBullet = (this.currPersistenceBullet + 1) %
+                PlayerParams.currTool.getPersistenceMagSize();
+
     }
 
     private void movement() {
@@ -298,13 +313,30 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X))
-            if (CAN_SWITCH_FIRE_MODE) {
-                isInFullAuto = !isInFullAuto;
-                System.out.println(isInFullAuto);
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.X))
+//            if (CAN_SWITCH_FIRE_MODE) {
+//                isInFullAuto = !isInFullAuto;
+//                System.out.println(isInFullAuto);
+//
+//            } else
+//                System.out.println("weapon cannot switch fire modes");
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+            if (PlayerParams.currTool.isCanSwitchFireMode()) {
+                PlayerParams.currTool.isInFullAuto = !PlayerParams.currTool.isInFullAuto;
+                System.out.println(PlayerParams.currTool.isInFullAuto);
 
             } else
                 System.out.println("weapon cannot switch fire modes");
+
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+            PlayerParams.chosenWeapon = (PlayerParams.chosenWeapon == 1) ? 0 : 1;
+            PlayerParams.currTool = PlayerParams.weaponInv[PlayerParams.chosenWeapon];
+            loadPersistenceMag(this.s, true);
+
+        }
 
 
 
@@ -318,15 +350,37 @@ public class Player extends Characters {
 
         }*/
 
-        if (this.velocity.x == 0 && this.velocity.y == 0) {
-            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && !isInFullAuto) {
+/*        if (this.velocity.x == 0 && this.velocity.y == 0) {
+            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
+                    !PlayerParams.currTool.isInFullAuto) {
                 shoot();
 
             }
-            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && isInFullAuto) {
+            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
+                    PlayerParams.currTool.isInFullAuto) {
                 if (timeBeforeNextShot <= 0) {
                     shoot();
                     timeBeforeNextShot = 60 / ROUNDS_PER_MINUTE;
+                    System.out.println(timeBeforeNextShot + " | " + ROUNDS_PER_MINUTE);
+
+                }
+
+            }
+
+        }*/
+
+        if (this.velocity.x == 0 && this.velocity.y == 0 &&
+                lClickActivationTime <= 0) {
+            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
+                    !PlayerParams.currTool.isInFullAuto) {
+                shoot();
+
+            }
+            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
+                    PlayerParams.currTool.isInFullAuto) {
+                if (timeBeforeNextShot <= 0) {
+                    shoot();
+                    timeBeforeNextShot = (float) 60 / PlayerParams.currTool.getRoundsPerMinute();
 
                 }
 

@@ -1,6 +1,8 @@
 package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
+import com.alexgs.tfg_game.elements.characters.hostiles.HostileOne;
+import com.alexgs.tfg_game.elements.characters.hostiles.Hostiles;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.NeutralOne;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
@@ -47,6 +49,7 @@ public class MainScreen extends BScreen {
     public Array<Teleporter> teleporters;
 
     public Array<Neutrals> neutralNPCs;
+    public Array<Hostiles> hostiles;
 
     private float playerTpSpawnX;
     private float playerTpSpawnY;
@@ -101,6 +104,7 @@ public class MainScreen extends BScreen {
         teleporters = new Array<>();
 
         neutralNPCs = new Array<>();
+        hostiles = new Array<>();
 
         for (MapObject characters :
                 getElementList()) {
@@ -124,7 +128,8 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "enemy":
-                    instantiateEnemies(props);
+                    this.hostiles.add(new HostileOne((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this, (int) props.get("skin")));
 
                     break;
 
@@ -237,7 +242,7 @@ public class MainScreen extends BScreen {
     private void checkCollisions() {
         for (Solid solidObj :
                 solids) {
-            if (solidObj.getEnabled() && solidObj.isHigh && solidObj.overlaps(player)) {
+            if (solidObj.getEnabled() && solidObj.overlaps(player)) {
                 player.preventOverlap(solidObj);
 
             }

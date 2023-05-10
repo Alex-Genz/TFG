@@ -130,6 +130,34 @@ public final class ResourceManager {
         assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wup.png", Texture.class);
 
 
+
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_idown.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_ileft.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_iright.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_iup.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wdown.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wleft.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wright.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wup.png", Texture.class);
+
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_idown.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_ileft.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_iright.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_iup.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wdown.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wleft.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wright.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wup.png", Texture.class);
+
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_idown.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_ileft.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_iright.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_iup.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wdown.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wleft.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wright.png", Texture.class);
+        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wup.png", Texture.class);
+
         assets.load("sprites/other/bullet.png", Texture.class);
 
 

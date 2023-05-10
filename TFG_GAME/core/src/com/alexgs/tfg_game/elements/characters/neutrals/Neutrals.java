@@ -1,5 +1,6 @@
 package com.alexgs.tfg_game.elements.characters.neutrals;
 
+import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -60,14 +61,30 @@ public class Neutrals extends Characters {
 
         assignCharacter(charNum);
 
+        setHitbox(s);
+
         this.message = message;
 
         setPolygon(8, this.getWidth() / 3, this.getHeight() / 4, 22, 0);
 
     }
 
+    private void setHitbox(Stage s) {
+        super.hitbox = new Element(this.getX() + 17, this.getY(), s,
+                this.getWidth() / 2f - 2, this.getHeight() - 2);
+        super.hitbox.setPolygon(8);
+
+    }
+
+    private void updateHitbox() {
+        super.hitbox.setPosition(this.getX() + 17, this.getY());
+
+    }
+
     public void act(float delta) {
         super.act(delta);
+
+        updateHitbox();
 
         if (distanceToTarget(super.lvl.player.getCenteredX(), super.lvl.player.getCenteredY()) < 60)
             this.animations(super.lvl.player.getCenteredX(), super.lvl.player.getCenteredY());

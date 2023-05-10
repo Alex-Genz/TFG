@@ -68,7 +68,7 @@ public class Bullet extends Element {
     private void collide() {
         for (Solid solid :
                 this.lvl.solids) {
-            if (this.getEnabled() && this.overlaps(solid)) {
+            if (this.getEnabled() && solid.isHigh == true && this.overlaps(solid)) {
                 this.setEnabled(false);
 
             }
