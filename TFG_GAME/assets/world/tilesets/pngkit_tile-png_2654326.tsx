@@ -16,7 +16,7 @@
  <tile id="232" probability="0.05"/>
  <tile id="233" probability="0.05"/>
  <tile id="234" probability="0.05"/>
- <tile id="484">
+ <tile id="484" probability="0.05">
   <animation>
    <frame tileid="397" duration="450"/>
    <frame tileid="485" duration="450"/>
@@ -26,7 +26,7 @@
    <frame tileid="397" duration="450"/>
   </animation>
  </tile>
- <tile id="487">
+ <tile id="487" probability="0.05">
   <animation>
    <frame tileid="400" duration="450"/>
    <frame tileid="488" duration="450"/>
@@ -36,7 +36,7 @@
    <frame tileid="400" duration="450"/>
   </animation>
  </tile>
- <tile id="490">
+ <tile id="490" probability="0.05">
   <animation>
    <frame tileid="403" duration="450"/>
    <frame tileid="491" duration="450"/>

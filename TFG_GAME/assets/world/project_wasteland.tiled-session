@@ -3,12 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tilesets/pngkit_tile-png_2654326.tsx",
+    "activeFile": "maps/devmap_1.tmx",
     "expandedProjectPaths": [
         "worlds",
+        "tilesets",
         "maps",
-        ".",
-        "tilesets"
+        "."
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -19,11 +19,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 4,
-            "selectedLayer": 1,
+            "scale": 1.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 330.875,
-                "y": 503
+                "x": 284.3333333333333,
+                "y": 806.6666666666666
             }
         },
         "maps/devmap_2.tmx": {
@@ -33,8 +33,8 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 465.5,
-                "y": 583
+                "x": 891.5,
+                "y": 454
             }
         },
         "maps/devmap_3.tmx": {
@@ -99,27 +99,27 @@
     "mapScene.enableWorlds": true,
     "openFiles": [
         "maps/devmap_1.tmx",
+        "tilesets/spawn_tiles.tsx",
         "maps/devmap_2.tmx",
         "tilesets/Refmap-TileA5.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileC.tsx",
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileE.tsx",
-        "tilesets/spawn_tiles.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx"
     ],
     "project": "project_wasteland.tiled-project",
-    "property.type": "string",
+    "property.type": "float",
     "recentFiles": [
-        "maps/devmap_1.tmx",
-        "maps/devmap_2.tmx",
-        "tilesets/Refmap-TileA5.tsx",
-        "tilesets/Refmap-TileB.tsx",
-        "tilesets/Refmap-TileC.tsx",
-        "tilesets/Refmap-TileD.tsx",
-        "tilesets/Refmap-TileE.tsx",
-        "tilesets/spawn_tiles.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
+        "tilesets/Refmap-TileE.tsx",
+        "tilesets/Refmap-TileD.tsx",
+        "tilesets/Refmap-TileC.tsx",
+        "tilesets/Refmap-TileB.tsx",
+        "tilesets/Refmap-TileA5.tsx",
+        "maps/devmap_2.tmx",
+        "tilesets/spawn_tiles.tsx",
+        "maps/devmap_1.tmx",
         "tilesets/Refmap-A2-0-2.tsx",
         "tilesets/Sprite-0001.tsx",
         "maps/devmap_3.tmx"
