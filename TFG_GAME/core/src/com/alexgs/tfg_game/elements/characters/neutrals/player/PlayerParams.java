@@ -9,6 +9,7 @@ public class PlayerParams {
 
     public static Weapons[] weaponInv = {new Pistol(), new AssaultRifle()};
     public static Weapons currTool = new Knife();
+//    public static Weapons currTool = weaponInv[0];
 
     public static int chosenWeapon = 0;
 

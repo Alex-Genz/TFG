@@ -82,6 +82,8 @@ public final class ResourceManager {
         assets.load("world/maps/devmap_1.tmx", TiledMap.class);
         assets.load("world/maps/devmap_2.tmx", TiledMap.class);
 
+        assets.load("world/maps/spawn_map.tmx", TiledMap.class);
+
         /*
          * sprites/world_objects/ui_gui images = assets.load(<player file path>, Texture.class);
          */

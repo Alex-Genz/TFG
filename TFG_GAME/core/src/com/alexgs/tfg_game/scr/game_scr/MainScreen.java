@@ -79,7 +79,8 @@ public class MainScreen extends BScreen {
 
 //        map
         if (GameParams.touchedTeleporter == null) {
-            map = resourceManager.getMap("world/maps/devmap_1.tmx");
+            map = resourceManager.getMap("world/maps/spawn_map.tmx");
+//            map = resourceManager.getMap("world/maps/devmap_1.tmx");
             this.playerHasTeleported = false;
 
         } else {
@@ -168,9 +169,6 @@ public class MainScreen extends BScreen {
 //        mouse
         mouse3d = new Vector3();
 
-//        tp target reserve purge
-        GameParams.touchedTeleporter = null;
-
     }
 
     private void instantiateCharacters(MapProperties props) {
@@ -233,7 +231,7 @@ public class MainScreen extends BScreen {
 
         mainStage.draw();
 
-        ren.render(new int[]{1});
+        ren.render(new int[]{5});
 
         uiStage.draw();
 
@@ -253,6 +251,9 @@ public class MainScreen extends BScreen {
                 teleporters) {
             if (tpObj.getEnabled() && tpObj.overlaps(player)) {
 //                System.out.println("teleported touched");
+                //        tp target reserve purge
+                GameParams.touchedTeleporter = null;
+
                 GameParams.touchedTeleporter = tpObj;
 
                 game.setScreen(new MainScreen(game));
@@ -324,6 +325,13 @@ public class MainScreen extends BScreen {
                     Boolean.parseBoolean(props.get("isHigh").toString()));
 
             solids.add(solid);
+
+        }
+
+        for (Polygon poly :
+                getPolygonList("sPoly", "type")) {
+            solids.add(new Solid(poly.getX(), poly.getY(), mainStage, poly,
+                    Boolean.parseBoolean(props.get("isHigh").toString())));
 
         }
 
