@@ -4,25 +4,21 @@ import com.alexgs.tfg_game.elements.Element;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Solid extends Element {
-    public boolean isHigh;
+public class SolidLow extends Element {
+//    solid class for player / npc / enemy collision
 
-    public Solid(float xPos, float yPos, Stage stage, float width, float height, boolean isHigh) {
+    public SolidLow(float xPos, float yPos, Stage stage, float width, float height) {
         super(xPos, yPos, stage, width, height);
 
         float[] vertices = {0, 0, width, 0, width, height, 0, height};
         colision = new Polygon(vertices);
         this.setSize(width, height);
 
-        this.isHigh = isHigh;
-
     }
 
-    public Solid(float x, float y, Stage s, Polygon poly, boolean isHigh) {
+    public SolidLow(float x, float y, Stage s, Polygon poly) {
         super(x, y, s);
         this.colision = poly;
-
-        this.isHigh = isHigh;
 
     }
 

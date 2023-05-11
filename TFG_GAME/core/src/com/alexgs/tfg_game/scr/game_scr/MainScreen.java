@@ -11,7 +11,8 @@ import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
 import com.alexgs.tfg_game.scr.util.ActorComparator;
-import com.alexgs.tfg_game.solids.Solid;
+import com.alexgs.tfg_game.solids.SolidHigh;
+import com.alexgs.tfg_game.solids.SolidLow;
 import com.alexgs.tfg_game.solids.Teleporter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -45,7 +46,8 @@ public class MainScreen extends BScreen {
     private OrthogonalTiledMapRenderer ren;
     private int tileWidth, tileHeight, mapWidthRaw, mapHeightRaw, mapWidthTiles, mapHeightTiles;
 
-    public Array<Solid> solids;
+    public Array<SolidHigh> hiSolids;
+    public Array<SolidLow> loSolids;
     public Array<Teleporter> teleporters;
 
     public Array<Neutrals> neutralNPCs;
@@ -79,7 +81,7 @@ public class MainScreen extends BScreen {
 
 //        map
         if (GameParams.touchedTeleporter == null) {
-            map = resourceManager.getMap("world/maps/spawn_map.tmx");
+            map = resourceManager.getMap("world/maps/spawn_map_b.tmx");
 //            map = resourceManager.getMap("world/maps/devmap_1.tmx");
             this.playerHasTeleported = false;
 
@@ -101,7 +103,8 @@ public class MainScreen extends BScreen {
         mapWidthRaw = tileWidth * mapWidthTiles;
         mapHeightRaw = tileHeight * mapHeightTiles;
 
-        solids = new Array<>();
+        hiSolids = new Array<>();
+        loSolids = new Array<>();
         teleporters = new Array<>();
 
         neutralNPCs = new Array<>();
@@ -124,7 +127,8 @@ public class MainScreen extends BScreen {
                 case "character":
                     this.neutralNPCs.add(new NeutralOne((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("char_type"),
-                            props.get("message").toString()));
+                            props.get("message").toString(), Float.parseFloat(props.get("path_size_x").toString()),
+                            Float.parseFloat(props.get("path_size_y").toString())));
 
                     break;
 
@@ -232,16 +236,17 @@ public class MainScreen extends BScreen {
         mainStage.draw();
 
         ren.render(new int[]{5});
+        ren.render(new int[]{10});
 
         uiStage.draw();
 
     }
 
     private void checkCollisions() {
-        for (Solid solidObj :
-                solids) {
-            if (solidObj.getEnabled() && solidObj.overlaps(player)) {
-                player.preventOverlap(solidObj);
+        for (SolidLow solidLowObj :
+                loSolids) {
+            if (solidLowObj.getEnabled() && solidLowObj.overlaps(player)) {
+                player.preventOverlap(solidLowObj);
 
             }
 
@@ -249,7 +254,7 @@ public class MainScreen extends BScreen {
 
         for (Teleporter tpObj :
                 teleporters) {
-            if (tpObj.getEnabled() && tpObj.overlaps(player)) {
+            if (tpObj.getEnabled() && !tpObj.noReturn && tpObj.overlaps(player)) {
 //                System.out.println("teleported touched");
                 //        tp target reserve purge
                 GameParams.touchedTeleporter = null;
@@ -308,6 +313,7 @@ public class MainScreen extends BScreen {
 
     }
 
+//    DEPRECATED
     public void setMap(String map) {
         this.map.dispose(); // Dispose your map first
         this.map = ResourceManager.getMap(map);
@@ -316,22 +322,40 @@ public class MainScreen extends BScreen {
     }
 
     private void instantiateSolids(MapProperties props) {
-        Solid solid;
+        SolidHigh solidHigh;
+        SolidLow solidLow;
         for (MapObject solidObj :
-                getRectangleList("sRec", "type")) {
+                getRectangleList("sRecHi", "type")) {
             props = solidObj.getProperties();
-            solid = new Solid((float) props.get("x"), (float) props.get("y"),
-                    mainStage, (float) props.get("width"), (float) props.get("height"),
-                    Boolean.parseBoolean(props.get("isHigh").toString()));
+            solidHigh = new SolidHigh((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height"));
 
-            solids.add(solid);
+            hiSolids.add(solidHigh);
+
+            loSolids.add(new SolidLow((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height")));
+
+        }
+
+        for (MapObject solidObj :
+                getRectangleList("sRecLo", "type")) {
+            props = solidObj.getProperties();
+
+            loSolids.add(new SolidLow((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height")));
 
         }
 
         for (Polygon poly :
-                getPolygonList("sPoly", "type")) {
-            solids.add(new Solid(poly.getX(), poly.getY(), mainStage, poly,
-                    Boolean.parseBoolean(props.get("isHigh").toString())));
+                getPolygonList("sPolyHi", "type")) {
+            hiSolids.add(new SolidHigh(poly.getX(), poly.getY(), mainStage, poly));
+            loSolids.add(new SolidLow(poly.getX(), poly.getY(), mainStage, poly));
+
+        }
+
+        for (Polygon poly :
+                getPolygonList("sPolyLo", "type")) {
+            loSolids.add(new SolidLow(poly.getX(), poly.getY(), mainStage, poly));
 
         }
 
@@ -343,7 +367,8 @@ public class MainScreen extends BScreen {
                     Float.parseFloat(props.get("offset_x").toString()),
                     Float.parseFloat(props.get("offset_y").toString()),
                     props.get("target_map").toString(), props.get("id").toString(),
-                    props.get("tgt_id").toString());
+                    props.get("tgt_id").toString(),
+                    Boolean.parseBoolean(props.get("no_return").toString()));
 
 //            System.out.println("teleported found and loaded");
 

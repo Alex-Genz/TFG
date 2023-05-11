@@ -2,7 +2,7 @@ package com.alexgs.tfg_game.elements.bullets;
 
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
-import com.alexgs.tfg_game.solids.Solid;
+import com.alexgs.tfg_game.solids.SolidHigh;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -67,9 +67,9 @@ public class Bullet extends Element {
 
 // TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     private void collide() {
-        for (Solid solid :
-                this.lvl.solids) {
-            if (this.getEnabled() && solid.isHigh == true && this.overlaps(solid)) {
+        for (SolidHigh solidHigh :
+                this.lvl.hiSolids) {
+            if (this.getEnabled() && this.overlaps(solidHigh)) {
                 this.setEnabled(false);
 
             }

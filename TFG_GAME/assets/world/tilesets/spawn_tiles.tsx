@@ -9,6 +9,8 @@
  <tile id="1">
   <properties>
    <property name="enemy_type" value=""/>
+   <property name="path_size_x" type="float" value="0"/>
+   <property name="path_size_y" type="float" value="0"/>
    <property name="skin" type="int" value="0"/>
    <property name="spawn" value="enemy"/>
   </properties>
@@ -17,6 +19,8 @@
   <properties>
    <property name="char_type" type="int" value="0"/>
    <property name="message" value=""/>
+   <property name="path_size_x" type="float" value="0"/>
+   <property name="path_size_y" type="float" value="0"/>
    <property name="spawn" value="character"/>
   </properties>
  </tile>

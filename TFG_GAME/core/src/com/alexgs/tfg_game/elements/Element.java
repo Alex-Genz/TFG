@@ -123,6 +123,13 @@ public class Element extends Actor {
 
 
     }
+
+    protected float distanceToTarget(Vector2 pathPoint) {
+        return (float) Math.sqrt(Math.pow((pathPoint.x - this.getCenteredX()), 2) +
+                Math.pow((pathPoint.y - this.getCenteredY()), 2));
+
+
+    }
 //    custom methods
 
     public Polygon getBoundaryPolygon() {

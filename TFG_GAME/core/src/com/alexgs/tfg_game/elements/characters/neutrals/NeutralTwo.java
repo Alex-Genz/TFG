@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class NeutralTwo extends Neutrals {
 
-    public NeutralTwo(float x, float y, Stage s, MainScreen lvl, int charNum, String message) {
-        super(x, y, s, lvl, charNum, message);
+    public NeutralTwo(float x, float y, Stage s, MainScreen lvl, int charNum, String message, float pathSizeX, float pathSizeY) {
+        super(x, y, s, lvl, charNum, message, pathSizeX, pathSizeY);
 
     }
 

@@ -3,7 +3,7 @@ package com.alexgs.tfg_game.solids;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Teleporter extends Solid {
+public class Teleporter extends SolidLow {
     public String tgtMapPath;
 
     public float tpTgtOffsetX;
@@ -12,9 +12,11 @@ public class Teleporter extends Solid {
     public String tpId;
     public String tgtTpId;
 
+    public boolean noReturn;
+
     public Teleporter(float xPos, float yPos, Stage stage, float width, float height,
-                      float offsetX, float offsetY, String tgtMapPath, String tpId, String tgtTpId) {
-        super(xPos, yPos, stage, width, height, false);
+                      float offsetX, float offsetY, String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
+        super(xPos, yPos, stage, width, height);
         this.tgtMapPath = tgtMapPath;
 
         this.tpTgtOffsetX = offsetX;
@@ -22,12 +24,14 @@ public class Teleporter extends Solid {
 
         this.tpId = tpId;
         this.tgtTpId = tgtTpId;
+
+        this.noReturn = noReturn;
 
     }
 
     public Teleporter(float x, float y, Stage s, Polygon poly, float offsetX,
-                      float offsetY, String tgtMapPath, String tpId, String tgtTpId) {
-        super(x, y, s, poly, false);
+                      float offsetY, String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
+        super(x, y, s, poly);
 
         this.tgtMapPath = tgtMapPath;
 
@@ -36,6 +40,8 @@ public class Teleporter extends Solid {
 
         this.tpId = tpId;
         this.tgtTpId = tgtTpId;
+
+        this.noReturn = noReturn;
 
     }
 

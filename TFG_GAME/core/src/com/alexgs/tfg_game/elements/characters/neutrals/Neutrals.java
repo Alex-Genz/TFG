@@ -5,10 +5,17 @@ import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Neutrals extends Characters {
     public String message;
+
+    private float pathSizeX;
+    private float pathSizeY;
+
+    private Vector2[] pathPoints;
+    private int currTgtPathPoint = 0;
 
     public final String PATHS = "sprites/npcs/";
     public final String EXTENSION = ".png";
@@ -56,7 +63,7 @@ public class Neutrals extends Characters {
     protected Animation<TextureRegion> walkLeft;
     protected Animation<TextureRegion> walkRight;
 
-    public Neutrals(float x, float y, Stage s, MainScreen lvl, int charNum, String message) {
+    public Neutrals(float x, float y, Stage s, MainScreen lvl, int charNum, String message, float pathSizeX, float pathSizeY) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
@@ -65,7 +72,26 @@ public class Neutrals extends Characters {
 
         this.message = message;
 
+        this.pathSizeX = pathSizeX;
+        this.pathSizeY = pathSizeY;
+
         setPolygon(8, this.getWidth() / 3, this.getHeight() / 4, 22, 0);
+
+        setPath();
+
+    }
+
+    private void setPath() {
+        pathPoints = new Vector2[]{new Vector2(), new Vector2()};
+
+
+        pathPoints[0].x = this.getCenteredX() + (pathSizeX * super.lvl.getTileWidth());
+        pathPoints[0].y = this.getCenteredY() + (pathSizeY * super.lvl.getTileHeight());
+
+        pathPoints[1].x = this.getCenteredX() - (pathSizeX * super.lvl.getTileWidth());
+        pathPoints[1].y = this.getCenteredY() - (pathSizeY * super.lvl.getTileHeight());
+
+        System.out.println(pathPoints[0].x + ", " + pathPoints[0].y + " ||| " + pathPoints[1].x + ", " + pathPoints[1].y);
 
     }
 
@@ -84,10 +110,34 @@ public class Neutrals extends Characters {
     public void act(float delta) {
         super.act(delta);
 
+        this.applyPhysics(delta);
+
         updateHitbox();
 
-        if (distanceToTarget(super.lvl.player.getCenteredX(), super.lvl.player.getCenteredY()) < 60)
+        if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 60) {
+            if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
+                currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
+
+            } else {
+                moveTo(pathPoints[currTgtPathPoint], 60);
+                this.animations();
+
+            }
+
+        } else {
+            this.velocity.x = 0;
+            this.velocity.y = 0;
             this.animations(super.lvl.player.getCenteredX(), super.lvl.player.getCenteredY());
+
+        }
+
+        if (pathSizeX != 0 && pathSizeY != 0)
+            moveNPC();
+
+    }
+
+    private void moveNPC() {
+
 
     }
 
@@ -111,6 +161,41 @@ public class Neutrals extends Characters {
 
             else
                 this.setAnimation(idleDown);
+
+    }
+
+    protected void animations(Vector2 target) {
+        if (Math.abs((target.x - this.getCenteredX())) > Math.abs((target.y - this.getCenteredY())))
+            if ((target.x - this.getCenteredX()) > 0)
+                this.setAnimation(idleRight);
+
+            else
+                this.setAnimation(idleLeft);
+
+
+        else if (Math.abs((target.x - this.getCenteredX())) < Math.abs((target.y - this.getCenteredY())))
+            if ((target.y - this.getCenteredY()) > 0)
+                this.setAnimation(idleUp);
+
+            else
+                this.setAnimation(idleDown);
+
+    }
+
+    protected void animations() {
+        if (this.velocity.x > 0) {
+            this.setAnimation(walkRight);
+
+        } else if (this.velocity.x < 0) {
+            this.setAnimation(walkLeft);
+
+        } else if (this.velocity.y > 0) {
+            this.setAnimation(walkUp);
+
+        } else if (this.velocity.y < 0) {
+            this.setAnimation(walkDown);
+
+        }
 
     }
 
