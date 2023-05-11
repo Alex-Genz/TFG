@@ -1,3 +1,0 @@
-add pause screen: if esc is just pressed -> toggle pause menu trigger. if pause menu trigger is enabled dont render map and set pause screen visible
-
-add map persistence: create bidimensional array. in y-pos 0, create new screens; in y-pos 1 save associated map path string

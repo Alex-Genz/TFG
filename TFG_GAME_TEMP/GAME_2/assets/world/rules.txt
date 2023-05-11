@@ -1,1 +1,0 @@
-automaps/auto1Rules.tmx
