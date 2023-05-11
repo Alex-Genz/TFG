@@ -3,7 +3,7 @@ package com.alexgs.tfg_game.elements.tools;
 public class Weapons {
     private int persistenceMagSize;
     private boolean canSwitchFireMode;
-    private int roundsPerMinute;
+    private float roundsPerMinute;
     private int dmg;
     private float timeAllowedToExist;
 
@@ -33,7 +33,7 @@ public class Weapons {
         return canSwitchFireMode;
     }
 
-    public int getRoundsPerMinute() {
+    public float getRoundsPerMinute() {
         return roundsPerMinute;
     }
 

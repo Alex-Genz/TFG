@@ -5,10 +5,10 @@
     },
     "activeFile": "maps/spawn_map.tmx",
     "expandedProjectPaths": [
-        "tilesets",
+        "maps",
         "worlds",
-        ".",
-        "maps"
+        "tilesets",
+        "."
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -22,8 +22,8 @@
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": 505.99999999999994,
-                "y": 884
+                "x": 576,
+                "y": 575.6666666666666
             }
         },
         "maps/devmap_2.tmx": {
@@ -33,8 +33,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 239.3939393939395,
-                "y": 387.87878787878776
+                "x": 381.8181818181818,
+                "y": 383.33333333333337
             }
         },
         "maps/devmap_3.tmx": {
@@ -49,11 +49,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 1.5,
+            "scale": 1,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 546.6666666666667,
-                "y": 296.66666666666663
+                "x": 273.5,
+                "y": 387
             }
         },
         "maps/spawn_tiles.tsx": {

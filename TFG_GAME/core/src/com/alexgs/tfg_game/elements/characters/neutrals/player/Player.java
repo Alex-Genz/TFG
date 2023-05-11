@@ -313,14 +313,6 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
             running = !running;
 
-//        if (Gdx.input.isKeyJustPressed(Input.Keys.X))
-//            if (CAN_SWITCH_FIRE_MODE) {
-//                isInFullAuto = !isInFullAuto;
-//                System.out.println(isInFullAuto);
-//
-//            } else
-//                System.out.println("weapon cannot switch fire modes");
-
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
             if (PlayerParams.currTool.isCanSwitchFireMode()) {
                 PlayerParams.currTool.isInFullAuto = !PlayerParams.currTool.isInFullAuto;
@@ -338,37 +330,6 @@ public class Player extends Characters {
 
         }
 
-
-
-/*        if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && lClickActivationTime < 0) {
-            if (this.velocity.x == 0 && this.velocity.y == 0)
-                System.out.println("BANG BANG!!");
-                // TODO: shoot();
-
-            else
-                System.out.println("no bang bang :(");
-
-        }*/
-
-/*        if (this.velocity.x == 0 && this.velocity.y == 0) {
-            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
-                    !PlayerParams.currTool.isInFullAuto) {
-                shoot();
-
-            }
-            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
-                    PlayerParams.currTool.isInFullAuto) {
-                if (timeBeforeNextShot <= 0) {
-                    shoot();
-                    timeBeforeNextShot = 60 / ROUNDS_PER_MINUTE;
-                    System.out.println(timeBeforeNextShot + " | " + ROUNDS_PER_MINUTE);
-
-                }
-
-            }
-
-        }*/
-
         if (this.velocity.x == 0 && this.velocity.y == 0 &&
                 lClickActivationTime <= 0) {
             if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
@@ -380,7 +341,7 @@ public class Player extends Characters {
                     PlayerParams.currTool.isInFullAuto) {
                 if (timeBeforeNextShot <= 0) {
                     shoot();
-                    timeBeforeNextShot = (float) 60 / PlayerParams.currTool.getRoundsPerMinute();
+                    timeBeforeNextShot = 60 / PlayerParams.currTool.getRoundsPerMinute();
 
                 }
 
@@ -397,6 +358,7 @@ public class Player extends Characters {
 
     }
 
+//    DEPRECATED
     private void stopMov() {
         this.velocity.x = 0;
         this.velocity.y = 0;
@@ -405,6 +367,7 @@ public class Player extends Characters {
 
     }
 
+//    DEPRECATED
     private void moveMe(float tgtX, float tgtY, int dir) {
         lastPosVec.x = this.getX();
         lastPosVec.y = this.getY();

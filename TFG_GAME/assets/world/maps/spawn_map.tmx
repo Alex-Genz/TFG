@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="118">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="14" nextobjectid="118">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1409" source="../tilesets/Refmap-TileC.tsx"/>
  <tileset firstgid="1665" source="../tilesets/Refmap-TileE.tsx"/>
@@ -282,7 +282,7 @@
     <property name="type" value="sRec"/>
    </properties>
   </object>
-  <object id="43" x="256" y="608" width="704" height="32">
+  <object id="43" x="224" y="608" width="736" height="32">
    <properties>
     <property name="isHigh" type="bool" value="true"/>
     <property name="type" value="sRec"/>

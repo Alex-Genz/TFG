@@ -438,4 +438,12 @@ public class MainScreen extends BScreen {
         return list;
     }
 
+    public int getMapWidthRaw() {
+        return mapWidthRaw;
+    }
+
+    public int getMapHeightRaw() {
+        return mapHeightRaw;
+    }
+
 }

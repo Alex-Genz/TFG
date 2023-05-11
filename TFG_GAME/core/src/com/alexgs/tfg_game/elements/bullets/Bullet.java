@@ -40,6 +40,7 @@ public class Bullet extends Element {
             this.applyPhysics(delta);
 
             collide();
+            checkIfOutOfBounds();
 
             if (timeExisting > timeBeforeCulling)
                 this.setEnabled(false);
@@ -72,6 +73,16 @@ public class Bullet extends Element {
                 this.setEnabled(false);
 
             }
+
+        }
+
+    }
+
+    private void checkIfOutOfBounds() {
+        if (this.getX() < -5 || this.getY() < -5 ||
+                this.getX() > (lvl.getMapWidthRaw() + 5) ||
+                this.getY() > (lvl.getMapHeightRaw() + 5)) {
+            this.setEnabled(false);
 
         }
 
