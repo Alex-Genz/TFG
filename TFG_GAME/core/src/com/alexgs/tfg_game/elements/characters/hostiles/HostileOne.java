@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class HostileOne extends Hostiles {
 
-    public HostileOne(float x, float y, Stage s, MainScreen lvl, int charNum) {
-        super(x, y, s, lvl, charNum);
+    public HostileOne(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY) {
+        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY);
 
         this.setAnimation(super.idleDown);
 

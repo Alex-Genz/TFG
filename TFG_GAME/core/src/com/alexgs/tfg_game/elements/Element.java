@@ -117,6 +117,16 @@ public class Element extends Actor {
 
     }
 
+    public Vector2 getPos() {
+        return new Vector2(this.getX(), this.getY());
+
+    }
+
+    public Vector2 getCenteredPos() {
+        return new Vector2(this.getCenteredX(), this.getCenteredY());
+
+    }
+
     protected float distanceToTarget(float tgtX, float tgtY) {
         return (float) Math.sqrt(Math.pow((tgtX - this.getCenteredX()), 2) +
                 Math.pow((tgtY - this.getCenteredY()), 2));

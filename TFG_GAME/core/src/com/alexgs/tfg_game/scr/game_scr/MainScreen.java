@@ -127,14 +127,17 @@ public class MainScreen extends BScreen {
                 case "character":
                     this.neutralNPCs.add(new NeutralOne((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("char_type"),
-                            props.get("message").toString(), Float.parseFloat(props.get("path_size_x").toString()),
+                            props.get("message").toString(),
+                            Float.parseFloat(props.get("path_size_x").toString()),
                             Float.parseFloat(props.get("path_size_y").toString())));
 
                     break;
 
                 case "enemy":
                     this.hostiles.add(new HostileOne((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this, (int) props.get("skin")));
+                            (float) props.get("y"), mainStage, this, (int) props.get("skin"),
+                            Float.parseFloat(props.get("path_size_x").toString()),
+                            Float.parseFloat(props.get("path_size_y").toString())));
 
                     break;
 

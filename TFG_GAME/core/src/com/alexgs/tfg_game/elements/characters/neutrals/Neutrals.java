@@ -11,12 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class Neutrals extends Characters {
     public String message;
 
-    private float pathSizeX;
-    private float pathSizeY;
-
-    private Vector2[] pathPoints;
-    private int currTgtPathPoint = 0;
-
     public final String PATHS = "sprites/npcs/";
     public final String EXTENSION = ".png";
     public final String[][] CHARACTER_SPRITES =
@@ -53,16 +47,6 @@ public class Neutrals extends Characters {
                     }
             };
 
-    protected Animation<TextureRegion> idleUp;
-    protected Animation<TextureRegion> idleDown;
-    protected Animation<TextureRegion> idleLeft;
-    protected Animation<TextureRegion> idleRight;
-
-    protected Animation<TextureRegion> walkUp;
-    protected Animation<TextureRegion> walkDown;
-    protected Animation<TextureRegion> walkLeft;
-    protected Animation<TextureRegion> walkRight;
-
     public Neutrals(float x, float y, Stage s, MainScreen lvl, int charNum, String message, float pathSizeX, float pathSizeY) {
         super(x, y, s, lvl);
 
@@ -72,26 +56,12 @@ public class Neutrals extends Characters {
 
         this.message = message;
 
-        this.pathSizeX = pathSizeX;
-        this.pathSizeY = pathSizeY;
+        super.pathSizeX = pathSizeX;
+        super.pathSizeY = pathSizeY;
 
         setPolygon(8, this.getWidth() / 3, this.getHeight() / 4, 22, 0);
 
-        setPath();
-
-    }
-
-    private void setPath() {
-        pathPoints = new Vector2[]{new Vector2(), new Vector2()};
-
-
-        pathPoints[0].x = this.getCenteredX() + (pathSizeX * super.lvl.getTileWidth());
-        pathPoints[0].y = this.getCenteredY() + (pathSizeY * super.lvl.getTileHeight());
-
-        pathPoints[1].x = this.getCenteredX() - (pathSizeX * super.lvl.getTileWidth());
-        pathPoints[1].y = this.getCenteredY() - (pathSizeY * super.lvl.getTileHeight());
-
-        System.out.println(pathPoints[0].x + ", " + pathPoints[0].y + " ||| " + pathPoints[1].x + ", " + pathPoints[1].y);
+        super.setPath();
 
     }
 
@@ -119,7 +89,7 @@ public class Neutrals extends Characters {
                 currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
 
             } else {
-                moveTo(pathPoints[currTgtPathPoint], 60);
+                super.moveTo(pathPoints[currTgtPathPoint], 60);
                 this.animations();
 
             }
@@ -146,76 +116,23 @@ public class Neutrals extends Characters {
 
     }
 
-    protected void animations(float targetX, float targetY) {
-        if (Math.abs((targetX - this.getCenteredX())) > Math.abs((targetY - this.getCenteredY())))
-            if ((targetX - this.getCenteredX()) > 0)
-                this.setAnimation(idleRight);
-
-            else
-                this.setAnimation(idleLeft);
-
-
-        else if (Math.abs((targetX - this.getCenteredX())) < Math.abs((targetY - this.getCenteredY())))
-            if ((targetY - this.getCenteredY()) > 0)
-                this.setAnimation(idleUp);
-
-            else
-                this.setAnimation(idleDown);
-
-    }
-
-    protected void animations(Vector2 target) {
-        if (Math.abs((target.x - this.getCenteredX())) > Math.abs((target.y - this.getCenteredY())))
-            if ((target.x - this.getCenteredX()) > 0)
-                this.setAnimation(idleRight);
-
-            else
-                this.setAnimation(idleLeft);
-
-
-        else if (Math.abs((target.x - this.getCenteredX())) < Math.abs((target.y - this.getCenteredY())))
-            if ((target.y - this.getCenteredY()) > 0)
-                this.setAnimation(idleUp);
-
-            else
-                this.setAnimation(idleDown);
-
-    }
-
-    protected void animations() {
-        if (this.velocity.x > 0) {
-            this.setAnimation(walkRight);
-
-        } else if (this.velocity.x < 0) {
-            this.setAnimation(walkLeft);
-
-        } else if (this.velocity.y > 0) {
-            this.setAnimation(walkUp);
-
-        } else if (this.velocity.y < 0) {
-            this.setAnimation(walkDown);
-
-        }
-
-    }
-
     protected void assignCharacter(int charNum) {
-        idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),
+        super.idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),
                 1, 1, 0, true);
-        idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]),
+        super.idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]),
                 1, 1, 0, true);
-        idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]),
+        super.idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]),
                 1, 1, 0, true);
-        idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]),
+        super.idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]),
                 1, 1, 0, true);
 
-        walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]),
+        super.walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]),
                 1, 4, 0.15f, true);
-        walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]),
+        super.walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]),
                 1, 4, 0.15f, true);
-        walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]),
+        super.walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]),
                 1, 4, 0.15f, true);
-        walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
+        super.walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
                 1, 4, 0.15f, true);
 
     }

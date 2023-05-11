@@ -45,25 +45,20 @@ public class Hostiles extends Characters {
                     }
             };
 
-    protected Animation<TextureRegion> idleUp;
-    protected Animation<TextureRegion> idleDown;
-    protected Animation<TextureRegion> idleLeft;
-    protected Animation<TextureRegion> idleRight;
 
-    protected Animation<TextureRegion> walkUp;
-    protected Animation<TextureRegion> walkDown;
-    protected Animation<TextureRegion> walkLeft;
-    protected Animation<TextureRegion> walkRight;
-//    temporal
-
-    public Hostiles(float x, float y, Stage s, MainScreen lvl, int charNum) {
+    public Hostiles(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
 
+        setHitbox(s);
+
+        super.pathSizeX = pathSizeX;
+        super.pathSizeY = pathSizeY;
+
         setPolygon(8, this.getWidth() / 3, this.getHeight() / 4, 22, 0);
 
-        setHitbox(s);
+        super.setPath();
 
     }
 
@@ -82,7 +77,33 @@ public class Hostiles extends Characters {
     public void act(float delta) {
         super.act(delta);
 
+        super.applyPhysics(delta);
+
         updateHitbox();
+
+        if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 60) {
+            if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
+                currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
+
+            } else {
+                super.moveTo(pathPoints[currTgtPathPoint], 60);
+                super.animations();
+
+            }
+
+        } else {
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 20) {
+                super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), 60);
+                super.animations();
+
+            } else {
+                this.velocity.x = 0;
+                this.velocity.y = 0;
+                super.animations(lvl.player.getCenteredPos());
+
+            }
+
+        }
 
         if (distanceToTarget(lvl.player.getCenteredX(),
                 lvl.player.getCenteredY()) < 80) {
@@ -93,22 +114,22 @@ public class Hostiles extends Characters {
     }
 
     protected void assignCharacter(int charNum) {
-        idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),
+        super.idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),
                 1, 1, 0, true);
-        idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]),
+        super.idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]),
                 1, 1, 0, true);
-        idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]),
+        super.idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]),
                 1, 1, 0, true);
-        idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]),
+        super.idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]),
                 1, 1, 0, true);
 
-        walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]),
+        super.walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]),
                 1, 4, 0.15f, true);
-        walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]),
+        super.walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]),
                 1, 4, 0.15f, true);
-        walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]),
+        super.walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]),
                 1, 4, 0.15f, true);
-        walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
+        super.walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
                 1, 4, 0.15f, true);
 
     }

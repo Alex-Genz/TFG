@@ -3,12 +3,12 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/spawn_map.tmx",
+    "activeFile": "maps/devmap_2.tmx",
     "expandedProjectPaths": [
-        "maps",
         "worlds",
         "tilesets",
-        "."
+        ".",
+        "maps"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -22,8 +22,8 @@
             "scale": 1.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 268.6666666666667,
-                "y": 901.9999999999999
+                "x": 288,
+                "y": 863.9999999999999
             }
         },
         "maps/devmap_2.tmx": {
@@ -33,8 +33,8 @@
             "scale": 0.75,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 289.33333333333337,
-                "y": 501.3333333333333
+                "x": 348,
+                "y": 401.3333333333333
             }
         },
         "maps/devmap_3.tmx": {
@@ -52,19 +52,19 @@
             "scale": 0.75,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 439.3333333333333,
-                "y": 378.66666666666663
+                "x": 480,
+                "y": 319.3333333333333
             }
         },
         "maps/spawn_map_b.tmx": {
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 2,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 11,
             "viewCenter": {
-                "x": 816.5,
-                "y": 130.5
+                "x": 489.33333333333337,
+                "y": 370.66666666666663
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -77,23 +77,23 @@
         },
         "tilesets/Refmap-TileA5.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 4
         },
         "tilesets/Refmap-TileB.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 4
         },
         "tilesets/Refmap-TileC.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 4
         },
         "tilesets/Refmap-TileD.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 4
         },
         "tilesets/Refmap-TileE.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 3
+            "scaleInEditor": 4
         },
         "tilesets/Sprite-0001.tsx": {
             "scaleInDock": 1,
@@ -101,7 +101,7 @@
         },
         "tilesets/pngkit_tile-png_2654326.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 3
+            "scaleInEditor": 4
         },
         "tilesets/spawn_tiles.tsx": {
             "scaleInDock": 1,
@@ -121,8 +121,9 @@
     "mapScene.enableWorlds": true,
     "openFiles": [
         "maps/devmap_1.tmx",
-        "tilesets/spawn_tiles.tsx",
         "maps/devmap_2.tmx",
+        "tilesets/spawn_tiles.tsx",
+        "maps/spawn_map_b.tmx",
         "tilesets/Refmap-TileA5.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileC.tsx",
@@ -135,17 +136,17 @@
     "property.type": "bool",
     "recentFiles": [
         "maps/devmap_1.tmx",
+        "maps/spawn_map.tmx",
+        "tilesets/pngkit_tile-png_2654326.tsx",
+        "tilesets/Refmap-TileE.tsx",
+        "tilesets/Refmap-TileD.tsx",
+        "tilesets/Refmap-TileC.tsx",
+        "tilesets/Refmap-TileB.tsx",
+        "tilesets/Refmap-TileA5.tsx",
+        "maps/spawn_map_b.tmx",
         "tilesets/spawn_tiles.tsx",
         "maps/devmap_2.tmx",
-        "tilesets/Refmap-TileA5.tsx",
-        "tilesets/Refmap-TileB.tsx",
-        "tilesets/Refmap-TileC.tsx",
-        "tilesets/Refmap-TileD.tsx",
-        "tilesets/Refmap-TileE.tsx",
-        "tilesets/pngkit_tile-png_2654326.tsx",
-        "maps/spawn_map.tmx",
-        "tilesets/Refmap-A2-0-2.tsx",
-        "tilesets/Sprite-0001.tsx"
+        "tilesets/Refmap-A2-0-2.tsx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",
