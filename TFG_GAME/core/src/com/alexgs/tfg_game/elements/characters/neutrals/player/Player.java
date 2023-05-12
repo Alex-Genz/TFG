@@ -194,15 +194,19 @@ public class Player extends Characters {
     private void animate() {
         if (moving) {
             if (this.velocity.x > 0) {
+//                this.setAnimation((running) ? runRight : walkRight);
                 this.setAnimation(walkRight);
 
             } else if (this.velocity.x < 0) {
+//                this.setAnimation((running) ? runLeft : walkLeft);
                 this.setAnimation(walkLeft);
 
             } else if (this.velocity.y > 0) {
+//                this.setAnimation((running) ? runUp : walkUp);
                 this.setAnimation(walkUp);
 
             } else if (this.velocity.y < 0) {
+//                this.setAnimation((running) ? runDown : walkDown);
                 this.setAnimation(walkDown);
 
             }
@@ -401,6 +405,15 @@ public class Player extends Characters {
         walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
                 1, 6, 0.15f, true);
         walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
+                1, 6, 0.15f, true);
+
+        runUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
+                1, 6, 0.15f, true);
+        runDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
+                1, 6, 0.15f, true);
+        runLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
+                1, 6, 0.15f, true);
+        runRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
                 1, 6, 0.15f, true);
 
 
