@@ -13,6 +13,20 @@
             "width": 768,
             "x": 768,
             "y": 0
+        },
+        {
+            "fileName": "../maps/spawn_map_b.tmx",
+            "height": 640,
+            "width": 960,
+            "x": -1344,
+            "y": 224
+        },
+        {
+            "fileName": "../maps/town_map.tmx",
+            "height": 1024,
+            "width": 1152,
+            "x": 224,
+            "y": 768
         }
     ],
     "onlyShowAdjacentMaps": false,

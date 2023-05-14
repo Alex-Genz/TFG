@@ -90,8 +90,8 @@ public class Player extends Characters {
         setAnimations();
         this.setAnimation(walkUp);
 
-        setPolygon(8, this.getWidth() / 2, this.getHeight() / 4,
-                8, 0);
+        setPolygon(8, this.getWidth() / 4, this.getHeight() / 4,
+                24, 0);
 //        setRectangle();
         setHitbox(this.s);
 
@@ -133,8 +133,8 @@ public class Player extends Characters {
     }
 
     private void setHitbox(Stage s) {
-        super.hitbox = new Element(this.getX() + 8, this.getY(), s, 
-                this.getWidth() / 2f, this.getHeight() - 2);
+        super.hitbox = new Element(this.getX() + 24, this.getY() + 1, s,
+                this.getWidth() / 4, this.getHeight() - 4);
         super.hitbox.setPolygon(8);
 
     }
@@ -166,7 +166,7 @@ public class Player extends Characters {
     }
 
     private void updateHitbox() {
-        super.hitbox.setPosition(this.getX() + 8, this.getY());
+        super.hitbox.setPosition(this.getX() + 24, this.getY() + 1);
 
     }
 
@@ -194,20 +194,20 @@ public class Player extends Characters {
     private void animate() {
         if (moving) {
             if (this.velocity.x > 0) {
-//                this.setAnimation((running) ? runRight : walkRight);
-                this.setAnimation(walkRight);
+                this.setAnimation((running) ? runRight : walkRight);
+//                this.setAnimation(walkRight);
 
             } else if (this.velocity.x < 0) {
-//                this.setAnimation((running) ? runLeft : walkLeft);
-                this.setAnimation(walkLeft);
+                this.setAnimation((running) ? runLeft : walkLeft);
+//                this.setAnimation(walkLeft);
 
             } else if (this.velocity.y > 0) {
-//                this.setAnimation((running) ? runUp : walkUp);
-                this.setAnimation(walkUp);
+                this.setAnimation((running) ? runUp : walkUp);
+//                this.setAnimation(walkUp);
 
             } else if (this.velocity.y < 0) {
-//                this.setAnimation((running) ? runDown : walkDown);
-                this.setAnimation(walkDown);
+                this.setAnimation((running) ? runDown : walkDown);
+//                this.setAnimation(walkDown);
 
             }
 
@@ -389,32 +389,47 @@ public class Player extends Characters {
     }
 
     private void setAnimations() {
-        idleUp = loadFullAnimation("sprites/player/up/hgun_idle_up.png",
-                1, 1, 0, true);
-        idleDown = loadFullAnimation("sprites/player/down/hgun_idle_down.png",
-                1, 1, 0, true);
-        idleLeft = loadFullAnimation("sprites/player/left/hgun_idle_left.png",
-                1, 1, 0, true);
-        idleRight = loadFullAnimation("sprites/player/right/hgun_idle_right.png",
-                1, 1, 0, true);
+//        idleUp = loadFullAnimation("sprites/player/up/hgun_idle_up.png",
+//                1, 1, 0, true);
+//        idleDown = loadFullAnimation("sprites/player/down/hgun_idle_down.png",
+//                1, 1, 0, true);
+//        idleLeft = loadFullAnimation("sprites/player/left/hgun_idle_left.png",
+//                1, 1, 0, true);
+//        idleRight = loadFullAnimation("sprites/player/right/hgun_idle_right.png",
+//                1, 1, 0, true);
+//
+//        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
+//                1, 6, 0.15f, true);
+//        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
+//                1, 6, 0.15f, true);
+//        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
+//                1, 6, 0.15f, true);
+//        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
+//                1, 6, 0.15f, true);
+//
+//        runUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
+//                1, 6, 0.15f, true);
+//        runDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
+//                1, 6, 0.15f, true);
+//        runLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
+//                1, 6, 0.15f, true);
+//        runRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
+//                1, 6, 0.15f, true);
 
-        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
-                1, 6, 0.15f, true);
-        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
-                1, 6, 0.15f, true);
-        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
-                1, 6, 0.15f, true);
-        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
-                1, 6, 0.15f, true);
+        idleDown = loadFullAnimation("sprites/player/down/nothing_idle_down.png", 1, 1, 0, true);
+        idleLeft = loadFullAnimation("sprites/player/left/nothing_idle_left.png", 1, 1, 0, true);
+        idleRight = loadFullAnimation("sprites/player/right/nothing_idle_right.png", 1, 1, 0, true);
+        idleUp = loadFullAnimation("sprites/player/up/nothing_idle_up.png", 1, 1, 0, true);
 
-        runUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
-                1, 6, 0.15f, true);
-        runDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
-                1, 6, 0.15f, true);
-        runLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
-                1, 6, 0.15f, true);
-        runRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
-                1, 6, 0.15f, true);
+        walkDown = loadFullAnimation("sprites/player/down/nothing_walk_down.png", 1, 6, 0.15f, true);
+        walkLeft = loadFullAnimation("sprites/player/left/nothing_walk_left.png", 1, 6, 0.15f, true);
+        walkRight = loadFullAnimation("sprites/player/right/nothing_walk_right.png", 1, 6, 0.15f, true);
+        walkUp = loadFullAnimation("sprites/player/up/nothing_walk_up.png", 1, 6, 0.15f, true);
+
+        runDown = loadFullAnimation("sprites/player/down/nothing_run_down.png", 1, 6, 0.15f, true);
+        runLeft = loadFullAnimation("sprites/player/left/nothing_run_left.png", 1, 6, 0.15f, true);
+        runRight = loadFullAnimation("sprites/player/right/nothing_run_right.png", 1, 6, 0.15f, true);
+        runUp = loadFullAnimation("sprites/player/up/nothing_run_up.png", 1, 6, 0.15f, true);
 
 
     }
