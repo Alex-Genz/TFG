@@ -15,7 +15,7 @@ public class Shooter extends Hostiles {
 
         this.weapon = new Pistol();
 
-        super.loadPersistenceMag(s, this.weapon);
+        super.loadPersistenceMag(s, this.weapon, 1, false);
 
     }
 

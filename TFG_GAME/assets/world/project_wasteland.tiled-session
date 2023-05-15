@@ -27,8 +27,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1086,
-                "y": 1270
+                "x": 1094.6666666666665,
+                "y": 1309.6666666666665
             }
         },
         "maps/devmap_2.tmx": {
@@ -38,8 +38,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -66.66666666666663,
-                "y": 885.9999999999999
+                "x": -66.66666666666666,
+                "y": 884.3333333333333
             }
         },
         "maps/devmap_3.tmx": {
@@ -68,8 +68,8 @@
             "scale": 1,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 710,
-                "y": 415
+                "x": 708,
+                "y": 412.5
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -80,8 +80,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 477.33333333333326,
-                "y": 117.99999999999997
+                "x": 475.3333333333333,
+                "y": 117.66666666666664
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {

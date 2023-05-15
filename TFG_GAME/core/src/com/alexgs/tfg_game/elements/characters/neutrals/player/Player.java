@@ -1,11 +1,8 @@
 package com.alexgs.tfg_game.elements.characters.neutrals.player;
 
 import com.alexgs.tfg_game.elements.Element;
-import com.alexgs.tfg_game.elements.bullets.Bullet;
-import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
-import com.alexgs.tfg_game.elements.tools.WeaponsParams;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.Gdx;
@@ -14,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.Array;
 
 public class Player extends Characters {
     protected Animation<TextureRegion> idleUp;
@@ -27,7 +23,7 @@ public class Player extends Characters {
     protected Animation<TextureRegion> walkLeft;
     protected Animation<TextureRegion> walkRight;
 
-// INFO: preparation for extra animations
+    // INFO: preparation for extra animations
 // TODO: extract animation sprite strips
     protected Animation<TextureRegion> runUp;
     protected Animation<TextureRegion> runDown;
@@ -46,16 +42,27 @@ public class Player extends Characters {
     protected Animation<TextureRegion> walkRightKnife;
 
 
-    protected Animation<TextureRegion> idleUpGun;
-    protected Animation<TextureRegion> idleDownGun;
-    protected Animation<TextureRegion> idleLeftGun;
-    protected Animation<TextureRegion> idleRightGun;
+    protected Animation<TextureRegion> idleUpPistol;
+    protected Animation<TextureRegion> idleDownPistol;
+    protected Animation<TextureRegion> idleLeftPistol;
+    protected Animation<TextureRegion> idleRightPistol;
 
-    protected Animation<TextureRegion> walkUpGun;
-    protected Animation<TextureRegion> walkDownGun;
-    protected Animation<TextureRegion> walkLeftGun;
-    protected Animation<TextureRegion> walkRightGun;
-    
+    protected Animation<TextureRegion> walkUpPistol;
+    protected Animation<TextureRegion> walkDownPistol;
+    protected Animation<TextureRegion> walkLeftPistol;
+    protected Animation<TextureRegion> walkRightPistol;
+
+
+    protected Animation<TextureRegion> idleUpAr;
+    protected Animation<TextureRegion> idleDownAr;
+    protected Animation<TextureRegion> idleLeftAr;
+    protected Animation<TextureRegion> idleRightAr;
+
+    protected Animation<TextureRegion> walkUpAr;
+    protected Animation<TextureRegion> walkDownAr;
+    protected Animation<TextureRegion> walkLeftAr;
+    protected Animation<TextureRegion> walkRightAr;
+
     private Stage s;
 
     boolean moving = false;
@@ -63,13 +70,13 @@ public class Player extends Characters {
 
     boolean running = false;
 
-// DEPRECATED - 2 lines
+    // DEPRECATED - 2 lines
     Vector2 moveVec;
     Vector2 lastPosVec;
 
     private float lClickActivationTime = 0.30f;
 
-// WARNING! even more experimental code
+    // WARNING! even more experimental code
     private final float ROUNDS_PER_MINUTE = 300;
     private float timeBeforeNextShot = 0;
 
@@ -86,7 +93,7 @@ public class Player extends Characters {
 //        setRectangle();
         setHitbox(this.s);
 
-        loadPersistenceMag(this.s, false);
+        super.loadPersistenceMag(this.s, PlayerParams.currWeapon, 0, false);
 
         moveVec = new Vector2();
         moveVec.x = this.getX();
@@ -99,29 +106,6 @@ public class Player extends Characters {
     }
 
 //    TODO: move this method to Characters.java & adapt for refactorization
-    protected void loadPersistenceMag(Stage s, boolean changeWeapon) {
-        if (changeWeapon) {
-            for (Bullet bullet :
-                    persistenceMag) {
-                bullet.setEnabled(false);
-
-            }
-
-        }
-
-        this.persistenceMag = new Array<>();
-        for (int i = 0; i < PlayerParams.currTool.getPersistenceMagSize(); i++) {
-            this.persistenceMag.add(new BulletFriendly(0, 0, s, lvl,
-                    PlayerParams.currTool.getDmg(),
-                    PlayerParams.currTool.getTimeAllowedToExist()));
-            this.persistenceMag.get(i).setEnabled(false);
-
-        }
-
-        this.currPersistenceBullet = 0;
-        this.shootDir = new Vector2();
-
-    }
 
     private void setHitbox(Stage s) {
         super.hitbox = new Element(this.getX() + 24, this.getY() + 1, s,
@@ -141,12 +125,12 @@ public class Player extends Characters {
         checkMoving();
 
         if (lClickActivationTime >= 0) {
-            lClickActivationTime-=delta;
+            lClickActivationTime -= delta;
 
         }
 
         if (timeBeforeNextShot > 0) {
-            timeBeforeNextShot-=delta;
+            timeBeforeNextShot -= delta;
 
         }
 
@@ -163,10 +147,10 @@ public class Player extends Characters {
         for (Neutrals npc :
                 lvl.neutralNPCs) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-                System.out.println((super.distanceToTarget(npc.getCenteredX(), 
+                System.out.println((super.distanceToTarget(npc.getCenteredX(),
                         npc.getCenteredY()) < 40) ? npc.message :
-                        "not close enough" + super.distanceToTarget(npc.getCenteredX(), 
-                        npc.getCenteredY()));
+                        "not close enough" + super.distanceToTarget(npc.getCenteredX(),
+                                npc.getCenteredY()));
 
             }
 
@@ -175,7 +159,7 @@ public class Player extends Characters {
     }
 
     private void checkMoving() {
-        moving = (Math.abs(this.velocity.x) > 0 || 
+        moving = (Math.abs(this.velocity.x) > 0 ||
                 Math.abs(this.velocity.y) > 0) ? true : false;
 
     }
@@ -183,20 +167,16 @@ public class Player extends Characters {
     private void animate() {
         if (moving) {
             if (this.velocity.x > 0 /*&& Math.abs(this.velocity.x) > Math.abs(this.velocity.y)*/) {
-                this.setAnimation((running) ? runRight : walkRight);
-//                this.setAnimation(walkRight);
+                this.setAnimation((running) ? runRight : setWeaponAnim(walkRightPistol, walkRightAr));
 
             } else if (this.velocity.x < 0 /*&& Math.abs(this.velocity.x) > Math.abs(this.velocity.y)*/) {
-                this.setAnimation((running) ? runLeft : walkLeft);
-//                this.setAnimation(walkLeft);
+                this.setAnimation((running) ? runLeft : setWeaponAnim(walkLeftPistol, walkLeftAr));
 
             } else if (this.velocity.y > 0 && Math.abs(this.velocity.y) > Math.abs(this.velocity.x)) {
-                this.setAnimation((running) ? runUp : walkUp);
-//                this.setAnimation(walkUp);
+                this.setAnimation((running) ? runUp : setWeaponAnim(walkUpPistol, walkUpAr));
 
             } else if (this.velocity.y < 0 && Math.abs(this.velocity.y) > Math.abs(this.velocity.x)) {
-                this.setAnimation((running) ? runDown : walkDown);
-//                this.setAnimation(walkDown);
+                this.setAnimation((running) ? runDown : setWeaponAnim(walkDownPistol, walkDownAr));
 
             }
 
@@ -204,26 +184,39 @@ public class Player extends Characters {
             if (Math.abs((this.lvl.mouseX - this.getCenteredX())) >
                     Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
                 if ((this.lvl.mouseX - this.getCenteredX()) > 0) {
-                    this.setAnimation(idleRight);
+                    this.setAnimation(setWeaponAnim(idleRightPistol, idleRightAr));
 
                 } else if ((this.lvl.mouseX - this.getCenteredX()) < 0) {
-                    this.setAnimation(idleLeft);
+                    this.setAnimation(setWeaponAnim(idleLeftPistol, idleLeftAr));
 
                 }
 
             } else if (Math.abs((this.lvl.mouseX - this.getCenteredX())) <
                     Math.abs((this.lvl.mouseY - this.getCenteredY()))) {
                 if ((this.lvl.mouseY - this.getCenteredY()) > 0) {
-                    this.setAnimation(idleUp);
+                    this.setAnimation(setWeaponAnim(idleUpPistol, idleUpAr));
 
                 } else if ((this.lvl.mouseY - this.getCenteredY()) < 0) {
-                    this.setAnimation(idleDown);
+                    this.setAnimation(setWeaponAnim(idleDownPistol, idleDownAr));
 
                 }
 
             }
 
         }
+
+    }
+
+    private Animation<TextureRegion> setWeaponAnim(Animation<TextureRegion> anim1, Animation<TextureRegion> anim2) {
+        switch (PlayerParams.chosenWeapon) {
+            case 0:
+                return anim1;
+
+            case 1:
+                return anim2;
+
+        }
+        return null;
 
     }
 
@@ -260,28 +253,6 @@ public class Player extends Characters {
 
     }
 
-// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-    private void shoot() {
-        final int PROJECTILE_OFFSET = (int) persistenceMag.get(0).getWidth() / 2;
-        
-        this.shootDir.x = lvl.mouseX - this.getCenteredX();
-        this.shootDir.y = lvl.mouseY - this.getCenteredY();
-
-//        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
-
-        shootDir = shootDir.nor();
-
-        this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX() -
-                PROJECTILE_OFFSET, this.getCenteredY() - PROJECTILE_OFFSET,
-                this.shootDir.x * PlayerParams.currTool.getBulletSpeed(),
-                this.shootDir.y * PlayerParams.currTool.getBulletSpeed());
-
-//        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
-        this.currPersistenceBullet = (this.currPersistenceBullet + 1) %
-                PlayerParams.currTool.getPersistenceMagSize();
-
-    }
-
     private void movement() {
         int speed = (running) ? SPEED * 2 : SPEED;
 
@@ -307,9 +278,9 @@ public class Player extends Characters {
             running = !running;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
-            if (PlayerParams.currTool.isCanSwitchFireMode()) {
-                PlayerParams.currTool.isInFullAuto = !PlayerParams.currTool.isInFullAuto;
-                System.out.println(PlayerParams.currTool.isInFullAuto);
+            if (PlayerParams.currWeapon.isCanSwitchFireMode()) {
+                PlayerParams.currWeapon.isInFullAuto = !PlayerParams.currWeapon.isInFullAuto;
+                System.out.println(PlayerParams.currWeapon.isInFullAuto);
 
             } else
                 System.out.println("weapon cannot switch fire modes");
@@ -318,23 +289,23 @@ public class Player extends Characters {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
             PlayerParams.chosenWeapon = (PlayerParams.chosenWeapon == 1) ? 0 : 1;
-            PlayerParams.currTool = PlayerParams.weaponInv[PlayerParams.chosenWeapon];
-            loadPersistenceMag(this.s, true);
+            PlayerParams.currWeapon = PlayerParams.weaponInv[PlayerParams.chosenWeapon];
+            loadPersistenceMag(this.s, PlayerParams.currWeapon, 0, true);
 
         }
 
         if (this.velocity.x == 0 && this.velocity.y == 0 &&
                 lClickActivationTime <= 0) {
             if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
-                    !PlayerParams.currTool.isInFullAuto) {
-                shoot();
+                    !PlayerParams.currWeapon.isInFullAuto) {
+                super.shoot(PlayerParams.currWeapon);
 
             }
             if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
-                    PlayerParams.currTool.isInFullAuto) {
+                    PlayerParams.currWeapon.isInFullAuto) {
                 if (timeBeforeNextShot <= 0) {
-                    shoot();
-                    timeBeforeNextShot = 60 / PlayerParams.currTool.getRoundsPerMinute();
+                    super.shoot(PlayerParams.currWeapon);
+                    timeBeforeNextShot = 60 / PlayerParams.currWeapon.getRoundsPerMinute();
 
                 }
 
@@ -351,7 +322,7 @@ public class Player extends Characters {
 
     }
 
-//    DEPRECATED
+    //    DEPRECATED
     private void stopMov() {
         this.velocity.x = 0;
         this.velocity.y = 0;
@@ -360,7 +331,7 @@ public class Player extends Characters {
 
     }
 
-//    DEPRECATED
+    //    DEPRECATED
     private void moveMe(float tgtX, float tgtY, int dir) {
         lastPosVec.x = this.getX();
         lastPosVec.y = this.getY();
@@ -378,37 +349,12 @@ public class Player extends Characters {
     }
 
     private void setAnimations() {
-//        idleUp = loadFullAnimation("sprites/player/up/hgun_idle_up.png",
-//                1, 1, 0, true);
-//        idleDown = loadFullAnimation("sprites/player/down/hgun_idle_down.png",
-//                1, 1, 0, true);
-//        idleLeft = loadFullAnimation("sprites/player/left/hgun_idle_left.png",
-//                1, 1, 0, true);
-//        idleRight = loadFullAnimation("sprites/player/right/hgun_idle_right.png",
-//                1, 1, 0, true);
-//
-//        walkUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
-//                1, 6, 0.15f, true);
-//        walkDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
-//                1, 6, 0.15f, true);
-//        walkLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
-//                1, 6, 0.15f, true);
-//        walkRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
-//                1, 6, 0.15f, true);
-//
-//        runUp = loadFullAnimation("sprites/player/up/hgun_walk_up.png",
-//                1, 6, 0.15f, true);
-//        runDown = loadFullAnimation("sprites/player/down/hgun_walk_down.png",
-//                1, 6, 0.15f, true);
-//        runLeft = loadFullAnimation("sprites/player/left/hgun_walk_left.png",
-//                1, 6, 0.15f, true);
-//        runRight = loadFullAnimation("sprites/player/right/hgun_walk_right.png",
-//                1, 6, 0.15f, true);
-
         idleDown = loadFullAnimation("sprites/player/down/nothing_idle_down.png", 1, 1, 0, true);
         idleLeft = loadFullAnimation("sprites/player/left/nothing_idle_left.png", 1, 1, 0, true);
         idleRight = loadFullAnimation("sprites/player/right/nothing_idle_right.png", 1, 1, 0, true);
         idleUp = loadFullAnimation("sprites/player/up/nothing_idle_up.png", 1, 1, 0, true);
+
+//
 
         walkDown = loadFullAnimation("sprites/player/down/nothing_walk_down.png", 1, 6, 0.15f, true);
         walkLeft = loadFullAnimation("sprites/player/left/nothing_walk_left.png", 1, 6, 0.15f, true);
@@ -419,6 +365,30 @@ public class Player extends Characters {
         runLeft = loadFullAnimation("sprites/player/left/nothing_run_left.png", 1, 6, 0.15f, true);
         runRight = loadFullAnimation("sprites/player/right/nothing_run_right.png", 1, 6, 0.15f, true);
         runUp = loadFullAnimation("sprites/player/up/nothing_run_up.png", 1, 6, 0.15f, true);
+
+//
+
+        idleDownPistol = loadFullAnimation("sprites/player/down/pistol_idle_down.png", 1, 1, 0, true);
+        idleLeftPistol = loadFullAnimation("sprites/player/left/pistol_idle_left.png", 1, 1, 0, true);
+        idleRightPistol = loadFullAnimation("sprites/player/right/pistol_idle_right.png", 1, 1, 0, true);
+        idleUpPistol = loadFullAnimation("sprites/player/up/pistol_idle_up.png", 1, 1, 0, true);
+
+        walkDownPistol = loadFullAnimation("sprites/player/down/pistol_walk_down.png", 1, 6, 0.15f, true);
+        walkLeftPistol = loadFullAnimation("sprites/player/left/pistol_walk_left.png", 1, 6, 0.15f, true);
+        walkRightPistol = loadFullAnimation("sprites/player/right/pistol_walk_right.png", 1, 6, 0.15f, true);
+        walkUpPistol = loadFullAnimation("sprites/player/up/pistol_walk_up.png", 1, 6, 0.15f, true);
+
+//
+
+        idleDownAr = loadFullAnimation("sprites/player/down/ar_idle_down.png", 1, 1, 0, true);
+        idleLeftAr = loadFullAnimation("sprites/player/left/ar_idle_left.png", 1, 1, 0, true);
+        idleRightAr = loadFullAnimation("sprites/player/right/ar_idle_right.png", 1, 1, 0, true);
+        idleUpAr = loadFullAnimation("sprites/player/up/ar_idle_up.png", 1, 1, 0, true);
+
+        walkDownAr = loadFullAnimation("sprites/player/down/ar_walk_down.png", 1, 6, 0.15f, true);
+        walkLeftAr = loadFullAnimation("sprites/player/left/ar_walk_left.png", 1, 6, 0.15f, true);
+        walkRightAr = loadFullAnimation("sprites/player/right/pistol_walk_right.png", 1, 6, 0.15f, true);
+        walkUpAr = loadFullAnimation("sprites/player/up/ar_walk_up.png", 1, 6, 0.15f, true);
 
 
     }

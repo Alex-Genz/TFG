@@ -2,6 +2,9 @@ package com.alexgs.tfg_game.elements.characters;
 
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.bullets.Bullet;
+import com.alexgs.tfg_game.elements.bullets.BulletEnemy;
+import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
+import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -48,6 +51,54 @@ public class Characters extends Element {
         super.act(delta);
 
         this.applyPhysics(delta);
+
+    }
+
+    protected void loadPersistenceMag(Stage s, Weapons weapon, int team, boolean changeWeapon) {
+        if (changeWeapon) {
+            for (Bullet bullet :
+                    persistenceMag) {
+                bullet.setEnabled(false);
+
+            }
+
+        }
+
+        this.persistenceMag = new Array<>();
+        for (int i = 0; i < weapon.getPersistenceMagSize(); i++) {
+            this.persistenceMag.add((team == 0) ? new BulletFriendly(0, 0, s, lvl,
+                    weapon.getDmg(),
+                    weapon.getTimeAllowedToExist()) :
+                    new BulletEnemy(0, 0, s, lvl,
+                    weapon.getDmg(),
+                    weapon.getTimeAllowedToExist()));
+            this.persistenceMag.get(i).setEnabled(false);
+
+        }
+
+        this.currPersistenceBullet = 0;
+        this.shootDir = new Vector2();
+
+    }
+
+    protected void shoot(Weapons weapon) {
+        final int PROJECTILE_OFFSET = (int) persistenceMag.get(0).getWidth() / 2;
+
+        this.shootDir.x = lvl.mouseX - this.getCenteredX();
+        this.shootDir.y = lvl.mouseY - this.getCenteredY();
+
+//        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
+
+        shootDir = shootDir.nor();
+
+        this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX() -
+                        PROJECTILE_OFFSET, this.getCenteredY() - PROJECTILE_OFFSET,
+                this.shootDir.x * weapon.getBulletSpeed(),
+                this.shootDir.y * weapon.getBulletSpeed());
+
+//        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
+        this.currPersistenceBullet = (this.currPersistenceBullet + 1) %
+                weapon.getPersistenceMagSize();
 
     }
 

@@ -32,7 +32,7 @@ public final class ResourceManager {
     private static final String[] CITIZEN_SPRITES = {"walk_down.png", "walk_left.png", "walk_right.png",
             "walk_up.png", "idle_down.png", "idle_left.png", "idle_right.png", "idle_up.png"};
 
-    private static final String prefix = "nothing_";
+    private static final String[] prefixes = {"nothing_", "pistol_", "ar_"};
     private static final String[] status = {"idle_", "walk_", "run_"};
     private static final String[] dir = {"down", "left", "right", "up"};
 
@@ -89,13 +89,20 @@ public final class ResourceManager {
          */
 
 //        player
-        for (String dirStr :
-                dir) {
-            for (String statusStr :
-                    status) {
-                assets.load("sprites/player/" + dirStr + "/" + prefix + statusStr + dirStr + ".png",
-                        Texture.class);
-                System.out.println("sprites/player/" + dirStr + "/" + prefix + statusStr + dirStr + ".png loaded!");
+        for (String prefix :
+                prefixes) {
+            for (String dirStr :
+                    dir) {
+                for (String statusStr :
+                        status) {
+                    if (statusStr.equals("run_") && !prefix.equals("nothing_"))
+                        continue;
+
+                    assets.load("sprites/player/" + dirStr + "/" + prefix + statusStr + dirStr + ".png",
+                            Texture.class);
+                    System.out.println("sprites/player/" + dirStr + "/" + prefix + statusStr + dirStr + ".png loaded!");
+
+                }
 
             }
 

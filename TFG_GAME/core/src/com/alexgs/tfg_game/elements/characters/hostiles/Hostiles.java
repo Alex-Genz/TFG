@@ -118,21 +118,6 @@ public class Hostiles extends Characters {
 
     }
 
-    protected void loadPersistenceMag(Stage s, Weapons weapon) {
-        this.persistenceMag = new Array<>();
-        for (int i = 0; i < weapon.getPersistenceMagSize(); i++) {
-            this.persistenceMag.add(new BulletEnemy(0, 0, s, lvl,
-                    weapon.getDmg(),
-                    weapon.getTimeAllowedToExist()));
-            this.persistenceMag.get(i).setEnabled(false);
-
-        }
-
-        this.currPersistenceBullet = 0;
-        this.shootDir = new Vector2();
-
-    }
-
 
 
     protected void assignCharacter(int charNum) {
