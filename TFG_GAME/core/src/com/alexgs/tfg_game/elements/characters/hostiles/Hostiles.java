@@ -1,11 +1,16 @@
 package com.alexgs.tfg_game.elements.characters.hostiles;
 
 import com.alexgs.tfg_game.elements.Element;
+import com.alexgs.tfg_game.elements.bullets.Bullet;
+import com.alexgs.tfg_game.elements.bullets.BulletEnemy;
 import com.alexgs.tfg_game.elements.characters.Characters;
+import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 
 public class Hostiles extends Characters {
 //    temporal
@@ -77,11 +82,11 @@ public class Hostiles extends Characters {
     public void act(float delta) {
         super.act(delta);
 
-        super.applyPhysics(delta);
-
         updateHitbox();
 
-        if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 60) {
+        System.out.println(Math.abs(this.velocity.x) + " | " + Math.abs(this.velocity.y));
+
+        if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 80) {
             if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
                 currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
 
@@ -92,7 +97,7 @@ public class Hostiles extends Characters {
             }
 
         } else {
-            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 20) {
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 45) {
                 super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), 60);
                 super.animations();
 
@@ -112,6 +117,23 @@ public class Hostiles extends Characters {
         }
 
     }
+
+    protected void loadPersistenceMag(Stage s, Weapons weapon) {
+        this.persistenceMag = new Array<>();
+        for (int i = 0; i < weapon.getPersistenceMagSize(); i++) {
+            this.persistenceMag.add(new BulletEnemy(0, 0, s, lvl,
+                    weapon.getDmg(),
+                    weapon.getTimeAllowedToExist()));
+            this.persistenceMag.get(i).setEnabled(false);
+
+        }
+
+        this.currPersistenceBullet = 0;
+        this.shootDir = new Vector2();
+
+    }
+
+
 
     protected void assignCharacter(int charNum) {
         super.idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),

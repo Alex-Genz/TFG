@@ -3,12 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/town_map.tmx",
+    "activeFile": "maps/spawn_map_b.tmx",
+    "console.history": [
+        "ls",
+        "dir",
+        "help"
+    ],
     "expandedProjectPaths": [
         "worlds",
         "maps",
-        ".",
-        "tilesets"
+        "tilesets",
+        "."
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -20,21 +25,21 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 11,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 296.66666666666663,
-                "y": 903.6666666666665
+                "x": 1086,
+                "y": 1270
             }
         },
         "maps/devmap_2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 0.75,
-            "selectedLayer": 11,
+            "scale": 1.5,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": -118,
-                "y": 322.66666666666663
+                "x": -66.66666666666663,
+                "y": 885.9999999999999
             }
         },
         "maps/devmap_3.tmx": {
@@ -60,11 +65,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 1166,
-                "y": 347.99999999999994
+                "x": 710,
+                "y": 415
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -72,11 +77,11 @@
             "scaleInEditor": 2
         },
         "maps/town_map.tmx": {
-            "scale": 0.33,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 571.2121212121212,
-                "y": 648.4848484848487
+                "x": 477.33333333333326,
+                "y": 117.99999999999997
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -109,7 +114,7 @@
         },
         "tilesets/bricks.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1.5
+            "scaleInEditor": 4
         },
         "tilesets/pngkit_tile-png_2654326.tsx": {
             "scaleInDock": 1,
@@ -146,10 +151,10 @@
     },
     "frame.defaultDuration": 450,
     "last.imagePath": "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/tilesets",
-    "last.worldFilePath": "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds",
+    "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
+    "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world",
-        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/testworld.world"
+        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 32,
     "map.lastUsedFormat": "tmx",
@@ -166,8 +171,8 @@
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileE.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
-        "maps/town_map.tmx",
-        "tilesets/bricks.tsx"
+        "tilesets/bricks.tsx",
+        "maps/town_map.tmx"
     ],
     "project": "project_wasteland.tiled-project",
     "property.type": "bool",
@@ -175,15 +180,15 @@
         "maps/devmap_1.tmx",
         "maps/devmap_2.tmx",
         "tilesets/spawn_tiles.tsx",
-        "maps/spawn_map_b.tmx",
-        "tilesets/Refmap-TileA5.tsx",
-        "tilesets/Refmap-TileB.tsx",
-        "tilesets/Refmap-TileC.tsx",
-        "tilesets/Refmap-TileD.tsx",
-        "tilesets/Refmap-TileE.tsx",
-        "tilesets/pngkit_tile-png_2654326.tsx",
+        "maps/town_map.tmx",
         "tilesets/bricks.tsx",
-        "maps/town_map.tmx"
+        "tilesets/pngkit_tile-png_2654326.tsx",
+        "tilesets/Refmap-TileE.tsx",
+        "tilesets/Refmap-TileD.tsx",
+        "tilesets/Refmap-TileC.tsx",
+        "tilesets/Refmap-TileB.tsx",
+        "tilesets/Refmap-TileA5.tsx",
+        "maps/spawn_map_b.tmx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",

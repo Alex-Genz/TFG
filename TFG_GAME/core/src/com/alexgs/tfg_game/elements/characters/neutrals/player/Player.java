@@ -69,15 +69,6 @@ public class Player extends Characters {
 
     private float lClickActivationTime = 0.30f;
 
-// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-    private Array<Bullet> persistenceMag;
-    private final int PERSISTENCE_MAG_SIZE = 1;
-    private int currPersistenceBullet;
-    private Vector2 shootDir;
-
-    private boolean isInFullAuto = false;
-    private final boolean CAN_SWITCH_FIRE_MODE = false;
-
 // WARNING! even more experimental code
     private final float ROUNDS_PER_MINUTE = 300;
     private float timeBeforeNextShot = 0;
@@ -107,8 +98,8 @@ public class Player extends Characters {
 
     }
 
-// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-    private void loadPersistenceMag(Stage s, boolean changeWeapon) {
+//    TODO: move this method to Characters.java & adapt for refactorization
+    protected void loadPersistenceMag(Stage s, boolean changeWeapon) {
         if (changeWeapon) {
             for (Bullet bullet :
                     persistenceMag) {
@@ -161,8 +152,6 @@ public class Player extends Characters {
 
 //        System.out.println(delta + " | " + animationTime);
 
-        this.applyPhysics(delta);
-
     }
 
     private void updateHitbox() {
@@ -193,19 +182,19 @@ public class Player extends Characters {
 
     private void animate() {
         if (moving) {
-            if (this.velocity.x > 0) {
+            if (this.velocity.x > 0 /*&& Math.abs(this.velocity.x) > Math.abs(this.velocity.y)*/) {
                 this.setAnimation((running) ? runRight : walkRight);
 //                this.setAnimation(walkRight);
 
-            } else if (this.velocity.x < 0) {
+            } else if (this.velocity.x < 0 /*&& Math.abs(this.velocity.x) > Math.abs(this.velocity.y)*/) {
                 this.setAnimation((running) ? runLeft : walkLeft);
 //                this.setAnimation(walkLeft);
 
-            } else if (this.velocity.y > 0) {
+            } else if (this.velocity.y > 0 && Math.abs(this.velocity.y) > Math.abs(this.velocity.x)) {
                 this.setAnimation((running) ? runUp : walkUp);
 //                this.setAnimation(walkUp);
 
-            } else if (this.velocity.y < 0) {
+            } else if (this.velocity.y < 0 && Math.abs(this.velocity.y) > Math.abs(this.velocity.x)) {
                 this.setAnimation((running) ? runDown : walkDown);
 //                this.setAnimation(walkDown);
 

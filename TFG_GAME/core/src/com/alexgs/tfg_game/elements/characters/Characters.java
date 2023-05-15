@@ -1,11 +1,13 @@
 package com.alexgs.tfg_game.elements.characters;
 
 import com.alexgs.tfg_game.elements.Element;
+import com.alexgs.tfg_game.elements.bullets.Bullet;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 
 public class Characters extends Element {
     public MainScreen lvl;
@@ -19,6 +21,10 @@ public class Characters extends Element {
     protected float pathSizeY;
 
     private Vector2 moveToVec;
+
+    protected Array<Bullet> persistenceMag;
+    protected int currPersistenceBullet;
+    protected Vector2 shootDir;
 
     protected Animation<TextureRegion> idleUp;
     protected Animation<TextureRegion> idleDown;
@@ -40,6 +46,8 @@ public class Characters extends Element {
 
     public void act(float delta) {
         super.act(delta);
+
+        this.applyPhysics(delta);
 
     }
 
@@ -121,16 +129,16 @@ public class Characters extends Element {
     }
 
     protected void animations() {
-        if (this.velocity.x > 0) {
+        if (this.velocity.x > 0 && Math.abs(this.velocity.x) > Math.abs(this.velocity.y)) {
             this.setAnimation(walkRight);
 
-        } else if (this.velocity.x < 0) {
+        } else if (this.velocity.x < 0 && Math.abs(this.velocity.x) > Math.abs(this.velocity.y)) {
             this.setAnimation(walkLeft);
 
-        } else if (this.velocity.y > 0) {
+        } else if (this.velocity.y > 0 && Math.abs(this.velocity.y) > Math.abs(this.velocity.x)) {
             this.setAnimation(walkUp);
 
-        } else if (this.velocity.y < 0) {
+        } else if (this.velocity.y < 0 && Math.abs(this.velocity.y) > Math.abs(this.velocity.x)) {
             this.setAnimation(walkDown);
 
         }

@@ -1,7 +1,7 @@
 package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
-import com.alexgs.tfg_game.elements.characters.hostiles.HostileOne;
+import com.alexgs.tfg_game.elements.characters.hostiles.Stabber;
 import com.alexgs.tfg_game.elements.characters.hostiles.Hostiles;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.NeutralOne;
@@ -134,7 +134,7 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "enemy":
-                    this.hostiles.add(new HostileOne((float) props.get("x") - this.tileWidth,
+                    this.hostiles.add(new Stabber((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("skin"),
                             Float.parseFloat(props.get("path_size_x").toString()),
                             Float.parseFloat(props.get("path_size_y").toString())));
@@ -246,10 +246,28 @@ public class MainScreen extends BScreen {
     }
 
     private void checkCollisions() {
-        for (SolidLow solidLowObj :
+        for (SolidLow solidObj :
                 loSolids) {
-            if (solidLowObj.getEnabled() && solidLowObj.overlaps(player)) {
-                player.preventOverlap(solidLowObj);
+            if (solidObj.getEnabled() && solidObj.overlaps(player)) {
+                player.preventOverlap(solidObj);
+
+            }
+
+            for (Neutrals npc :
+                    neutralNPCs) {
+                if (solidObj.getEnabled() && npc.getEnabled() && solidObj.overlaps(npc)) {
+                    npc.preventOverlap(solidObj);
+
+                }
+
+            }
+
+            for (Hostiles enemy :
+                    hostiles) {
+                if (solidObj.getEnabled() && enemy.getEnabled() && solidObj.overlaps(enemy)) {
+                    enemy.preventOverlap(solidObj);
+
+                }
 
             }
 
