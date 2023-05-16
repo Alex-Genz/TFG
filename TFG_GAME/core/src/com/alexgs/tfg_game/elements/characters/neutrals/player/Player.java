@@ -298,13 +298,13 @@ public class Player extends Characters {
                 lClickActivationTime <= 0) {
             if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
                     !PlayerParams.currWeapon.isInFullAuto) {
-                super.shoot(PlayerParams.currWeapon);
+                super.shoot(PlayerParams.currWeapon, lvl.mouseX, lvl.mouseY);
 
             }
             if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
                     PlayerParams.currWeapon.isInFullAuto) {
                 if (timeBeforeNextShot <= 0) {
-                    super.shoot(PlayerParams.currWeapon);
+                    super.shoot(PlayerParams.currWeapon, lvl.mouseX, lvl.mouseY);
                     timeBeforeNextShot = 60 / PlayerParams.currWeapon.getRoundsPerMinute();
 
                 }
@@ -387,7 +387,7 @@ public class Player extends Characters {
 
         walkDownAr = loadFullAnimation("sprites/player/down/ar_walk_down.png", 1, 6, 0.15f, true);
         walkLeftAr = loadFullAnimation("sprites/player/left/ar_walk_left.png", 1, 6, 0.15f, true);
-        walkRightAr = loadFullAnimation("sprites/player/right/pistol_walk_right.png", 1, 6, 0.15f, true);
+        walkRightAr = loadFullAnimation("sprites/player/right/ar_walk_right.png", 1, 6, 0.15f, true);
         walkUpAr = loadFullAnimation("sprites/player/up/ar_walk_up.png", 1, 6, 0.15f, true);
 
 

@@ -81,11 +81,32 @@ public class Characters extends Element {
 
     }
 
-    protected void shoot(Weapons weapon) {
+    protected void shoot(Weapons weapon, Vector2 tgtCentered) {
         final int PROJECTILE_OFFSET = (int) persistenceMag.get(0).getWidth() / 2;
 
-        this.shootDir.x = lvl.mouseX - this.getCenteredX();
-        this.shootDir.y = lvl.mouseY - this.getCenteredY();
+        this.shootDir.x = tgtCentered.x - this.getCenteredX();
+        this.shootDir.y = tgtCentered.y - this.getCenteredY();
+
+//        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
+
+        shootDir = shootDir.nor();
+
+        this.persistenceMag.get(currPersistenceBullet).fire(this.getCenteredX() -
+                        PROJECTILE_OFFSET, this.getCenteredY() - PROJECTILE_OFFSET,
+                this.shootDir.x * weapon.getBulletSpeed(),
+                this.shootDir.y * weapon.getBulletSpeed());
+
+//        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
+        this.currPersistenceBullet = (this.currPersistenceBullet + 1) %
+                weapon.getPersistenceMagSize();
+
+    }
+
+    protected void shoot(Weapons weapon, float tgtCenteredX, float tgtCenteredY) {
+        final int PROJECTILE_OFFSET = (int) persistenceMag.get(0).getWidth() / 2;
+
+        this.shootDir.x = tgtCenteredX - this.getCenteredX();
+        this.shootDir.y = tgtCenteredY - this.getCenteredY();
 
 //        System.out.println("BANG BANG!!" + " ||| " + this.shootDir.x + " | " + this.shootDir.y);
 

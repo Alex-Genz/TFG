@@ -1,11 +1,9 @@
 package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
-import com.alexgs.tfg_game.elements.characters.hostiles.Stabber;
-import com.alexgs.tfg_game.elements.characters.hostiles.Hostiles;
+import com.alexgs.tfg_game.elements.characters.hostiles.*;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
-import com.alexgs.tfg_game.elements.characters.neutrals.NeutralOne;
-import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
+import com.alexgs.tfg_game.elements.characters.neutrals.*;
 import com.alexgs.tfg_game.managers.ResourceManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
@@ -27,6 +25,7 @@ import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
@@ -134,7 +133,7 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "enemy":
-                    this.hostiles.add(new Stabber((float) props.get("x") - this.tileWidth,
+                    this.hostiles.add(new Shooter((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("skin"),
                             Float.parseFloat(props.get("path_size_x").toString()),
                             Float.parseFloat(props.get("path_size_y").toString())));
@@ -227,9 +226,7 @@ public class MainScreen extends BScreen {
         mouse3d.y = Gdx.input.getY();
         mouse3d.z = 0;
 
-        cam.unproject(mouse3d);
-        mouseX = mouse3d.x;
-        mouseY = mouse3d.y;
+        setMouseCoord();
 
         ren.setView(cam);
         ren.render();
@@ -242,6 +239,14 @@ public class MainScreen extends BScreen {
         ren.render(new int[]{10});
 
         uiStage.draw();
+
+    }
+
+    private void setMouseCoord() {
+        cam.unproject(mouse3d);
+
+        mouseX = mouse3d.x;
+        mouseY = mouse3d.y;
 
     }
 

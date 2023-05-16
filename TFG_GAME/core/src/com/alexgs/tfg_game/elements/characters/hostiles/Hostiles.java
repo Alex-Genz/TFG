@@ -84,8 +84,6 @@ public class Hostiles extends Characters {
 
         updateHitbox();
 
-        System.out.println(Math.abs(this.velocity.x) + " | " + Math.abs(this.velocity.y));
-
         if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 80) {
             if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
                 currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
@@ -97,7 +95,7 @@ public class Hostiles extends Characters {
             }
 
         } else {
-            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 45) {
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 55) {
                 super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), 60);
                 super.animations();
 
@@ -107,12 +105,6 @@ public class Hostiles extends Characters {
                 super.animations(lvl.player.getCenteredPos());
 
             }
-
-        }
-
-        if (distanceToTarget(lvl.player.getCenteredX(),
-                lvl.player.getCenteredY()) < 80) {
-            System.out.println("WAAAARGHHHH!!!");
 
         }
 
