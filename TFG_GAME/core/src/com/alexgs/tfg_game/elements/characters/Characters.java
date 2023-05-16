@@ -160,8 +160,6 @@ public class Characters extends Element {
         pathPoints[1].x = this.getCenteredX() - (pathSizeX * this.lvl.getTileWidth());
         pathPoints[1].y = this.getCenteredY() - (pathSizeY * this.lvl.getTileHeight());
 
-        System.out.println(pathPoints[0].x + ", " + pathPoints[0].y + " ||| " + pathPoints[1].x + ", " + pathPoints[1].y);
-
     }
 
     protected void animations(float targetX, float targetY) {

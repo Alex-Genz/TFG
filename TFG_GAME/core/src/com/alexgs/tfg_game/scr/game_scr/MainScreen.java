@@ -9,9 +9,7 @@ import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
 import com.alexgs.tfg_game.scr.util.ActorComparator;
-import com.alexgs.tfg_game.solids.SolidHigh;
-import com.alexgs.tfg_game.solids.SolidLow;
-import com.alexgs.tfg_game.solids.Teleporter;
+import com.alexgs.tfg_game.solids.*;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
@@ -25,7 +23,6 @@ import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
@@ -81,7 +78,6 @@ public class MainScreen extends BScreen {
 //        map
         if (GameParams.touchedTeleporter == null) {
             map = resourceManager.getMap("world/maps/spawn_map_b.tmx");
-//            map = resourceManager.getMap("world/maps/devmap_1.tmx");
             this.playerHasTeleported = false;
 
         } else {
@@ -116,7 +112,8 @@ public class MainScreen extends BScreen {
             switch (props.get("spawn").toString()) {
                 case "player":
                     if (!playerHasTeleported) {
-                        player = new Player((float) props.get("x"), (float) props.get("y"), mainStage, this);
+                        player = new Player((float) props.get("x"),
+                                (float) props.get("y"), mainStage, this);
                         this.playerHasSpawn = true;
 
                     }
@@ -152,8 +149,10 @@ public class MainScreen extends BScreen {
         instantiateSolids(props);
 
         if (playerHasTeleported) {
-            player = new Player(playerTpSpawnX + (GameParams.touchedTeleporter.tpTgtOffsetX * tileWidth),
-                    playerTpSpawnY + (GameParams.touchedTeleporter.tpTgtOffsetY * tileHeight), mainStage, this);
+            player = new Player(playerTpSpawnX +
+                    (GameParams.touchedTeleporter.tpTgtOffsetX * tileWidth),
+                    playerTpSpawnY + (GameParams.touchedTeleporter.tpTgtOffsetY * tileHeight),
+                    mainStage, this);
 
             this.playerHasSpawn = true;
 
@@ -167,7 +166,6 @@ public class MainScreen extends BScreen {
 
 //        cam
         cam = (OrthographicCamera) mainStage.getCamera();
-//        cam.setToOrtho(false, GameParams.SCR_WIDTH * GameParams.ZOOM, GameParams.SCR_HEIGHT * GameParams.ZOOM);
         cam.setToOrtho(false, GameParams.scrWidth * GameParams.ZOOM,
                 GameParams.scrHeight * GameParams.ZOOM);
         ren.setView(cam);
@@ -281,17 +279,12 @@ public class MainScreen extends BScreen {
         for (Teleporter tpObj :
                 teleporters) {
             if (tpObj.getEnabled() && !tpObj.noReturn && tpObj.overlaps(player)) {
-//                System.out.println("teleported touched");
                 //        tp target reserve purge
                 GameParams.touchedTeleporter = null;
 
                 GameParams.touchedTeleporter = tpObj;
 
                 game.setScreen(new MainScreen(game));
-
-/*                System.out.println(GameParams.touchedTeleporter.tpTgtOffsetX +
-                        " | " + GameParams.touchedTeleporter.tpTgtOffsetY +
-                        " | " + GameParams.touchedTeleporter.tgtMapPath);*/
 
             }
 
@@ -311,8 +304,6 @@ public class MainScreen extends BScreen {
     private void centerCam() {
         this.cam.position.x = camCollimator(this.player.getCenteredX());
         this.cam.position.y = camCollimator(this.player.getCenteredY());
-//        this.cam.position.x = this.player.getCenteredX();
-//        this.cam.position.y = this.player.getCenteredY();
 
         this.cam.position.x = MathUtils.clamp(this.cam.position.x, this.cam.viewportWidth / 2,
                 this.mapWidthRaw - this.cam.viewportWidth / 2);
@@ -348,15 +339,12 @@ public class MainScreen extends BScreen {
     }
 
     private void instantiateSolids(MapProperties props) {
-        SolidHigh solidHigh;
-        SolidLow solidLow;
         for (MapObject solidObj :
                 getRectangleList("sRecHi", "type")) {
             props = solidObj.getProperties();
-            solidHigh = new SolidHigh((float) props.get("x"), (float) props.get("y"),
-                    mainStage, (float) props.get("width"), (float) props.get("height"));
 
-            hiSolids.add(solidHigh);
+            hiSolids.add(new SolidHigh((float) props.get("x"), (float) props.get("y"),
+                    mainStage, (float) props.get("width"), (float) props.get("height")));
 
             loSolids.add(new SolidLow((float) props.get("x"), (float) props.get("y"),
                     mainStage, (float) props.get("width"), (float) props.get("height")));
@@ -396,9 +384,8 @@ public class MainScreen extends BScreen {
                     props.get("tgt_id").toString(),
                     Boolean.parseBoolean(props.get("no_return").toString()));
 
-//            System.out.println("teleported found and loaded");
-
-            if (GameParams.touchedTeleporter != null && teleporter.tpId.equals(GameParams.touchedTeleporter.tgtTpId)) {
+            if (GameParams.touchedTeleporter != null &&
+                    teleporter.tpId.equals(GameParams.touchedTeleporter.tgtTpId)) {
                 this.playerTpSpawnX = teleporter.getX();
                 this.playerTpSpawnY = teleporter.getY();
 
@@ -416,9 +403,11 @@ public class MainScreen extends BScreen {
             for (MapObject obj : layer.getObjects()) {
                 if (!(obj instanceof RectangleMapObject))
                     continue;
+
                 MapProperties props = obj.getProperties();
                 if (props.containsKey(property) && props.get(property).equals(propertyAttrib)) {
                     list.add(obj);
+
                 }
 
             }
@@ -426,6 +415,7 @@ public class MainScreen extends BScreen {
         }
 
         return list;
+
     }
 
     public ArrayList<Polygon> getPolygonList(String propertyAttrib, String property) {
@@ -438,11 +428,13 @@ public class MainScreen extends BScreen {
 
                 if (!(obj instanceof PolygonMapObject))
                     continue;
+
                 MapProperties props = obj.getProperties();
                 if (props.containsKey(property) && props.get(property).equals(propertyAttrib)) {
 
                     poly = ((PolygonMapObject) obj).getPolygon();
                     list.add(poly);
+
                 }
 
             }
@@ -450,6 +442,7 @@ public class MainScreen extends BScreen {
         }
 
         return list;
+
     }
 
 
@@ -475,9 +468,11 @@ public class MainScreen extends BScreen {
 
                     if (props.containsKey(key))
                         continue;
+
                     else {
                         Object value = defaultProps.get(key);
                         props.put(key, value);
+
                     }
 
                 }
@@ -487,6 +482,7 @@ public class MainScreen extends BScreen {
         }
 
         return list;
+
     }
 
     public int getMapWidthRaw() {

@@ -1,19 +1,12 @@
 package com.alexgs.tfg_game.elements.characters.hostiles;
 
 import com.alexgs.tfg_game.elements.Element;
-import com.alexgs.tfg_game.elements.bullets.Bullet;
-import com.alexgs.tfg_game.elements.bullets.BulletEnemy;
 import com.alexgs.tfg_game.elements.characters.Characters;
-import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.Array;
 
 public class Hostiles extends Characters {
-//    temporal
+    //    temporal
     public final String PATHS = "sprites/npcs/";
     public final String EXTENSION = ".png";
     public final String[][] CHARACTER_SPRITES =
@@ -51,7 +44,8 @@ public class Hostiles extends Characters {
             };
 
 
-    public Hostiles(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY) {
+    public Hostiles(float x, float y, Stage s, MainScreen lvl,
+                    int charNum, float pathSizeX, float pathSizeY) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
@@ -61,7 +55,8 @@ public class Hostiles extends Characters {
         super.pathSizeX = pathSizeX;
         super.pathSizeY = pathSizeY;
 
-        setPolygon(8, this.getWidth() / 3, this.getHeight() / 4, 22, 0);
+        setPolygon(8, this.getWidth() / 3,
+                this.getHeight() / 4, 22, 0);
 
         super.setPath();
 
@@ -82,34 +77,36 @@ public class Hostiles extends Characters {
     public void act(float delta) {
         super.act(delta);
 
-        updateHitbox();
+        if (this.getEnabled()) {
+            updateHitbox();
 
-        if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 80) {
-            if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
-                currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 80) {
+                if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
+                    currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
 
-            } else {
-                super.moveTo(pathPoints[currTgtPathPoint], 60);
-                super.animations();
+                } else {
+                    super.moveTo(pathPoints[currTgtPathPoint], 60);
+                    super.animations();
 
-            }
-
-        } else {
-            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 55) {
-                super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), 60);
-                super.animations();
+                }
 
             } else {
-                this.velocity.x = 0;
-                this.velocity.y = 0;
-                super.animations(lvl.player.getCenteredPos());
+                if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 55) {
+                    super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), 60);
+                    super.animations();
+
+                } else {
+                    this.velocity.x = 0;
+                    this.velocity.y = 0;
+                    super.animations(lvl.player.getCenteredPos());
+
+                }
 
             }
 
         }
 
     }
-
 
 
     protected void assignCharacter(int charNum) {
@@ -130,6 +127,11 @@ public class Hostiles extends Characters {
                 1, 4, 0.15f, true);
         super.walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
                 1, 4, 0.15f, true);
+
+    }
+
+    public void hit() {
+        this.setEnabled(false);
 
     }
 

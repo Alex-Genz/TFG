@@ -98,9 +98,11 @@ public final class ResourceManager {
                     if (statusStr.equals("run_") && !prefix.equals("nothing_"))
                         continue;
 
-                    assets.load("sprites/player/" + dirStr + "/" + prefix + statusStr + dirStr + ".png",
+                    assets.load("sprites/player/" + dirStr + "/" +
+                                    prefix + statusStr + dirStr + ".png",
                             Texture.class);
-                    System.out.println("sprites/player/" + dirStr + "/" + prefix + statusStr + dirStr + ".png loaded!");
+                    System.out.println("sprites/player/" + dirStr + "/" +
+                            prefix + statusStr + dirStr + ".png loaded!");
 
                 }
 
@@ -243,4 +245,5 @@ public final class ResourceManager {
     public static void dispose() {
         assets.dispose();
     }
+    
 }

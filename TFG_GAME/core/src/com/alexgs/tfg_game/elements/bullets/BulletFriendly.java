@@ -8,9 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class BulletFriendly extends Bullet {
 
     public BulletFriendly(float x, float y, Stage s, MainScreen lvl, 
-    int dmg, /*int bulletSpeed, */float timeBeforeCulling) {
-// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
-        super(x, y, s, lvl, dmg, /*bulletSpeed, */timeBeforeCulling);
+    int dmg, float timeBeforeCulling) {
+        super(x, y, s, lvl, dmg, timeBeforeCulling);
 
     }
 
@@ -21,11 +20,11 @@ public class BulletFriendly extends Bullet {
 
     }
 
-// TODO: EXPERIMENTAL CODE! test and troubleshoot is prioritized and mandatory
     private void collide() {
         for (Neutrals neutral :
                 lvl.neutralNPCs) {
-            if (this.getEnabled() && neutral.getEnabled() && this.overlaps(neutral.getHitbox())) {
+            if (this.getEnabled() && neutral.getEnabled() &&
+                    this.overlaps(neutral.getHitbox())) {
                 this.setEnabled(false);
                 System.out.println("ouch!");
 
@@ -35,9 +34,11 @@ public class BulletFriendly extends Bullet {
 
         for (Hostiles hostile :
                 lvl.hostiles) {
-            if (this.getEnabled() && hostile.getEnabled() && this.overlaps(hostile.getHitbox())) {
+            if (this.getEnabled() && hostile.getEnabled() &&
+                    this.overlaps(hostile.getHitbox())) {
                 this.setEnabled(false);
                 System.out.println("die!");
+                hostile.hit();
 
             }
 

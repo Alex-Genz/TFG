@@ -11,7 +11,8 @@ public class Shooter extends Hostiles {
     private final float ROUNDS_PER_MINUTE = 30;
     private float timeBeforeNextShot = 0;
 
-    public Shooter(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY) {
+    public Shooter(float x, float y, Stage s, MainScreen lvl,
+                   int charNum, float pathSizeX, float pathSizeY) {
         super(x, y, s, lvl, charNum, pathSizeX, pathSizeY);
 
         this.setAnimation(super.idleDown);
