@@ -8,7 +8,10 @@ public class Crystal extends WorldObjects {
         super(x, y, s, lvl, "vx_crystal_shard_" + variant);
 
 //        TODO: set collbox height with -> ((this.getHeight() == 2 * lvl.getTileHeight()) ? lvl.getTileHeight() : 0)
-        this.setPolygon(8, this.getWidth() - 4, this.getHeight());
+        this.setPolygon(8, this.getWidth() - 4,
+                (this.getHeight() -
+                        ((this.getHeight() == 2 * lvl.getTileHeight()) ? lvl.getTileHeight() : 0)) / 2,
+                2, 2);
 
     }
 

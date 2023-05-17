@@ -8,8 +8,7 @@ public class Crate extends WorldObjects {
     public Crate(float x, float y, Stage s, MainScreen lvl, String variant) {
             super(x, y, s, lvl, "vx_crate_" + variant);
 
-            this.setRectangle(this.getWidth(), 3 * (this.getHeight() / 4),
-                    0, 0);
+            this.setRectangle(this.getWidth(), 19, 0, 0);
 
     }
 

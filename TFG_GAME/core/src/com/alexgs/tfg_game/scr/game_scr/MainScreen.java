@@ -167,10 +167,14 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "crate":
-                    this.worldObjects.add(new Crate((float) props.get("x") - this.tileWidth,
+                    this.worldObjects.add(new Crate((float) props.get("x"),
                             (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
                     break;
+
+                case "crystal":
+                    this.worldObjects.add(new Crystal((float) props.get("x"),
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
             }
 
