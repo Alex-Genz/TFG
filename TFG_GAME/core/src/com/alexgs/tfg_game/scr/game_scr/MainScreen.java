@@ -4,6 +4,7 @@ import com.alexgs.tfg_game.MyGdxGame;
 import com.alexgs.tfg_game.elements.characters.hostiles.*;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.*;
+import com.alexgs.tfg_game.elements.world_obj.*;
 import com.alexgs.tfg_game.managers.ResourceManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
@@ -48,6 +49,8 @@ public class MainScreen extends BScreen {
 
     public Array<Neutrals> neutralNPCs;
     public Array<Hostiles> hostiles;
+
+    public Array<WorldObjects> worldObjects;
 
     private float playerTpSpawnX;
     private float playerTpSpawnY;
@@ -105,6 +108,8 @@ public class MainScreen extends BScreen {
         neutralNPCs = new Array<>();
         hostiles = new Array<>();
 
+        worldObjects = new Array<>();
+
         for (MapObject characters :
                 getElementList()) {
             props = characters.getProperties();
@@ -137,8 +142,33 @@ public class MainScreen extends BScreen {
 
                     break;
 
-                case "obj_spawn":
+                case "normal_maple_tree":
+                    this.worldObjects.add(new MapleTreeNorm((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this));
 
+                    break;
+
+                case "snow_maple_tree":
+                    this.worldObjects.add(new MapleTreeSnow((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this));
+
+                    break;
+
+                case "normal_pine_tree":
+                    this.worldObjects.add(new PineTreeNorm((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this));
+
+                    break;
+
+                case "snow_pine_tree":
+                    this.worldObjects.add(new PineTreeSnow((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this));
+
+                    break;
+
+                case "crate":
+                    this.worldObjects.add(new Crate((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
                     break;
 
@@ -233,8 +263,8 @@ public class MainScreen extends BScreen {
 
         mainStage.draw();
 
-        ren.render(new int[]{5});
-        ren.render(new int[]{10});
+        ren.render(new int[]{6});
+        ren.render(new int[]{11});
 
         uiStage.draw();
 
@@ -294,6 +324,15 @@ public class MainScreen extends BScreen {
                 neutralNPCs) {
             if (neutral.getEnabled() && neutral.overlaps(player)) {
                 player.preventOverlap(neutral);
+
+            }
+
+        }
+
+        for (WorldObjects wObj :
+                worldObjects) {
+            if (wObj.getEnabled() && wObj.overlaps(player)) {
+                player.preventOverlap(wObj);
 
             }
 

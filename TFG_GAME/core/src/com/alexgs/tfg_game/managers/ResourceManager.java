@@ -32,9 +32,11 @@ public final class ResourceManager {
     private static final String[] CITIZEN_SPRITES = {"walk_down.png", "walk_left.png", "walk_right.png",
             "walk_up.png", "idle_down.png", "idle_left.png", "idle_right.png", "idle_up.png"};
 
-    private static final String[] prefixes = {"nothing_", "pistol_", "ar_"};
-    private static final String[] status = {"idle_", "walk_", "run_"};
-    private static final String[] dir = {"down", "left", "right", "up"};
+    private static final String[] PLAYER_PREFIXES = {"nothing_", "pistol_", "ar_"};
+    private static final String[] PLAYER_STATUS = {"idle_", "walk_", "run_"};
+    private static final String[] PLAYER_DIR = {"down", "left", "right", "up"};
+
+    private static final String[] CRATE_TYPES = {"apples", "closed", "fish", "gold", "open", "pebbles", "veggies"};
 
 //    public static String[][] characterPaths =
 //            {
@@ -90,19 +92,19 @@ public final class ResourceManager {
 
 //        player
         for (String prefix :
-                prefixes) {
+                PLAYER_PREFIXES) {
             for (String dirStr :
-                    dir) {
+                    PLAYER_DIR) {
                 for (String statusStr :
-                        status) {
+                        PLAYER_STATUS) {
                     if (statusStr.equals("run_") && !prefix.equals("nothing_"))
                         continue;
 
                     assets.load("sprites/player/" + dirStr + "/" +
                                     prefix + statusStr + dirStr + ".png",
                             Texture.class);
-                    System.out.println("sprites/player/" + dirStr + "/" +
-                            prefix + statusStr + dirStr + ".png loaded!");
+//                    System.out.println("sprites/player/" + dirStr + "/" +
+//                            prefix + statusStr + dirStr + ".png loaded!");
 
                 }
 
@@ -170,6 +172,21 @@ public final class ResourceManager {
         assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wup.png", Texture.class);
 
         assets.load("sprites/other/bullet.png", Texture.class);
+
+        /*
+         * world_objects
+         */
+        assets.load("world/world_objects/normal_maple_tree_1.png", Texture.class);
+        assets.load("world/world_objects/snow_maple_tree_1.png", Texture.class);
+        assets.load("world/world_objects/normal_pine_tree_1.png", Texture.class);
+        assets.load("world/world_objects/snow_pine_tree_1.png", Texture.class);
+
+        for (String crateTypes :
+                CRATE_TYPES) {
+            assets.load("world/world_objects/vx_crate_" + crateTypes + ".png", Texture.class);
+            System.out.println("loaded");
+
+        }
 
 
         /*

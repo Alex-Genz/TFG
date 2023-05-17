@@ -1,6 +1,7 @@
 package com.alexgs.tfg_game.elements.bullets;
 
 import com.alexgs.tfg_game.elements.Element;
+import com.alexgs.tfg_game.elements.world_obj.WorldObjects;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.alexgs.tfg_game.solids.SolidHigh;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -70,6 +71,15 @@ public class Bullet extends Element {
         for (SolidHigh solidHigh :
                 this.lvl.hiSolids) {
             if (this.getEnabled() && this.overlaps(solidHigh)) {
+                this.setEnabled(false);
+
+            }
+
+        }
+
+        for (WorldObjects wObj :
+                this.lvl.worldObjects) {
+            if (this.getEnabled() && this.overlaps(wObj)) {
                 this.setEnabled(false);
 
             }
