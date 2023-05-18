@@ -193,6 +193,11 @@ public final class ResourceManager {
 
         }
 
+        for (int i = 1; i <= 4; i++) {
+            assets.load("world/world_objects/vx_sign_" + i + ".png", Texture.class);
+
+        }
+
 
         /*
          * ost = assets.load(<audio file path>, Music.class);

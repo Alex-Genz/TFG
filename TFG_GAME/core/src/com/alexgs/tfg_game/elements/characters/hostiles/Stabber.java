@@ -5,8 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Stabber extends Hostiles {
 
-    public Stabber(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY) {
-        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY);
+    public Stabber(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY, float speed) {
+        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed);
 
         this.setAnimation(super.idleDown);
 

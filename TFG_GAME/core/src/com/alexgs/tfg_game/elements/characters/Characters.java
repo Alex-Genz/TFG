@@ -128,7 +128,7 @@ public class Characters extends Element {
 
     }
 
-    protected void moveTo(float targetX, float targetY, int speed) {
+    protected void moveTo(float targetX, float targetY, float speed) {
         this.moveToVec.x = targetX - this.getCenteredX();
         this.moveToVec.y = targetY - this.getCenteredY();
 
@@ -139,7 +139,7 @@ public class Characters extends Element {
 
     }
 
-    protected void moveTo(Vector2 target, int speed) {
+    protected void moveTo(Vector2 target, float speed) {
         this.moveToVec.x = target.x - this.getCenteredX();
         this.moveToVec.y = target.y - this.getCenteredY();
 

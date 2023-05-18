@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class Neutrals extends Characters {
     public String message;
 
+    protected float speed;
+
     public final String PATHS = "sprites/npcs/";
     public final String EXTENSION = ".png";
     public final String[][] CHARACTER_SPRITES =
@@ -47,7 +49,7 @@ public class Neutrals extends Characters {
                     }
             };
 
-    public Neutrals(float x, float y, Stage s, MainScreen lvl, int charNum, String message, float pathSizeX, float pathSizeY) {
+    public Neutrals(float x, float y, Stage s, MainScreen lvl, int charNum, String message, float pathSizeX, float pathSizeY, float speed) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
@@ -55,6 +57,7 @@ public class Neutrals extends Characters {
         setHitbox(s);
 
         this.message = message;
+        this.speed = speed;
 
         super.pathSizeX = pathSizeX;
         super.pathSizeY = pathSizeY;
@@ -89,7 +92,7 @@ public class Neutrals extends Characters {
                 currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
 
             } else {
-                super.moveTo(pathPoints[currTgtPathPoint], 60);
+                super.moveTo(pathPoints[currTgtPathPoint], this.speed);
                 this.animations();
 
             }

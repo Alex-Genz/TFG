@@ -32,8 +32,8 @@
   </properties>
  </tile>
  <wangsets>
-  <wangset name="Unnamed Set" type="edge" tile="-1">
-   <wangcolor name="" color="#ff0000" tile="-1" probability="1"/>
+  <wangset name="rails" type="edge" tile="142">
+   <wangcolor name="" color="#ff0000" tile="149" probability="1"/>
    <wangtile tileid="125" wangid="0,0,1,0,0,0,0,0"/>
    <wangtile tileid="126" wangid="0,0,1,0,0,0,1,0"/>
    <wangtile tileid="127" wangid="0,0,0,0,0,0,1,0"/>

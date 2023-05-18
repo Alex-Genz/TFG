@@ -130,7 +130,8 @@ public class MainScreen extends BScreen {
                             (float) props.get("y"), mainStage, this, (int) props.get("char_type"),
                             props.get("message").toString(),
                             Float.parseFloat(props.get("path_size_x").toString()),
-                            Float.parseFloat(props.get("path_size_y").toString())));
+                            Float.parseFloat(props.get("path_size_y").toString()),
+                            Float.parseFloat(props.get("speed").toString())));
 
                     break;
 
@@ -138,7 +139,8 @@ public class MainScreen extends BScreen {
                     this.hostiles.add(new Shooter((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("skin"),
                             Float.parseFloat(props.get("path_size_x").toString()),
-                            Float.parseFloat(props.get("path_size_y").toString())));
+                            Float.parseFloat(props.get("path_size_y").toString()),
+                            Float.parseFloat(props.get("persecution_speed").toString())));
 
                     break;
 
@@ -174,6 +176,12 @@ public class MainScreen extends BScreen {
 
                 case "crystal":
                     this.worldObjects.add(new Crystal((float) props.get("x"),
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                    break;
+
+                case "sign":
+                    this.worldObjects.add(new Sign((float) props.get("x"),
                             (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
             }
@@ -337,6 +345,24 @@ public class MainScreen extends BScreen {
                 worldObjects) {
             if (wObj.getEnabled() && wObj.overlaps(player)) {
                 player.preventOverlap(wObj);
+
+            }
+
+            for (Neutrals npc :
+                 neutralNPCs) {
+                if (wObj.getEnabled() && npc.getEnabled() && wObj.overlaps(npc)) {
+                    npc.preventOverlap(wObj);
+
+                }
+
+            }
+
+            for (Hostiles enemy :
+                    hostiles) {
+                if (wObj.getEnabled() && enemy.getEnabled() && wObj.overlaps(enemy)) {
+                    enemy.preventOverlap(wObj);
+
+                }
 
             }
 

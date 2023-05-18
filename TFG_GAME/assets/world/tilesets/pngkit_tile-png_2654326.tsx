@@ -81,7 +81,7 @@
   </properties>
  </tile>
  <wangsets>
-  <wangset name="Grass" type="corner" tile="-1">
+  <wangset name="Grass" type="corner" tile="432">
    <wangcolor name="grass_1" color="#ff0000" tile="432" probability="1"/>
    <wangcolor name="grass_2" color="#00ff00" tile="438" probability="1"/>
    <wangcolor name="mud" color="#0000ff" tile="-1" probability="1"/>
@@ -134,7 +134,7 @@
    <wangtile tileid="619" wangid="0,2,0,2,0,2,0,2"/>
    <wangtile tileid="620" wangid="0,2,0,2,0,2,0,2"/>
   </wangset>
-  <wangset name="Water" type="corner" tile="-1">
+  <wangset name="Water" type="corner" tile="216">
    <wangcolor name="water_1" color="#ff0000" tile="216" probability="1"/>
    <wangcolor name="water_2" color="#00ff00" tile="219" probability="1"/>
    <wangcolor name="water_3_(transparent)" color="#0000ff" tile="222" probability="1"/>
@@ -181,7 +181,7 @@
    <wangtile tileid="399" wangid="0,3,0,3,0,3,0,3"/>
    <wangtile tileid="402" wangid="0,2,0,2,0,2,0,2"/>
   </wangset>
-  <wangset name="Dirt/Path" type="corner" tile="-1">
+  <wangset name="Dirt/Path" type="corner" tile="0">
    <wangcolor name="dirt_1" color="#ff0000" tile="0" probability="1"/>
    <wangcolor name="dirt_2" color="#00ff00" tile="3" probability="1"/>
    <wangcolor name="dirt_3" color="#0000ff" tile="6" probability="1"/>
@@ -234,7 +234,7 @@
    <wangtile tileid="187" wangid="0,3,0,3,0,3,0,3"/>
    <wangtile tileid="188" wangid="0,3,0,3,0,3,0,3"/>
   </wangset>
-  <wangset name="Void" type="corner" tile="-1">
+  <wangset name="Void" type="corner" tile="18">
    <wangcolor name="void_1" color="#ff0000" tile="18" probability="1"/>
    <wangcolor name="void_2" color="#00ff00" tile="21" probability="1"/>
    <wangcolor name="void_3" color="#0000ff" tile="24" probability="1"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.9" tiledversion="1.9.2" name="spawn_tiles" tilewidth="32" tileheight="32" tilecount="6" columns="6">
+<tileset version="1.10" tiledversion="1.10.1" name="spawn_tiles" tilewidth="32" tileheight="32" tilecount="6" columns="6">
  <image source="spawn_tiles.png" width="192" height="32"/>
  <tile id="0">
   <properties>
@@ -11,6 +11,7 @@
    <property name="enemy_type" value=""/>
    <property name="path_size_x" type="float" value="0"/>
    <property name="path_size_y" type="float" value="0"/>
+   <property name="persecution_speed" type="float" value="0"/>
    <property name="skin" type="int" value="0"/>
    <property name="spawn" value="enemy"/>
   </properties>
@@ -22,6 +23,7 @@
    <property name="path_size_x" type="float" value="0"/>
    <property name="path_size_y" type="float" value="0"/>
    <property name="spawn" value="character"/>
+   <property name="speed" type="float" value="0"/>
   </properties>
  </tile>
  <tile id="5">

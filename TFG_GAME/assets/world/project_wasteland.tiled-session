@@ -10,9 +10,9 @@
         "help"
     ],
     "expandedProjectPaths": [
-        "maps",
-        ".",
         "tilesets",
+        ".",
+        "maps",
         "worlds"
     ],
     "fileStates": {
@@ -27,8 +27,8 @@
             "scale": 2,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 358.5,
-                "y": 892.75
+                "x": 583.5,
+                "y": 624.25
             }
         },
         "maps/devmap_2.tmx": {
@@ -38,8 +38,8 @@
             "scale": 1.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 377.3333333333333,
-                "y": 389
+                "x": 430.66666666666663,
+                "y": 393.99999999999994
             }
         },
         "maps/devmap_3.tmx": {
@@ -66,10 +66,10 @@
                 10
             ],
             "scale": 2,
-            "selectedLayer": 12,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 321,
-                "y": 443
+                "x": 239.5,
+                "y": 416.5
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -80,8 +80,8 @@
             "scale": 0.75,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": -729.3333333333333,
-                "y": -84.66666666666663
+                "x": -733.3333333333333,
+                "y": -88
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -106,7 +106,7 @@
         },
         "tilesets/Refmap-TileE.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 4
+            "scaleInEditor": 2
         },
         "tilesets/Sprite-0001.tsx": {
             "scaleInDock": 1,
@@ -114,7 +114,7 @@
         },
         "tilesets/bricks.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 4
+            "scaleInEditor": 1
         },
         "tilesets/pngkit_tile-png_2654326.tsx": {
             "scaleInDock": 1,
@@ -126,7 +126,7 @@
         },
         "tilesets/victorian-accessories.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 0.75
         },
         "tilesets/victorian-garden.tsx": {
             "scaleInDock": 1,
@@ -134,7 +134,7 @@
         },
         "tilesets/victorian-market.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 1.5
         },
         "tilesets/victorian-streets.tsx": {
             "scaleInDock": 1,
@@ -163,31 +163,30 @@
     "openFiles": [
         "maps/devmap_1.tmx",
         "maps/devmap_2.tmx",
-        "tilesets/spawn_tiles.tsx",
         "maps/town_map.tmx",
         "tilesets/victorian-tenement.tsx",
         "maps/spawn_map_b.tmx",
-        "tilesets/victorian-accessories.tsx",
         "tilesets/Refmap-TileD.tsx",
+        "tilesets/Refmap-TileB.tsx",
+        "tilesets/victorian-market.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
-        "tilesets/Refmap-TileE.tsx",
-        "tilesets/Refmap-TileB.tsx"
+        "tilesets/spawn_tiles.tsx"
     ],
     "project": "project_wasteland.tiled-project",
-    "property.type": "string",
+    "property.type": "float",
     "recentFiles": [
         "maps/devmap_1.tmx",
         "maps/devmap_2.tmx",
-        "tilesets/spawn_tiles.tsx",
         "maps/town_map.tmx",
         "tilesets/victorian-tenement.tsx",
-        "tilesets/Refmap-TileB.tsx",
-        "tilesets/Refmap-TileE.tsx",
+        "tilesets/spawn_tiles.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
+        "tilesets/victorian-market.tsx",
+        "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
-        "tilesets/victorian-accessories.tsx",
         "maps/spawn_map_b.tmx",
-        "tilesets/Refmap-TileC.tsx"
+        "tilesets/victorian-windows-doors.tsx",
+        "tilesets/Refmap-TileE.tsx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",

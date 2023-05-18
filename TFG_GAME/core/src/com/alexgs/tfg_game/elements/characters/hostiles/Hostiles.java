@@ -6,6 +6,8 @@ import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Hostiles extends Characters {
+    protected float speed;
+
     //    temporal
     public final String PATHS = "sprites/npcs/";
     public final String EXTENSION = ".png";
@@ -45,12 +47,14 @@ public class Hostiles extends Characters {
 
 
     public Hostiles(float x, float y, Stage s, MainScreen lvl,
-                    int charNum, float pathSizeX, float pathSizeY) {
+                    int charNum, float pathSizeX, float pathSizeY, float speed) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
 
         setHitbox(s);
+
+        this.speed = speed;
 
         super.pathSizeX = pathSizeX;
         super.pathSizeY = pathSizeY;
@@ -85,14 +89,14 @@ public class Hostiles extends Characters {
                     currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
 
                 } else {
-                    super.moveTo(pathPoints[currTgtPathPoint], 60);
+                    super.moveTo(pathPoints[currTgtPathPoint], 40);
                     super.animations();
 
                 }
 
             } else {
                 if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 55) {
-                    super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), 60);
+                    super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), this.speed);
                     super.animations();
 
                 } else {

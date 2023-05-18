@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.10.1" name="Refmap-TileB" tilewidth="32" tileheight="32" tilecount="256" columns="8">
  <image source="Refmap-TileB.png" width="256" height="1024"/>
+ <tile id="40">
+  <properties>
+   <property name="spawn" value="sign"/>
+   <property name="variant" value="1"/>
+  </properties>
+ </tile>
+ <tile id="41">
+  <properties>
+   <property name="spawn" value="sign"/>
+   <property name="variant" value="2"/>
+  </properties>
+ </tile>
+ <tile id="48">
+  <properties>
+   <property name="spawn" value="sign"/>
+   <property name="variant" value="3"/>
+  </properties>
+ </tile>
+ <tile id="49">
+  <properties>
+   <property name="spawn" value="sign"/>
+   <property name="variant" value="4"/>
+  </properties>
+ </tile>
  <tile id="144">
   <properties>
    <property name="spawn" value="crate"/>
