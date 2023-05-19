@@ -3,10 +3,10 @@ package com.alexgs.tfg_game.elements.world_obj;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class MapleTreeNorm extends WorldObjects {
+public class MapleTree extends WorldObjects {
 
-    public MapleTreeNorm(float x, float y, Stage s, MainScreen lvl) {
-        super(x, y, s, lvl, "normal_maple_tree_1");
+    public MapleTree(float x, float y, Stage s, MainScreen lvl, String variant) {
+        super(x, y, s, lvl, variant + "_maple_tree");
 
         this.setPolygon(8, 24, 12, this.getWidth() / 3 + 4, 0);
 

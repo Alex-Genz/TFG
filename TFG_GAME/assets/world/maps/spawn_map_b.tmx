@@ -429,7 +429,7 @@
   </object>
   <object id="218" gid="1797" x="96" y="320" width="32" height="32">
    <properties>
-    <property name="char_type" type="int" value="1"/>
+    <property name="char_type" type="int" value="4"/>
     <property name="message" value="hello there!"/>
     <property name="path_size_x" type="float" value="0"/>
     <property name="path_size_y" type="float" value="2"/>
@@ -490,7 +490,7 @@
    </properties>
    <polygon points="0,0 48,0 48,464 32,480 0,480"/>
   </object>
-  <object id="237" name="teleporter A2" x="64" y="160" width="32" height="32">
+  <object id="237" name="teleporter A2" x="128" y="384" width="32" height="32">
    <properties>
     <property name="id" value="0x008_1"/>
     <property name="no_return" type="bool" value="false"/>

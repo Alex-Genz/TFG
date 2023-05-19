@@ -3,17 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/spawn_map_b.tmx",
+    "activeFile": "tilesets/Refmap-TileD.tsx",
     "console.history": [
         "ls",
         "dir",
         "help"
     ],
     "expandedProjectPaths": [
-        "tilesets",
+        "worlds",
         ".",
         "maps",
-        "worlds"
+        "tilesets"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -24,11 +24,11 @@
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 2,
+            "scale": 1,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 583.5,
-                "y": 624.25
+                "x": 460,
+                "y": 566
             }
         },
         "maps/devmap_2.tmx": {
@@ -38,8 +38,8 @@
             "scale": 1.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 430.66666666666663,
-                "y": 393.99999999999994
+                "x": 279.33333333333326,
+                "y": 351.33333333333337
             }
         },
         "maps/devmap_3.tmx": {
@@ -65,11 +65,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 2,
-            "selectedLayer": 5,
+            "scale": 1,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 239.5,
-                "y": 416.5
+                "x": 1159,
+                "y": 105
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -80,8 +80,8 @@
             "scale": 0.75,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": -733.3333333333333,
-                "y": -88
+                "x": -94.66666666666663,
+                "y": -241.33333333333337
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -94,7 +94,7 @@
         },
         "tilesets/Refmap-TileB.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1.5
+            "scaleInEditor": 1
         },
         "tilesets/Refmap-TileC.tsx": {
             "scaleInDock": 1,
@@ -102,11 +102,11 @@
         },
         "tilesets/Refmap-TileD.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 4
         },
         "tilesets/Refmap-TileE.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 2
+            "scaleInEditor": 4
         },
         "tilesets/Sprite-0001.tsx": {
             "scaleInDock": 1,
@@ -122,7 +122,7 @@
         },
         "tilesets/spawn_tiles.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 4
+            "scaleInEditor": 1
         },
         "tilesets/victorian-accessories.tsx": {
             "scaleInDock": 1,
@@ -134,7 +134,7 @@
         },
         "tilesets/victorian-market.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1.5
+            "scaleInEditor": 1
         },
         "tilesets/victorian-streets.tsx": {
             "scaleInDock": 1,
@@ -164,29 +164,30 @@
         "maps/devmap_1.tmx",
         "maps/devmap_2.tmx",
         "maps/town_map.tmx",
-        "tilesets/victorian-tenement.tsx",
         "maps/spawn_map_b.tmx",
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/victorian-market.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
-        "tilesets/spawn_tiles.tsx"
+        "tilesets/spawn_tiles.tsx",
+        "tilesets/Refmap-TileC.tsx",
+        "tilesets/Refmap-TileE.tsx"
     ],
     "project": "project_wasteland.tiled-project",
-    "property.type": "float",
+    "property.type": "string",
     "recentFiles": [
         "maps/devmap_1.tmx",
         "maps/devmap_2.tmx",
         "maps/town_map.tmx",
-        "tilesets/victorian-tenement.tsx",
+        "maps/spawn_map_b.tmx",
+        "tilesets/Refmap-TileE.tsx",
+        "tilesets/Refmap-TileC.tsx",
         "tilesets/spawn_tiles.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
-        "maps/spawn_map_b.tmx",
-        "tilesets/victorian-windows-doors.tsx",
-        "tilesets/Refmap-TileE.tsx"
+        "tilesets/victorian-tenement.tsx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFormat": "tsx",

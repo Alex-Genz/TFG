@@ -144,27 +144,15 @@ public class MainScreen extends BScreen {
 
                     break;
 
-                case "normal_maple_tree":
-                    this.worldObjects.add(new MapleTreeNorm((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this));
+                case "maple_tree":
+                    this.worldObjects.add(new MapleTree((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
                     break;
 
-                case "snow_maple_tree":
-                    this.worldObjects.add(new MapleTreeSnow((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this));
-
-                    break;
-
-                case "normal_pine_tree":
-                    this.worldObjects.add(new PineTreeNorm((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this));
-
-                    break;
-
-                case "snow_pine_tree":
-                    this.worldObjects.add(new PineTreeSnow((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this));
+                case "pine_tree":
+                    this.worldObjects.add(new PineTree((float) props.get("x") - this.tileWidth,
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
                     break;
 

@@ -84,7 +84,7 @@ public class Hostiles extends Characters {
         if (this.getEnabled()) {
             updateHitbox();
 
-            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 80) {
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 180) {
                 if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
                     currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
 

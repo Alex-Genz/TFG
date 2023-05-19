@@ -490,27 +490,23 @@
  <objectgroup id="2" name="Objects">
   <object id="1" x="0" y="608" width="32" height="128">
    <properties>
-    <property name="isHigh" type="bool" value="true"/>
-    <property name="type" value="sRec"/>
+    <property name="type" value="sRecHi"/>
    </properties>
   </object>
   <object id="5" x="32" y="512" width="192" height="32">
    <properties>
-    <property name="isHigh" type="bool" value="false"/>
-    <property name="type" value="sRec"/>
+    <property name="type" value="sRecLo"/>
    </properties>
   </object>
   <object id="7" gid="129" x="32" y="672" width="32" height="32"/>
   <object id="8" x="192" y="608" width="32" height="128">
    <properties>
-    <property name="isHigh" type="bool" value="true"/>
-    <property name="type" value="sRec"/>
+    <property name="type" value="sRecHi"/>
    </properties>
   </object>
   <object id="9" x="128" y="608" width="32" height="128">
    <properties>
-    <property name="isHigh" type="bool" value="false"/>
-    <property name="type" value="sRec"/>
+    <property name="type" value="sRecLo"/>
    </properties>
   </object>
   <object id="19" gid="133" x="288" y="608" width="32" height="32">

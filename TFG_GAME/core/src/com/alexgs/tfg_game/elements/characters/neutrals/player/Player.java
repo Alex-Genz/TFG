@@ -117,7 +117,7 @@ public class Player extends Characters {
     public void act(float delta) {
         super.act(delta);
         updateHitbox();
-        movement();
+        controls();
         animate();
 
         interact();
@@ -147,10 +147,15 @@ public class Player extends Characters {
         for (Neutrals npc :
                 lvl.neutralNPCs) {
             if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-                System.out.println((super.distanceToTarget(npc.getCenteredX(),
-                        npc.getCenteredY()) < 40) ? npc.message :
-                        "not close enough" + super.distanceToTarget(npc.getCenteredX(),
-                                npc.getCenteredY()));
+//                System.out.println((super.distanceToTarget(npc.getCenteredX(),
+//                        npc.getCenteredY()) < 40) ? npc.message :
+//                        "not close enough" + super.distanceToTarget(npc.getCenteredX(),
+//                                npc.getCenteredY()));
+                if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 30) {
+                    System.out.println(npc.message);
+                    break;
+
+                }
 
             }
 
@@ -253,7 +258,7 @@ public class Player extends Characters {
 
     }
 
-    private void movement() {
+    private void controls() {
         int speed = (running) ? SPEED * 2 : SPEED;
 
         if (Gdx.input.isKeyPressed(Input.Keys.D))
@@ -274,8 +279,8 @@ public class Player extends Characters {
         else
             this.velocity.y = 0;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
-            running = !running;
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
+//            running = !running;
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
             if (PlayerParams.currWeapon.isCanSwitchFireMode()) {

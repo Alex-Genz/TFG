@@ -46,7 +46,57 @@ public class Neutrals extends Characters {
                             "chara02_c/vx_chara02_c_char8_wleft",
                             "chara02_c/vx_chara02_c_char8_wright",
                             "chara02_c/vx_chara02_c_char8_wup"
-                    }
+                    },
+                    {
+                            "chara03_a/vx_chara03_a_char1_idown",
+                            "chara03_a/vx_chara03_a_char1_ileft",
+                            "chara03_a/vx_chara03_a_char1_iright",
+                            "chara03_a/vx_chara03_a_char1_iup",
+                            "chara03_a/vx_chara03_a_char1_wdown",
+                            "chara03_a/vx_chara03_a_char1_wleft",
+                            "chara03_a/vx_chara03_a_char1_wright",
+                            "chara03_a/vx_chara03_a_char1_wup"
+                    },
+                    {
+                            "chara03_a/vx_chara03_a_char2_idown",
+                            "chara03_a/vx_chara03_a_char2_ileft",
+                            "chara03_a/vx_chara03_a_char2_iright",
+                            "chara03_a/vx_chara03_a_char2_iup",
+                            "chara03_a/vx_chara03_a_char2_wdown",
+                            "chara03_a/vx_chara03_a_char2_wleft",
+                            "chara03_a/vx_chara03_a_char2_wright",
+                            "chara03_a/vx_chara03_a_char2_wup"
+                    },
+                    {
+                            "chara03_a/vx_chara03_a_char3_idown",
+                            "chara03_a/vx_chara03_a_char3_ileft",
+                            "chara03_a/vx_chara03_a_char3_iright",
+                            "chara03_a/vx_chara03_a_char3_iup",
+                            "chara03_a/vx_chara03_a_char3_wdown",
+                            "chara03_a/vx_chara03_a_char3_wleft",
+                            "chara03_a/vx_chara03_a_char3_wright",
+                            "chara03_a/vx_chara03_a_char3_wup"
+                    },
+                    {
+                            "chara03_a/vx_chara03_a_char4_idown",
+                            "chara03_a/vx_chara03_a_char4_ileft",
+                            "chara03_a/vx_chara03_a_char4_iright",
+                            "chara03_a/vx_chara03_a_char4_iup",
+                            "chara03_a/vx_chara03_a_char4_wdown",
+                            "chara03_a/vx_chara03_a_char4_wleft",
+                            "chara03_a/vx_chara03_a_char4_wright",
+                            "chara03_a/vx_chara03_a_char4_wup"
+                    },
+                    {
+                            "chara03_a/vx_chara03_a_char5_idown",
+                            "chara03_a/vx_chara03_a_char5_ileft",
+                            "chara03_a/vx_chara03_a_char5_iright",
+                            "chara03_a/vx_chara03_a_char5_iup",
+                            "chara03_a/vx_chara03_a_char5_wdown",
+                            "chara03_a/vx_chara03_a_char5_wleft",
+                            "chara03_a/vx_chara03_a_char5_wright",
+                            "chara03_a/vx_chara03_a_char5_wup",
+                    },
             };
 
     public Neutrals(float x, float y, Stage s, MainScreen lvl, int charNum, String message, float pathSizeX, float pathSizeY, float speed) {

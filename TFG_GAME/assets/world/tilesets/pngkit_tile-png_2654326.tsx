@@ -48,12 +48,14 @@
  </tile>
  <tile id="424">
   <properties>
-   <property name="spawn" value="normal_maple_tree"/>
+   <property name="spawn" value="maple_tree"/>
+   <property name="variant" value="normal"/>
   </properties>
  </tile>
  <tile id="604">
   <properties>
-   <property name="spawn" value="snow_maple_tree"/>
+   <property name="spawn" value="maple_tree"/>
+   <property name="variant" value="snow"/>
   </properties>
  </tile>
  <tile id="612" probability="0.05"/>
@@ -72,12 +74,14 @@
  </tile>
  <tile id="784">
   <properties>
-   <property name="spawn" value="normal_pine_tree"/>
+   <property name="spawn" value="pine_tree"/>
+   <property name="variant" value="normal"/>
   </properties>
  </tile>
  <tile id="964">
   <properties>
-   <property name="spawn" value="snow_pine_tree"/>
+   <property name="spawn" value="pine_tree"/>
+   <property name="variant" value="snow"/>
   </properties>
  </tile>
  <wangsets>
