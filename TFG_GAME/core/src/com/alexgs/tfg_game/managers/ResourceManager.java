@@ -37,7 +37,8 @@ public final class ResourceManager {
     private static final String[] PLAYER_STATUS = {"idle_", "walk_", "run_"};
     private static final String[] PLAYER_DIR = {"down", "left", "right", "up"};
 
-    private static final String[] CRATE_TYPES = {"apples", "closed", "fish", "gold", "open", "pebbles", "veggies"};
+    private static final String[] CRATE_TYPES = {"apples", "closed_1", "closed_2", "fish", "gold",
+            "open_1", "open_2", "pebbles", "veggies", "iron", "tnt"};
 
 //    public static String[][] characterPaths =
 //            {
@@ -86,6 +87,7 @@ public final class ResourceManager {
 
         assets.load("world/maps/spawn_map.tmx", TiledMap.class);
         assets.load("world/maps/spawn_map_b.tmx", TiledMap.class);
+        assets.load("world/maps/town_map.tmx", TiledMap.class);
 
         /*
          * sprites/world_objects/ui_gui images = assets.load(<player file path>, Texture.class);
@@ -232,6 +234,7 @@ public final class ResourceManager {
         }
 
         assets.load("sprites/other/bullet.png", Texture.class);
+        assets.load("sprites/other/pwup_sprite.png", Texture.class);
 
         /*
          * world_objects

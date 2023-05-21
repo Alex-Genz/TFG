@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="pngkit_tile-png_2654326" tilewidth="32" tileheight="32" tilecount="1152" columns="36">
+<tileset version="1.10" tiledversion="1.10.0" name="pngkit_tile-png_2654326" tilewidth="32" tileheight="32" tilecount="1152" columns="36">
  <image source="pngkit_tile-png_2654326_2.png" width="1152" height="1024"/>
  <tile id="180" probability="0.025"/>
  <tile id="181" probability="0.025"/>
@@ -46,18 +46,6 @@
    <frame tileid="331" duration="450"/>
   </animation>
  </tile>
- <tile id="424">
-  <properties>
-   <property name="spawn" value="maple_tree"/>
-   <property name="variant" value="normal"/>
-  </properties>
- </tile>
- <tile id="604">
-  <properties>
-   <property name="spawn" value="maple_tree"/>
-   <property name="variant" value="snow"/>
-  </properties>
- </tile>
  <tile id="612" probability="0.05"/>
  <tile id="613" probability="0.05"/>
  <tile id="614" probability="0.05"/>
@@ -70,18 +58,6 @@
  <tile id="706">
   <properties>
    <property name="spawn" value=""/>
-  </properties>
- </tile>
- <tile id="784">
-  <properties>
-   <property name="spawn" value="pine_tree"/>
-   <property name="variant" value="normal"/>
-  </properties>
- </tile>
- <tile id="964">
-  <properties>
-   <property name="spawn" value="pine_tree"/>
-   <property name="variant" value="snow"/>
   </properties>
  </tile>
  <wangsets>

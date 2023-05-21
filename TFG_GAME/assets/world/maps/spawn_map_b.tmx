@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="15" nextobjectid="267">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="289">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/Refmap-TileC.tsx"/>
  <tileset firstgid="1409" source="../tilesets/Refmap-TileE.tsx"/>
  <tileset firstgid="1665" source="../tilesets/Refmap-TileA5.tsx"/>
  <tileset firstgid="1793" source="../tilesets/spawn_tiles.tsx"/>
- <tileset firstgid="1799" source="../tilesets/Refmap-TileB.tsx"/>
+ <tileset firstgid="2049" source="../tilesets/Refmap-TileB.tsx"/>
  <layer id="1" name="in" width="30" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -270,7 +270,31 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="9" name="building_roof" width="30" height="20">
+ <layer id="9" name="building_roof_1" width="30" height="20">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="15" name="building_roof_2" width="30" height="20">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -419,35 +443,11 @@
    </properties>
    <polygon points="0,0 0,-128 16,-144 352,-144 352,0"/>
   </object>
-  <object id="215" gid="1793" x="128" y="480" width="32" height="32"/>
-  <object id="216" gid="1794" x="256" y="160" width="32" height="32">
-   <properties>
-    <property name="path_size_x" type="float" value="1.5"/>
-    <property name="path_size_y" type="float" value="0.5"/>
-    <property name="persecution_speed" type="float" value="90"/>
-   </properties>
-  </object>
-  <object id="218" gid="1797" x="96" y="320" width="32" height="32">
-   <properties>
-    <property name="char_type" type="int" value="4"/>
-    <property name="message" value="hello there!"/>
-    <property name="path_size_x" type="float" value="0"/>
-    <property name="path_size_y" type="float" value="2"/>
-    <property name="speed" type="float" value="10"/>
-   </properties>
-  </object>
   <object id="219" x="96" y="208">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
    <polygon points="0,0 48,-48 48,-16 32,0"/>
-  </object>
-  <object id="221" gid="1797" x="448" y="160" width="32" height="32">
-   <properties>
-    <property name="message" value="you're ugly &gt;:-)"/>
-    <property name="path_size_x" type="float" value="3"/>
-    <property name="speed" type="float" value="40"/>
-   </properties>
   </object>
   <object id="223" x="640" y="464">
    <properties>
@@ -467,17 +467,6 @@
    </properties>
    <polygon points="0,0 8,16 24,16 32,0"/>
   </object>
-  <object id="226" name="teleporter A2" x="800" y="72" width="32" height="32">
-   <properties>
-    <property name="id" value="0x008_1"/>
-    <property name="no_return" type="bool" value="false"/>
-    <property name="offset_x" type="float" value="0"/>
-    <property name="offset_y" type="float" value="-1"/>
-    <property name="target_map" value="world/maps/devmap_1.tmx"/>
-    <property name="tgt_id" value="0x001_2"/>
-    <property name="tile_type" value="teleporter"/>
-   </properties>
-  </object>
   <object id="229" x="272" y="256">
    <properties>
     <property name="type" value="sPolyHi"/>
@@ -490,7 +479,7 @@
    </properties>
    <polygon points="0,0 48,0 48,464 32,480 0,480"/>
   </object>
-  <object id="237" name="teleporter A2" x="128" y="384" width="32" height="32">
+  <object id="237" name="teleporterSolid A2" x="128" y="384" width="32" height="32">
    <properties>
     <property name="id" value="0x008_1"/>
     <property name="no_return" type="bool" value="false"/>
@@ -498,26 +487,56 @@
     <property name="offset_y" type="float" value="-1"/>
     <property name="target_map" value="world/maps/devmap_1.tmx"/>
     <property name="tgt_id" value="0x001_2"/>
-    <property name="tile_type" value="teleporter"/>
+    <property name="tile_type" value="teleporterSolid"/>
    </properties>
   </object>
   <object id="238" gid="1514" x="800" y="352" width="32" height="32"/>
-  <object id="242" gid="1943" x="864" y="192" width="32" height="32"/>
-  <object id="243" gid="1944" x="832" y="128" width="32" height="32"/>
-  <object id="244" gid="1515" x="160" y="544" width="32" height="32"/>
-  <object id="245" gid="1515" x="192" y="128" width="32" height="32"/>
-  <object id="246" gid="1944" x="224" y="128" width="32" height="32"/>
-  <object id="248" gid="1436" x="512" y="576" width="32" height="32"/>
-  <object id="249" gid="1436" x="864" y="128" width="32" height="32"/>
-  <object id="250" gid="1427" x="320" y="320" width="32" height="32"/>
-  <object id="256" gid="1427" x="256" y="480" width="32" height="32"/>
-  <object id="257" gid="1435" x="32" y="320" width="32" height="32"/>
-  <object id="259" gid="1435" x="192" y="416" width="32" height="32"/>
-  <object id="260" gid="1435" x="512" y="192" width="32" height="32"/>
-  <object id="261" gid="1436" x="0" y="640" width="32" height="32"/>
   <object id="262" x="48" y="544" width="64" height="96">
    <properties>
     <property name="type" value="sRecLo"/>
+   </properties>
+  </object>
+  <object id="267" gid="1841" x="32" y="320" width="32" height="32"/>
+  <object id="268" gid="1841" x="192" y="416" width="32" height="32"/>
+  <object id="269" gid="1841" x="512" y="192" width="32" height="32"/>
+  <object id="270" gid="1842" x="384" y="320" width="32" height="32"/>
+  <object id="271" gid="1842" x="256" y="480" width="32" height="32"/>
+  <object id="272" gid="1843" x="0" y="640" width="32" height="32"/>
+  <object id="273" gid="1843" x="512" y="576" width="32" height="32"/>
+  <object id="274" gid="1843" x="864" y="128" width="32" height="32"/>
+  <object id="276" gid="1793" x="864" y="224" width="32" height="32"/>
+  <object id="278" gid="1802" x="96" y="352" width="32" height="32"/>
+  <object id="279" gid="1795" x="224" y="128" width="32" height="32"/>
+  <object id="280" gid="1795" x="832" y="128" width="32" height="32"/>
+  <object id="281" gid="1803" x="160" y="544" width="32" height="32"/>
+  <object id="282" gid="1803" x="192" y="128" width="32" height="32"/>
+  <object id="283" gid="1804" x="128" y="480" width="32" height="32"/>
+  <object id="284" gid="1807" x="64" y="352" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="5"/>
+    <property name="message" value="hello there!"/>
+    <property name="path_size_y" type="float" value="2"/>
+    <property name="speed" type="float" value="10"/>
+   </properties>
+  </object>
+  <object id="285" gid="1807" x="512" y="160" width="32" height="32">
+   <properties>
+    <property name="path_size_x" type="float" value="1.5"/>
+    <property name="speed" type="float" value="25"/>
+   </properties>
+  </object>
+  <object id="286" gid="1805" x="288" y="160" width="32" height="32">
+   <properties>
+    <property name="path_size_x" type="float" value="3"/>
+    <property name="persecution_speed" type="float" value="40"/>
+   </properties>
+  </object>
+  <object id="287" gid="1808" x="96" y="416" width="32" height="32">
+   <properties>
+    <property name="id" value="0x001_1"/>
+    <property name="offset_x" type="float" value="1"/>
+    <property name="target_id" value="0x002_1"/>
+    <property name="target_map" value="devmap_1"/>
    </properties>
   </object>
  </objectgroup>

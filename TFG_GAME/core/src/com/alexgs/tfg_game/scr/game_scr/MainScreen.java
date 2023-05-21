@@ -1,6 +1,7 @@
 package com.alexgs.tfg_game.scr.game_scr;
 
 import com.alexgs.tfg_game.MyGdxGame;
+import com.alexgs.tfg_game.elements.Teleporter;
 import com.alexgs.tfg_game.elements.characters.hostiles.*;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.*;
@@ -45,6 +46,7 @@ public class MainScreen extends BScreen {
 
     public Array<SolidHigh> hiSolids;
     public Array<SolidLow> loSolids;
+    public Array<TeleporterSolid> teleportersSolid;
     public Array<Teleporter> teleporters;
 
     public Array<Neutrals> neutralNPCs;
@@ -103,10 +105,13 @@ public class MainScreen extends BScreen {
 
         hiSolids = new Array<>();
         loSolids = new Array<>();
-        teleporters = new Array<>();
+        teleportersSolid = new Array<>();
 
         neutralNPCs = new Array<>();
         hostiles = new Array<>();
+
+        teleporters = new Array<>();
+        Teleporter teleporter;
 
         worldObjects = new Array<>();
 
@@ -115,6 +120,8 @@ public class MainScreen extends BScreen {
             props = characters.getProperties();
 
             switch (props.get("spawn").toString()) {
+//                Entities
+
                 case "player":
                     if (!playerHasTeleported) {
                         player = new Player((float) props.get("x"),
@@ -129,20 +136,45 @@ public class MainScreen extends BScreen {
                     this.neutralNPCs.add(new NeutralOne((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("char_type"),
                             props.get("message").toString(),
-                            Float.parseFloat(props.get("path_size_x").toString()),
-                            Float.parseFloat(props.get("path_size_y").toString()),
-                            Float.parseFloat(props.get("speed").toString())));
+                            ((float) props.get("path_size_x")),
+                            ((float) props.get("path_size_y")),
+                            ((float) props.get("speed"))));
 
                     break;
 
                 case "enemy":
                     this.hostiles.add(new Shooter((float) props.get("x") - this.tileWidth,
                             (float) props.get("y"), mainStage, this, (int) props.get("skin"),
-                            Float.parseFloat(props.get("path_size_x").toString()),
-                            Float.parseFloat(props.get("path_size_y").toString()),
-                            Float.parseFloat(props.get("persecution_speed").toString())));
+                            (float) props.get("path_size_x"),
+                            (float) props.get("path_size_y"),
+                            (float) props.get("persecution_speed")));
 
                     break;
+
+//                Teleporters
+                case "teleporter":
+                    teleporter = new Teleporter((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this,
+                        (float) props.get("offset_x"),
+                        (float) props.get("offset_y"),
+                        "world/maps/" + props.get("target_map").toString(),
+                        props.get("id").toString(),
+                        props.get("target_id").toString(),
+                        (boolean) props.get("no_return"));
+
+                    this.teleporters.add(teleporter);
+
+                    if (GameParams.touchedTeleporter != null &&
+                            teleporter.tpId.equals(GameParams.touchedTeleporter.tgtTpId)) {
+                        this.playerTpSpawnX = teleporter.getX();
+                        this.playerTpSpawnY = teleporter.getY();
+
+                    }
+
+                    break;
+
+//                World objects
+
 
                 case "maple_tree":
                     this.worldObjects.add(new MapleTree((float) props.get("x") - this.tileWidth,
@@ -180,7 +212,7 @@ public class MainScreen extends BScreen {
 
         if (playerHasTeleported) {
             player = new Player(playerTpSpawnX +
-                    (GameParams.touchedTeleporter.tpTgtOffsetX * tileWidth),
+                    (GameParams.touchedTeleporter.tpTgtOffsetX * tileWidth) - tileWidth / 2,
                     playerTpSpawnY + (GameParams.touchedTeleporter.tpTgtOffsetY * tileHeight),
                     mainStage, this);
 
@@ -265,6 +297,7 @@ public class MainScreen extends BScreen {
 
         ren.render(new int[]{6});
         ren.render(new int[]{11});
+        ren.render(new int[]{12});
 
         uiStage.draw();
 
@@ -306,13 +339,27 @@ public class MainScreen extends BScreen {
 
         }
 
-        for (Teleporter tpObj :
-                teleporters) {
+        for (TeleporterSolid tpObj :
+                teleportersSolid) {
             if (tpObj.getEnabled() && !tpObj.noReturn && tpObj.overlaps(player)) {
+                //        tp target reserve purge
+                GameParams.touchedTeleporterSolid = null;
+
+                GameParams.touchedTeleporterSolid = tpObj;
+
+                game.setScreen(new MainScreen(game));
+
+            }
+
+        }
+
+        for (Teleporter tp :
+                teleporters) {
+            if (tp.getEnabled() && !tp.noReturn && tp.overlaps(player)) {
                 //        tp target reserve purge
                 GameParams.touchedTeleporter = null;
 
-                GameParams.touchedTeleporter = tpObj;
+                GameParams.touchedTeleporter = tp;
 
                 game.setScreen(new MainScreen(game));
 
@@ -337,7 +384,7 @@ public class MainScreen extends BScreen {
             }
 
             for (Neutrals npc :
-                 neutralNPCs) {
+                    neutralNPCs) {
                 if (wObj.getEnabled() && npc.getEnabled() && wObj.overlaps(npc)) {
                     npc.preventOverlap(wObj);
 
@@ -361,6 +408,8 @@ public class MainScreen extends BScreen {
     private void centerCam() {
         this.cam.position.x = camCollimator(this.player.getCenteredX());
         this.cam.position.y = camCollimator(this.player.getCenteredY());
+//        this.cam.position.x = this.player.getCenteredX();
+//        this.cam.position.y = this.player.getCenteredY();
 
         this.cam.position.x = MathUtils.clamp(this.cam.position.x, this.cam.viewportWidth / 2,
                 this.mapWidthRaw - this.cam.viewportWidth / 2);
@@ -387,7 +436,7 @@ public class MainScreen extends BScreen {
 
     }
 
-//    DEPRECATED
+    //    DEPRECATED
     public void setMap(String map) {
         this.map.dispose(); // Dispose your map first
         this.map = ResourceManager.getMap(map);
@@ -433,7 +482,7 @@ public class MainScreen extends BScreen {
         for (MapObject solidObj :
                 getRectangleList("teleporter", "tile_type")) {
             props = solidObj.getProperties();
-            Teleporter teleporter = new Teleporter((float) props.get("x"), (float) props.get("y"),
+            TeleporterSolid teleporterSolid = new TeleporterSolid((float) props.get("x"), (float) props.get("y"),
                     mainStage, (float) props.get("width"), (float) props.get("height"),
                     Float.parseFloat(props.get("offset_x").toString()),
                     Float.parseFloat(props.get("offset_y").toString()),
@@ -441,14 +490,14 @@ public class MainScreen extends BScreen {
                     props.get("tgt_id").toString(),
                     Boolean.parseBoolean(props.get("no_return").toString()));
 
-            if (GameParams.touchedTeleporter != null &&
-                    teleporter.tpId.equals(GameParams.touchedTeleporter.tgtTpId)) {
-                this.playerTpSpawnX = teleporter.getX();
-                this.playerTpSpawnY = teleporter.getY();
+            if (GameParams.touchedTeleporterSolid != null &&
+                    teleporterSolid.tpId.equals(GameParams.touchedTeleporterSolid.tgtTpId)) {
+                this.playerTpSpawnX = teleporterSolid.getX();
+                this.playerTpSpawnY = teleporterSolid.getY();
 
             }
 
-            teleporters.add(teleporter);
+            teleportersSolid.add(teleporterSolid);
 
         }
 

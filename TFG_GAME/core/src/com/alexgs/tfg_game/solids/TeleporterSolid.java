@@ -3,7 +3,7 @@ package com.alexgs.tfg_game.solids;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Teleporter extends SolidLow {
+public class TeleporterSolid extends SolidLow {
     public String tgtMapPath;
 
     public float tpTgtOffsetX;
@@ -14,8 +14,8 @@ public class Teleporter extends SolidLow {
 
     public boolean noReturn;
 
-    public Teleporter(float xPos, float yPos, Stage stage, float width, float height,
-                      float offsetX, float offsetY, String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
+    public TeleporterSolid(float xPos, float yPos, Stage stage, float width, float height,
+                           float offsetX, float offsetY, String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
         super(xPos, yPos, stage, width, height);
         this.tgtMapPath = tgtMapPath;
 
@@ -29,8 +29,8 @@ public class Teleporter extends SolidLow {
 
     }
 
-    public Teleporter(float x, float y, Stage s, Polygon poly, float offsetX,
-                      float offsetY, String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
+    public TeleporterSolid(float x, float y, Stage s, Polygon poly, float offsetX,
+                           float offsetY, String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
         super(x, y, s, poly);
 
         this.tgtMapPath = tgtMapPath;
