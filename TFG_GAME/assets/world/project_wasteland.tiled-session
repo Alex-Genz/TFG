@@ -10,10 +10,10 @@
         "help"
     ],
     "expandedProjectPaths": [
-        "tilesets",
         ".",
         "worlds",
-        "maps"
+        "maps",
+        "tilesets"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -27,8 +27,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 575.9999999999999,
-                "y": 575.3333333333334
+                "x": 574.6666666666666,
+                "y": 574.6666666666666
             }
         },
         "maps/devmap_2.tmx": {
@@ -38,8 +38,8 @@
             "scale": 1.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 384,
-                "y": 383.99999999999994
+                "x": 383.33333333333337,
+                "y": 383.33333333333337
             }
         },
         "maps/devmap_3.tmx": {
@@ -80,11 +80,11 @@
             "expandedObjectLayers": [
                 15
             ],
-            "scale": 2,
-            "selectedLayer": 12,
+            "scale": 3,
+            "selectedLayer": 13,
             "viewCenter": {
-                "x": 488,
-                "y": 776
+                "x": 275.99999999999994,
+                "y": 342
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -152,7 +152,7 @@
             "scaleInEditor": 1
         },
         "tilesets/victorian-windows-doors.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         }
     },

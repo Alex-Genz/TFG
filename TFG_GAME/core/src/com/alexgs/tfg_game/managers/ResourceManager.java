@@ -28,10 +28,7 @@ public final class ResourceManager {
     private static LabelStyle buttonStyle;
     public static TextButtonStyle textButtonStyle;
 
-    private static final String SPRITES_PATH = "sprites/citizens/";
-    private static final String[] CITIZENS_PATH = {"cit1/", "cit2/", "cit3/", "cit4/"/*, "cit5/"*/};
-    private static final String[] CITIZEN_SPRITES = {"walk_down.png", "walk_left.png", "walk_right.png",
-            "walk_up.png", "idle_down.png", "idle_left.png", "idle_right.png", "idle_up.png"};
+    private static final String NPCS_PATH = "sprites/npcs/";
 
     private static final String[] PLAYER_PREFIXES = {"nothing_", "pistol_", "ar_"};
     private static final String[] PLAYER_STATUS = {"idle_", "walk_", "run_"};
@@ -39,30 +36,6 @@ public final class ResourceManager {
 
     private static final String[] CRATE_TYPES = {"apples", "closed_1", "closed_2", "fish", "gold",
             "open_1", "open_2", "pebbles", "veggies", "iron", "tnt"};
-
-//    public static String[][] characterPaths =
-//            {
-//                    {
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_idown.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_ileft.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iright.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_iup.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wdown.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wleft.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wright.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char7_wup.png"
-//                    },
-//                    {
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_idown.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_ileft.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iright.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_iup.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wdown.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wleft.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wright.png",
-//                            "temp/sprites/npc chars/chara02_c/vx_chara02_c_char8_wup.png"
-//                    }
-//            };
 
     public static void loadAllResources() {
 
@@ -113,125 +86,18 @@ public final class ResourceManager {
 
         }
 
-//        placeholder npc sprites
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara01_b/vx_chara01_b_char8_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char7_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara02_c/vx_chara02_c_char8_wup.png", Texture.class);
-//
-//
-//
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char1_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char2_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char3_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char4_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_a/vx_chara03_a_char5_wup.png", Texture.class);
-//
-//
-//
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char1_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char2_wup.png", Texture.class);
-//
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_idown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_ileft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_iright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_iup.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wdown.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wleft.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wright.png", Texture.class);
-//        assets.load("sprites/npcs/chara03_c/vx_chara03_c_char4_wup.png", Texture.class);
-
-//        for (String file :
-//                GameParams.NPC_SPRITES) {
-//            assets.load("sprites/npcs/" + file + ".png", Texture.class);
-//
-//        }
-
+//        NPCs
         for (String sprite :
                 GameParams.NPC_CHARACTER_SPRITE) {
             for (String dir :
                     GameParams.NPC_SPRITE_DIR) {
-                assets.load("sprites/npcs/" + sprite + dir + ".png", Texture.class);
+                assets.load(NPCS_PATH + sprite + dir + ".png", Texture.class);
 
             }
 
         }
+
+//        enemies
 
         assets.load("sprites/other/bullet.png", Texture.class);
         assets.load("sprites/other/pwup_sprite.png", Texture.class);
