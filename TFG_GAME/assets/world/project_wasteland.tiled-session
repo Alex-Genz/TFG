@@ -10,9 +10,9 @@
         "help"
     ],
     "expandedProjectPaths": [
+        "maps",
         ".",
         "worlds",
-        "maps",
         "tilesets"
     ],
     "fileStates": {
@@ -27,8 +27,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 574.6666666666666,
-                "y": 574.6666666666666
+                "x": 574,
+                "y": 574
             }
         },
         "maps/devmap_2.tmx": {
@@ -38,8 +38,8 @@
             "scale": 1.5,
             "selectedLayer": 11,
             "viewCenter": {
-                "x": 383.33333333333337,
-                "y": 383.33333333333337
+                "x": 384,
+                "y": 383.66666666666663
             }
         },
         "maps/devmap_3.tmx": {
@@ -68,8 +68,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 479.99999999999994,
-                "y": 320
+                "x": 395.3333333333333,
+                "y": 375.33333333333337
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -80,11 +80,11 @@
             "expandedObjectLayers": [
                 15
             ],
-            "scale": 3,
+            "scale": 0.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 275.99999999999994,
-                "y": 342
+                "x": 916,
+                "y": 538
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -129,10 +129,10 @@
         },
         "tilesets/spawn_tiles.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 2
+            "scaleInEditor": 3
         },
         "tilesets/victorian-accessories.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 0.75
         },
         "tilesets/victorian-garden.tsx": {
@@ -148,7 +148,7 @@
             "scaleInEditor": 1
         },
         "tilesets/victorian-tenement.tsx": {
-            "scaleInDock": 1,
+            "scaleInDock": 0.75,
             "scaleInEditor": 1
         },
         "tilesets/victorian-windows-doors.tsx": {
@@ -162,7 +162,7 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 32,
     "map.lastUsedFormat": "tmx",

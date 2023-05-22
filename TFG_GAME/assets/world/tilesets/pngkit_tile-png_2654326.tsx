@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.0" name="pngkit_tile-png_2654326" tilewidth="32" tileheight="32" tilecount="1152" columns="36">
+<tileset version="1.10" tiledversion="1.10.1" name="pngkit_tile-png_2654326" tilewidth="32" tileheight="32" tilecount="1152" columns="36">
  <image source="pngkit_tile-png_2654326_2.png" width="1152" height="1024"/>
  <tile id="180" probability="0.025"/>
  <tile id="181" probability="0.025"/>
@@ -60,6 +60,60 @@
    <property name="spawn" value=""/>
   </properties>
  </tile>
+ <tile id="838" probability="0.02"/>
+ <tile id="839" probability="0.02"/>
+ <tile id="840" probability="0.02"/>
+ <tile id="841" probability="0.02"/>
+ <tile id="842" probability="0.02"/>
+ <tile id="843" probability="0.02"/>
+ <tile id="844" probability="0.02"/>
+ <tile id="874" probability="0.02"/>
+ <tile id="875" probability="0.02"/>
+ <tile id="876" probability="0.02"/>
+ <tile id="877" probability="0.02"/>
+ <tile id="878" probability="0.02"/>
+ <tile id="879" probability="0.02"/>
+ <tile id="880" probability="0.02"/>
+ <tile id="910" probability="0.02"/>
+ <tile id="911" probability="0.02"/>
+ <tile id="912" probability="0.02"/>
+ <tile id="913" probability="0.02"/>
+ <tile id="914" probability="0.02"/>
+ <tile id="915" probability="0.02"/>
+ <tile id="916" probability="0.02"/>
+ <tile id="946" probability="0.02"/>
+ <tile id="947" probability="0.02"/>
+ <tile id="948" probability="0.02"/>
+ <tile id="949" probability="0.02"/>
+ <tile id="950" probability="0.02"/>
+ <tile id="951" probability="0.02"/>
+ <tile id="952" probability="0.02"/>
+ <tile id="982" probability="0.02"/>
+ <tile id="983" probability="0.02"/>
+ <tile id="984" probability="0.02"/>
+ <tile id="985" probability="0.02"/>
+ <tile id="986" probability="0.02"/>
+ <tile id="987" probability="0.02"/>
+ <tile id="988" probability="0.02"/>
+ <tile id="1018" probability="0.02"/>
+ <tile id="1019" probability="0.02"/>
+ <tile id="1020" probability="0.02"/>
+ <tile id="1021" probability="0.02"/>
+ <tile id="1022" probability="0.02"/>
+ <tile id="1023" probability="0.02"/>
+ <tile id="1024" probability="0.02"/>
+ <tile id="1054" probability="0.02"/>
+ <tile id="1055" probability="0.02"/>
+ <tile id="1056" probability="0.02"/>
+ <tile id="1057" probability="0.02"/>
+ <tile id="1058" probability="0.02"/>
+ <tile id="1059" probability="0.02"/>
+ <tile id="1090" probability="0.02"/>
+ <tile id="1091" probability="0.02"/>
+ <tile id="1092" probability="0.02"/>
+ <tile id="1093" probability="0.02"/>
+ <tile id="1094" probability="0.02"/>
+ <tile id="1095" probability="0.02"/>
  <wangsets>
   <wangset name="Grass" type="corner" tile="432">
    <wangcolor name="grass_1" color="#ff0000" tile="432" probability="1"/>

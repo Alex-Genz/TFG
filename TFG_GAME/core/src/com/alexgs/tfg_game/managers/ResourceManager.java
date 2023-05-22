@@ -1,5 +1,6 @@
 package com.alexgs.tfg_game.managers;
 
+import com.alexgs.tfg_game.params.Consts;
 import com.alexgs.tfg_game.params.GameParams;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -88,9 +89,9 @@ public final class ResourceManager {
 
 //        NPCs
         for (String sprite :
-                GameParams.NPC_CHARACTER_SPRITE) {
+                Consts.NPC_CHARACTER_SPRITE) {
             for (String dir :
-                    GameParams.NPC_SPRITE_DIR) {
+                    Consts.NPC_SPRITE_DIR) {
                 assets.load(NPCS_PATH + sprite + dir + ".png", Texture.class);
 
             }
@@ -109,6 +110,12 @@ public final class ResourceManager {
         assets.load("world/world_objects/snow_maple_tree.png", Texture.class);
         assets.load("world/world_objects/normal_pine_tree.png", Texture.class);
         assets.load("world/world_objects/snow_pine_tree.png", Texture.class);
+
+        for (String vxTrees :
+                Consts.VX_TREE_TYPES) {
+            assets.load("world/world_objects/vx_" + vxTrees + "_tree.png", Texture.class);
+
+        }
 
         for (String crateTypes :
                 CRATE_TYPES) {

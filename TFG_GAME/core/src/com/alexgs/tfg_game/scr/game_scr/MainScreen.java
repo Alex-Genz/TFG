@@ -188,6 +188,13 @@ public class MainScreen extends BScreen {
 
                     break;
 
+                case "vx_tree":
+                    this.worldObjects.add(new VxTree((float) props.get("x") -
+                            ((props.get("variant").toString().equals("cypress") ? 0 : 16)),
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                    break;
+
                 case "crate":
                     this.worldObjects.add(new Crate((float) props.get("x"),
                             (float) props.get("y"), mainStage, this, props.get("variant").toString()));
