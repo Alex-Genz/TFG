@@ -1,7 +1,6 @@
 package com.alexgs.tfg_game.params;
 
 import com.alexgs.tfg_game.elements.Teleporter;
-import com.alexgs.tfg_game.solids.TeleporterSolid;
 
 public class GameParams {
     //    debug
@@ -22,7 +21,6 @@ public class GameParams {
     public static final float CORRECTION_FACTOR = 15;
 
     //    map
-    public static TeleporterSolid touchedTeleporterSolid = null;
     public static Teleporter touchedTeleporter = null;
 
     //    test

@@ -46,7 +46,6 @@ public class MainScreen extends BScreen {
 
     public Array<SolidHigh> hiSolids;
     public Array<SolidLow> loSolids;
-    public Array<TeleporterSolid> teleportersSolid;
     public Array<Teleporter> teleporters;
 
     public Array<Neutrals> neutralNPCs;
@@ -105,7 +104,6 @@ public class MainScreen extends BScreen {
 
         hiSolids = new Array<>();
         loSolids = new Array<>();
-        teleportersSolid = new Array<>();
 
         neutralNPCs = new Array<>();
         hostiles = new Array<>();
@@ -346,20 +344,6 @@ public class MainScreen extends BScreen {
 
         }
 
-        for (TeleporterSolid tpObj :
-                teleportersSolid) {
-            if (tpObj.getEnabled() && !tpObj.noReturn && tpObj.overlaps(player)) {
-                //        tp target reserve purge
-                GameParams.touchedTeleporterSolid = null;
-
-                GameParams.touchedTeleporterSolid = tpObj;
-
-                game.setScreen(new MainScreen(game));
-
-            }
-
-        }
-
         for (Teleporter tp :
                 teleporters) {
             if (tp.getEnabled() && !tp.noReturn && tp.overlaps(player)) {
@@ -483,28 +467,6 @@ public class MainScreen extends BScreen {
         for (Polygon poly :
                 getPolygonList("sPolyLo", "type")) {
             loSolids.add(new SolidLow(poly.getX(), poly.getY(), mainStage, poly));
-
-        }
-
-        for (MapObject solidObj :
-                getRectangleList("teleporter", "tile_type")) {
-            props = solidObj.getProperties();
-            TeleporterSolid teleporterSolid = new TeleporterSolid((float) props.get("x"), (float) props.get("y"),
-                    mainStage, (float) props.get("width"), (float) props.get("height"),
-                    Float.parseFloat(props.get("offset_x").toString()),
-                    Float.parseFloat(props.get("offset_y").toString()),
-                    props.get("target_map").toString(), props.get("id").toString(),
-                    props.get("tgt_id").toString(),
-                    Boolean.parseBoolean(props.get("no_return").toString()));
-
-            if (GameParams.touchedTeleporterSolid != null &&
-                    teleporterSolid.tpId.equals(GameParams.touchedTeleporterSolid.tgtTpId)) {
-                this.playerTpSpawnX = teleporterSolid.getX();
-                this.playerTpSpawnY = teleporterSolid.getY();
-
-            }
-
-            teleportersSolid.add(teleporterSolid);
 
         }
 

@@ -528,28 +528,6 @@
 </data>
  </layer>
  <objectgroup id="14" name="Object Layer 1">
-  <object id="40" name="teleporterSolid A2" x="128" y="656" width="32" height="32">
-   <properties>
-    <property name="id" value="0x001_1"/>
-    <property name="no_return" type="bool" value="false"/>
-    <property name="offset_x" type="float" value="-1"/>
-    <property name="offset_y" type="float" value="-1"/>
-    <property name="target_map" value="world/maps/devmap_2.tmx"/>
-    <property name="tgt_id" value="0x002_1"/>
-    <property name="tile_type" value="teleporterSolid"/>
-   </properties>
-  </object>
-  <object id="41" name="teleporterSolid A2" x="480" y="736" width="32" height="32">
-   <properties>
-    <property name="id" value="0x001_2"/>
-    <property name="no_return" type="bool" value="true"/>
-    <property name="offset_x" type="float" value="1"/>
-    <property name="offset_y" type="float" value="0"/>
-    <property name="target_map" value="world/maps/spawn_map_b.tmx"/>
-    <property name="tgt_id" value="0x008_1"/>
-    <property name="tile_type" value="teleporterSolid"/>
-   </properties>
-  </object>
   <object id="42" gid="144" x="128" y="864" width="32" height="32">
    <properties>
     <property name="id" value="0x002_1"/>

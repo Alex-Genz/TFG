@@ -27,8 +27,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 574,
-                "y": 574
+                "x": 1293.3333333333333,
+                "y": 1808.3333333333333
             }
         },
         "maps/devmap_2.tmx": {
@@ -36,10 +36,10 @@
                 2
             ],
             "scale": 1.5,
-            "selectedLayer": 11,
+            "selectedLayer": 12,
             "viewCenter": {
-                "x": 384,
-                "y": 383.66666666666663
+                "x": -1716.6666666666665,
+                "y": 618.3333333333334
             }
         },
         "maps/devmap_3.tmx": {
@@ -68,8 +68,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 395.3333333333333,
-                "y": 375.33333333333337
+                "x": 1998.6666666666665,
+                "y": 970.3333333333333
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -80,11 +80,11 @@
             "expandedObjectLayers": [
                 15
             ],
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 916,
-                "y": 538
+                "x": 714,
+                "y": 727.6666666666666
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -162,7 +162,7 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 32,
     "map.lastUsedFormat": "tmx",
