@@ -27,8 +27,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 1293.3333333333333,
-                "y": 1808.3333333333333
+                "x": 586,
+                "y": 640.3333333333333
             }
         },
         "maps/devmap_2.tmx": {
@@ -38,8 +38,8 @@
             "scale": 1.5,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": -1716.6666666666665,
-                "y": 618.3333333333334
+                "x": 384,
+                "y": 383.66666666666663
             }
         },
         "maps/devmap_3.tmx": {
@@ -68,8 +68,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 1998.6666666666665,
-                "y": 970.3333333333333
+                "x": 480,
+                "y": 319.6666666666667
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -83,8 +83,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 714,
-                "y": 727.6666666666666
+                "x": -1382.3333333333333,
+                "y": -180.66666666666669
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -162,7 +162,7 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 32,
     "map.lastUsedFormat": "tmx",
@@ -183,12 +183,12 @@
     "project": "project_wasteland.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "tilesets/spawn_tiles.tsx",
         "maps/devmap_1.tmx",
         "maps/devmap_2.tmx",
         "tilesets/house_walls.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
-        "tilesets/spawn_tiles.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
         "maps/spawn_map_b.tmx",

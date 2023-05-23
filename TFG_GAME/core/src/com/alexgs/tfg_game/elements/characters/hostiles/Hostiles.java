@@ -8,6 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class Hostiles extends Characters {
     protected float speed;
 
+    private float health = 100;
+
     //    temporal
     public final String PATHS = "sprites/npcs/";
     public final String EXTENSION = ".png";
@@ -79,9 +81,9 @@ public class Hostiles extends Characters {
     }
 
     public void act(float delta) {
-        super.act(delta);
-
         if (this.getEnabled()) {
+            super.act(delta);
+
             updateHitbox();
 
             if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 180) {
@@ -107,6 +109,9 @@ public class Hostiles extends Characters {
                 }
 
             }
+
+            if (this.health <= 0)
+                this.setEnabled(false);
 
         }
 
@@ -134,8 +139,9 @@ public class Hostiles extends Characters {
 
     }
 
-    public void hit() {
-        this.setEnabled(false);
+    public void hit(float dmg) {
+        this.health-=dmg;
+        System.out.println(this.health);
 
     }
 

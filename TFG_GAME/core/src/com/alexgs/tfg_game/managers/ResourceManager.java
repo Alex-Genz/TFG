@@ -138,6 +138,8 @@ public final class ResourceManager {
 
         }
 
+        assets.load("world/world_objects/street_light_1.png", Texture.class);
+
 
         /*
          * ost = assets.load(<audio file path>, Music.class);

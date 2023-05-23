@@ -3,6 +3,7 @@ package com.alexgs.tfg_game.elements.characters.neutrals.player;
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
+import com.alexgs.tfg_game.elements.world_obj.Sign;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.Gdx;
@@ -144,16 +145,22 @@ public class Player extends Characters {
     }
 
     private void interact() {
-        for (Neutrals npc :
-                lvl.neutralNPCs) {
-            if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
-//                System.out.println((super.distanceToTarget(npc.getCenteredX(),
-//                        npc.getCenteredY()) < 40) ? npc.message :
-//                        "not close enough" + super.distanceToTarget(npc.getCenteredX(),
-//                                npc.getCenteredY()));
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+            for (Neutrals npc :
+                    lvl.neutralNPCs) {
                 if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 30) {
                     System.out.println(npc.message);
-                    break;
+                    return;
+
+                }
+
+            }
+
+            for (Sign sign :
+                    lvl.signs) {
+                if (super.distanceToTarget(sign.getCenteredX(), sign.getCenteredY()) < 18) {
+                    System.out.println(sign.getText());
+                    return;
 
                 }
 
@@ -324,6 +331,9 @@ public class Player extends Characters {
 
         } else
             running = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) ? true : false;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE))
+            lvl.masterReload();
 
     }
 

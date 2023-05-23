@@ -52,6 +52,7 @@ public class MainScreen extends BScreen {
     public Array<Hostiles> hostiles;
 
     public Array<WorldObjects> worldObjects;
+    public Array<Sign> signs;
 
     private float playerTpSpawnX;
     private float playerTpSpawnY;
@@ -112,6 +113,7 @@ public class MainScreen extends BScreen {
         Teleporter teleporter;
 
         worldObjects = new Array<>();
+        signs = new Array<>();
 
         for (MapObject characters :
                 getElementList()) {
@@ -187,8 +189,7 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "vx_tree":
-                    this.worldObjects.add(new VxTree((float) props.get("x") -
-                            ((props.get("variant").toString().equals("cypress") ? 0 : 16)),
+                    this.worldObjects.add(new VxTree((float) props.get("x"),
                             (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
                     break;
@@ -207,6 +208,16 @@ public class MainScreen extends BScreen {
 
                 case "sign":
                     this.worldObjects.add(new Sign((float) props.get("x"),
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString(),
+                            props.get("text").toString()));
+                    this.signs.add(new Sign((float) props.get("x"),
+                            (float) props.get("y"), mainStage, this, props.get("variant").toString(),
+                            props.get("text").toString()));
+
+                    break;
+
+                case "streetlight":
+                    this.worldObjects.add(new Streetlight((float) props.get("x"),
                             (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
             }
@@ -557,6 +568,12 @@ public class MainScreen extends BScreen {
         }
 
         return list;
+
+    }
+
+    public void masterReload() {
+        if (GameParams.debug)
+            this.game.setScreen(new MainScreen(game));
 
     }
 
