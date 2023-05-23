@@ -148,7 +148,7 @@ public class Player extends Characters {
         if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
             for (Neutrals npc :
                     lvl.neutralNPCs) {
-                if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < 30) {
+                if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < lvl.getTileWidth()) {
                     System.out.println(npc.message);
                     return;
 
@@ -158,7 +158,7 @@ public class Player extends Characters {
 
             for (Sign sign :
                     lvl.signs) {
-                if (super.distanceToTarget(sign.getCenteredX(), sign.getCenteredY()) < 18) {
+                if (super.distanceToTarget(sign.getCenteredX(), sign.getCenteredY()) < lvl.getTileWidth()) {
                     System.out.println(sign.getText());
                     return;
 
