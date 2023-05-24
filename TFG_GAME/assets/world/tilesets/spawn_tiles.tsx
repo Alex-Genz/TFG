@@ -101,7 +101,7 @@
    <property name="spawn" value="teleporter"/>
    <property name="target_id" value="0x"/>
    <property name="target_map" value=""/>
-   <property name="terget_map_path" value="world/maps/"/>
+   <property name="target_map_path" value="world/maps/"/>
   </properties>
  </tile>
  <tile id="16">

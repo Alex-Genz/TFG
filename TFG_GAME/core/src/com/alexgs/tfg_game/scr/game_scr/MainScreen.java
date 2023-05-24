@@ -157,7 +157,8 @@ public class MainScreen extends BScreen {
                         (float) props.get("y"), mainStage, this,
                         (float) props.get("offset_x"),
                         (float) props.get("offset_y"),
-                        "world/maps/" + props.get("target_map").toString(),
+                        props.get("target_map_path").toString() +
+                                props.get("target_map").toString(),
                         props.get("id").toString(),
                         props.get("target_id").toString(),
                         (boolean) props.get("no_return"));
@@ -228,8 +229,8 @@ public class MainScreen extends BScreen {
 
         if (playerHasTeleported) {
             player = new Player(playerTpSpawnX +
-                    (GameParams.touchedTeleporter.tpTgtOffsetX * tileWidth) - tileWidth / 2,
-                    playerTpSpawnY + (GameParams.touchedTeleporter.tpTgtOffsetY * tileHeight),
+                    (GameParams.touchedTeleporter.getTpTgtOffsetX() * tileWidth) - tileWidth / 2,
+                    playerTpSpawnY + (GameParams.touchedTeleporter.getTpTgtOffsetY() * tileHeight),
                     mainStage, this);
 
             this.playerHasSpawn = true;

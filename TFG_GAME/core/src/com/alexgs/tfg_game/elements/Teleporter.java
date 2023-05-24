@@ -12,8 +12,8 @@ public class Teleporter extends Element {
 
     public String tgtMapPath;
 
-    public float tpTgtOffsetX;
-    public float tpTgtOffsetY;
+    private float tpTgtOffsetX;
+    private float tpTgtOffsetY;
 
     public String tpId;
     public String tgtTpId;
@@ -38,6 +38,14 @@ public class Teleporter extends Element {
 
         anim = loadFullAnimation("sprites/other/pwup_sprite.png", 1, 1, 0, true);
 
+    }
+
+    public float getTpTgtOffsetX() {
+        return tpTgtOffsetX;
+    }
+
+    public float getTpTgtOffsetY() {
+        return tpTgtOffsetY;
     }
 
 }

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/town_map.tmx",
+    "activeFile": "maps/mountain_map.tmx",
     "console.history": [
         "ls",
         "dir",
@@ -11,9 +11,9 @@
     ],
     "expandedProjectPaths": [
         "maps",
-        "worlds",
         ".",
-        "tilesets"
+        "tilesets",
+        "worlds"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -24,22 +24,22 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 1.5,
+            "scale": 0.75,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 576,
-                "y": 575.6666666666666
+                "x": 644.6666666666667,
+                "y": 781.3333333333333
             }
         },
         "maps/devmap_2.tmx": {
             "expandedObjectLayers": [
                 2
             ],
-            "scale": 1.5,
+            "scale": 0.75,
             "selectedLayer": 12,
             "viewCenter": {
-                "x": 384,
-                "y": 384.33333333333337
+                "x": -90,
+                "y": 497.33333333333326
             }
         },
         "maps/devmap_3.tmx": {
@@ -48,6 +48,17 @@
             "viewCenter": {
                 "x": 235,
                 "y": 867.5
+            }
+        },
+        "maps/mountain_map.tmx": {
+            "expandedObjectLayers": [
+                14
+            ],
+            "scale": 1.5,
+            "selectedLayer": 13,
+            "viewCenter": {
+                "x": 893.6666666666666,
+                "y": 652
             }
         },
         "maps/spawn_map.tmx": {
@@ -68,8 +79,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 479.33333333333326,
-                "y": 319
+                "x": 502.33333333333337,
+                "y": 204.66666666666663
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -80,11 +91,11 @@
             "expandedObjectLayers": [
                 15
             ],
-            "scale": 0.5,
+            "scale": 1,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 492,
-                "y": -106
+                "x": 579.5,
+                "y": 251
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -125,7 +136,7 @@
         },
         "tilesets/pngkit_tile-png_2654326.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 2
+            "scaleInEditor": 1
         },
         "tilesets/spawn_tiles.tsx": {
             "scaleInDock": 1,
@@ -162,17 +173,17 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 32,
     "map.lastUsedFormat": "tmx",
-    "map.width": 36,
+    "map.width": 32,
     "mapScene.enableWorlds": true,
     "openFiles": [
         "maps/devmap_1.tmx",
-        "maps/devmap_2.tmx",
         "maps/town_map.tmx",
         "maps/spawn_map_b.tmx",
+        "maps/mountain_map.tmx",
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/spawn_tiles.tsx",
@@ -184,17 +195,17 @@
     "property.type": "string",
     "recentFiles": [
         "maps/devmap_1.tmx",
-        "maps/devmap_2.tmx",
+        "maps/town_map.tmx",
+        "maps/spawn_map_b.tmx",
         "tilesets/house_walls.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
         "tilesets/spawn_tiles.tsx",
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
-        "maps/spawn_map_b.tmx",
-        "maps/town_map.tmx",
-        "tilesets/victorian-accessories.tsx",
-        "tilesets/Refmap-TileE.tsx"
+        "maps/mountain_map.tmx",
+        "maps/devmap_2.tmx",
+        "tilesets/victorian-accessories.tsx"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",

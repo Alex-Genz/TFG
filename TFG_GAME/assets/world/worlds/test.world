@@ -8,18 +8,11 @@
             "y": -384
         },
         {
-            "fileName": "../maps/devmap_2.tmx",
-            "height": 768,
-            "width": 768,
-            "x": 768,
-            "y": 0
-        },
-        {
             "fileName": "../maps/spawn_map_b.tmx",
             "height": 640,
             "width": 960,
-            "x": -1344,
-            "y": 224
+            "x": -736,
+            "y": 768
         },
         {
             "fileName": "../maps/town_map.tmx",
@@ -27,6 +20,13 @@
             "width": 1536,
             "x": 224,
             "y": 768
+        },
+        {
+            "fileName": "../maps/mountain_map.tmx",
+            "height": 1024,
+            "width": 1024,
+            "x": -1408,
+            "y": -256
         }
     ],
     "onlyShowAdjacentMaps": false,
