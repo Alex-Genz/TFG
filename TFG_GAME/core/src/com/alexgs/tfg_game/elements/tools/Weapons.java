@@ -47,7 +47,6 @@ public class Weapons {
 
     public float getBulletSpeed() {
         return bulletSpeed;
-
     }
 
 }

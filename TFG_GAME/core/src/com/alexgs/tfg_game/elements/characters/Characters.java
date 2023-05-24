@@ -6,11 +6,15 @@ import com.alexgs.tfg_game.elements.bullets.BulletEnemy;
 import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
 import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Array;
+
+import java.awt.geom.Line2D;
 
 public class Characters extends Element {
     public MainScreen lvl;
@@ -39,6 +43,7 @@ public class Characters extends Element {
     protected Animation<TextureRegion> walkLeft;
     protected Animation<TextureRegion> walkRight;
 
+
     public Characters(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s);
         this.lvl = lvl;
@@ -53,6 +58,8 @@ public class Characters extends Element {
         this.applyPhysics(delta);
 
     }
+
+
 
     protected void loadPersistenceMag(Stage s, Weapons weapon, int team, boolean changeWeapon) {
         if (changeWeapon) {

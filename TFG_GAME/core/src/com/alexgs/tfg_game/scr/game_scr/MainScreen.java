@@ -10,6 +10,7 @@ import com.alexgs.tfg_game.managers.ResourceManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
+import com.alexgs.tfg_game.scr.ui_scr.DeathScreen;
 import com.alexgs.tfg_game.scr.util.ActorComparator;
 import com.alexgs.tfg_game.solids.*;
 import com.badlogic.gdx.Gdx;
@@ -143,11 +144,7 @@ public class MainScreen extends BScreen {
                     break;
 
                 case "enemy":
-                    this.hostiles.add(new Shooter((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this, (int) props.get("skin"),
-                            (float) props.get("path_size_x"),
-                            (float) props.get("path_size_y"),
-                            (float) props.get("persecution_speed")));
+                    instantiateEnemies(props);
 
                     break;
 
@@ -174,52 +171,15 @@ public class MainScreen extends BScreen {
 
                     break;
 
+                case "world_object":
+                    instantiateWorldObjects(props);
+
+                    break;
+
 //                World objects
 
 
-                case "maple_tree":
-                    this.worldObjects.add(new MapleTree((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
-                    break;
-
-                case "pine_tree":
-                    this.worldObjects.add(new PineTree((float) props.get("x") - this.tileWidth,
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
-
-                    break;
-
-                case "vx_tree":
-                    this.worldObjects.add(new VxTree((float) props.get("x"),
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
-
-                    break;
-
-                case "crate":
-                    this.worldObjects.add(new Crate((float) props.get("x"),
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
-
-                    break;
-
-                case "crystal":
-                    this.worldObjects.add(new Crystal((float) props.get("x"),
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
-
-                    break;
-
-                case "sign":
-                    this.worldObjects.add(new Sign((float) props.get("x"),
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString(),
-                            props.get("text").toString()));
-                    this.signs.add(new Sign((float) props.get("x"),
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString(),
-                            props.get("text").toString()));
-
-                    break;
-
-                case "streetlight":
-                    this.worldObjects.add(new Streetlight((float) props.get("x"),
-                            (float) props.get("y"), mainStage, this, props.get("variant").toString()));
 
             }
 
@@ -254,6 +214,59 @@ public class MainScreen extends BScreen {
 
     }
 
+    private void instantiateWorldObjects(MapProperties props) {
+        switch (props.get("type").toString()) {
+
+            case "maple_tree":
+                this.worldObjects.add(new MapleTree((float) props.get("x") - this.tileWidth,
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                break;
+
+            case "pine_tree":
+                this.worldObjects.add(new PineTree((float) props.get("x") - this.tileWidth,
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                break;
+
+            case "vx_tree":
+                this.worldObjects.add(new VxTree((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                break;
+
+            case "crate":
+                this.worldObjects.add(new Crate((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                break;
+
+            case "crystal":
+                this.worldObjects.add(new Crystal((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                break;
+
+            case "sign":
+                this.worldObjects.add(new Sign((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString(),
+                        props.get("text").toString()));
+                this.signs.add(new Sign((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString(),
+                        props.get("text").toString()));
+
+                break;
+
+            case "streetlight":
+                this.worldObjects.add(new Streetlight((float) props.get("x"),
+                        (float) props.get("y"), mainStage, this, props.get("variant").toString()));
+
+                break;
+
+        }
+
+    }
+
     private void instantiateCharacters(MapProperties props) {
         switch (props.get("character_type").toString()) {
             case "alpha":
@@ -277,13 +290,30 @@ public class MainScreen extends BScreen {
 
     private void instantiateEnemies(MapProperties props) {
         switch (props.get("enemy_type").toString()) {
-            case "sharpshooter":
-//                System.out.println("sharpshooter with skinset number " + props.get("skin").toString());
+            case "archer":
+                this.hostiles.add(new Archer((float) props.get("x") - this.tileWidth,
+                        (float) props.get("y"), mainStage, this, (int) props.get("skin"),
+                        (float) props.get("path_size_x"),
+                        (float) props.get("path_size_y"),
+                        (float) props.get("persecution_speed")));
 
                 break;
 
-            case "biter":
-//                System.out.println("biter with skinset number " + props.get("skin").toString());
+            case "warlock":
+                this.hostiles.add(new Warlock((float) props.get("x") - this.tileWidth,
+                        (float) props.get("y"), mainStage, this, (int) props.get("skin"),
+                        (float) props.get("path_size_x"),
+                        (float) props.get("path_size_y"),
+                        (float) props.get("persecution_speed")));
+
+                break;
+
+            case "assassin":
+                this.hostiles.add(new Assasin((float) props.get("x") - this.tileWidth,
+                        (float) props.get("y"), mainStage, this, (int) props.get("skin"),
+                        (float) props.get("path_size_x"),
+                        (float) props.get("path_size_y"),
+                        (float) props.get("persecution_speed")));
 
                 break;
 
@@ -298,6 +328,8 @@ public class MainScreen extends BScreen {
         centerCam();
 
         checkCollisions();
+
+        checkPlayerHealth();
 
         mouse3d.x = Gdx.input.getX();
         mouse3d.y = Gdx.input.getY();
@@ -325,6 +357,14 @@ public class MainScreen extends BScreen {
 
         mouseX = mouse3d.x;
         mouseY = mouse3d.y;
+
+    }
+
+    private void checkPlayerHealth() {
+        if (player.getPlayerHP() <= 0) {
+            game.setScreen(new DeathScreen(game));
+
+        }
 
     }
 

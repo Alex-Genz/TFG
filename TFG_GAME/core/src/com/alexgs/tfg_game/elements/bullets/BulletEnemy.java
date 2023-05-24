@@ -31,7 +31,8 @@ public class BulletEnemy extends Bullet {
 
         if (this.getEnabled() && this.overlaps(lvl.player.getHitbox())) {
             this.setEnabled(false);
-            System.out.println("OUCH! was it something i said?!?!");
+//            System.out.println("OUCH! was it something i said?!?!");
+            lvl.player.hit(super.dmg);
 
         }
 

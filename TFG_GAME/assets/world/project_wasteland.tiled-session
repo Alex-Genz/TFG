@@ -24,11 +24,11 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 0.75,
+            "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 644.6666666666667,
-                "y": 781.3333333333333
+                "x": 172,
+                "y": 898.6666666666666
             }
         },
         "maps/devmap_2.tmx": {
@@ -57,8 +57,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 893.6666666666666,
-                "y": 652
+                "x": 1193.3333333333333,
+                "y": 764
             }
         },
         "maps/spawn_map.tmx": {
@@ -79,8 +79,8 @@
             "scale": 1.5,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 502.33333333333337,
-                "y": 204.66666666666663
+                "x": 730.6666666666666,
+                "y": -152.66666666666663
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -94,8 +94,8 @@
             "scale": 1,
             "selectedLayer": 13,
             "viewCenter": {
-                "x": 579.5,
-                "y": 251
+                "x": -783,
+                "y": -385
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -140,7 +140,7 @@
         },
         "tilesets/spawn_tiles.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 3
+            "scaleInEditor": 2
         },
         "tilesets/victorian-accessories.tsx": {
             "scaleInDock": 0.75,
@@ -173,7 +173,7 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 32,
     "map.lastUsedFormat": "tmx",

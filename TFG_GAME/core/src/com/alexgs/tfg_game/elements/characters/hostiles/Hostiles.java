@@ -2,13 +2,21 @@ package com.alexgs.tfg_game.elements.characters.hostiles;
 
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
+import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Hostiles extends Characters {
+    protected Weapons weapon;
+
+    protected float roundsPerMinute;
+    protected float timeBeforeNextShot = 0;
+
     protected float speed;
 
     private float health = 100;
+
+    protected float stopDistance;
 
     //    temporal
     public final String PATHS = "sprites/npcs/";
@@ -49,7 +57,7 @@ public class Hostiles extends Characters {
 
 
     public Hostiles(float x, float y, Stage s, MainScreen lvl,
-                    int charNum, float pathSizeX, float pathSizeY, float speed) {
+                    int charNum, float pathSizeX, float pathSizeY, float speed, float rpm, float stopDistance) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
@@ -60,6 +68,10 @@ public class Hostiles extends Characters {
 
         super.pathSizeX = pathSizeX;
         super.pathSizeY = pathSizeY;
+
+        this.roundsPerMinute = rpm;
+
+        this.stopDistance = stopDistance;
 
         setPolygon(8, this.getWidth() / 3,
                 this.getHeight() / 4, 22, 0);
@@ -97,7 +109,7 @@ public class Hostiles extends Characters {
                 }
 
             } else {
-                if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > 55) {
+                if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) > stopDistance) {
                     super.moveTo(lvl.player.getCenteredX(), lvl.player.getCenteredY(), this.speed);
                     super.animations();
 

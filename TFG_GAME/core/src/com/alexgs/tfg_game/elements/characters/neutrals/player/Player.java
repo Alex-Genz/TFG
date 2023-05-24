@@ -24,8 +24,6 @@ public class Player extends Characters {
     protected Animation<TextureRegion> walkLeft;
     protected Animation<TextureRegion> walkRight;
 
-    // INFO: preparation for extra animations
-// TODO: extract animation sprite strips
     protected Animation<TextureRegion> runUp;
     protected Animation<TextureRegion> runDown;
     protected Animation<TextureRegion> runLeft;
@@ -115,11 +113,23 @@ public class Player extends Characters {
 
     }
 
+    public void hit(float dmg) {
+        PlayerParams.hp -= dmg;
+        PlayerParams.timeToRegen = PlayerParams.HP_REGEN_DELAY;
+
+    }
+
     public void act(float delta) {
         super.act(delta);
         updateHitbox();
         controls();
         animate();
+
+        System.out.println(PlayerParams.hp + " | " + PlayerParams.timeToRegen);
+
+        regen(delta);
+
+//        System.out.println((lvl.mouseX - this.getCenteredX()) + " | " + (lvl.mouseY - this.getCenteredY()) + " | " + super.distanceToTarget(lvl.mouseX, lvl.mouseY));
 
         interact();
 
@@ -136,6 +146,19 @@ public class Player extends Characters {
         }
 
 //        System.out.println(delta + " | " + animationTime);
+
+    }
+
+    private void regen(float delta) {
+        if (PlayerParams.timeToRegen <= 0) {
+            if (PlayerParams.hp < PlayerParams.MAX_PLAYER_HEALTH) {
+                PlayerParams.hp += 0.2f;
+//                System.out.println("healing");
+
+            }
+
+        } else
+            PlayerParams.timeToRegen -= delta;
 
     }
 
@@ -405,6 +428,11 @@ public class Player extends Characters {
         walkRightAr = loadFullAnimation("sprites/player/right/ar_walk_right.png", 1, 6, 0.15f, true);
         walkUpAr = loadFullAnimation("sprites/player/up/ar_walk_up.png", 1, 6, 0.15f, true);
 
+
+    }
+
+    public float getPlayerHP() {
+        return PlayerParams.hp;
 
     }
 

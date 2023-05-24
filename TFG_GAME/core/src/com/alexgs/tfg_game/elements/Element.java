@@ -128,16 +128,18 @@ public class Element extends Actor {
     }
 
     protected float distanceToTarget(float tgtX, float tgtY) {
-        return (float) Math.sqrt(Math.pow((tgtX - this.getCenteredX()), 2) +
-                Math.pow((tgtY - this.getCenteredY()), 2));
+//        return (float) Math.sqrt(Math.pow((tgtX - this.getCenteredX()), 2) +
+//                Math.pow((tgtY - this.getCenteredY()), 2));
 
+        return (float) Math.hypot(tgtX - this.getCenteredX(), tgtY - this.getCenteredY());
 
     }
 
     protected float distanceToTarget(Vector2 pathPoint) {
-        return (float) Math.sqrt(Math.pow((pathPoint.x - this.getCenteredX()), 2) +
-                Math.pow((pathPoint.y - this.getCenteredY()), 2));
+//        return (float) Math.sqrt(Math.pow((pathPoint.x - this.getCenteredX()), 2) +
+//                Math.pow((pathPoint.y - this.getCenteredY()), 2));
 
+        return (float) Math.hypot(pathPoint.x - this.getCenteredX(), pathPoint.y - this.getCenteredY());
 
     }
 //    custom methods

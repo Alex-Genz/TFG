@@ -1,69 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="world_objects" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+<tileset version="1.10" tiledversion="1.10.0" name="world_objects" tilewidth="32" tileheight="32" tilecount="256" columns="16">
  <image source="world_objects.png" width="512" height="512"/>
  <tile id="0">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="closed_1"/>
   </properties>
  </tile>
  <tile id="1">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="closed_2"/>
   </properties>
  </tile>
  <tile id="2">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="open_1"/>
   </properties>
  </tile>
  <tile id="3">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="open_2"/>
   </properties>
  </tile>
  <tile id="4">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="apples"/>
   </properties>
  </tile>
  <tile id="5">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="fish"/>
   </properties>
  </tile>
  <tile id="6">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="veggies"/>
   </properties>
  </tile>
  <tile id="7">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="iron"/>
   </properties>
  </tile>
  <tile id="8">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="gold"/>
   </properties>
  </tile>
  <tile id="9">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="tnt"/>
   </properties>
  </tile>
  <tile id="10">
   <properties>
-   <property name="spawn" value="crate"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crate"/>
    <property name="variant" value="pebbles"/>
   </properties>
  </tile>
@@ -106,101 +117,117 @@
  </tile>
  <tile id="16">
   <properties>
-   <property name="spawn" value="sign"/>
+   <property name="spawn" value="world_object"/>
    <property name="text" value=""/>
+   <property name="type" value="sign"/>
    <property name="variant" value="1"/>
   </properties>
  </tile>
  <tile id="17">
   <properties>
-   <property name="spawn" value="sign"/>
+   <property name="spawn" value="world_object"/>
    <property name="text" value=""/>
+   <property name="type" value="sign"/>
    <property name="variant" value="2"/>
   </properties>
  </tile>
  <tile id="18">
   <properties>
-   <property name="spawn" value="sign"/>
+   <property name="spawn" value="world_object"/>
    <property name="text" value=""/>
+   <property name="type" value="sign"/>
    <property name="variant" value="3"/>
   </properties>
  </tile>
  <tile id="19">
   <properties>
-   <property name="spawn" value="sign"/>
+   <property name="spawn" value="world_object"/>
    <property name="text" value=""/>
+   <property name="type" value="sign"/>
    <property name="variant" value="4"/>
   </properties>
  </tile>
  <tile id="20">
   <properties>
-   <property name="spawn" value="streetlight"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="streetlight"/>
    <property name="variant" value="1"/>
   </properties>
  </tile>
  <tile id="32">
   <properties>
-   <property name="spawn" value="vx_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="vx_tree"/>
    <property name="variant" value="cypress"/>
   </properties>
  </tile>
  <tile id="33">
   <properties>
-   <property name="spawn" value="vx_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="vx_tree"/>
    <property name="variant" value="pine"/>
   </properties>
  </tile>
  <tile id="34">
   <properties>
-   <property name="spawn" value="vx_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="vx_tree"/>
    <property name="variant" value="maple"/>
   </properties>
  </tile>
  <tile id="35">
   <properties>
-   <property name="spawn" value="vx_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="vx_tree"/>
    <property name="variant" value="palm"/>
   </properties>
  </tile>
  <tile id="36">
   <properties>
-   <property name="spawn" value="maple_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="maple_tree"/>
    <property name="variant" value="normal"/>
   </properties>
  </tile>
  <tile id="37">
   <properties>
-   <property name="spawn" value="maple_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="maple_tree"/>
    <property name="variant" value="snow"/>
   </properties>
  </tile>
  <tile id="38">
   <properties>
-   <property name="spawn" value="pine_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="pine_tree"/>
    <property name="variant" value="normal"/>
   </properties>
  </tile>
  <tile id="39">
   <properties>
-   <property name="spawn" value="pine_tree"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="pine_tree"/>
    <property name="variant" value="snow"/>
   </properties>
  </tile>
  <tile id="48">
   <properties>
-   <property name="spawn" value="crystal"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crystal"/>
    <property name="variant" value="1"/>
   </properties>
  </tile>
  <tile id="49">
   <properties>
-   <property name="spawn" value="crystal"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crystal"/>
    <property name="variant" value="2"/>
   </properties>
  </tile>
  <tile id="50">
   <properties>
-   <property name="spawn" value="crystal"/>
+   <property name="spawn" value="world_object"/>
+   <property name="type" value="crystal"/>
    <property name="variant" value="3"/>
   </properties>
  </tile>

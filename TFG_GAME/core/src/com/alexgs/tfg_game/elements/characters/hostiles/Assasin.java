@@ -4,15 +4,14 @@ import com.alexgs.tfg_game.elements.tools.*;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
-public class Warlock extends Hostiles {
+public class Assasin extends Hostiles {
 
-    public Warlock(float x, float y, Stage s, MainScreen lvl, int charNum,
-                   float pathSizeX, float pathSizeY, float speed) {
-        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, 50, 55);
+    public Assasin(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY, float speed) {
+        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, 10, lvl.getTileWidth());
 
         this.setAnimation(super.idleDown);
 
-        this.weapon = new MagicStaff();
+        this.weapon = new Knife();
 
         super.loadPersistenceMag(s, this.weapon, 1, false);
 
@@ -23,17 +22,18 @@ public class Warlock extends Hostiles {
         if (this.getEnabled()) {
             super.act(delta);
 
-            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) < super.stopDistance) {
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY())
+                    < super.stopDistance) {
                 if (super.timeBeforeNextShot <= 0 && this.velocity.x == 0 && this.velocity.y == 0) {
                     super.shoot(this.weapon, lvl.player.getCenteredX(), lvl.player.getCenteredY());
-                    super.timeBeforeNextShot+= 60/ weapon.getRoundsPerMinute();
+                    super.timeBeforeNextShot += 60 / super.roundsPerMinute;
 
                 }
 
             }
 
             if (super.timeBeforeNextShot > 0)
-                super.timeBeforeNextShot-=delta;
+                super.timeBeforeNextShot -= delta;
 
         }
 
