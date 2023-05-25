@@ -9,12 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class Hostiles extends Characters {
     protected Weapons weapon;
 
-    protected float roundsPerMinute;
     protected float timeBeforeNextShot = 0;
 
     protected float speed;
 
-    private float health = 100;
+    private float health;
 
     protected float stopDistance;
 
@@ -57,7 +56,7 @@ public class Hostiles extends Characters {
 
 
     public Hostiles(float x, float y, Stage s, MainScreen lvl,
-                    int charNum, float pathSizeX, float pathSizeY, float speed, float rpm, float stopDistance) {
+                    int charNum, float pathSizeX, float pathSizeY, float speed, float stopDistance, float health, Weapons weapon) {
         super(x, y, s, lvl);
 
         assignCharacter(charNum);
@@ -69,9 +68,11 @@ public class Hostiles extends Characters {
         super.pathSizeX = pathSizeX;
         super.pathSizeY = pathSizeY;
 
-        this.roundsPerMinute = rpm;
-
         this.stopDistance = stopDistance;
+
+        this.health = health;
+
+        this.weapon = weapon;
 
         setPolygon(8, this.getWidth() / 3,
                 this.getHeight() / 4, 22, 0);

@@ -8,11 +8,9 @@ public class Archer extends Hostiles {
 
     public Archer(float x, float y, Stage s, MainScreen lvl,
                   int charNum, float pathSizeX, float pathSizeY, float speed) {
-        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, 30, 100);
+        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, 100, 100, new Bow());
 
         this.setAnimation(super.idleDown);
-
-        super.weapon = new Bow();
 
         super.loadPersistenceMag(s, this.weapon, 1, false);
 
@@ -25,7 +23,7 @@ public class Archer extends Hostiles {
             if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) < super.stopDistance) {
                 if (super.timeBeforeNextShot <= 0 && this.velocity.x == 0 && this.velocity.y == 0) {
                     super.shoot(this.weapon, lvl.player.getCenteredX(), lvl.player.getCenteredY());
-                    super.timeBeforeNextShot+= 60/ super.roundsPerMinute;
+                    super.timeBeforeNextShot+= 60/ super.weapon.getRoundsPerMinute();
 
                 }
 

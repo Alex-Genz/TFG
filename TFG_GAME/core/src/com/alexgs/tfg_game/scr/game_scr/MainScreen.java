@@ -28,6 +28,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
@@ -79,6 +80,8 @@ public class MainScreen extends BScreen {
     Label lblCurrWeapon;
     Label lblFireMode;
     Label lblDialog;
+
+    Image imgDialogBg;
 
     final String STR_HEALTH = "HP: ";
     final String STR_WEAPON = "Arma actual: ";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.10.1" name="world_objects" tilewidth="32" tileheight="32" tilecount="256" columns="16">
+<tileset version="1.10" tiledversion="1.10.0" name="world_objects" tilewidth="32" tileheight="32" tilecount="256" columns="16">
  <image source="world_objects.png" width="512" height="512"/>
  <tile id="0">
   <properties>
@@ -106,6 +106,7 @@
  <tile id="15">
   <properties>
    <property name="id" value="0x"/>
+   <property name="min_score" type="int" value="0"/>
    <property name="no_return" type="bool" value="false"/>
    <property name="offset_x" type="float" value="0"/>
    <property name="offset_y" type="float" value="0"/>

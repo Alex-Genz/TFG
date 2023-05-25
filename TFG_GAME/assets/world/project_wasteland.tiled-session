@@ -3,17 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/mountain_map.tmx",
+    "activeFile": "maps/town_map.tmx",
     "console.history": [
         "ls",
         "dir",
         "help"
     ],
     "expandedProjectPaths": [
-        "maps",
-        ".",
         "tilesets",
-        "worlds"
+        ".",
+        "worlds",
+        "maps"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -27,8 +27,8 @@
             "scale": 0.33,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 621.2121212121212,
-                "y": 871.2121212121212
+                "x": 1060.6060606060607,
+                "y": 2415.151515151515
             }
         },
         "maps/devmap_2.tmx": {
@@ -54,11 +54,11 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 2,
+            "scale": 3,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 1453.75,
-                "y": 1850
+                "x": 140.33333333333331,
+                "y": 2073.6666666666665
             }
         },
         "maps/river_map.tmx": {
@@ -69,7 +69,7 @@
             "selectedLayer": 14,
             "viewCenter": {
                 "x": 1151.5151515151515,
-                "y": 1150
+                "y": 1153.030303030303
             }
         },
         "maps/spawn_map.tmx": {
@@ -87,11 +87,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 0.75,
+            "scale": 0.5,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 480,
-                "y": 320.66666666666663
+                "x": 1566,
+                "y": -614
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -105,8 +105,8 @@
             "scale": 0.5,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 768,
-                "y": 767
+                "x": 386,
+                "y": 540
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -114,6 +114,7 @@
             "scaleInEditor": 3
         },
         "tilesets/Refmap-TileA5.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 0.75,
             "scaleInEditor": 1.5
         },
@@ -184,7 +185,7 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 72,
     "map.lastUsedFormat": "tmx",
@@ -204,12 +205,9 @@
         "tilesets/house_walls.tsx"
     ],
     "project": "project_wasteland.tiled-project",
-    "property.type": "string",
+    "property.type": "int",
     "recentFiles": [
         "maps/devmap_1.tmx",
-        "maps/town_map.tmx",
-        "maps/spawn_map_b.tmx",
-        "maps/river_map.tmx",
         "tilesets/house_walls.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
@@ -217,6 +215,9 @@
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
         "maps/mountain_map.tmx",
+        "maps/river_map.tmx",
+        "maps/spawn_map_b.tmx",
+        "maps/town_map.tmx",
         "maps/devmap_2.tmx"
     ],
     "resizeMap.removeObjects": true,

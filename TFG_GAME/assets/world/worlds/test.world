@@ -4,8 +4,8 @@
             "fileName": "../maps/devmap_1.tmx",
             "height": 1152,
             "width": 1152,
-            "x": 2880,
-            "y": 704
+            "x": 1952,
+            "y": -2144
         },
         {
             "fileName": "../maps/spawn_map_b.tmx",
