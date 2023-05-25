@@ -63,6 +63,7 @@ public final class ResourceManager {
         assets.load("world/maps/spawn_map_b.tmx", TiledMap.class);
         assets.load("world/maps/town_map.tmx", TiledMap.class);
         assets.load("world/maps/mountain_map.tmx", TiledMap.class);
+        assets.load("world/maps/river_map.tmx", TiledMap.class);
 
         /*
          * sprites/world_objects/ui_gui images = assets.load(<player file path>, Texture.class);
@@ -169,15 +170,15 @@ public final class ResourceManager {
     public static void botones() {
 
         // estilo para botones
-        FreeTypeFontGenerator ftfg = new FreeTypeFontGenerator(Gdx.files.internal("fonts/sans.ttf"));
-        FreeTypeFontParameter ftfp = new FreeTypeFontParameter();
+        FreeTypeFontGenerator sansFtfg = new FreeTypeFontGenerator(Gdx.files.internal("fonts/sans.ttf"));
+        FreeTypeFontParameter sansFtfp = new FreeTypeFontParameter();
 
-        ftfp.size = 36;
-        ftfp.color = Color.WHITE;
-        ftfp.borderColor = Color.BLACK;
-        ftfp.borderWidth = 2;
+        sansFtfp.size = 36;
+        sansFtfp.color = Color.WHITE;
+        sansFtfp.borderColor = Color.BLACK;
+        sansFtfp.borderWidth = 2;
 
-        BitmapFont fuentePropia = ftfg.generateFont(ftfp);
+        BitmapFont fuentePropia = sansFtfg.generateFont(sansFtfp);
         buttonStyle = new LabelStyle();
         buttonStyle.font = fuentePropia;
         textButtonStyle = new TextButtonStyle();

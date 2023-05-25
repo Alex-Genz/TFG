@@ -31,4 +31,15 @@ public class GameParams {
 
     public static final boolean TOGGLE_RUN = false;
 
+    public static int getScrWidth() {
+        return scrWidth;
+    }
+
+    public static int getScrHeight() {
+        return scrHeight;
+    }
+
+    public static int getFramerate() {
+        return framerate;
+    }
 }

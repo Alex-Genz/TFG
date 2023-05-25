@@ -4,29 +4,36 @@
             "fileName": "../maps/devmap_1.tmx",
             "height": 1152,
             "width": 1152,
-            "x": -384,
-            "y": -384
+            "x": 2880,
+            "y": 704
         },
         {
             "fileName": "../maps/spawn_map_b.tmx",
             "height": 640,
             "width": 960,
-            "x": -736,
-            "y": 768
+            "x": -1312,
+            "y": 128
         },
         {
             "fileName": "../maps/town_map.tmx",
             "height": 1536,
             "width": 1536,
-            "x": 224,
-            "y": 768
+            "x": 1952,
+            "y": -96
         },
         {
             "fileName": "../maps/mountain_map.tmx",
             "height": 1024,
             "width": 1024,
-            "x": -1408,
-            "y": -256
+            "x": -1376,
+            "y": -1536
+        },
+        {
+            "fileName": "../maps/river_map.tmx",
+            "height": 2304,
+            "width": 2304,
+            "x": -352,
+            "y": -1536
         }
     ],
     "onlyShowAdjacentMaps": false,

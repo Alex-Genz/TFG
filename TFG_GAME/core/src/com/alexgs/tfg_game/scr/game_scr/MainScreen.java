@@ -28,6 +28,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class MainScreen extends BScreen {
     public Array<SolidHigh> hiSolids;
     public Array<SolidLow> loSolids;
     public Array<Teleporter> teleporters;
+    private Teleporter teleporter;
 
     public Array<Neutrals> neutralNPCs;
     public Array<Hostiles> hostiles;
@@ -71,6 +73,15 @@ public class MainScreen extends BScreen {
     public Player player;
     private boolean playerHasSpawn = false;
     private boolean playerHasTeleported = false;
+
+    //    UI
+    Label lblHealth;
+    Label lblCurrWeapon;
+    Label lblFireMode;
+    Label lblDialog;
+
+    final String STR_HEALTH = "HP: ";
+    final String STR_WEAPON = "Arma actual: ";
 
     public MainScreen(MyGdxGame game) {
         super(game);
@@ -111,18 +122,48 @@ public class MainScreen extends BScreen {
         hostiles = new Array<>();
 
         teleporters = new Array<>();
-        Teleporter teleporter;
 
         worldObjects = new Array<>();
         signs = new Array<>();
 
+        instantiateElements(props);
+
+        instantiateSolids(props);
+
+        if (playerHasTeleported) {
+            player = new Player(playerTpSpawnX +
+                    (GameParams.touchedTeleporter.getTpTgtOffsetX() * tileWidth) - tileWidth / 2,
+                    playerTpSpawnY + (GameParams.touchedTeleporter.getTpTgtOffsetY() * tileHeight),
+                    mainStage, this);
+
+            this.playerHasSpawn = true;
+
+        }
+
+        if (!playerHasSpawn) {
+            player = new Player(64, 64, mainStage, this);
+
+        }
+
+
+//        cam
+        cam = (OrthographicCamera) mainStage.getCamera();
+        cam.setToOrtho(false, GameParams.scrWidth * GameParams.ZOOM,
+                GameParams.scrHeight * GameParams.ZOOM);
+        ren.setView(cam);
+
+//        mouse
+        mouse3d = new Vector3();
+
+    }
+
+    private void instantiateElements(MapProperties props) {
         for (MapObject characters :
                 getElementList()) {
             props = characters.getProperties();
 
             switch (props.get("spawn").toString()) {
 //                Entities
-
                 case "player":
                     if (!playerHasTeleported) {
                         player = new Player((float) props.get("x"),
@@ -151,14 +192,14 @@ public class MainScreen extends BScreen {
 //                Teleporters
                 case "teleporter":
                     teleporter = new Teleporter((float) props.get("x"),
-                        (float) props.get("y"), mainStage, this,
-                        (float) props.get("offset_x"),
-                        (float) props.get("offset_y"),
-                        props.get("target_map_path").toString() +
-                                props.get("target_map").toString(),
-                        props.get("id").toString(),
-                        props.get("target_id").toString(),
-                        (boolean) props.get("no_return"));
+                            (float) props.get("y"), mainStage, this,
+                            (float) props.get("offset_x"),
+                            (float) props.get("offset_y"),
+                            props.get("target_map_path").toString() +
+                                    props.get("target_map").toString(),
+                            props.get("id").toString(),
+                            props.get("target_id").toString(),
+                            (boolean) props.get("no_return"));
 
                     this.teleporters.add(teleporter);
 
@@ -171,46 +212,35 @@ public class MainScreen extends BScreen {
 
                     break;
 
+//                    World objects
                 case "world_object":
                     instantiateWorldObjects(props);
 
                     break;
 
-//                World objects
-
-
-
-
             }
 
         }
 
-        instantiateSolids(props);
+//        UI
+        lblHealth = new Label(STR_HEALTH, uiStyle);
+        lblHealth.setPosition(10, GameParams.getScrHeight() - 40);
 
-        if (playerHasTeleported) {
-            player = new Player(playerTpSpawnX +
-                    (GameParams.touchedTeleporter.getTpTgtOffsetX() * tileWidth) - tileWidth / 2,
-                    playerTpSpawnY + (GameParams.touchedTeleporter.getTpTgtOffsetY() * tileHeight),
-                    mainStage, this);
+        lblCurrWeapon = new Label(STR_WEAPON, uiStyle);
+        lblCurrWeapon.setPosition(10, lblHealth.getY() - lblHealth.getHeight());
 
-            this.playerHasSpawn = true;
+        lblFireMode = new Label("HELLO", uiStyle);
+        lblFireMode.setPosition(10, lblCurrWeapon.getY() - lblCurrWeapon.getHeight());
 
-        }
-
-        if (!playerHasSpawn) {
-            player = new Player(64, 64, mainStage, this);
-
-        }
+        lblDialog = new Label("DIALOG!", uiStyle);
+        lblDialog.setPosition(30, 120);
+        lblDialog.setVisible(false);
 
 
-//        cam
-        cam = (OrthographicCamera) mainStage.getCamera();
-        cam.setToOrtho(false, GameParams.scrWidth * GameParams.ZOOM,
-                GameParams.scrHeight * GameParams.ZOOM);
-        ren.setView(cam);
-
-//        mouse
-        mouse3d = new Vector3();
+        uiStage.addActor(lblHealth);
+        uiStage.addActor(lblCurrWeapon);
+        uiStage.addActor(lblFireMode);
+        uiStage.addActor(lblDialog);
 
     }
 
@@ -331,10 +361,6 @@ public class MainScreen extends BScreen {
 
         checkPlayerHealth();
 
-        mouse3d.x = Gdx.input.getX();
-        mouse3d.y = Gdx.input.getY();
-        mouse3d.z = 0;
-
         setMouseCoord();
 
         ren.setView(cam);
@@ -344,15 +370,31 @@ public class MainScreen extends BScreen {
 
         mainStage.draw();
 
-        ren.render(new int[]{6});
-        ren.render(new int[]{11});
+        ren.render(new int[]{7});
         ren.render(new int[]{12});
+        ren.render(new int[]{13});
 
+        setUI();
+
+    }
+
+    private void setUI() {
         uiStage.draw();
+
+        this.lblHealth.setText(STR_HEALTH + (int) this.player.getPlayerHP());
+        this.lblCurrWeapon.setText(STR_WEAPON + this.player.getPlayerCurrWeapon().getType());
+        this.lblFireMode.setText((!this.player.getPlayerCurrWeapon().isInFullAuto) ? "Semi" : "Full Auto");
+
+        this.lblDialog.setVisible(player.isInDialog());
+        this.lblDialog.setText(player.getDialog());
 
     }
 
     private void setMouseCoord() {
+        mouse3d.x = Gdx.input.getX();
+        mouse3d.y = Gdx.input.getY();
+        mouse3d.z = 0;
+
         cam.unproject(mouse3d);
 
         mouseX = mouse3d.x;

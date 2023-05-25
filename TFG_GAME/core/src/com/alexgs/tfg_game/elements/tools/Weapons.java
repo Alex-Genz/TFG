@@ -11,9 +11,11 @@ public class Weapons {
 
     public boolean isInFullAuto;
 
+    private String type;
+
     public Weapons(int persistenceMagSize, boolean canSwitchFireMode, int
                    roundsPerMinute, int dmg, float timeAllowedToExist,
-                   float bulletSpeed, boolean isInFullAuto) {
+                   float bulletSpeed, boolean isInFullAuto, String type) {
         this.persistenceMagSize = persistenceMagSize;
         this.canSwitchFireMode = canSwitchFireMode;
         this.roundsPerMinute = roundsPerMinute;
@@ -22,6 +24,8 @@ public class Weapons {
         this.bulletSpeed = bulletSpeed;
 
         this.isInFullAuto = isInFullAuto;
+
+        this.type = type;
 
     }
 
@@ -47,6 +51,10 @@ public class Weapons {
 
     public float getBulletSpeed() {
         return bulletSpeed;
+    }
+
+    public String getType() {
+        return type;
     }
 
 }

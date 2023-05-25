@@ -24,11 +24,11 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 1.5,
-            "selectedLayer": 13,
+            "scale": 0.33,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": 172,
-                "y": 898.6666666666666
+                "x": -1301.5151515151515,
+                "y": 172.72727272727275
             }
         },
         "maps/devmap_2.tmx": {
@@ -54,11 +54,22 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 1.5,
-            "selectedLayer": 13,
+            "scale": 1,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": 1193.3333333333333,
-                "y": 764
+                "x": 1384.5,
+                "y": 1869
+            }
+        },
+        "maps/river_map.tmx": {
+            "expandedObjectLayers": [
+                14
+            ],
+            "scale": 1,
+            "selectedLayer": 14,
+            "viewCenter": {
+                "x": 190.5,
+                "y": 1925
             }
         },
         "maps/spawn_map.tmx": {
@@ -76,11 +87,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 1.5,
-            "selectedLayer": 13,
+            "scale": 1,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": 730.6666666666666,
-                "y": -152.66666666666663
+                "x": 920.5,
+                "y": 330
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -92,10 +103,10 @@
                 15
             ],
             "scale": 1,
-            "selectedLayer": 13,
+            "selectedLayer": 14,
             "viewCenter": {
-                "x": -783,
-                "y": -385
+                "x": -1820.5,
+                "y": -470
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -173,16 +184,17 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
-    "map.height": 32,
+    "map.height": 72,
     "map.lastUsedFormat": "tmx",
-    "map.width": 32,
+    "map.width": 72,
     "mapScene.enableWorlds": true,
     "openFiles": [
         "maps/devmap_1.tmx",
         "maps/town_map.tmx",
         "maps/spawn_map_b.tmx",
+        "maps/river_map.tmx",
         "maps/mountain_map.tmx",
         "tilesets/Refmap-TileD.tsx",
         "tilesets/Refmap-TileB.tsx",
@@ -197,6 +209,7 @@
         "maps/devmap_1.tmx",
         "maps/town_map.tmx",
         "maps/spawn_map_b.tmx",
+        "maps/river_map.tmx",
         "tilesets/house_walls.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
@@ -204,10 +217,10 @@
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
         "maps/mountain_map.tmx",
-        "maps/devmap_2.tmx",
-        "tilesets/victorian-accessories.tsx"
+        "maps/devmap_2.tmx"
     ],
     "resizeMap.removeObjects": true,
+    "textEdit.monospace": true,
     "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

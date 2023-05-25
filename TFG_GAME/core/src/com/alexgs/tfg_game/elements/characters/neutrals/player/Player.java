@@ -3,6 +3,7 @@ package com.alexgs.tfg_game.elements.characters.neutrals.player;
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
+import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.elements.world_obj.Sign;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
@@ -79,6 +80,9 @@ public class Player extends Characters {
     private final float ROUNDS_PER_MINUTE = 300;
     private float timeBeforeNextShot = 0;
 
+    private boolean isInDialog = false;
+    private String dialog = "";
+
     public Player(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);
 
@@ -135,15 +139,14 @@ public class Player extends Characters {
 
         checkMoving();
 
-        if (lClickActivationTime >= 0) {
+        if (lClickActivationTime >= 0)
             lClickActivationTime -= delta;
 
-        }
-
-        if (timeBeforeNextShot > 0) {
+        if (timeBeforeNextShot > 0)
             timeBeforeNextShot -= delta;
 
-        }
+        if (dialog.equals(""))
+            isInDialog = false;
 
 //        System.out.println(delta + " | " + animationTime);
 
@@ -173,6 +176,8 @@ public class Player extends Characters {
                     lvl.neutralNPCs) {
                 if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < lvl.getTileWidth()) {
                     System.out.println(npc.message);
+                    this.dialog = npc.message;
+                    isInDialog = true;
                     return;
 
                 }
@@ -183,6 +188,8 @@ public class Player extends Characters {
                     lvl.signs) {
                 if (super.distanceToTarget(sign.getCenteredX(), sign.getCenteredY()) < lvl.getTileWidth()) {
                     System.out.println(sign.getText());
+                    this.dialog = sign.getText();
+                    isInDialog = true;
                     return;
 
                 }
@@ -291,72 +298,81 @@ public class Player extends Characters {
     private void controls() {
         int speed = (running) ? SPEED * 2 : SPEED;
 
-        if (Gdx.input.isKeyPressed(Input.Keys.D))
-            this.velocity.x = speed * 1;
+        if (!isInDialog) {
+            if (Gdx.input.isKeyPressed(Input.Keys.D))
+                this.velocity.x = speed * 1;
 
-        else if (Gdx.input.isKeyPressed(Input.Keys.A))
-            this.velocity.x = speed * -1;
+            else if (Gdx.input.isKeyPressed(Input.Keys.A))
+                this.velocity.x = speed * -1;
 
-        else
-            this.velocity.x = 0;
+            else
+                this.velocity.x = 0;
 
-        if (Gdx.input.isKeyPressed(Input.Keys.W))
-            this.velocity.y = speed * 1;
+            if (Gdx.input.isKeyPressed(Input.Keys.W))
+                this.velocity.y = speed * 1;
 
-        else if (Gdx.input.isKeyPressed(Input.Keys.S))
-            this.velocity.y = speed * -1;
+            else if (Gdx.input.isKeyPressed(Input.Keys.S))
+                this.velocity.y = speed * -1;
 
-        else
-            this.velocity.y = 0;
+            else
+                this.velocity.y = 0;
 
 //        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
 //            running = !running;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
-            if (PlayerParams.currWeapon.isCanSwitchFireMode()) {
-                PlayerParams.currWeapon.isInFullAuto = !PlayerParams.currWeapon.isInFullAuto;
-                System.out.println(PlayerParams.currWeapon.isInFullAuto);
+            if (Gdx.input.isKeyJustPressed(Input.Keys.X)) {
+                if (PlayerParams.currWeapon.isCanSwitchFireMode()) {
+                    PlayerParams.currWeapon.isInFullAuto = !PlayerParams.currWeapon.isInFullAuto;
+                    System.out.println(PlayerParams.currWeapon.isInFullAuto);
 
-            } else
-                System.out.println("weapon cannot switch fire modes");
-
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
-            PlayerParams.chosenWeapon = (PlayerParams.chosenWeapon == 1) ? 0 : 1;
-            PlayerParams.currWeapon = PlayerParams.weaponInv[PlayerParams.chosenWeapon];
-            loadPersistenceMag(this.s, PlayerParams.currWeapon, 0, true);
-
-        }
-
-        if (this.velocity.x == 0 && this.velocity.y == 0 &&
-                lClickActivationTime <= 0) {
-            if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
-                    !PlayerParams.currWeapon.isInFullAuto) {
-                super.shoot(PlayerParams.currWeapon, lvl.mouseX, lvl.mouseY);
+                } else
+                    System.out.println("weapon cannot switch fire modes");
 
             }
-            if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
-                    PlayerParams.currWeapon.isInFullAuto) {
-                if (timeBeforeNextShot <= 0) {
+
+            if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+                PlayerParams.chosenWeapon = (PlayerParams.chosenWeapon == 1) ? 0 : 1;
+                PlayerParams.currWeapon = PlayerParams.weaponInv[PlayerParams.chosenWeapon];
+                loadPersistenceMag(this.s, PlayerParams.currWeapon, 0, true);
+
+            }
+
+            if (this.velocity.x == 0 && this.velocity.y == 0 &&
+                    lClickActivationTime <= 0) {
+                if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) &&
+                        !PlayerParams.currWeapon.isInFullAuto) {
                     super.shoot(PlayerParams.currWeapon, lvl.mouseX, lvl.mouseY);
-                    timeBeforeNextShot = 60 / PlayerParams.currWeapon.getRoundsPerMinute();
+
+                }
+                if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) &&
+                        PlayerParams.currWeapon.isInFullAuto) {
+                    if (timeBeforeNextShot <= 0) {
+                        super.shoot(PlayerParams.currWeapon, lvl.mouseX, lvl.mouseY);
+                        timeBeforeNextShot = 60 / PlayerParams.currWeapon.getRoundsPerMinute();
+
+                    }
 
                 }
 
             }
 
+            if (GameParams.TOGGLE_RUN) {
+                if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
+                    running = !running;
+
+            } else
+                running = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) ? true : false;
+
+            if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE))
+                lvl.masterReload();
+
+        } else {
+            if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) && isInDialog) {
+                this.dialog = "";
+
+            }
+
         }
-
-        if (GameParams.TOGGLE_RUN) {
-            if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))
-                running = !running;
-
-        } else
-            running = (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) ? true : false;
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.BACKSPACE))
-            lvl.masterReload();
 
     }
 
@@ -433,7 +449,18 @@ public class Player extends Characters {
 
     public float getPlayerHP() {
         return PlayerParams.hp;
+    }
 
+    public Weapons getPlayerCurrWeapon() {
+        return PlayerParams.currWeapon;
+    }
+
+    public boolean isInDialog() {
+        return isInDialog;
+    }
+
+    public String getDialog() {
+        return dialog;
     }
 
 }
