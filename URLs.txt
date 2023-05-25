@@ -11,4 +11,7 @@ Top-down SpriteSheet Generator
 	https://sanderfrenken.github.io/Universal-LPC-Spritesheet-Character-Generator/
 RPGMaker VX 32x48px sprites
 	https://vxresource.wordpress.com/page/2/
+Swing & LibGDX Label line break
+	https://stackoverflow.com/questions/1842223/java-linebreaks-in-jlabels
+	https://stackoverflow.com/questions/24276180/libgdx-label-multiline-text-height
 

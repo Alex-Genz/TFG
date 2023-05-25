@@ -234,6 +234,12 @@ public class MainScreen extends BScreen {
 
         lblDialog = new Label("DIALOG!", uiStyle);
         lblDialog.setPosition(30, 120);
+        lblDialog.setWrap(true);
+
+        lblDialog.setWidth(GameParams.getScrWidth() - 2 * 30);
+        lblDialog.pack();
+        lblDialog.setWidth(GameParams.getScrWidth() - 2 * 30);
+
         lblDialog.setVisible(false);
 
 

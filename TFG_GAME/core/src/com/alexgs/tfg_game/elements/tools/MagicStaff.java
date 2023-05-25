@@ -4,7 +4,7 @@ public class MagicStaff extends Weapons {
 
     public MagicStaff() {
         super(30, false,
-                70, 9, 5, 100, false, "vara de hielo");
+                100, 9, 5, 100, false, "vara de hielo");
 
     }
 

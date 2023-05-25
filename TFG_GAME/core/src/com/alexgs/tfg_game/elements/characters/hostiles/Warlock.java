@@ -8,7 +8,7 @@ public class Warlock extends Hostiles {
 
     public Warlock(float x, float y, Stage s, MainScreen lvl, int charNum,
                    float pathSizeX, float pathSizeY, float speed) {
-        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, 50, 55);
+        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, 50, 80);
 
         this.setAnimation(super.idleDown);
 

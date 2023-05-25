@@ -129,7 +129,7 @@ public class Player extends Characters {
         controls();
         animate();
 
-        System.out.println(PlayerParams.hp + " | " + PlayerParams.timeToRegen);
+//        System.out.println(PlayerParams.hp + " | " + PlayerParams.timeToRegen);
 
         regen(delta);
 
@@ -171,7 +171,7 @@ public class Player extends Characters {
     }
 
     private void interact() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F) && !isInDialog) {
             for (Neutrals npc :
                     lvl.neutralNPCs) {
                 if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < lvl.getTileWidth()) {

@@ -27,8 +27,8 @@
             "scale": 0.33,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": -1301.5151515151515,
-                "y": 172.72727272727275
+                "x": 621.2121212121212,
+                "y": 871.2121212121212
             }
         },
         "maps/devmap_2.tmx": {
@@ -54,22 +54,22 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 1,
+            "scale": 2,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 1384.5,
-                "y": 1869
+                "x": 1453.75,
+                "y": 1850
             }
         },
         "maps/river_map.tmx": {
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 1,
+            "scale": 0.33,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 190.5,
-                "y": 1925
+                "x": 1151.5151515151515,
+                "y": 1150
             }
         },
         "maps/spawn_map.tmx": {
@@ -87,11 +87,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 1,
+            "scale": 0.75,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 920.5,
-                "y": 330
+                "x": 480,
+                "y": 320.66666666666663
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -102,11 +102,11 @@
             "expandedObjectLayers": [
                 15
             ],
-            "scale": 1,
+            "scale": 0.5,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": -1820.5,
-                "y": -470
+                "x": 768,
+                "y": 767
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
