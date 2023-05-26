@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="157">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="157">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/victorian-tenement.tsx"/>
  <tileset firstgid="4225" source="../tilesets/victorian-accessories.tsx"/>
@@ -871,16 +871,11 @@
    </properties>
    <polygon points="0,0 -56,56 88,56 32,0"/>
   </object>
-  <object id="47" x="1040" y="960" width="288" height="144">
-   <properties>
-    <property name="type" value="sRecLo"/>
-   </properties>
-  </object>
   <object id="61" x="1280" y="912">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 48,48 -176,48 -176,0"/>
+   <polygon points="0,0 48,48 48,80 -176,80 -176,0"/>
   </object>
   <object id="62" x="1216" y="880">
    <properties>
@@ -892,49 +887,37 @@
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 -16,16 48,16 48,0"/>
+   <polygon points="0,0 -16,16 -16,48 48,48 48,0"/>
   </object>
   <object id="70" x="1040" y="992">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 -32,32 -32,96 -16,112 0,112 0,0"/>
+   <polygon points="0,0 -32,32 -32,96 -16,112 288,112 336,48 288,0 0,0"/>
   </object>
   <object id="71" x="1440" y="1104">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="32,0 48,16 48,32 -352,32 -384,0"/>
+   <polygon points="-112,0 -112,32 -352,32 -384,0"/>
   </object>
   <object id="72" x="1152" y="1136">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 32,32 336,32 336,0"/>
+   <polygon points="0,0 32,32 176,32 176,0"/>
   </object>
   <object id="73" x="1248" y="1168">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 80,80 240,80 240,0"/>
+   <polygon points="0,0 80,80 80,80 80,0"/>
   </object>
   <object id="74" x="1328" y="1248">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 0,32 16,48 112,48 160,0"/>
-  </object>
-  <object id="75" x="1472" y="1104">
-   <properties>
-    <property name="type" value="sPolyLo"/>
-   </properties>
-   <polygon points="0,0 -64,-64 -144,-64 -144,0"/>
-  </object>
-  <object id="77" x="1328" y="1040">
-   <properties>
-    <property name="type" value="sPolyLo"/>
-   </properties>
-   <polygon points="0,0 48,0 0,-48"/>
+   <polygon points="48,-208 0,-144 0,32 16,48 112,48 160,0 160,-128 80,-208"/>
   </object>
   <object id="78" x="1104" y="928">
    <properties>
