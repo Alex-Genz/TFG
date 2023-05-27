@@ -12,10 +12,12 @@ public class Weapons {
     public boolean isInFullAuto;
 
     private String type;
+    private String shootSfxPath;
 
-    public Weapons(int persistenceMagSize, boolean canSwitchFireMode, int
-                   roundsPerMinute, int dmg, float timeAllowedToExist,
-                   float bulletSpeed, boolean isInFullAuto, String type) {
+    public Weapons(int persistenceMagSize, boolean canSwitchFireMode,
+                   int roundsPerMinute, int dmg, float timeAllowedToExist,
+                   float bulletSpeed, boolean isInFullAuto, String type,
+                   String shootSfxPath) {
         this.persistenceMagSize = persistenceMagSize;
         this.canSwitchFireMode = canSwitchFireMode;
         this.roundsPerMinute = roundsPerMinute;
@@ -26,6 +28,8 @@ public class Weapons {
         this.isInFullAuto = isInFullAuto;
 
         this.type = type;
+
+        this.shootSfxPath = shootSfxPath;
 
     }
 
@@ -55,6 +59,10 @@ public class Weapons {
 
     public String getType() {
         return type;
+    }
+
+    public String getShootSfxPath() {
+        return shootSfxPath;
     }
 
 }

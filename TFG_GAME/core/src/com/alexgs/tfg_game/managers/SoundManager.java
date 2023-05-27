@@ -9,7 +9,7 @@ public class SoundManager {
     static Sound sound;
 
     static public void playMusic(String path, float volume) {
-        if (currentMusicName != path) {
+/*        if (currentMusic.isPlaying()) {
             currentMusic.stop();
             currentMusicName = path;
             currentMusic = ResourceManager.getMusic(path);
@@ -17,8 +17,23 @@ public class SoundManager {
             currentMusic.setLooping(true);
             currentMusic.play();
 
-        }
+        } else {
+            currentMusicName = path;
+            currentMusic = ResourceManager.getMusic(path);
+            currentMusic.setVolume(volume);
+            currentMusic.setLooping(true);
+            currentMusic.play();
 
+        }*/
+        currentMusic = ResourceManager.getMusic(path);
+        currentMusic.setVolume(volume);
+        currentMusic.setLooping(true);
+        currentMusic.play();
+
+    }
+
+    public static void stopMusic() {
+        currentMusic.stop();
     }
 
     static public void playSound(String path, float volume) {

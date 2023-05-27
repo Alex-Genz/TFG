@@ -14,6 +14,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Player extends Characters {
     protected Animation<TextureRegion> idleUp;
     protected Animation<TextureRegion> idleDown;
@@ -178,6 +181,9 @@ public class Player extends Characters {
                     System.out.println(npc.message);
                     this.dialog = npc.message;
                     isInDialog = true;
+                    this.velocity.x = 0;
+                    this.velocity.y = 0;
+
                     return;
 
                 }
@@ -190,6 +196,9 @@ public class Player extends Characters {
                     System.out.println(sign.getText());
                     this.dialog = sign.getText();
                     isInDialog = true;
+                    this.velocity.x = 0;
+                    this.velocity.y = 0;
+
                     return;
 
                 }
@@ -458,6 +467,21 @@ public class Player extends Characters {
     public boolean isInDialog() {
         return isInDialog;
     }
+
+//    public ArrayList<String> getDialog() {
+//        ArrayList<String> dialogArr = new ArrayList<String>(Arrays.asList(dialog.split("\n")));
+//
+//        if (dialogArr.size() < 4) {
+//            for (int i = dialogArr.size(); i <= 4; i++) {
+//                dialogArr.add("\n");
+//
+//            }
+//
+//        }
+//
+//        return dialogArr;
+//
+//    }
 
     public String getDialog() {
         return dialog;

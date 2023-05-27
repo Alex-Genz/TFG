@@ -31,6 +31,10 @@ public class BScreen implements Screen, InputProcessor {
         font.getData().setScale(2);
         uiStyle = new LabelStyle(font, Color.LIGHT_GRAY);
 
+        font = new BitmapFont();
+        font.getData().setScale(2);
+        uiStyle = new LabelStyle(font, Color.LIGHT_GRAY);
+
         this.game = game;
         this.resourceManager = game.resMgr;
 

@@ -11,14 +11,15 @@ public class GameParams {
     public static final int SCR_WIDTH = 1280;
     public static final int SCR_HEIGHT = (int) (SCR_WIDTH * SCR_RATIO[1]);
 
-    public static final float ZOOM = 0.5f;
+    public static final float ZOOM = 0.36f;
 
     //    audio volume
     public static final float MUSIC_VOL = 0.6f;
     public static final float SFX_VOL = 0.2f;
 
     //    camera
-    public static final float CORRECTION_FACTOR = 15;
+//    public static final float CORRECTION_FACTOR = 16.66667f;
+    public static final float CORRECTION_FACTOR = 5 / ZOOM;
 
     //    map
     public static Teleporter touchedTeleporter = null;

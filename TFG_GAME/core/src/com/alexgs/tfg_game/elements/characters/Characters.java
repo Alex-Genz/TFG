@@ -5,6 +5,7 @@ import com.alexgs.tfg_game.elements.bullets.Bullet;
 import com.alexgs.tfg_game.elements.bullets.BulletEnemy;
 import com.alexgs.tfg_game.elements.bullets.BulletFriendly;
 import com.alexgs.tfg_game.elements.tools.Weapons;
+import com.alexgs.tfg_game.managers.SoundManager;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
@@ -123,6 +124,8 @@ public class Characters extends Element {
                         PROJECTILE_OFFSET, this.getCenteredY() - PROJECTILE_OFFSET,
                 this.shootDir.x * weapon.getBulletSpeed(),
                 this.shootDir.y * weapon.getBulletSpeed());
+
+        SoundManager.playSound(weapon.getShootSfxPath(), 0.5f);
 
 //        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
         this.currPersistenceBullet = (this.currPersistenceBullet + 1) %

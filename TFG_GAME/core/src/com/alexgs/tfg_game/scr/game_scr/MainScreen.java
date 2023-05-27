@@ -7,6 +7,7 @@ import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.*;
 import com.alexgs.tfg_game.elements.world_obj.*;
 import com.alexgs.tfg_game.managers.ResourceManager;
+import com.alexgs.tfg_game.managers.SoundManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
@@ -28,8 +29,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 
 import java.util.ArrayList;
@@ -81,10 +82,10 @@ public class MainScreen extends BScreen {
     Label lblFireMode;
     Label lblDialog;
 
-    Image imgDialogBg;
-
     final String STR_HEALTH = "HP: ";
     final String STR_WEAPON = "Arma actual: ";
+
+    String mapOstPath;
 
     public MainScreen(MyGdxGame game) {
         super(game);
@@ -105,6 +106,8 @@ public class MainScreen extends BScreen {
             this.playerHasTeleported = true;
 
         }
+
+
 
         ren = new OrthogonalTiledMapRenderer(map, mainStage.getBatch());
 
@@ -160,6 +163,11 @@ public class MainScreen extends BScreen {
 
     }
 
+    private void setMapOst() {
+
+
+    }
+
     private void instantiateElements(MapProperties props) {
         for (MapObject characters :
                 getElementList()) {
@@ -172,6 +180,7 @@ public class MainScreen extends BScreen {
                         player = new Player((float) props.get("x"),
                                 (float) props.get("y"), mainStage, this);
                         this.playerHasSpawn = true;
+                        mapOstPath = props.get("ost").toString();
 
                     }
 
@@ -210,6 +219,7 @@ public class MainScreen extends BScreen {
                             teleporter.tpId.equals(GameParams.touchedTeleporter.tgtTpId)) {
                         this.playerTpSpawnX = teleporter.getX();
                         this.playerTpSpawnY = teleporter.getY();
+                        mapOstPath = props.get("ost").toString();
 
                     }
 
@@ -226,22 +236,38 @@ public class MainScreen extends BScreen {
         }
 
 //        UI
-        lblHealth = new Label(STR_HEALTH, uiStyle);
+//        lblHealth = new Label(STR_HEALTH, uiStyle1);
+        initHud();
+
+        if (!mapOstPath.equals("")) {
+            SoundManager.playMusic(mapOstPath, 0.5f);
+
+        } else {
+            SoundManager.stopMusic();
+
+        }
+
+    }
+
+    private void initHud() {
+        lblHealth = new Label(STR_HEALTH, ResourceManager.hudStyle1);
         lblHealth.setPosition(10, GameParams.getScrHeight() - 40);
 
-        lblCurrWeapon = new Label(STR_WEAPON, uiStyle);
+        lblCurrWeapon = new Label(STR_WEAPON, ResourceManager.hudStyle1);
         lblCurrWeapon.setPosition(10, lblHealth.getY() - lblHealth.getHeight());
 
-        lblFireMode = new Label("HELLO", uiStyle);
+        lblFireMode = new Label("HELLO", ResourceManager.hudStyle1);
         lblFireMode.setPosition(10, lblCurrWeapon.getY() - lblCurrWeapon.getHeight());
 
-        lblDialog = new Label("DIALOG!", uiStyle);
-        lblDialog.setPosition(30, 120);
+        lblDialog = new Label("DIALOG!", ResourceManager.hudStyle2);
+        lblDialog.setPosition(60, 60);
+        lblDialog.setAlignment(Align.topLeft);
         lblDialog.setWrap(true);
 
-        lblDialog.setWidth(GameParams.getScrWidth() - 2 * 30);
+        lblDialog.setWidth(GameParams.getScrWidth() - 2 * 60);
         lblDialog.pack();
-        lblDialog.setWidth(GameParams.getScrWidth() - 2 * 30);
+        lblDialog.setWidth(GameParams.getScrWidth() - 2 * 60);
+//        lblDialog.setHeight(120);
 
         lblDialog.setVisible(false);
 
@@ -383,11 +409,13 @@ public class MainScreen extends BScreen {
         ren.render(new int[]{12});
         ren.render(new int[]{13});
 
-        setUI();
+        updateUI(delta);
+
+        System.out.println("FPS: " + (1 / delta));
 
     }
 
-    private void setUI() {
+    private void updateUI(float delta) {
         uiStage.draw();
 
         this.lblHealth.setText(STR_HEALTH + (int) this.player.getPlayerHP());

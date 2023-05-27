@@ -80,6 +80,7 @@
  </tile>
  <tile id="11">
   <properties>
+   <property name="ost" value=""/>
    <property name="spawn" value="player"/>
   </properties>
  </tile>
@@ -110,6 +111,7 @@
    <property name="no_return" type="bool" value="false"/>
    <property name="offset_x" type="float" value="0"/>
    <property name="offset_y" type="float" value="0"/>
+   <property name="ost" value=""/>
    <property name="spawn" value="teleporter"/>
    <property name="target_id" value="0x"/>
    <property name="target_map" value=""/>

@@ -1,7 +1,6 @@
 package com.alexgs.tfg_game.managers;
 
 import com.alexgs.tfg_game.params.Consts;
-import com.alexgs.tfg_game.params.GameParams;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
@@ -16,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader.Parameters;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
@@ -28,6 +28,9 @@ public final class ResourceManager {
     private static AssetManager assets = new AssetManager();
     private static LabelStyle buttonStyle;
     public static TextButtonStyle textButtonStyle;
+
+    public static LabelStyle hudStyle1;
+    public static LabelStyle hudStyle2;
 
     private static final String NPCS_PATH = "sprites/npcs/";
 
@@ -146,11 +149,17 @@ public final class ResourceManager {
         /*
          * ost = assets.load(<audio file path>, Music.class);
          */
-
+        assets.load("audio/ost/pkmn_hgss_ice_cave.mp3", Music.class);
+        assets.load("audio/ost/pkmn_dppt_oreburgh_mine.mp3", Music.class);
 
         /*
          * sfx = assets.load(<audio file path>, Sound.class);
          */
+        assets.load("audio/sfx/mc_bow_sfx.mp3", Sound.class);
+        assets.load("audio/sfx/csgo_knife_sfx_1.mp3", Sound.class);
+        assets.load("audio/sfx/magic_staff_sfx.mp3", Sound.class);
+        assets.load("audio/sfx/csgo_beretta_sfx.mp3", Sound.class);
+        assets.load("audio/sfx/csgo_aug_a3_sfx.mp3", Sound.class);
 
 
         /*
@@ -187,6 +196,30 @@ public final class ResourceManager {
         NinePatch buttonPatch = new NinePatch(buttonText);
         textButtonStyle.up = new NinePatchDrawable(buttonPatch);
         textButtonStyle.font = fuentePropia;
+
+    }
+
+    public static void hudFont() {
+        FreeTypeFontGenerator atariFtfg = new FreeTypeFontGenerator(Gdx.files.internal("fonts/AtariST8x16SystemFont.ttf"));
+        FreeTypeFontParameter atariFtfp = new FreeTypeFontParameter();
+
+        atariFtfp.size = 32;
+        atariFtfp.color = Color.BLACK;
+//        atariFtfp.borderColor = Color.BLACK;
+//        atariFtfp.borderWidth = 2;
+
+        BitmapFont hudFont = atariFtfg.generateFont(atariFtfp);
+        hudStyle1 = new LabelStyle();
+        hudStyle1.font = hudFont;
+
+        hudStyle2 = new LabelStyle();
+        hudStyle2.font = hudFont;
+        hudStyle2.background = new Image(new Texture(Gdx.files.internal("fonts/dialog_box_4-3.png"))).getDrawable();
+
+        hudStyle2.background.setTopHeight(hudStyle2.background.getTopHeight() + 30);
+        hudStyle2.background.setBottomHeight(hudStyle2.background.getBottomHeight() + 30);
+        hudStyle2.background.setLeftWidth(hudStyle2.background.getLeftWidth() + 30);
+        hudStyle2.background.setRightWidth(hudStyle2.background.getRightWidth() + 30);
 
     }
 
