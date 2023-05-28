@@ -5,6 +5,7 @@ import com.alexgs.tfg_game.elements.Teleporter;
 import com.alexgs.tfg_game.elements.characters.hostiles.*;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.Player;
 import com.alexgs.tfg_game.elements.characters.neutrals.*;
+import com.alexgs.tfg_game.elements.characters.neutrals.player.PlayerParams;
 import com.alexgs.tfg_game.elements.world_obj.*;
 import com.alexgs.tfg_game.managers.ResourceManager;
 import com.alexgs.tfg_game.managers.SoundManager;
@@ -12,6 +13,7 @@ import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.ui_scr.BScreen;
 
 import com.alexgs.tfg_game.scr.ui_scr.DeathScreen;
+import com.alexgs.tfg_game.scr.ui_scr.EndScreen;
 import com.alexgs.tfg_game.scr.util.ActorComparator;
 import com.alexgs.tfg_game.solids.*;
 import com.badlogic.gdx.Gdx;
@@ -76,16 +78,24 @@ public class MainScreen extends BScreen {
     private boolean playerHasSpawn = false;
     private boolean playerHasTeleported = false;
 
+    public Boss finalBoss;
+
     //    UI
     Label lblHealth;
     Label lblCurrWeapon;
     Label lblFireMode;
     Label lblDialog;
+    Label lblBossHealth;
 
     final String STR_HEALTH = "HP: ";
     final String STR_WEAPON = "Arma actual: ";
 
     String mapOstPath;
+
+    private boolean isBossMap = false;
+    boolean isWithinBossArena = false;
+
+    private float timeBeforeWinScr = 1.25f;
 
     public MainScreen(MyGdxGame game) {
         super(game);
@@ -211,7 +221,8 @@ public class MainScreen extends BScreen {
                                     props.get("target_map").toString(),
                             props.get("id").toString(),
                             props.get("target_id").toString(),
-                            (boolean) props.get("no_return"));
+                            (boolean) props.get("no_return"),
+                            (int) props.get("min_score"));
 
                     this.teleporters.add(teleporter);
 
@@ -222,6 +233,8 @@ public class MainScreen extends BScreen {
                         mapOstPath = props.get("ost").toString();
 
                     }
+
+                    this.isBossMap = (props.get("id").toString().equals("boss")) ? true : false;
 
                     break;
 
@@ -241,9 +254,6 @@ public class MainScreen extends BScreen {
 
         if (!mapOstPath.equals("")) {
             SoundManager.playMusic(mapOstPath, 0.5f);
-
-        } else {
-            SoundManager.stopMusic();
 
         }
 
@@ -271,11 +281,19 @@ public class MainScreen extends BScreen {
 
         lblDialog.setVisible(false);
 
+        lblBossHealth = new Label("BOSS HEALTH!", ResourceManager.hudStyle1);
+        lblBossHealth.setWidth(200);
+        lblBossHealth.setAlignment(Align.center);
+        lblBossHealth.setPosition(GameParams.getScrWidth() / 2 - lblBossHealth.getWidth() / 2, GameParams.getScrHeight() - 200);
+
+        lblBossHealth.setVisible(false);
+
 
         uiStage.addActor(lblHealth);
         uiStage.addActor(lblCurrWeapon);
         uiStage.addActor(lblFireMode);
         uiStage.addActor(lblDialog);
+        uiStage.addActor(lblBossHealth);
 
     }
 
@@ -382,6 +400,10 @@ public class MainScreen extends BScreen {
 
                 break;
 
+            case "boss":
+                this.finalBoss = new Boss((float) props.get("x") - this.tileWidth,
+                        (float) props.get("y"), mainStage, this);
+
         }
 
     }
@@ -409,13 +431,43 @@ public class MainScreen extends BScreen {
         ren.render(new int[]{12});
         ren.render(new int[]{13});
 
-        updateUI(delta);
+        updateUI();
 
-        System.out.println("FPS: " + (1 / delta));
+        if (GameParams.debug) {
+//            System.out.println("FPS: " + (1 / delta));
+            System.out.println(PlayerParams.killCountRes + PlayerParams.killCount);
+
+//            if (isBossMap)
+//                System.out.println(player.getX() + " | " + player.getY() + " ||| " + isBossMap + " | " + isWithinBossArena + " ||| " + finalBoss.getCenteredX() + " | " + finalBoss.getCenteredY() + " ||| " + timeBeforeWinScr);
+
+        }
+
+        test01();
+
+        if (timeBeforeWinScr < 0)
+            swapToEndScr();
+
+        else
+            if (isBossMap && !finalBoss.getEnabled())
+                timeBeforeWinScr-=delta;
 
     }
 
-    private void updateUI(float delta) {
+//    TODO: replace boolean test with boss.getenabled
+    private void test01() {
+        if (player.getX() > 288 && player.getY() > 288 && isBossMap)
+            isWithinBossArena = true;
+
+        if (isWithinBossArena && isBossMap && finalBoss.getEnabled())
+            if (player.getX() < 287 || player.getY() < 287) {
+                player.setX(player.getX() + 64);
+                player.setY(player.getY() + 32);
+
+            }
+
+    }
+
+    private void updateUI() {
         uiStage.draw();
 
         this.lblHealth.setText(STR_HEALTH + (int) this.player.getPlayerHP());
@@ -424,6 +476,32 @@ public class MainScreen extends BScreen {
 
         this.lblDialog.setVisible(player.isInDialog());
         this.lblDialog.setText(player.getDialog());
+
+        if (this.isBossMap) {
+            if (isWithinBossArena && finalBoss.getEnabled()) {
+                this.lblBossHealth.setText("SALUD: " + (int) finalBoss.getHealth());
+                this.lblBossHealth.setVisible(true);
+
+            } else
+                this.lblBossHealth.setVisible(false);
+
+        }
+
+    }
+
+    private void swapToEndScr() {
+        if (timeBeforeWinScr < 0) {
+            SoundManager.stopMusic();
+
+            GameParams.touchedTeleporter = null;
+
+            PlayerParams.hp = PlayerParams.MAX_PLAYER_HEALTH;
+            PlayerParams.killCount = 0;
+            PlayerParams.currWeapon = PlayerParams.weaponInv[0];
+
+            game.setScreen(new EndScreen(game));
+
+        }
 
     }
 
@@ -441,6 +519,8 @@ public class MainScreen extends BScreen {
 
     private void checkPlayerHealth() {
         if (player.getPlayerHP() <= 0) {
+            SoundManager.stopMusic();
+            PlayerParams.killCount = 0;
             game.setScreen(new DeathScreen(game));
 
         }
@@ -477,8 +557,14 @@ public class MainScreen extends BScreen {
 
         for (Teleporter tp :
                 teleporters) {
-            if (tp.getEnabled() && !tp.noReturn && tp.overlaps(player)) {
+            if (tp.getEnabled() && !tp.noReturn && tp.overlaps(player) &&
+                    tp.getScoreQuota() >= PlayerParams.killCount + PlayerParams.killCountRes) {
                 //        tp target reserve purge
+                if (SoundManager.isMusicPlaying())
+                    SoundManager.stopMusic();
+                PlayerParams.killCountRes+=PlayerParams.killCount;
+                PlayerParams.killCount = 0;
+
                 GameParams.touchedTeleporter = null;
 
                 GameParams.touchedTeleporter = tp;
@@ -703,6 +789,10 @@ public class MainScreen extends BScreen {
 
     public int getMapHeightRaw() {
         return mapHeightRaw;
+    }
+
+    public boolean isBossMap() {
+        return isBossMap;
     }
 
 }

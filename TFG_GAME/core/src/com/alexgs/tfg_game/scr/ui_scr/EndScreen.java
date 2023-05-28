@@ -44,7 +44,6 @@ public class EndScreen extends BScreen {
             if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(Type.touchDown))
                 return false;
 
-            PlayerParams.hp = PlayerParams.MAX_PLAYER_HEALTH;
             this.dispose();
             game.setScreen(new MainScreen(game));
             return false;

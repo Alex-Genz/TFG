@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="157">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="160">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/victorian-tenement.tsx"/>
  <tileset firstgid="4225" source="../tilesets/victorian-accessories.tsx"/>
@@ -753,12 +753,13 @@
    </properties>
    <polygon points="0,0 -24,-16 -24,-32 -24,-48 -8,-64 40,-64 56,-48 56,-16 32,0"/>
   </object>
-  <object id="7" gid="6800" x="0" y="544" width="32" height="32">
+  <object id="7" gid="6800" x="352" y="1408" width="32" height="32">
    <properties>
-    <property name="id" value="0x003_1"/>
+    <property name="id" value="village_2"/>
     <property name="offset_x" type="float" value="-1"/>
     <property name="offset_y" type="float" value="0"/>
-    <property name="target_id" value="0x002_2"/>
+    <property name="ost" value="audio/ost/pkmn_hgss_cianwood_city.mp3"/>
+    <property name="target_id" value="forest_1"/>
     <property name="target_map" value="river_map"/>
    </properties>
   </object>
@@ -934,6 +935,7 @@
   <object id="81" gid="6799" x="256" y="416" width="32" height="32">
    <properties>
     <property name="char_type" type="int" value="4"/>
+    <property name="message" value="¿!Y TU QUE MIRAS, ENANO?!"/>
    </properties>
   </object>
   <object id="82" gid="6799" x="496" y="592" width="32" height="32">
@@ -1068,5 +1070,24 @@ Poblacion: 39</property>
   <object id="153" gid="6817" x="896" y="1088" width="32" height="32"/>
   <object id="154" gid="6817" x="1184" y="640" width="32" height="32"/>
   <object id="156" gid="6817" x="1344" y="768" width="32" height="32"/>
+  <object id="157" gid="6799" x="672" y="384" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="7"/>
+    <property name="message">¡Vino de temporada de Auridon y opera de Miss Diamantina!
+¡2 Galeones la pinta!
+</property>
+   </properties>
+  </object>
+  <object id="158" gid="6800" x="352" y="1504" width="32" height="32">
+   <properties>
+    <property name="id" value="village_1"/>
+    <property name="no_return" type="bool" value="true"/>
+    <property name="offset_x" type="float" value="1"/>
+    <property name="offset_y" type="float" value="0"/>
+    <property name="ost" value="audio/ost/pkmn_hgss_cianwood_city.mp3"/>
+    <property name="target_id" value="spawn_1"/>
+    <property name="target_map" value="spawn_map_b"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -43,4 +43,9 @@ public class SoundManager {
 
     }
 
+    public static boolean isMusicPlaying() {
+        return currentMusic.isPlaying();
+
+    }
+
 }

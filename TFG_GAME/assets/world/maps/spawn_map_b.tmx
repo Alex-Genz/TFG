@@ -519,7 +519,7 @@
   <object id="282" gid="1803" x="192" y="128" width="32" height="32"/>
   <object id="283" gid="1804" x="64" y="544" width="32" height="32">
    <properties>
-    <property name="ost" value="audio/ost/pkmn_dppt_oreburgh_mine.mp3"/>
+    <property name="ost" value="audio/ost/pkmn_hgss_ice_cave.mp3"/>
    </properties>
   </object>
   <object id="286" gid="1805" x="288" y="160" width="32" height="32">
@@ -529,12 +529,13 @@
     <property name="persecution_speed" type="float" value="90"/>
    </properties>
   </object>
-  <object id="287" gid="1808" x="800" y="96" width="32" height="32">
+  <object id="287" gid="1808" x="64" y="448" width="32" height="32">
    <properties>
-    <property name="id" value="0x001_1"/>
-    <property name="offset_x" type="float" value="1"/>
-    <property name="target_id" value="0x002_1"/>
-    <property name="target_map" value="river_map"/>
+    <property name="id" value="spawn_1"/>
+    <property name="offset_x" type="float" value="0"/>
+    <property name="offset_y" type="float" value="1"/>
+    <property name="target_id" value="village_1"/>
+    <property name="target_map" value="town_map"/>
    </properties>
   </object>
   <object id="290" gid="1810" x="832" y="128" width="32" height="32">

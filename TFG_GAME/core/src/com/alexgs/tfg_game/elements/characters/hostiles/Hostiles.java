@@ -2,8 +2,11 @@ package com.alexgs.tfg_game.elements.characters.hostiles;
 
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
+import com.alexgs.tfg_game.elements.characters.neutrals.player.PlayerParams;
 import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Hostiles extends Characters {
@@ -16,6 +19,8 @@ public class Hostiles extends Characters {
     private float health;
 
     protected float stopDistance;
+
+    private boolean doesPatrol;
 
     //    temporal
     public final String PATHS = "sprites/npcs/";
@@ -65,6 +70,8 @@ public class Hostiles extends Characters {
 
         this.speed = speed;
 
+        this.doesPatrol = (pathSizeX == 0 && pathSizeY == 0) ? false : true;
+
         super.pathSizeX = pathSizeX;
         super.pathSizeY = pathSizeY;
 
@@ -101,7 +108,14 @@ public class Hostiles extends Characters {
 
             if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 180) {
                 if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
-                    currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
+                    if (doesPatrol)
+                        currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;
+                    else {
+                        this.velocity.x = 0;
+                        this.velocity.y = 0;
+                        super.setAnimation(idleDown);
+
+                    }
 
                 } else {
                     super.moveTo(pathPoints[currTgtPathPoint], 40);
@@ -123,10 +137,33 @@ public class Hostiles extends Characters {
 
             }
 
-            if (this.health <= 0)
+            if (this.health <= 0) {
                 this.setEnabled(false);
+                PlayerParams.killCount++;
+
+            }
 
         }
+
+    }
+
+    private Animation<TextureRegion> setRandomIdleDir() {
+        switch ((int) (Math.random() * 4)) {
+            case 1:
+                return idleDown;
+
+            case 2:
+                return idleLeft;
+
+            case 3:
+                return idleRight;
+
+            case 4:
+                return idleUp;
+
+        }
+
+        return null;
 
     }
 
@@ -161,6 +198,10 @@ public class Hostiles extends Characters {
     private String pathFiller(String sprite) {
         return PATHS + sprite + EXTENSION;
 
+    }
+
+    public float getHealth() {
+        return health;
     }
 
 }

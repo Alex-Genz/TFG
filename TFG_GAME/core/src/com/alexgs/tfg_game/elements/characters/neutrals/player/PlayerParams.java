@@ -9,6 +9,9 @@ public class PlayerParams {
     public static final float HP_REGEN_DELAY = 5f;
     public static float timeToRegen = 0;
 
+    public static int killCount = 0;
+    public static int killCountRes = 0;
+
 
     public static Weapons[] weaponInv = {new Pistol(), new AssaultRifle()};
 //    public static Weapons currWeapon = new Knife();

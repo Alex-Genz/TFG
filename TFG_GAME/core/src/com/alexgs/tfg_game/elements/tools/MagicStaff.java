@@ -4,7 +4,7 @@ public class MagicStaff extends Weapons {
 
     public MagicStaff() {
         super(30, false,
-                100, 9, 5, 100, false, "vara de hielo", "audio/sfx/magic_staff_sfx.mp3");
+                100, 9, 5, 160, false, "vara de hielo", "audio/sfx/magic_staff_sfx.mp3");
 
     }
 

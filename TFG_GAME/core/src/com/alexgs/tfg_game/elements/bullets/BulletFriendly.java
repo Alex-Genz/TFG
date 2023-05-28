@@ -44,6 +44,13 @@ public class BulletFriendly extends Bullet {
 
         }
 
+        if (lvl.isBossMap())
+            if (this.getEnabled() && lvl.finalBoss.getEnabled() && this.overlaps(lvl.finalBoss.getHitbox())) {
+                this.setEnabled(false);
+                lvl.finalBoss.hit(dmg);
+
+            }
+
     }
 
 }

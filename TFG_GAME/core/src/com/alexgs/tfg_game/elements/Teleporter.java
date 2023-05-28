@@ -20,8 +20,10 @@ public class Teleporter extends Element {
 
     public boolean noReturn;
 
+    private int scoreQuota;
+
     public Teleporter(float x, float y, Stage s, MainScreen lvl, float offsetX, float offsetY,
-                      String tgtMapPath, String tpId, String tgtTpId, boolean noReturn) {
+                      String tgtMapPath, String tpId, String tgtTpId, boolean noReturn, int scoreQuota) {
         super(x, y, s);
 
         this.lvl = lvl;
@@ -36,6 +38,8 @@ public class Teleporter extends Element {
 
         this.noReturn = noReturn;
 
+        this.scoreQuota = scoreQuota;
+
         anim = loadFullAnimation("sprites/other/pwup_sprite.png", 1, 1, 0, true);
 
     }
@@ -46,6 +50,10 @@ public class Teleporter extends Element {
 
     public float getTpTgtOffsetY() {
         return tpTgtOffsetY;
+    }
+
+    public int getScoreQuota() {
+        return scoreQuota;
     }
 
 }
