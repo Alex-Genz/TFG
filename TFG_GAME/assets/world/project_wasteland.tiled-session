@@ -3,17 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/river_map.tmx",
+    "activeFile": "maps/boss_map.tmx",
     "console.history": [
         "ls",
         "dir",
         "help"
     ],
     "expandedProjectPaths": [
+        "tilesets",
         ".",
         "worlds",
-        "maps",
-        "tilesets"
+        "maps"
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -25,11 +25,11 @@
                 18,
                 15
             ],
-            "scale": 3,
+            "scale": 0.33,
             "selectedLayer": 15,
             "viewCenter": {
-                "x": 3429.333333333333,
-                "y": 2514
+                "x": 2821.212121212121,
+                "y": 1472.7272727272725
             }
         },
         "maps/devmap_1.tmx": {
@@ -206,6 +206,7 @@
     "openFiles": [
         "maps/devmap_1.tmx",
         "maps/town_map.tmx",
+        "maps/boss_map.tmx",
         "maps/spawn_map_b.tmx",
         "maps/river_map.tmx",
         "maps/mountain_map.tmx",
@@ -214,16 +215,13 @@
         "tilesets/spawn_tiles.tsx",
         "tilesets/victorian-market.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
-        "tilesets/house_walls.tsx",
-        "maps/boss_map.tmx"
+        "tilesets/house_walls.tsx"
     ],
     "project": "project_wasteland.tiled-project",
     "property.type": "string",
     "recentFiles": [
         "maps/devmap_1.tmx",
         "maps/town_map.tmx",
-        "maps/spawn_map_b.tmx",
-        "maps/boss_map.tmx",
         "tilesets/house_walls.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
@@ -231,7 +229,9 @@
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
         "maps/mountain_map.tmx",
-        "maps/river_map.tmx"
+        "maps/river_map.tmx",
+        "maps/spawn_map_b.tmx",
+        "maps/boss_map.tmx"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,
