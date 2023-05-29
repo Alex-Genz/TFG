@@ -106,7 +106,7 @@ public class Hostiles extends Characters {
 
             updateHitbox();
 
-            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 180) {
+            if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) >= 200) {
                 if (distanceToTarget(pathPoints[currTgtPathPoint]) < 2) {
                     if (doesPatrol)
                         currTgtPathPoint = (currTgtPathPoint == 0) ? 1 : 0;

@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 
 
 public class DeathScreen extends BScreen {
@@ -31,9 +32,10 @@ public class DeathScreen extends BScreen {
         tabla.setFillParent(true);
 
         BitmapFont font = new BitmapFont();
-        font.getData().setScale(2f);
-        lblInfo = new Label("You died", new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        font.getData().setScale(4f);
+        lblInfo = new Label("Has muerto. \nPuntuación: " + PlayerParams.scoreCount + PlayerParams.scoreCountRes, new Label.LabelStyle(font, Color.LIGHT_GRAY));
         lblInfo.setPosition(GameParams.scrWidth / 2 - lblInfo.getWidth() / 2, GameParams.scrHeight / 2 + lblInfo.getHeight());
+        lblInfo.setAlignment(Align.center);
         uiStage.addActor(lblInfo);
 
         this.uiStage.addActor(tabla);
@@ -43,6 +45,7 @@ public class DeathScreen extends BScreen {
             if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(Type.touchDown))
                 return false;
 
+            PlayerParams.scoreCount = 0;
             PlayerParams.hp = PlayerParams.MAX_PLAYER_HEALTH;
             this.dispose();
             game.setScreen(new MainScreen(game));

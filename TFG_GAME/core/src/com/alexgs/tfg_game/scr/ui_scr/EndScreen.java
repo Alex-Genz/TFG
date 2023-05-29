@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 
 
 public class EndScreen extends BScreen {
@@ -32,9 +33,10 @@ public class EndScreen extends BScreen {
         tabla.setFillParent(true);
 
         BitmapFont font = new BitmapFont();
-        font.getData().setScale(2f);
-        lblInfo = new Label("Congratulations!", new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        font.getData().setScale(4f);
+        lblInfo = new Label("¡Enhorabuena!\nHas derrotado al hechicero", new Label.LabelStyle(font, Color.LIGHT_GRAY));
         lblInfo.setPosition(GameParams.scrWidth / 2 - lblInfo.getWidth() / 2, GameParams.scrHeight / 2 + lblInfo.getHeight());
+        lblInfo.setAlignment(Align.center);
         uiStage.addActor(lblInfo);
 
         this.uiStage.addActor(tabla);

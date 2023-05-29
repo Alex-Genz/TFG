@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 
 
 public class TitleScreen extends BScreen {
@@ -32,9 +33,10 @@ public class TitleScreen extends BScreen {
 
         BitmapFont font = new BitmapFont();
         font.getData().setScale(5);
-        lblInfo = new Label("Project Wasteland V.1_05", new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        lblInfo = new Label("Time Traveler\nby Accident", new Label.LabelStyle(font, Color.LIGHT_GRAY));
         lblInfo.setPosition(GameParams.SCR_WIDTH / 2 - lblInfo.getWidth() / 2,
                 GameParams.SCR_HEIGHT / 2 + lblInfo.getHeight());
+        lblInfo.setAlignment(Align.center);
         uiStage.addActor(lblInfo);
 
         this.uiStage.addActor(tabla);

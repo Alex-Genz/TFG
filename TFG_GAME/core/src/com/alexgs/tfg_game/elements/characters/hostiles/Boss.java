@@ -13,7 +13,7 @@ public class Boss extends Characters {
 
     private float timeBeforeNextShot = 0;
 
-    private float health = 100;
+    private float health = 2500;
 
     public Boss(float x, float y, Stage s, MainScreen lvl) {
         super(x, y, s, lvl);

@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class Assasin extends Hostiles {
 
     public Assasin(float x, float y, Stage s, MainScreen lvl, int charNum, float pathSizeX, float pathSizeY, float speed) {
-        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, lvl.getTileWidth(), 50, new Knife());
+        super(x, y, s, lvl, charNum, pathSizeX, pathSizeY, speed, lvl.getTileWidth(), 35, new Knife());
 
         this.setAnimation(super.idleDown);
 

@@ -92,6 +92,8 @@ public class MainScreen extends BScreen {
     final String STR_WEAPON = "Arma actual: ";
 
     String mapOstPath;
+    float mapOstVol = 0;
+
     String scoreStr = "";
 
     private boolean isBossMap = false;
@@ -193,6 +195,7 @@ public class MainScreen extends BScreen {
                                 (float) props.get("y"), mainStage, this);
                         this.playerHasSpawn = true;
                         mapOstPath = props.get("ost").toString();
+                        mapOstVol = (float) props.get("volume");
 
                     }
 
@@ -233,6 +236,7 @@ public class MainScreen extends BScreen {
                         this.playerTpSpawnX = teleporter.getX();
                         this.playerTpSpawnY = teleporter.getY();
                         mapOstPath = props.get("ost").toString();
+                        mapOstVol = (float) props.get("volume");
 
                     }
 
@@ -255,7 +259,7 @@ public class MainScreen extends BScreen {
         initHud();
 
         if (!mapOstPath.equals("")) {
-            SoundManager.playMusic(mapOstPath, 0.5f);
+            SoundManager.playMusic(mapOstPath, mapOstVol);
 
         }
 
@@ -403,6 +407,7 @@ public class MainScreen extends BScreen {
 
                 break;
 
+            case "assasin":
             case "assassin":
                 this.hostiles.add(new Assasin((float) props.get("x") - this.tileWidth,
                         (float) props.get("y"), mainStage, this, (int) props.get("skin"),
@@ -535,7 +540,6 @@ public class MainScreen extends BScreen {
     private void checkPlayerHealth() {
         if (player.getPlayerHP() <= 0) {
             SoundManager.stopMusic();
-            PlayerParams.scoreCount = 0;
             game.setScreen(new DeathScreen(game));
 
         }

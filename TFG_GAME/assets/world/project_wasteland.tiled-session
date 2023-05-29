@@ -3,17 +3,17 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "maps/river_map.tmx",
+    "activeFile": "maps/boss_map.tmx",
     "console.history": [
         "ls",
         "dir",
         "help"
     ],
     "expandedProjectPaths": [
+        "tilesets",
         "maps",
-        ".",
         "worlds",
-        "tilesets"
+        "."
     ],
     "fileStates": {
         ":/automap-tiles.tsx": {
@@ -22,25 +22,25 @@
         },
         "maps/boss_map.tmx": {
             "expandedObjectLayers": [
-                15,
-                18
+                18,
+                15
             ],
-            "scale": 2,
+            "scale": 0.33,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 1300.25,
-                "y": 1195.5
+                "x": 3378.787878787879,
+                "y": 2224.242424242424
             }
         },
         "maps/devmap_1.tmx": {
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 1.5,
-            "selectedLayer": 14,
+            "scale": 0.5,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 586,
-                "y": 640.3333333333333
+                "x": -1770,
+                "y": 1432
             }
         },
         "maps/devmap_2.tmx": {
@@ -66,22 +66,22 @@
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 575.3333333333333,
-                "y": -1180
+                "x": 2168,
+                "y": -492
             }
         },
         "maps/river_map.tmx": {
             "expandedObjectLayers": [
                 14
             ],
-            "scale": 0.25,
+            "scale": 0.33,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": 2630,
-                "y": 2640
+                "x": 1645.4545454545455,
+                "y": 1772.7272727272725
             }
         },
         "maps/spawn_map.tmx": {
@@ -99,11 +99,11 @@
             "expandedObjectLayers": [
                 10
             ],
-            "scale": 1.5,
+            "scale": 2,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": -1694.3333333333333,
-                "y": -2326
+                "x": -1727.5,
+                "y": -2272
             }
         },
         "maps/spawn_tiles.tsx": {
@@ -114,11 +114,11 @@
             "expandedObjectLayers": [
                 15
             ],
-            "scale": 1.5,
+            "scale": 2,
             "selectedLayer": 14,
             "viewCenter": {
-                "x": -3058.333333333333,
-                "y": -811.9999999999999
+                "x": -61.5,
+                "y": 2016.5
             }
         },
         "tilesets/Refmap-A2-0-2.tsx": {
@@ -197,7 +197,7 @@
     "last.workingDirectory": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/desktop",
     "last.worldFilePath": "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds",
     "loadedWorlds": [
-        "D:/trabajos/DAM_2_trabajos/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
+        "C:/Users/almin/Documents/trabajos/DAM_2/TFG/repo/TFG_GAME/assets/world/worlds/test.world"
     ],
     "map.height": 36,
     "map.lastUsedFormat": "tmx",
@@ -218,12 +218,10 @@
         "tilesets/house_walls.tsx"
     ],
     "project": "project_wasteland.tiled-project",
-    "property.type": "string",
+    "property.type": "float",
     "recentFiles": [
         "maps/devmap_1.tmx",
         "maps/town_map.tmx",
-        "maps/boss_map.tmx",
-        "maps/spawn_map_b.tmx",
         "tilesets/house_walls.tsx",
         "tilesets/pngkit_tile-png_2654326.tsx",
         "tilesets/victorian-market.tsx",
@@ -231,7 +229,9 @@
         "tilesets/Refmap-TileB.tsx",
         "tilesets/Refmap-TileD.tsx",
         "maps/mountain_map.tmx",
-        "maps/river_map.tmx"
+        "maps/river_map.tmx",
+        "maps/spawn_map_b.tmx",
+        "maps/boss_map.tmx"
     ],
     "resizeMap.removeObjects": true,
     "textEdit.monospace": true,

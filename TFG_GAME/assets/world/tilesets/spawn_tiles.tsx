@@ -82,6 +82,7 @@
   <properties>
    <property name="ost" value=""/>
    <property name="spawn" value="player"/>
+   <property name="volume" type="float" value="0"/>
   </properties>
  </tile>
  <tile id="12">
@@ -116,6 +117,7 @@
    <property name="target_id" value="0x"/>
    <property name="target_map" value=""/>
    <property name="target_map_path" value="world/maps/"/>
+   <property name="volume" type="float" value="0"/>
   </properties>
  </tile>
  <tile id="16">

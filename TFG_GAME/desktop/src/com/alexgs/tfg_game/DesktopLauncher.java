@@ -19,11 +19,12 @@ public class DesktopLauncher {
 //        }
 
 //        TODO: remember to uncomment the lines below and comment the method call above after finishing testing
+//        TODO: replace pkmn_hgss_ice_cave & pkmn_dppt_oreburgh_mine with lower bitrate and size ones
         ConfLoader.loadConfData();
 
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(GameParams.framerate);
-        config.setTitle("Project Wasteland");
+        config.setTitle("Time Traveler by Accident");
 
         config.setWindowedMode(GameParams.scrWidth, GameParams.scrHeight);
         System.out.println(GameParams.scrWidth + "x" + GameParams.scrHeight);
