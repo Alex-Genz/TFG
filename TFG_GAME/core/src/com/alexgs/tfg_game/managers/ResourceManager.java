@@ -29,8 +29,13 @@ public final class ResourceManager {
     private static LabelStyle buttonStyle;
     public static TextButtonStyle textButtonStyle;
 
-    public static LabelStyle hudStyle1;
-    public static LabelStyle hudStyle2;
+    public static LabelStyle clearStyle;
+    public static LabelStyle dialogStyle;
+    public static LabelStyle scoreStyle;
+    public static LabelStyle healthStyle;
+    public static LabelStyle weaponStyle;
+    public static LabelStyle firemodeStyle;
+    public static LabelStyle bossStyle;
 
     private static final String NPCS_PATH = "sprites/npcs/";
 
@@ -211,17 +216,88 @@ public final class ResourceManager {
 //        atariFtfp.borderWidth = 2;
 
         BitmapFont hudFont = atariFtfg.generateFont(atariFtfp);
-        hudStyle1 = new LabelStyle();
-        hudStyle1.font = hudFont;
+        clearStyle = new LabelStyle();
+        clearStyle.font = hudFont;
 
-        hudStyle2 = new LabelStyle();
-        hudStyle2.font = hudFont;
-        hudStyle2.background = new Image(new Texture(Gdx.files.internal("fonts/dialog_box_4-3.png"))).getDrawable();
+        setupDialogStyle(hudFont);
+        setupScoreStyle(hudFont);
+        setupHealtStyle(hudFont);
+        setupCurrWeaponStyle(hudFont);
+        setupFiremodeStyle(hudFont);
+        setupBossStyle(hudFont);
 
-        hudStyle2.background.setTopHeight(hudStyle2.background.getTopHeight() + 30);
-        hudStyle2.background.setBottomHeight(hudStyle2.background.getBottomHeight() + 30);
-        hudStyle2.background.setLeftWidth(hudStyle2.background.getLeftWidth() + 30);
-        hudStyle2.background.setRightWidth(hudStyle2.background.getRightWidth() + 30);
+
+    }
+
+    private static void setupDialogStyle(BitmapFont font) {
+        dialogStyle = new LabelStyle();
+        dialogStyle.font = font;
+        dialogStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/dialog_box_4-3.png"))).getDrawable();
+
+        dialogStyle.background.setTopHeight(dialogStyle.background.getTopHeight() + 30);
+        dialogStyle.background.setBottomHeight(dialogStyle.background.getBottomHeight() + 30);
+        dialogStyle.background.setLeftWidth(dialogStyle.background.getLeftWidth() + 30);
+        dialogStyle.background.setRightWidth(dialogStyle.background.getRightWidth() + 30);
+
+    }
+
+    private static void setupScoreStyle(BitmapFont font) {
+        scoreStyle = new LabelStyle();
+        scoreStyle.font = font;
+        scoreStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/score_box.png"))).getDrawable();
+
+        scoreStyle.background.setTopHeight(scoreStyle.background.getTopHeight() + 10);
+        scoreStyle.background.setBottomHeight(scoreStyle.background.getBottomHeight() + 10);
+        scoreStyle.background.setLeftWidth(scoreStyle.background.getLeftWidth() + 10);
+        scoreStyle.background.setRightWidth(scoreStyle.background.getRightWidth() + 10);
+
+    }
+
+    private static void setupHealtStyle(BitmapFont font) {
+        healthStyle = new LabelStyle();
+        healthStyle.font = font;
+        healthStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/health_box.png"))).getDrawable();
+
+        healthStyle.background.setTopHeight(healthStyle.background.getTopHeight() + 10);
+        healthStyle.background.setBottomHeight(healthStyle.background.getBottomHeight() + 10);
+        healthStyle.background.setLeftWidth(healthStyle.background.getLeftWidth() + 10);
+        healthStyle.background.setRightWidth(healthStyle.background.getRightWidth() + 10);
+
+    }
+
+    private static void setupCurrWeaponStyle(BitmapFont font) {
+        weaponStyle = new LabelStyle();
+        weaponStyle.font = font;
+        weaponStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/curr_weapon_box.png"))).getDrawable();
+
+        weaponStyle.background.setTopHeight(weaponStyle.background.getTopHeight() + 10);
+        weaponStyle.background.setBottomHeight(weaponStyle.background.getBottomHeight() + 10);
+        weaponStyle.background.setLeftWidth(weaponStyle.background.getLeftWidth() + 10);
+        weaponStyle.background.setRightWidth(weaponStyle.background.getRightWidth() + 10);
+
+    }
+
+    private static void setupFiremodeStyle(BitmapFont font) {
+        firemodeStyle = new LabelStyle();
+        firemodeStyle.font = font;
+        firemodeStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/firemode_box.png"))).getDrawable();
+
+        firemodeStyle.background.setTopHeight(firemodeStyle.background.getTopHeight() + 10);
+        firemodeStyle.background.setBottomHeight(firemodeStyle.background.getBottomHeight() + 10);
+        firemodeStyle.background.setLeftWidth(firemodeStyle.background.getLeftWidth() + 10);
+        firemodeStyle.background.setRightWidth(firemodeStyle.background.getRightWidth() + 10);
+
+    }
+
+    private static void setupBossStyle(BitmapFont font) {
+        bossStyle = new LabelStyle();
+        bossStyle.font = font;
+        bossStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/boss_health_box.png"))).getDrawable();
+
+        bossStyle.background.setTopHeight(bossStyle.background.getTopHeight() + 10);
+        bossStyle.background.setBottomHeight(bossStyle.background.getBottomHeight() + 10);
+        bossStyle.background.setLeftWidth(bossStyle.background.getLeftWidth() + 30);
+        bossStyle.background.setRightWidth(bossStyle.background.getRightWidth() + 30);
 
     }
 

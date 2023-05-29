@@ -37,7 +37,7 @@ public class BulletFriendly extends Bullet {
             if (this.getEnabled() && hostile.getEnabled() &&
                     this.overlaps(hostile.getHitbox())) {
                 this.setEnabled(false);
-                System.out.println("die!");
+//                System.out.println("die!");
                 hostile.hit(super.dmg);
 
             }

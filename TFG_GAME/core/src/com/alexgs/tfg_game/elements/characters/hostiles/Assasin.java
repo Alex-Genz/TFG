@@ -1,5 +1,6 @@
 package com.alexgs.tfg_game.elements.characters.hostiles;
 
+import com.alexgs.tfg_game.elements.characters.neutrals.player.PlayerParams;
 import com.alexgs.tfg_game.elements.tools.*;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -32,6 +33,9 @@ public class Assasin extends Hostiles {
 
             if (super.timeBeforeNextShot > 0)
                 super.timeBeforeNextShot -= delta;
+
+            if (super.getHealth() <= 0)
+                PlayerParams.scoreCount+=25;
 
         }
 

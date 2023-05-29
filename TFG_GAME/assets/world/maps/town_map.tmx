@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="160">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="32" tileheight="32" infinite="0" nextlayerid="19" nextobjectid="208">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/victorian-tenement.tsx"/>
  <tileset firstgid="4225" source="../tilesets/victorian-accessories.tsx"/>
@@ -753,7 +753,7 @@
    </properties>
    <polygon points="0,0 -24,-16 -24,-32 -24,-48 -8,-64 40,-64 56,-48 56,-16 32,0"/>
   </object>
-  <object id="7" gid="6800" x="352" y="1408" width="32" height="32">
+  <object id="7" gid="6800" x="32" y="544" width="32" height="32">
    <properties>
     <property name="id" value="village_2"/>
     <property name="offset_x" type="float" value="-1"/>
@@ -876,19 +876,19 @@
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 48,48 48,80 -176,80 -176,0"/>
+   <polygon points="0,0 48,48 48,80 -192,80 -192,32 -176,16 -32,0"/>
   </object>
   <object id="62" x="1216" y="880">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 32,32 -112,32 -112,16 -96,0"/>
+   <polygon points="0,0 32,32 -112,48 -112,16 -96,0"/>
   </object>
   <object id="66" x="1056" y="944">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
-   <polygon points="0,0 -16,16 -16,48 48,48 48,0"/>
+   <polygon points="0,0 -16,16 -16,48 32,48 32,0"/>
   </object>
   <object id="70" x="1040" y="992">
    <properties>
@@ -920,12 +920,6 @@
    </properties>
    <polygon points="48,-208 0,-144 0,32 16,48 112,48 160,0 160,-128 80,-208"/>
   </object>
-  <object id="78" x="1104" y="928">
-   <properties>
-    <property name="type" value="sPolyLo"/>
-   </properties>
-   <polygon points="0,0 -16,16 0,16"/>
-  </object>
   <object id="80" x="480" y="480">
    <properties>
     <property name="type" value="sPolyLo"/>
@@ -941,6 +935,9 @@
   <object id="82" gid="6799" x="496" y="592" width="32" height="32">
    <properties>
     <property name="char_type" type="int" value="11"/>
+    <property name="message">¡Uy!
+¿Y tu quien eres?
+¿Es tu primera vez por aqui?</property>
     <property name="path_size_x" type="float" value="2"/>
     <property name="path_size_y" type="float" value="-1"/>
     <property name="speed" type="float" value="30"/>
@@ -949,11 +946,17 @@
   <object id="83" gid="6799" x="960" y="608" width="32" height="32">
    <properties>
     <property name="char_type" type="int" value="5"/>
+    <property name="message">Bienvenido a Pueblo Lillac
+Uno de los pueblos más tranquilos de la zona...
+... si no fuera por un trol que nos acosa cada semana
+¿Serías capaz de derrotarlo? Estamos hasta las narices de el</property>
    </properties>
   </object>
   <object id="84" gid="6799" x="864" y="736" width="32" height="32">
    <properties>
     <property name="char_type" type="int" value="8"/>
+    <property name="message">¡¿DONDE ESTA MI MARIDO?!
+¿Crees que esta en la taberna emborrachándose de nuevo?</property>
    </properties>
   </object>
   <object id="87" x="1376" y="736">
@@ -963,7 +966,7 @@
    <polygon points="0,0 0,-136 32,-168 64,-168 128,-104 128,0"/>
   </object>
   <object id="89" gid="6823" x="416" y="480" width="32" height="32"/>
-  <object id="90" gid="6817" x="192" y="480" width="32" height="32"/>
+  <object id="90" gid="6817" x="224" y="480" width="32" height="32"/>
   <object id="92" gid="6817" x="320" y="384" width="32" height="32"/>
   <object id="93" gid="6821" x="224" y="736" width="32" height="32"/>
   <object id="96" gid="6821" x="160" y="704" width="32" height="32"/>
@@ -980,10 +983,10 @@
   <object id="107" gid="6817" x="704" y="736" width="32" height="32"/>
   <object id="108" gid="6817" x="608" y="704" width="32" height="32"/>
   <object id="109" gid="6817" x="448" y="640" width="32" height="32"/>
-  <object id="110" gid="6817" x="288" y="608" width="32" height="32"/>
-  <object id="111" gid="6817" x="192" y="608" width="32" height="32"/>
-  <object id="113" gid="6817" x="96" y="608" width="32" height="32"/>
-  <object id="114" gid="6817" x="96" y="480" width="32" height="32"/>
+  <object id="110" gid="6817" x="320" y="608" width="32" height="32"/>
+  <object id="111" gid="6817" x="224" y="608" width="32" height="32"/>
+  <object id="113" gid="6817" x="128" y="608" width="32" height="32"/>
+  <object id="114" gid="6817" x="128" y="480" width="32" height="32"/>
   <object id="115" gid="6817" x="576" y="544" width="32" height="32"/>
   <object id="116" x="1280" y="608">
    <properties>
@@ -1019,7 +1022,7 @@ Poblacion: 39</property>
    </properties>
   </object>
   <object id="129" gid="6805" x="320" y="480" width="32" height="32"/>
-  <object id="131" gid="6805" x="32" y="608" width="32" height="32"/>
+  <object id="131" gid="6805" x="64" y="608" width="32" height="32"/>
   <object id="132" gid="6805" x="416" y="632" width="32" height="32"/>
   <object id="133" gid="6805" x="640" y="576" width="32" height="32"/>
   <object id="134" gid="6805" x="896" y="576" width="32" height="32"/>
@@ -1074,7 +1077,7 @@ Poblacion: 39</property>
    <properties>
     <property name="char_type" type="int" value="7"/>
     <property name="message">¡Vino de temporada de Auridon y opera de Miss Diamantina!
-¡2 Galeones la pinta!
+¡2 doblones de oro la pinta!
 </property>
    </properties>
   </object>
@@ -1087,6 +1090,110 @@ Poblacion: 39</property>
     <property name="ost" value="audio/ost/pkmn_hgss_cianwood_city.mp3"/>
     <property name="target_id" value="spawn_1"/>
     <property name="target_map" value="spawn_map_b"/>
+   </properties>
+  </object>
+  <object id="160" gid="6799" x="1440" y="800" width="32" height="32">
+   <properties>
+    <property name="message">Hmmmm...
+Creo que le faltan dimensiones a mi casa, ¿no crees?
+Se ve un poco... plana...
+2 dimensiones no son suficientes...</property>
+   </properties>
+  </object>
+  <object id="161" gid="6799" x="576" y="1280" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="7"/>
+    <property name="message">¡OTRA VEZ ME HAN ROBADO LA AZADA!
+Creo que habrá sido el niñato de la vecina...
+Esta obsesionado con encantar herramientas, ¡y ya le he
+dicho un millón de veces que no necesitan eficiencia!</property>
+    <property name="path_size_x" type="float" value="1"/>
+    <property name="path_size_y" type="float" value="3"/>
+   </properties>
+  </object>
+  <object id="162" gid="6799" x="448" y="896" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="2"/>
+    <property name="message">Estos silos están más vacíos que en la ultima cosecha...
+Parece que vamos a pasar un invierno duro...</property>
+   </properties>
+  </object>
+  <object id="163" gid="6819" x="576" y="928" width="32" height="32"/>
+  <object id="164" gid="6819" x="608" y="992" width="32" height="32"/>
+  <object id="165" gid="6819" x="1216" y="288" width="32" height="32"/>
+  <object id="166" gid="6819" x="1376" y="384" width="32" height="32"/>
+  <object id="167" gid="6819" x="1280" y="352" width="32" height="32"/>
+  <object id="168" gid="6819" x="1248" y="384" width="32" height="32"/>
+  <object id="169" gid="6819" x="1344" y="320" width="32" height="32"/>
+  <object id="170" gid="6819" x="1504" y="448" width="32" height="32"/>
+  <object id="171" gid="6819" x="1440" y="352" width="32" height="32"/>
+  <object id="172" gid="6819" x="1184" y="448" width="32" height="32"/>
+  <object id="173" gid="6819" x="1024" y="256" width="32" height="32"/>
+  <object id="174" gid="6819" x="1152" y="256" width="32" height="32"/>
+  <object id="175" gid="6819" x="1120" y="160" width="32" height="32"/>
+  <object id="176" gid="6819" x="1088" y="320" width="32" height="32"/>
+  <object id="177" gid="6819" x="960" y="160" width="32" height="32"/>
+  <object id="179" gid="6819" x="928" y="256" width="32" height="32"/>
+  <object id="180" gid="6819" x="896" y="160" width="32" height="32"/>
+  <object id="181" gid="6819" x="864" y="96" width="32" height="32"/>
+  <object id="182" gid="6819" x="1024" y="96" width="32" height="32"/>
+  <object id="183" gid="6819" x="1056" y="160" width="32" height="32"/>
+  <object id="184" gid="6819" x="1088" y="224" width="32" height="32"/>
+  <object id="185" gid="6819" x="1280" y="96" width="32" height="32"/>
+  <object id="186" gid="6819" x="1408" y="128" width="32" height="32"/>
+  <object id="187" gid="6819" x="1472" y="160" width="32" height="32"/>
+  <object id="188" gid="6819" x="1344" y="128" width="32" height="32"/>
+  <object id="189" gid="6819" x="1408" y="64" width="32" height="32"/>
+  <object id="191" gid="6819" x="1472" y="96" width="32" height="32"/>
+  <object id="192" gid="6818" x="608" y="64" width="32" height="32"/>
+  <object id="193" gid="6818" x="576" y="128" width="32" height="32"/>
+  <object id="194" gid="6818" x="512" y="192" width="32" height="32"/>
+  <object id="195" gid="6818" x="480" y="224" width="32" height="32"/>
+  <object id="196" gid="6818" x="384" y="288" width="32" height="32"/>
+  <object id="197" gid="6818" x="384" y="224" width="32" height="32"/>
+  <object id="198" gid="6818" x="448" y="192" width="32" height="32"/>
+  <object id="199" gid="6818" x="512" y="128" width="32" height="32"/>
+  <object id="200" gid="6818" x="544" y="256" width="32" height="32"/>
+  <object id="201" gid="6805" x="1024" y="928" width="32" height="32"/>
+  <object id="202" gid="6799" x="1248" y="896" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="14"/>
+    <property name="message" value="..."/>
+   </properties>
+  </object>
+  <object id="204" gid="6799" x="176" y="1024" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="18"/>
+    <property name="message">Estas achicorias estan poco verdes...
+...
+Esos hechiceros han dañado la tierra</property>
+   </properties>
+  </object>
+  <object id="205" gid="6799" x="816" y="240" width="32" height="32">
+   <properties>
+    <property name="char_type" type="int" value="8"/>
+    <property name="message">¡Que ganas de que llegue Miss Diamantina!
+¡Soy su fan número 1!
+¡¡¡¡WOOOOOO!!!!</property>
+    <property name="path_size_x" type="float" value="-1"/>
+    <property name="path_size_y" type="float" value="4"/>
+    <property name="speed" type="float" value="110"/>
+   </properties>
+  </object>
+  <object id="206" gid="6801" x="64" y="496" width="32" height="32">
+   <properties>
+    <property name="text">Ud. está saliendo de: Pueblo Lillac.
+Oeste: Río aether | Bosque de los Druidas</property>
+   </properties>
+  </object>
+  <object id="207" gid="6799" x="864" y="896" width="32" height="32">
+   <properties>
+    <property name="message">Hace unos días tuve un sueño muy raro...
+Solo sé que vi a alguien decirme en susurros
+&quot;public static void main(String[] args)&quot;...
+¿Sabes el que puede ser? ¿Es una revelación?</property>
+    <property name="path_size_x" type="float" value="-1"/>
+    <property name="speed" type="float" value="15"/>
    </properties>
   </object>
  </objectgroup>

@@ -139,7 +139,6 @@ public class Hostiles extends Characters {
 
             if (this.health <= 0) {
                 this.setEnabled(false);
-                PlayerParams.killCount++;
 
             }
 
@@ -191,7 +190,7 @@ public class Hostiles extends Characters {
 
     public void hit(float dmg) {
         this.health-=dmg;
-        System.out.println(this.health);
+//        System.out.println(this.health);
 
     }
 

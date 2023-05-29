@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="115">
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="152">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/Refmap-TileB.tsx"/>
  <tileset firstgid="1409" source="../tilesets/spawn_tiles.tsx"/>
@@ -766,9 +766,6 @@
    </properties>
    <polygon points="0,0 16,0 32,-16 32,-96 0,-96"/>
   </object>
-  <object id="67" gid="1445" x="960" y="896" width="32" height="32"/>
-  <object id="68" gid="1445" x="888" y="928" width="32" height="32"/>
-  <object id="69" gid="1445" x="960" y="672" width="32" height="32"/>
   <object id="70" gid="1441" x="832" y="832" width="32" height="32"/>
   <object id="71" gid="1441" x="736" y="736" width="32" height="32"/>
   <object id="72" gid="1447" x="896" y="576" width="32" height="32"/>
@@ -830,26 +827,12 @@
    </properties>
    <polygon points="0,0 32,0 64,-32 -32,-64 -64,-64 -96,-32"/>
   </object>
-  <object id="85" x="800" y="216">
-   <properties>
-    <property name="type" value="sPolyLo"/>
-   </properties>
-   <polygon points="0,0 32,-32 224,-32 224,0"/>
-  </object>
   <object id="86" x="864" y="80">
    <properties>
     <property name="type" value="sPolyLo"/>
    </properties>
    <polygon points="0,0 32,-32 160,-32 160,32 96,32"/>
   </object>
-  <object id="87" gid="1445" x="480" y="736" width="32" height="32"/>
-  <object id="88" gid="1445" x="416" y="704" width="32" height="32"/>
-  <object id="89" gid="1445" x="384" y="800" width="32" height="32"/>
-  <object id="90" gid="1445" x="352" y="736" width="32" height="32"/>
-  <object id="91" gid="1445" x="288" y="672" width="32" height="32"/>
-  <object id="92" gid="1445" x="256" y="768" width="32" height="32"/>
-  <object id="93" gid="1445" x="320" y="832" width="32" height="32"/>
-  <object id="95" gid="1445" x="352" y="896" width="32" height="32"/>
   <object id="96" name="border" x="0" y="-8" width="1032" height="40">
    <properties>
     <property name="type" value="sRecLo"/>
@@ -962,5 +945,40 @@
     <property name="persecution_speed" type="float" value="100"/>
    </properties>
   </object>
+  <object id="115" gid="1447" x="928" y="896" width="32" height="32"/>
+  <object id="116" gid="1447" x="864" y="960" width="32" height="32"/>
+  <object id="117" gid="1447" x="768" y="928" width="32" height="32"/>
+  <object id="118" gid="1447" x="704" y="960" width="32" height="32"/>
+  <object id="120" gid="1447" x="800" y="1024" width="32" height="32"/>
+  <object id="121" gid="1447" x="960" y="672" width="32" height="32"/>
+  <object id="122" gid="1447" x="896" y="320" width="32" height="32"/>
+  <object id="123" gid="1447" x="672" y="320" width="32" height="32"/>
+  <object id="124" gid="1447" x="544" y="256" width="32" height="32"/>
+  <object id="125" gid="1447" x="512" y="384" width="32" height="32"/>
+  <object id="126" gid="1447" x="352" y="256" width="32" height="32"/>
+  <object id="127" gid="1447" x="288" y="320" width="32" height="32"/>
+  <object id="128" gid="1447" x="224" y="256" width="32" height="32"/>
+  <object id="129" gid="1447" x="256" y="128" width="32" height="32"/>
+  <object id="130" gid="1447" x="320" y="96" width="32" height="32"/>
+  <object id="131" gid="1447" x="224" y="32" width="32" height="32"/>
+  <object id="132" gid="1447" x="192" y="128" width="32" height="32"/>
+  <object id="133" gid="1447" x="128" y="64" width="32" height="32"/>
+  <object id="134" gid="1447" x="352" y="32" width="32" height="32"/>
+  <object id="135" gid="1447" x="0" y="512" width="32" height="32"/>
+  <object id="136" gid="1447" x="32" y="448" width="32" height="32"/>
+  <object id="137" gid="1447" x="0" y="672" width="32" height="32"/>
+  <object id="138" gid="1447" x="64" y="960" width="32" height="32"/>
+  <object id="139" gid="1447" x="160" y="1024" width="32" height="32"/>
+  <object id="140" gid="1447" x="128" y="864" width="32" height="32"/>
+  <object id="141" gid="1447" x="352" y="864" width="32" height="32"/>
+  <object id="142" gid="1447" x="256" y="736" width="32" height="32"/>
+  <object id="143" gid="1447" x="416" y="736" width="32" height="32"/>
+  <object id="144" gid="1447" x="352" y="768" width="32" height="32"/>
+  <object id="145" gid="1447" x="320" y="672" width="32" height="32"/>
+  <object id="146" gid="1447" x="160" y="480" width="32" height="32"/>
+  <object id="147" gid="1447" x="32" y="256" width="32" height="32"/>
+  <object id="148" gid="1447" x="608" y="768" width="32" height="32"/>
+  <object id="149" gid="1447" x="512" y="928" width="32" height="32"/>
+  <object id="150" gid="1447" x="736" y="64" width="32" height="32"/>
  </objectgroup>
 </map>

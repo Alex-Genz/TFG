@@ -86,11 +86,13 @@ public class MainScreen extends BScreen {
     Label lblFireMode;
     Label lblDialog;
     Label lblBossHealth;
+    Label lblScore;
 
     final String STR_HEALTH = "HP: ";
     final String STR_WEAPON = "Arma actual: ";
 
     String mapOstPath;
+    String scoreStr = "";
 
     private boolean isBossMap = false;
     boolean isWithinBossArena = false;
@@ -260,16 +262,19 @@ public class MainScreen extends BScreen {
     }
 
     private void initHud() {
-        lblHealth = new Label(STR_HEALTH, ResourceManager.hudStyle1);
-        lblHealth.setPosition(10, GameParams.getScrHeight() - 40);
+        lblHealth = new Label(STR_HEALTH + String.format("%03d", 000), ResourceManager.healthStyle);
+        lblHealth.setPosition(0, GameParams.getScrHeight() - lblHealth.getHeight());
+        lblHealth.setAlignment(Align.left);
 
-        lblCurrWeapon = new Label(STR_WEAPON, ResourceManager.hudStyle1);
-        lblCurrWeapon.setPosition(10, lblHealth.getY() - lblHealth.getHeight());
+        lblCurrWeapon = new Label(STR_WEAPON + "Beretta 98", ResourceManager.weaponStyle);
+        lblCurrWeapon.setPosition(0, lblHealth.getY() - lblCurrWeapon.getHeight() + 3);
+        lblCurrWeapon.setAlignment(Align.left);
 
-        lblFireMode = new Label("HELLO", ResourceManager.hudStyle1);
-        lblFireMode.setPosition(10, lblCurrWeapon.getY() - lblCurrWeapon.getHeight());
+        lblFireMode = new Label("Full Auto", ResourceManager.firemodeStyle);
+        lblFireMode.setPosition(0, lblCurrWeapon.getY() - lblFireMode.getHeight() + 3);
+        lblFireMode.setAlignment(Align.left);
 
-        lblDialog = new Label("DIALOG!", ResourceManager.hudStyle2);
+        lblDialog = new Label("DIALOG!", ResourceManager.dialogStyle);
         lblDialog.setPosition(60, 60);
         lblDialog.setAlignment(Align.topLeft);
         lblDialog.setWrap(true);
@@ -281,12 +286,18 @@ public class MainScreen extends BScreen {
 
         lblDialog.setVisible(false);
 
-        lblBossHealth = new Label("BOSS HEALTH!", ResourceManager.hudStyle1);
-        lblBossHealth.setWidth(200);
+        lblBossHealth = new Label("SALUD: 9999", ResourceManager.bossStyle);
+        lblBossHealth.setPosition(GameParams.getScrWidth() / 2 - lblBossHealth.getWidth() / 2, GameParams.getScrHeight() - 125);
         lblBossHealth.setAlignment(Align.center);
-        lblBossHealth.setPosition(GameParams.getScrWidth() / 2 - lblBossHealth.getWidth() / 2, GameParams.getScrHeight() - 200);
 
         lblBossHealth.setVisible(false);
+
+        lblScore = new Label("Score: " + String.format("%05d",
+                (PlayerParams.scoreCount + PlayerParams.scoreCountRes)),
+                ResourceManager.scoreStyle);
+        lblScore.setPosition(GameParams.getScrWidth() - lblScore.getWidth(), GameParams.getScrHeight() - lblScore.getHeight());
+//        lblScore.setAlignment(Align.center);
+//        lblScore.setWidth(200);
 
 
         uiStage.addActor(lblHealth);
@@ -294,6 +305,7 @@ public class MainScreen extends BScreen {
         uiStage.addActor(lblFireMode);
         uiStage.addActor(lblDialog);
         uiStage.addActor(lblBossHealth);
+        uiStage.addActor(lblScore);
 
     }
 
@@ -435,7 +447,8 @@ public class MainScreen extends BScreen {
 
         if (GameParams.debug) {
 //            System.out.println("FPS: " + (1 / delta));
-            System.out.println(PlayerParams.killCountRes + PlayerParams.killCount);
+//            System.out.println(PlayerParams.scoreCountRes + PlayerParams.scoreCount);
+            System.out.println(lblBossHealth.getWidth() + " | " + lblBossHealth.getHeight());
 
 //            if (isBossMap)
 //                System.out.println(player.getX() + " | " + player.getY() + " ||| " + isBossMap + " | " + isWithinBossArena + " ||| " + finalBoss.getCenteredX() + " | " + finalBoss.getCenteredY() + " ||| " + timeBeforeWinScr);
@@ -470,16 +483,18 @@ public class MainScreen extends BScreen {
     private void updateUI() {
         uiStage.draw();
 
-        this.lblHealth.setText(STR_HEALTH + (int) this.player.getPlayerHP());
+        this.lblHealth.setText(STR_HEALTH + String.format("%03d", (int) this.player.getPlayerHP()));
         this.lblCurrWeapon.setText(STR_WEAPON + this.player.getPlayerCurrWeapon().getType());
         this.lblFireMode.setText((!this.player.getPlayerCurrWeapon().isInFullAuto) ? "Semi" : "Full Auto");
 
         this.lblDialog.setVisible(player.isInDialog());
         this.lblDialog.setText(player.getDialog());
 
+        this.lblScore.setText("Score: " + String.format("%05d", (PlayerParams.scoreCount + PlayerParams.scoreCountRes)));
+
         if (this.isBossMap) {
             if (isWithinBossArena && finalBoss.getEnabled()) {
-                this.lblBossHealth.setText("SALUD: " + (int) finalBoss.getHealth());
+                this.lblBossHealth.setText("SALUD: " + String.format("%04d", (int) finalBoss.getHealth()));
                 this.lblBossHealth.setVisible(true);
 
             } else
@@ -496,7 +511,7 @@ public class MainScreen extends BScreen {
             GameParams.touchedTeleporter = null;
 
             PlayerParams.hp = PlayerParams.MAX_PLAYER_HEALTH;
-            PlayerParams.killCount = 0;
+            PlayerParams.scoreCount = 0;
             PlayerParams.currWeapon = PlayerParams.weaponInv[0];
 
             game.setScreen(new EndScreen(game));
@@ -520,7 +535,7 @@ public class MainScreen extends BScreen {
     private void checkPlayerHealth() {
         if (player.getPlayerHP() <= 0) {
             SoundManager.stopMusic();
-            PlayerParams.killCount = 0;
+            PlayerParams.scoreCount = 0;
             game.setScreen(new DeathScreen(game));
 
         }
@@ -558,12 +573,12 @@ public class MainScreen extends BScreen {
         for (Teleporter tp :
                 teleporters) {
             if (tp.getEnabled() && !tp.noReturn && tp.overlaps(player) &&
-                    tp.getScoreQuota() >= PlayerParams.killCount + PlayerParams.killCountRes) {
+                    PlayerParams.scoreCount + PlayerParams.scoreCountRes >= tp.getScoreQuota()) {
                 //        tp target reserve purge
                 if (SoundManager.isMusicPlaying())
                     SoundManager.stopMusic();
-                PlayerParams.killCountRes+=PlayerParams.killCount;
-                PlayerParams.killCount = 0;
+                PlayerParams.scoreCountRes +=PlayerParams.scoreCount;
+                PlayerParams.scoreCount = 0;
 
                 GameParams.touchedTeleporter = null;
 
@@ -616,8 +631,6 @@ public class MainScreen extends BScreen {
     private void centerCam() {
         this.cam.position.x = camCollimator(this.player.getCenteredX());
         this.cam.position.y = camCollimator(this.player.getCenteredY());
-//        this.cam.position.x = this.player.getCenteredX();
-//        this.cam.position.y = this.player.getCenteredY();
 
         this.cam.position.x = MathUtils.clamp(this.cam.position.x, this.cam.viewportWidth / 2,
                 this.mapWidthRaw - this.cam.viewportWidth / 2);
@@ -630,6 +643,7 @@ public class MainScreen extends BScreen {
 
     private float camCollimator(float pos) {
 //        simplifies player pos to avoid floating-point errors
+//        correction factor varies on zoom level
         return Math.round(pos * GameParams.CORRECTION_FACTOR) / GameParams.CORRECTION_FACTOR;
 
     }
