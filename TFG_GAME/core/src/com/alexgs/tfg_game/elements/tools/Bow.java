@@ -4,7 +4,7 @@ public class Bow extends Weapons {
 
     public Bow() {
         super(12, false,
-                24, 42, 2, 210, false, "arco", "audio/sfx/mc_bow_sfx.mp3");
+                24, 35, 2, 210, false, "arco", "audio/sfx/mc_bow_sfx.mp3");
 
     }
 

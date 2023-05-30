@@ -450,16 +450,6 @@ public class MainScreen extends BScreen {
 
         updateUI();
 
-        if (GameParams.debug) {
-//            System.out.println("FPS: " + (1 / delta));
-//            System.out.println(PlayerParams.scoreCountRes + PlayerParams.scoreCount);
-            System.out.println(lblBossHealth.getWidth() + " | " + lblBossHealth.getHeight());
-
-//            if (isBossMap)
-//                System.out.println(player.getX() + " | " + player.getY() + " ||| " + isBossMap + " | " + isWithinBossArena + " ||| " + finalBoss.getCenteredX() + " | " + finalBoss.getCenteredY() + " ||| " + timeBeforeWinScr);
-
-        }
-
         test01();
 
         if (timeBeforeWinScr < 0)

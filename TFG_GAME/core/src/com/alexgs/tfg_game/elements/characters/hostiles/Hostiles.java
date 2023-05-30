@@ -101,7 +101,7 @@ public class Hostiles extends Characters {
     }
 
     public void act(float delta) {
-        if (this.getEnabled()) {
+        if (this.getEnabled() && !lvl.player.isInDialog()) {
             super.act(delta);
 
             updateHitbox();

@@ -40,7 +40,7 @@ public class Teleporter extends Element {
 
         this.scoreQuota = scoreQuota;
 
-        anim = loadFullAnimation("sprites/other/pwup_sprite.png", 1, 1, 0, true);
+        anim = loadFullAnimation("sprites/other/exit_tp.png", 1, 8, 0.125f, true);
 
     }
 

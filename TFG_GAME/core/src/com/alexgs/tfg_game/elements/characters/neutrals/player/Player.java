@@ -156,7 +156,7 @@ public class Player extends Characters {
     }
 
     private void regen(float delta) {
-        if (PlayerParams.timeToRegen <= 0) {
+        if (PlayerParams.timeToRegen <= 0 && !isInDialog) {
             if (PlayerParams.hp < PlayerParams.MAX_PLAYER_HEALTH) {
                 PlayerParams.hp += 0.2f;
 //                System.out.println("healing");
@@ -175,7 +175,7 @@ public class Player extends Characters {
 
     private void interact() {
         if ((Gdx.input.isKeyJustPressed(Input.Keys.F) ||
-                Gdx.input.isKeyJustPressed(Input.Keys.F)) && !isInDialog) {
+                Gdx.input.isKeyJustPressed(Input.Keys.E)) && !isInDialog) {
             for (Neutrals npc :
                     lvl.neutralNPCs) {
                 if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < lvl.getTileWidth()) {

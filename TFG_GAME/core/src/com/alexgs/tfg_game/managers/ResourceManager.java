@@ -113,6 +113,7 @@ public final class ResourceManager {
 
         assets.load("sprites/other/bullet.png", Texture.class);
         assets.load("sprites/other/pwup_sprite.png", Texture.class);
+        assets.load("sprites/other/exit_tp.png", Texture.class);
 
         /*
          * world_objects
