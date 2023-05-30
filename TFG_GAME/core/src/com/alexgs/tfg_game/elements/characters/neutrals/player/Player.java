@@ -174,7 +174,8 @@ public class Player extends Characters {
     }
 
     private void interact() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.F) && !isInDialog) {
+        if ((Gdx.input.isKeyJustPressed(Input.Keys.F) ||
+                Gdx.input.isKeyJustPressed(Input.Keys.F)) && !isInDialog) {
             for (Neutrals npc :
                     lvl.neutralNPCs) {
                 if (super.distanceToTarget(npc.getCenteredX(), npc.getCenteredY()) < lvl.getTileWidth()) {

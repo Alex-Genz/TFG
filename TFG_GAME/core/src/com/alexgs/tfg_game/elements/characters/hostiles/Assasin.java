@@ -35,7 +35,7 @@ public class Assasin extends Hostiles {
                 super.timeBeforeNextShot -= delta;
 
             if (super.getHealth() <= 0)
-                PlayerParams.scoreCount+=25;
+                PlayerParams.scoreCount+=30;
 
         }
 

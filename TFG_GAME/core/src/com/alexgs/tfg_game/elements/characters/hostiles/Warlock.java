@@ -35,7 +35,7 @@ public class Warlock extends Hostiles {
                 super.timeBeforeNextShot-=delta;
 
             if (super.getHealth() <= 0)
-                PlayerParams.scoreCount+=60;
+                PlayerParams.scoreCount+=70;
 
 
         }
