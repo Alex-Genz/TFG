@@ -627,10 +627,8 @@
    <properties>
     <property name="id" value="boss"/>
     <property name="no_return" type="bool" value="true"/>
-    <property name="ost" value="audio/ost/zelda_wild_calamity_ganon.mp3"/>
     <property name="target_id" value="river_2"/>
     <property name="target_map" value="river_map"/>
-    <property name="volume" type="float" value="0.35"/>
    </properties>
   </object>
   <object id="30" gid="1421" x="672" y="448" width="32" height="32">

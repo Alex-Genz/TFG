@@ -114,7 +114,6 @@
    <property name="offset_y" type="float" value="0"/>
    <property name="ost" value=""/>
    <property name="spawn" value="teleporter"/>
-   <property name="stop_ost" type="bool" value="false"/>
    <property name="target_id" value="0x"/>
    <property name="target_map" value=""/>
    <property name="target_map_path" value="world/maps/"/>

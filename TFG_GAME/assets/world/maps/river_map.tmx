@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="72" height="72" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="389">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="72" height="72" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="387">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/Refmap-TileE.tsx"/>
  <tileset firstgid="1409" source="../tilesets/spawn_tiles.tsx"/>
@@ -1071,7 +1071,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="14" name="objects" visible="0">
+ <objectgroup id="14" name="objects">
   <object id="1" gid="1447" x="1120" y="2176" width="32" height="32"/>
   <object id="2" gid="1447" x="1024" y="2048" width="32" height="32"/>
   <object id="3" gid="1447" x="1056" y="1984" width="32" height="32"/>
@@ -1493,11 +1493,10 @@
     <property name="type" value="sRecLo"/>
    </properties>
   </object>
-  <object id="109" gid="1429" x="1424" y="1184" width="32" height="32"/>
+  <object id="109" gid="1429" x="1440" y="1184" width="32" height="32"/>
   <object id="110" gid="1428" x="1408" y="1216" width="32" height="32">
    <properties>
-    <property name="text">Pueblo Lillac, 3000m Sur
-Paso de las Rocas Cantantes: 500m Sur-Oeste</property>
+    <property name="text" value="Pueblo Lillac, 3000m Sur"/>
    </properties>
   </object>
   <object id="113" x="624" y="704">
@@ -1561,8 +1560,7 @@ Puente dañado</property>
     <property name="id" value="forest_1"/>
     <property name="offset_x" type="float" value="1"/>
     <property name="offset_y" type="float" value="0"/>
-    <property name="ost" value="audio/ost/pkmn_mist_dung_ragged_mountain.mp3"/>
-    <property name="stop_ost" type="bool" value="true"/>
+    <property name="ost" value=""/>
     <property name="target_id" value="village_2"/>
     <property name="target_map" value="town_map"/>
     <property name="volume" type="float" value="0.35"/>
@@ -1777,16 +1775,22 @@ Zona de aparición del &quot;hechicero&quot;
 ----NO ENTRAR----</property>
    </properties>
   </object>
+  <object id="295" gid="1424" x="32" y="1984" width="32" height="32">
+   <properties>
+    <property name="id" value="river_3"/>
+    <property name="offset_x" type="float" value="-1"/>
+    <property name="offset_y" type="float" value="-1"/>
+    <property name="target_id" value="mountain_1"/>
+    <property name="target_map" value="mountain_map"/>
+   </properties>
+  </object>
   <object id="296" gid="1424" x="32" y="736" width="32" height="32">
    <properties>
     <property name="id" value="river_2"/>
     <property name="min_score" type="int" value="2150"/>
     <property name="offset_y" type="float" value="1"/>
-    <property name="ost" value=""/>
-    <property name="stop_ost" type="bool" value="true"/>
     <property name="target_id" value="boss"/>
     <property name="target_map" value="boss_map"/>
-    <property name="volume" type="float" value="0.35"/>
    </properties>
   </object>
   <object id="297" gid="1423" x="1184" y="544" width="32" height="32">
@@ -1902,7 +1906,6 @@ SE REQUIERE TENER UNA PUNTUACIÓN DE: 2150 PUNTOS</property>
   <object id="342" gid="1421" x="288" y="1984" width="32" height="32">
    <properties>
     <property name="enemy_type" value="assasin"/>
-    <property name="persecution_speed" type="float" value="160"/>
     <property name="skin" type="int" value="1"/>
    </properties>
   </object>
@@ -1993,7 +1996,7 @@ SE REQUIERE TENER UNA PUNTUACIÓN DE: 2150 PUNTOS</property>
     <property name="enemy_type" value="assasin"/>
     <property name="path_size_x" type="float" value="-1"/>
     <property name="path_size_y" type="float" value="0"/>
-    <property name="persecution_speed" type="float" value="140"/>
+    <property name="persecution_speed" type="float" value="120"/>
     <property name="skin" type="int" value="1"/>
    </properties>
   </object>
@@ -2041,19 +2044,5 @@ SE REQUIERE TENER UNA PUNTUACIÓN DE: 2150 PUNTOS</property>
   <object id="384" gid="1443" x="384" y="1376" width="32" height="32"/>
   <object id="385" gid="1443" x="704" y="1888" width="32" height="32"/>
   <object id="386" gid="1443" x="640" y="1824" width="32" height="32"/>
-  <object id="387" gid="1424" x="32" y="1984" width="32" height="32">
-   <properties>
-    <property name="id" value="river_3"/>
-    <property name="offset_x" type="float" value="-1"/>
-    <property name="offset_y" type="float" value="-1"/>
-    <property name="target_id" value="mountain_1"/>
-    <property name="target_map" value="mountain_map"/>
-   </properties>
-  </object>
-  <object id="388" gid="1427" x="1392" y="1488" width="32" height="32">
-   <properties>
-    <property name="text" value="Río Cántaro"/>
-   </properties>
-  </object>
  </objectgroup>
 </map>

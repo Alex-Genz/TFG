@@ -226,8 +226,7 @@ public class MainScreen extends BScreen {
                             props.get("id").toString(),
                             props.get("target_id").toString(),
                             (boolean) props.get("no_return"),
-                            (int) props.get("min_score"),
-                            (boolean) props.get("stop_ost"));
+                            (int) props.get("min_score"));
 
                     this.teleporters.add(teleporter);
 
@@ -450,7 +449,7 @@ public class MainScreen extends BScreen {
 
         updateUI();
 
-        bossFight();
+        test01();
 
         if (timeBeforeWinScr < 0)
             swapToEndScr();
@@ -461,21 +460,16 @@ public class MainScreen extends BScreen {
     }
 
     //    TODO: replace boolean test with boss.getenabled
-    private void bossFight() {
-        if (isBossMap) {
-            if (player.getX() > 288 && player.getY() > 288)
-                isWithinBossArena = true;
-//            SoundManager.stopMusic();
-//            SoundManager.playMusic("audio/ost/zelda_wild_calamity_ganon.mp3", 0.35f);
+    private void test01() {
+        if (player.getX() > 288 && player.getY() > 288 && isBossMap)
+            isWithinBossArena = true;
 
-            if (isWithinBossArena && finalBoss.getEnabled())
-                if (player.getX() < 287 || player.getY() < 287) {
-                    player.setX(player.getX() + 64);
-                    player.setY(player.getY() + 32);
+        if (isWithinBossArena && isBossMap && finalBoss.getEnabled())
+            if (player.getX() < 287 || player.getY() < 287) {
+                player.setX(player.getX() + 64);
+                player.setY(player.getY() + 32);
 
-                }
-
-        }
+            }
 
     }
 
@@ -574,14 +568,9 @@ public class MainScreen extends BScreen {
                 teleporters) {
             if (tp.getEnabled() && !tp.noReturn && tp.overlaps(player) &&
                     PlayerParams.scoreCount + PlayerParams.scoreCountRes >= tp.getScoreQuota()) {
-                System.out.println(tp.tpId + " | " + tp.isStopOst());
                 //        tp target reserve purge
-                if (SoundManager.isMusicPlaying() && teleporter.isStopOst()) {
+                if (SoundManager.isMusicPlaying())
                     SoundManager.stopMusic();
-                    System.out.println("stop!");
-
-                }
-
                 PlayerParams.scoreCountRes += PlayerParams.scoreCount;
                 PlayerParams.scoreCount = 0;
 
