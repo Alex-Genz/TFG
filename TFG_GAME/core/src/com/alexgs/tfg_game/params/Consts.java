@@ -132,7 +132,15 @@ public class Consts {
 
     };
 
-    public static final String[] NPC_SPRITE_DIR = {
+    public static final String[] ENEMY_SPRITES = {
+            "warlock/warlock_",
+            "assasin/assasin_",
+            "archer/archer_",
+            "great_wizard/great_wizard_",
+
+    };
+
+    public static final String[] SPRITE_DIR = {
             "idown",
             "ileft",
             "iright",

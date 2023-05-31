@@ -2,6 +2,7 @@ package com.alexgs.tfg_game.elements.bullets;
 
 import com.alexgs.tfg_game.elements.characters.hostiles.Hostiles;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
+import com.alexgs.tfg_game.managers.SoundManager;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
@@ -26,7 +27,8 @@ public class BulletFriendly extends Bullet {
             if (this.getEnabled() && neutral.getEnabled() &&
                     this.overlaps(neutral.getHitbox())) {
                 this.setEnabled(false);
-                System.out.println("ouch!");
+//                System.out.println("ouch!");
+                SoundManager.playSound("audio/sfx/csgo_hostage_pain_sfx.mp3", 0.5f);
 
             }
 

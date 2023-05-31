@@ -4,6 +4,7 @@ import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.player.PlayerParams;
 import com.alexgs.tfg_game.elements.tools.Weapons;
+import com.alexgs.tfg_game.params.Consts;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -23,41 +24,8 @@ public class Hostiles extends Characters {
     private boolean doesPatrol;
 
     //    temporal
-    public final String PATHS = "sprites/npcs/";
+    public final String PATHS = "sprites/enemies/";
     public final String EXTENSION = ".png";
-    public final String[][] CHARACTER_SPRITES =
-            {
-                    {
-                            "chara03_c/vx_chara03_c_char1_idown",
-                            "chara03_c/vx_chara03_c_char1_ileft",
-                            "chara03_c/vx_chara03_c_char1_iright",
-                            "chara03_c/vx_chara03_c_char1_iup",
-                            "chara03_c/vx_chara03_c_char1_wdown",
-                            "chara03_c/vx_chara03_c_char1_wleft",
-                            "chara03_c/vx_chara03_c_char1_wright",
-                            "chara03_c/vx_chara03_c_char1_wup"
-                    },
-                    {
-                            "chara03_c/vx_chara03_c_char2_idown",
-                            "chara03_c/vx_chara03_c_char2_ileft",
-                            "chara03_c/vx_chara03_c_char2_iright",
-                            "chara03_c/vx_chara03_c_char2_iup",
-                            "chara03_c/vx_chara03_c_char2_wdown",
-                            "chara03_c/vx_chara03_c_char2_wleft",
-                            "chara03_c/vx_chara03_c_char2_wright",
-                            "chara03_c/vx_chara03_c_char2_wup"
-                    },
-                    {
-                            "chara03_c/vx_chara03_c_char4_idown",
-                            "chara03_c/vx_chara03_c_char4_ileft",
-                            "chara03_c/vx_chara03_c_char4_iright",
-                            "chara03_c/vx_chara03_c_char4_iup",
-                            "chara03_c/vx_chara03_c_char4_wdown",
-                            "chara03_c/vx_chara03_c_char4_wleft",
-                            "chara03_c/vx_chara03_c_char4_wright",
-                            "chara03_c/vx_chara03_c_char4_wup"
-                    }
-            };
 
 
     public Hostiles(float x, float y, Stage s, MainScreen lvl,
@@ -81,8 +49,8 @@ public class Hostiles extends Characters {
 
         this.weapon = weapon;
 
-        setPolygon(8, this.getWidth() / 3,
-                this.getHeight() / 4, 22, 0);
+        setPolygon(8, this.getWidth() / 3 + 4,
+                this.getHeight() / 4, 20, 0);
 
         super.setPath();
 
@@ -90,7 +58,7 @@ public class Hostiles extends Characters {
 
     private void setHitbox(Stage s) {
         super.hitbox = new Element(this.getX() + 17, this.getY(), s,
-                this.getWidth() / 2f - 2, this.getHeight() - 2);
+                this.getWidth() / 2f - 3, this.getHeight() - 16);
         super.hitbox.setPolygon(8);
 
     }
@@ -101,7 +69,7 @@ public class Hostiles extends Characters {
     }
 
     public void act(float delta) {
-        if (this.getEnabled() && !lvl.player.isInDialog()) {
+        if (this.getEnabled()) {
             super.act(delta);
 
             updateHitbox();
@@ -168,23 +136,23 @@ public class Hostiles extends Characters {
 
 
     protected void assignCharacter(int charNum) {
-        super.idleDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][0]),
+        super.idleDown = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[0]),
                 1, 1, 0, true);
-        super.idleLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][1]),
+        super.idleLeft = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[1]),
                 1, 1, 0, true);
-        super.idleRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][2]),
+        super.idleRight = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[2]),
                 1, 1, 0, true);
-        super.idleUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][3]),
+        super.idleUp = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[3]),
                 1, 1, 0, true);
 
-        super.walkDown = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][4]),
-                1, 4, 0.15f, true);
-        super.walkLeft = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][5]),
-                1, 4, 0.15f, true);
-        super.walkRight = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][6]),
-                1, 4, 0.15f, true);
-        super.walkUp = loadFullAnimation(pathFiller(CHARACTER_SPRITES[charNum][7]),
-                1, 4, 0.15f, true);
+        super.walkDown = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[4]),
+                1, 8, 0.125f, true);
+        super.walkLeft = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[5]),
+                1, 8, 0.125f, true);
+        super.walkRight = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[6]),
+                1, 8, 0.125f, true);
+        super.walkUp = loadFullAnimation(pathFiller(Consts.ENEMY_SPRITES[charNum] + Consts.SPRITE_DIR[7]),
+                1, 8, 0.125f, true);
 
     }
 

@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputEvent.Type;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
@@ -33,9 +34,11 @@ public class TitleScreen extends BScreen {
 
         BitmapFont font = new BitmapFont();
         font.getData().setScale(5);
-        lblInfo = new Label("Time Traveler\nby Accident", new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        lblInfo = new Label("", ResourceManager.screenStyle);
+        lblInfo.setWidth(880);
+        lblInfo.setHeight(400);
         lblInfo.setPosition(GameParams.SCR_WIDTH / 2 - lblInfo.getWidth() / 2,
-                GameParams.SCR_HEIGHT / 2 + lblInfo.getHeight());
+                GameParams.SCR_HEIGHT / 2 + 30);
         lblInfo.setAlignment(Align.center);
         uiStage.addActor(lblInfo);
 

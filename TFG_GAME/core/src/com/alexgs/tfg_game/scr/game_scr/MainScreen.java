@@ -122,7 +122,6 @@ public class MainScreen extends BScreen {
         }
 
 
-
         ren = new OrthogonalTiledMapRenderer(map, mainStage.getBatch());
 
         MapProperties props = map.getProperties();
@@ -455,13 +454,12 @@ public class MainScreen extends BScreen {
         if (timeBeforeWinScr < 0)
             swapToEndScr();
 
-        else
-            if (isBossMap && !finalBoss.getEnabled())
-                timeBeforeWinScr-=delta;
+        else if (isBossMap && !finalBoss.getEnabled())
+            timeBeforeWinScr -= delta;
 
     }
 
-//    TODO: replace boolean test with boss.getenabled
+    //    TODO: replace boolean test with boss.getenabled
     private void test01() {
         if (player.getX() > 288 && player.getY() > 288 && isBossMap)
             isWithinBossArena = true;
@@ -507,7 +505,7 @@ public class MainScreen extends BScreen {
 
             PlayerParams.hp = PlayerParams.MAX_PLAYER_HEALTH;
             PlayerParams.scoreCount = 0;
-            PlayerParams.currWeapon = PlayerParams.weaponInv[0];
+            PlayerParams.chosenWeapon = 0;
 
             game.setScreen(new EndScreen(game));
 
@@ -539,10 +537,12 @@ public class MainScreen extends BScreen {
     private void checkCollisions() {
         for (SolidLow solidObj :
                 loSolids) {
-            if (solidObj.getEnabled() && solidObj.overlaps(player)) {
+            if (solidObj.getEnabled() && solidObj.overlaps(player))
                 player.preventOverlap(solidObj);
 
-            }
+            if (finalBoss != null)
+                if (solidObj.getEnabled() && finalBoss.getEnabled() && solidObj.overlaps(finalBoss))
+                    finalBoss.preventOverlap(solidObj);
 
             for (Neutrals npc :
                     neutralNPCs) {
@@ -571,7 +571,7 @@ public class MainScreen extends BScreen {
                 //        tp target reserve purge
                 if (SoundManager.isMusicPlaying())
                     SoundManager.stopMusic();
-                PlayerParams.scoreCountRes +=PlayerParams.scoreCount;
+                PlayerParams.scoreCountRes += PlayerParams.scoreCount;
                 PlayerParams.scoreCount = 0;
 
                 GameParams.touchedTeleporter = null;
@@ -592,6 +592,19 @@ public class MainScreen extends BScreen {
             }
 
         }
+
+        for (Hostiles hostile :
+                hostiles) {
+            if (hostile.getEnabled() && hostile.overlaps(player)) {
+                player.preventOverlap(hostile);
+
+            }
+
+        }
+
+        if (finalBoss != null)
+            if (finalBoss.getEnabled() && finalBoss.overlaps(player))
+                player.preventOverlap(finalBoss);
 
         for (WorldObjects wObj :
                 worldObjects) {
@@ -617,6 +630,10 @@ public class MainScreen extends BScreen {
                 }
 
             }
+
+            if (finalBoss != null)
+                if (wObj.getEnabled() && finalBoss.getEnabled() && wObj.overlaps(finalBoss))
+                    finalBoss.preventOverlap(wObj);
 
         }
 

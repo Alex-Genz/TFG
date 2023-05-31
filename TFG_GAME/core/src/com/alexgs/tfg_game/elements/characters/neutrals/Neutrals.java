@@ -78,7 +78,7 @@ public class Neutrals extends Characters {
 
     private String pathFiller(int character, int dir) {
         return Consts.PATHS + Consts.NPC_CHARACTER_SPRITE[character] +
-                Consts.NPC_SPRITE_DIR[dir] + Consts.EXTENSION;
+                Consts.SPRITE_DIR[dir] + Consts.EXTENSION;
 
     }
 

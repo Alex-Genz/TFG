@@ -18,7 +18,7 @@ public class Archer extends Hostiles {
     }
 
     public void act(float delta) {
-        if (this.getEnabled()) {
+        if (this.getEnabled() && !lvl.player.isInDialog()) {
             super.act(delta);
 
             if (distanceToTarget(lvl.player.getCenteredX(), lvl.player.getCenteredY()) < super.stopDistance) {

@@ -2,6 +2,7 @@ package com.alexgs.tfg_game.elements.characters.hostiles;
 
 import com.alexgs.tfg_game.elements.Element;
 import com.alexgs.tfg_game.elements.characters.Characters;
+import com.alexgs.tfg_game.elements.characters.neutrals.player.PlayerParams;
 import com.alexgs.tfg_game.elements.tools.BossWeapon;
 import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.params.Consts;
@@ -22,8 +23,8 @@ public class Boss extends Characters {
 
         assignCharacter(21);
 
-        setPolygon(8, this.getWidth() / 3,
-                this.getHeight() / 4, 22, 0);
+        setPolygon(8, this.getWidth() / 3 + 4,
+                this.getHeight() / 4, 40, 0);
 
         setHitbox(s);
 
@@ -35,13 +36,13 @@ public class Boss extends Characters {
 
     private void setHitbox(Stage s) {
         super.hitbox = new Element(this.getX() + 17, this.getY(), s,
-                this.getWidth() / 2f - 2, this.getHeight() - 2);
+                this.getWidth() / 2f - 3, this.getHeight() - 32);
         super.hitbox.setPolygon(8);
 
     }
 
     private void updateHitbox() {
-        super.hitbox.setPosition(this.getX() + 17, this.getY());
+        super.hitbox.setPosition(this.getX() + 34, this.getY());
 
     }
 
@@ -51,8 +52,11 @@ public class Boss extends Characters {
 
             updateHitbox();
 
-            if (this.health <= 0)
+            if (this.health <= 0) {
                 this.setEnabled(false);
+                PlayerParams.scoreCountRes+=3000;
+
+            }
 
             if (timeBeforeNextShot > 0)
                 timeBeforeNextShot -= delta;
@@ -84,28 +88,28 @@ public class Boss extends Characters {
 
     private String pathFiller(int character, int dir) {
         return Consts.PATHS + Consts.NPC_CHARACTER_SPRITE[character] +
-                Consts.NPC_SPRITE_DIR[dir] + Consts.EXTENSION;
+                Consts.SPRITE_DIR[dir] + Consts.EXTENSION;
 
     }
 
     protected void assignCharacter(int charNum) {
-        super.idleDown = loadFullAnimation(pathFiller(charNum, 0),
+        super.idleDown = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[0] + ".png",
                 1, 1, 0, true);
-        super.idleLeft = loadFullAnimation(pathFiller(charNum, 1),
+        super.idleLeft = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[1] + ".png",
                 1, 1, 0, true);
-        super.idleRight = loadFullAnimation(pathFiller(charNum, 2),
+        super.idleRight = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[2] + ".png",
                 1, 1, 0, true);
-        super.idleUp = loadFullAnimation(pathFiller(charNum, 3),
+        super.idleUp = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[3] + ".png",
                 1, 1, 0, true);
 
-        super.walkDown = loadFullAnimation(pathFiller(charNum, 4),
-                1, 4, 0.15f, true);
-        super.walkLeft = loadFullAnimation(pathFiller(charNum, 5),
-                1, 4, 0.15f, true);
-        super.walkRight = loadFullAnimation(pathFiller(charNum, 6),
-                1, 4, 0.15f, true);
-        super.walkUp = loadFullAnimation(pathFiller(charNum, 7),
-                1, 4, 0.15f, true);
+        super.walkDown = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[4] + ".png",
+                1, 8, 0.125f, true);
+        super.walkLeft = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[5] + ".png",
+                1, 8, 0.125f, true);
+        super.walkRight = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[6] + ".png",
+                1, 8, 0.125f, true);
+        super.walkUp = loadFullAnimation("sprites/enemies/" + Consts.ENEMY_SPRITES[3] + Consts.SPRITE_DIR[7] + ".png",
+                1, 8, 0.125f, true);
 
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="302">
+<map version="1.10" tiledversion="1.10.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="305">
  <tileset firstgid="1" source="../tilesets/pngkit_tile-png_2654326.tsx"/>
  <tileset firstgid="1153" source="../tilesets/Refmap-TileC.tsx"/>
  <tileset firstgid="1409" source="../tilesets/Refmap-TileE.tsx"/>
@@ -519,7 +519,7 @@
   <object id="282" gid="1803" x="192" y="128" width="32" height="32"/>
   <object id="283" gid="1804" x="64" y="544" width="32" height="32">
    <properties>
-    <property name="ost" value="audio/ost/pkmn_dppt_oreburgh_mine.mp3"/>
+    <property name="ost" value="audio/ost/pkmn_hgss_ice_cave.mp3"/>
     <property name="volume" type="float" value="0.25"/>
    </properties>
   </object>
@@ -528,6 +528,7 @@
     <property name="enemy_type" value="archer"/>
     <property name="path_size_x" type="float" value="3"/>
     <property name="persecution_speed" type="float" value="90"/>
+    <property name="skin" type="int" value="2"/>
    </properties>
   </object>
   <object id="287" gid="1808" x="800" y="112" width="32" height="32">
@@ -549,7 +550,7 @@
     <property name="enemy_type" value="assasin"/>
     <property name="path_size_y" type="float" value="1"/>
     <property name="persecution_speed" type="float" value="190"/>
-    <property name="skin" type="int" value="2"/>
+    <property name="skin" type="int" value="1"/>
    </properties>
   </object>
   <object id="293" gid="1805" x="336" y="560" width="32" height="32">
@@ -558,7 +559,7 @@
     <property name="path_size_x" type="float" value="1.5"/>
     <property name="path_size_y" type="float" value="-1.5"/>
     <property name="persecution_speed" type="float" value="80"/>
-    <property name="skin" type="int" value="1"/>
+    <property name="skin" type="int" value="0"/>
    </properties>
   </object>
   <object id="294" gid="1805" x="832" y="352" width="32" height="32">
@@ -566,7 +567,7 @@
     <property name="enemy_type" value="warlock"/>
     <property name="path_size_y" type="float" value="3"/>
     <property name="persecution_speed" type="float" value="95"/>
-    <property name="skin" type="int" value="2"/>
+    <property name="skin" type="int" value="0"/>
    </properties>
   </object>
   <object id="295" gid="1805" x="640" y="448" width="32" height="32">
@@ -574,6 +575,7 @@
     <property name="enemy_type" value="assasin"/>
     <property name="path_size_x" type="float" value="4"/>
     <property name="persecution_speed" type="float" value="190"/>
+    <property name="skin" type="int" value="1"/>
    </properties>
   </object>
   <object id="299" gid="1807" x="320" y="352" width="32" height="32">

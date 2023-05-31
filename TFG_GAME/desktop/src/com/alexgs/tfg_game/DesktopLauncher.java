@@ -25,6 +25,7 @@ public class DesktopLauncher {
         Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
         config.setForegroundFPS(GameParams.framerate);
         config.setTitle("Time Traveler by Accident");
+        config.setResizable(false);
 
         config.setWindowedMode(GameParams.scrWidth, GameParams.scrHeight);
         System.out.println(GameParams.scrWidth + "x" + GameParams.scrHeight);

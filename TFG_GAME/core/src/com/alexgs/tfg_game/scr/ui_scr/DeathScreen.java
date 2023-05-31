@@ -33,7 +33,7 @@ public class DeathScreen extends BScreen {
 
         BitmapFont font = new BitmapFont();
         font.getData().setScale(4f);
-        lblInfo = new Label("Has muerto. \nPuntuación: " + (PlayerParams.scoreCount + PlayerParams.scoreCountRes), new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        lblInfo = new Label("Has muerto. \nPuntuación: " + (PlayerParams.scoreCount + PlayerParams.scoreCountRes), ResourceManager.screenStyle);
         lblInfo.setPosition(GameParams.scrWidth / 2 - lblInfo.getWidth() / 2, GameParams.scrHeight / 2 + lblInfo.getHeight());
         lblInfo.setAlignment(Align.center);
         uiStage.addActor(lblInfo);

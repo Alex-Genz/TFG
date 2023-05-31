@@ -5,6 +5,7 @@ import com.alexgs.tfg_game.elements.characters.Characters;
 import com.alexgs.tfg_game.elements.characters.neutrals.Neutrals;
 import com.alexgs.tfg_game.elements.tools.Weapons;
 import com.alexgs.tfg_game.elements.world_obj.Sign;
+import com.alexgs.tfg_game.managers.SoundManager;
 import com.alexgs.tfg_game.params.GameParams;
 import com.alexgs.tfg_game.scr.game_scr.MainScreen;
 import com.badlogic.gdx.Gdx;
@@ -336,7 +337,8 @@ public class Player extends Characters {
                     System.out.println(PlayerParams.currWeapon.isInFullAuto);
 
                 } else
-                    System.out.println("weapon cannot switch fire modes");
+//                    System.out.println("weapon cannot switch fire modes");
+                    SoundManager.playSound("audio/sfx/factorio_error_sfx.mp3", 1);
 
             }
 
@@ -364,7 +366,9 @@ public class Player extends Characters {
 
                 }
 
-            }
+            } else
+                if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT) && lClickActivationTime <= 0)
+                    SoundManager.playSound("audio/sfx/factorio_error_sfx.mp3", 1);
 
             if (GameParams.TOGGLE_RUN) {
                 if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT))

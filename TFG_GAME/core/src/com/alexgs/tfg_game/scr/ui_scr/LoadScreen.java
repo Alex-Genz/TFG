@@ -26,6 +26,7 @@ public class LoadScreen extends BScreen {
 
             ResourceManager.botones();
             ResourceManager.hudFont();
+            ResourceManager.screenFont();
             game.setScreen(new TitleScreen(game));
 
         }

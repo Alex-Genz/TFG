@@ -761,6 +761,7 @@
     <property name="ost" value="audio/ost/pkmn_hgss_cianwood_city.mp3"/>
     <property name="target_id" value="forest_1"/>
     <property name="target_map" value="river_map"/>
+    <property name="volume" type="float" value="0.35"/>
    </properties>
   </object>
   <object id="8" x="192" y="352">

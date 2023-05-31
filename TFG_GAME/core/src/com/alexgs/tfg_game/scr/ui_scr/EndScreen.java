@@ -34,7 +34,7 @@ public class EndScreen extends BScreen {
 
         BitmapFont font = new BitmapFont();
         font.getData().setScale(4f);
-        lblInfo = new Label("¡Enhorabuena!\nHas derrotado al hechicero", new Label.LabelStyle(font, Color.LIGHT_GRAY));
+        lblInfo = new Label("¡Enhorabuena!\nHas derrotado al hechicero.\nPuntuación final: " + PlayerParams.scoreCountRes, ResourceManager.screenStyle);
         lblInfo.setPosition(GameParams.scrWidth / 2 - lblInfo.getWidth() / 2, GameParams.scrHeight / 2 + lblInfo.getHeight());
         lblInfo.setAlignment(Align.center);
         uiStage.addActor(lblInfo);
@@ -45,6 +45,9 @@ public class EndScreen extends BScreen {
         boton.addListener((Event e) -> {
             if (!(e instanceof InputEvent) || !((InputEvent) e).getType().equals(Type.touchDown))
                 return false;
+
+            PlayerParams.scoreCountRes = 0;
+            PlayerParams.scoreCount = 0;
 
             this.dispose();
             game.setScreen(new MainScreen(game));

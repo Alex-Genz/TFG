@@ -37,6 +37,8 @@ public final class ResourceManager {
     public static LabelStyle firemodeStyle;
     public static LabelStyle bossStyle;
 
+    public static LabelStyle screenStyle;
+
     private static final String NPCS_PATH = "sprites/npcs/";
 
     private static final String[] PLAYER_PREFIXES = {"nothing_", "pistol_", "ar_"};
@@ -102,8 +104,18 @@ public final class ResourceManager {
         for (String sprite :
                 Consts.NPC_CHARACTER_SPRITE) {
             for (String dir :
-                    Consts.NPC_SPRITE_DIR) {
+                    Consts.SPRITE_DIR) {
                 assets.load(NPCS_PATH + sprite + dir + ".png", Texture.class);
+
+            }
+
+        }
+
+        for (String sprite :
+                Consts.ENEMY_SPRITES) {
+            for (String dir :
+                    Consts.SPRITE_DIR) {
+                assets.load("sprites/enemies/" + sprite + dir + ".png", Texture.class);
 
             }
 
@@ -168,6 +180,8 @@ public final class ResourceManager {
         assets.load("audio/sfx/magic_staff_sfx.mp3", Sound.class);
         assets.load("audio/sfx/csgo_beretta_sfx.mp3", Sound.class);
         assets.load("audio/sfx/csgo_aug_a3_sfx.mp3", Sound.class);
+        assets.load("audio/sfx/csgo_hostage_pain_sfx.mp3", Sound.class);
+        assets.load("audio/sfx/factorio_error_sfx.mp3", Sound.class);
 
 
         /*
@@ -204,6 +218,23 @@ public final class ResourceManager {
         NinePatch buttonPatch = new NinePatch(buttonText);
         textButtonStyle.up = new NinePatchDrawable(buttonPatch);
         textButtonStyle.font = fuentePropia;
+
+    }
+
+    public static void screenFont() {
+        FreeTypeFontGenerator atariFtfg = new FreeTypeFontGenerator(Gdx.files.internal("fonts/AtariST8x16SystemFont.ttf"));
+        FreeTypeFontParameter atariFtfp = new FreeTypeFontParameter();
+
+        atariFtfp.size = 64;
+        atariFtfp.color = Color.BLACK;
+        atariFtfp.borderColor = Color.WHITE;
+        atariFtfp.borderWidth = 2;
+
+        BitmapFont hudFont = atariFtfg.generateFont(atariFtfp);
+        screenStyle = new LabelStyle();
+        screenStyle.font = hudFont;
+
+        screenStyle.background = new Image(new Texture(Gdx.files.internal("ui_gui/logo.png"))).getDrawable();
 
     }
 
@@ -328,5 +359,5 @@ public final class ResourceManager {
     public static void dispose() {
         assets.dispose();
     }
-    
+
 }
