@@ -759,6 +759,7 @@
     <property name="offset_x" type="float" value="-1"/>
     <property name="offset_y" type="float" value="0"/>
     <property name="ost" value="audio/ost/pkmn_hgss_cianwood_city.mp3"/>
+    <property name="stop_ost" type="bool" value="true"/>
     <property name="target_id" value="forest_1"/>
     <property name="target_map" value="river_map"/>
     <property name="volume" type="float" value="0.35"/>
@@ -1089,6 +1090,7 @@ Poblacion: 39</property>
     <property name="offset_x" type="float" value="1"/>
     <property name="offset_y" type="float" value="0"/>
     <property name="ost" value="audio/ost/pkmn_hgss_cianwood_city.mp3"/>
+    <property name="stop_ost" type="bool" value="true"/>
     <property name="target_id" value="spawn_1"/>
     <property name="target_map" value="spawn_map_b"/>
     <property name="volume" type="float" value="0.35"/>

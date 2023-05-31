@@ -125,7 +125,7 @@ public class Characters extends Element {
                 this.shootDir.x * weapon.getBulletSpeed(),
                 this.shootDir.y * weapon.getBulletSpeed());
 
-        SoundManager.playSound(weapon.getShootSfxPath(), 0.5f);
+        SoundManager.playSound(weapon.getShootSfxPath(), 0.65f);
 
 //        this.currPersistenceBullet = (this.currPersistenceBullet + 1) % PERSISTENCE_MAG_SIZE;
         this.currPersistenceBullet = (this.currPersistenceBullet + 1) %

@@ -171,6 +171,8 @@ public final class ResourceManager {
         assets.load("audio/ost/pkmn_hgss_ice_cave.mp3", Music.class);
         assets.load("audio/ost/pkmn_dppt_oreburgh_mine.mp3", Music.class);
         assets.load("audio/ost/pkmn_hgss_cianwood_city.mp3", Music.class);
+        assets.load("audio/ost/pkmn_mist_dung_ragged_mountain.mp3", Music.class);
+        assets.load("audio/ost/zelda_wild_calamity_ganon.mp3", Music.class);
 
         /*
          * sfx = assets.load(<audio file path>, Sound.class);

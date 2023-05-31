@@ -22,8 +22,10 @@ public class Teleporter extends Element {
 
     private int scoreQuota;
 
+    private boolean stopOst;
+
     public Teleporter(float x, float y, Stage s, MainScreen lvl, float offsetX, float offsetY,
-                      String tgtMapPath, String tpId, String tgtTpId, boolean noReturn, int scoreQuota) {
+                      String tgtMapPath, String tpId, String tgtTpId, boolean noReturn, int scoreQuota, boolean stopOst) {
         super(x, y, s);
 
         this.lvl = lvl;
@@ -40,6 +42,8 @@ public class Teleporter extends Element {
 
         this.scoreQuota = scoreQuota;
 
+        this.stopOst = stopOst;
+
         anim = loadFullAnimation("sprites/other/exit_tp.png", 1, 8, 0.125f, true);
 
     }
@@ -54,6 +58,10 @@ public class Teleporter extends Element {
 
     public int getScoreQuota() {
         return scoreQuota;
+    }
+
+    public boolean isStopOst() {
+        return stopOst;
     }
 
 }
